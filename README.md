@@ -67,7 +67,7 @@ npm run dev
 ├── public/
 │   ├── favicon.svg
 │   └── social-image.png
-│   └── sprofile.jpg
+│   └── sprofile.png
 │   └── social_img.webp
 ├── astro.config.mjs
 ├── tailwind.config.cjs
