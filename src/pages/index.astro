@@ -1,11 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import getAge from "../scripts/getAge.js"
 import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
 
+const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
+const last_projects = projects.slice(0, 3);
 const last_posts = posts.slice(0, 3);
+const geboorteDatum ="1989-12-27";
 ---
 
 <BaseLayout sideBarActiveItemID="home">
@@ -15,10 +19,9 @@ const last_posts = posts.slice(0, 3);
     <div class="text-3xl py-3 font-bold">Tech enthausiast</div>
     <div class="py-2">
       <text class="text-lg">
-        Dit is mijn portfolio website. Hier vind je een overzicht van mijn projecten en blogs.
-        Ook andere diverse dingen die ik leuk vind om te delen. Ik ben geen specialist maar een erg brede generalist. Je zal hier dus van alles tegenkomen.
-        Of het nou gaat van Photonica met nadruk op lasers of dat het gaat om metaalbewerking,
-        Maar ook ICT beheer van servers en netwerken. tot backend development.
+        Van harte welkom op mijn kleine stukje internet. Hier deel ik zo nu en dan wat van mijn passies.
+        Ik ben een {getAge(geboorteDatum)}-jarige techneut die zich graag bezighoudt met allerlei soorten techniek, zowel fysiek als digitaal.
+        Mijn focus ligt vooral op lasers, CNC-machines en ICT-infrastructuur.
       </text>
     </div>
     <div class="mt-8">
@@ -29,31 +32,23 @@ const last_posts = posts.slice(0, 3);
   <div>
     <div class="text-3xl w-full font-bold mb-2">Mijn laatste projecten</div>
   </div>
+  {
+    last_projects.map((post) => (
+      <>
+        <HorizontalCard
+          title={post.data.title}
+          img={post.data.heroImage}
+          desc={post.data.description}
+          url={"/blog/" + post.slug}
+          target="_self"
+          badge={post.data.badge}
+        />
+        <div class="divider my-0" />
+      </>
+    ))
+  }
 
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
-
-  <div>
+  <!-- <div>
     <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
   </div>
 
@@ -71,5 +66,5 @@ const last_posts = posts.slice(0, 3);
         <div class="divider my-0" />
       </>
     ))
-  }
+  } -->
 </BaseLayout>
