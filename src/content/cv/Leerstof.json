@@ -1,0 +1,66 @@
+{
+    "opleidingen": [
+        {
+            "title": "Monteur Mechatronica",
+            "subtitle": "5 daagse rij en veiligheids opleiding voor vorkheftrucks bij Blom opleidingen, Ede. Nederland"
+        },
+        {
+            "title": "Monteur Mechatronica",
+            "subtitle": "2006 tot 2008 bij Bedrijfstakschool Anton Tijdink, Terborg, Nederland"
+        },
+        {
+            "title": "Assemblage monteur stage, doorgegaan als vakantiekracht",
+            "subtitle": "2008 bij MPS Meat Processing Systems, Lichtenvoorde, Nederland"
+        },
+        {
+            "title": "Stage Assemblage monteur",
+            "subtitle": "2007 bij Staalkat eiersorteermachines, Aalten, Nederland"
+        },
+        {
+            "title": "Stage door het hele bedrijf",
+            "subtitle": "Redox Waterzuivering en Milieu, Winterswijk, Nederland"
+        },
+        {
+            "title": "Electrotechniek",
+            "subtitle": "2004 tot 2006 bij Christelijk College Schaersvoorde, Aalten, Nederland"
+        }
+    ],
+    "cursussen": [
+        {
+            "course": "Fundamentals op Plastics and Polymers",
+            "link": "#"
+        },
+        {
+            "course": "Windows server 2019 administration",
+            "link": "#"
+        },
+        {
+            "course": "Git & GitHub - the practical guide",
+            "link": "#"
+        },
+        {
+            "course": "Clean code",
+            "link": "#"
+        },
+        {
+            "course": "Windows server 2019 administration",
+            "link": "#"
+        },
+        {
+            "course": "Laser safety officier",
+            "link": "#"
+        },
+        {
+            "course": "Technisch tekening lezen",
+            "link": "#"
+        },
+        {
+            "course": "Media wijsheid",
+            "link": "#"
+        },
+        {
+            "course": "Cursus rug gebruik 'BackPerfect'",
+            "link": "#"
+        }
+    ]
+}
