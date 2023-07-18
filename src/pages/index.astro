@@ -39,7 +39,7 @@ const geboorteDatum ="1989-12-27";
           title={post.data.title}
           img={post.data.heroImage}
           desc={post.data.description}
-          url={"/blog/" + post.slug}
+          url={"/projects/" + post.slug}
           target="_self"
           badge={post.data.badge}
         />
@@ -48,8 +48,8 @@ const geboorteDatum ="1989-12-27";
     ))
   }
 
-  <!-- <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
+  <div>
+    <div class="text-3xl w-full font-bold mb-5 mt-10">Laatste van het blog</div>
   </div>
 
   {
@@ -66,5 +66,5 @@ const geboorteDatum ="1989-12-27";
         <div class="divider my-0" />
       </>
     ))
-  } -->
+  }
 </BaseLayout>
