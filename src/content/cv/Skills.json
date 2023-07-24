@@ -1,8 +1,9 @@
 {
     "hardwareSkills": [
     "Computer hardware",
+    "server hardware",
     "Rijbewijs B,AM",
-    "Servomotors",
+    "Servomotoren",
     "Beckhoff platform",
     "Siemens platform",
     "Panelenbouw",
@@ -10,22 +11,21 @@
     "CNC Kanten",
     "CNC Ponsnibbelen",
     "CNC Lasermachines",
-    "Optica lasers",
-    "Microsoft SQL",
-    "Salesforce Admin",
-    "Computer hardware"
+    "Optica lasers"
     ],
     "softwareSkills": [
     "Grafana",
-    "Windows server",
-    "Ubuntu server",
+    "Xen Orchestra",
+    "ProxMox",
     "VM Ware VSphere",
+    "Windows server",
     "Azure stack",
     "(Azure) Active Directory",
     "Microsoft 365 managment",
+    "Microsoft SQL",
     "Ridder IQ",
     "Freshdesk",
-    "Microsoft SQL",
+    "Ubuntu server",
     "Salesforce Admin",
     "Autodesk Inventor",
     "Autodesk Fusion",
@@ -35,10 +35,9 @@
     "GitHub",
     "GitLab",
     "Visual Studio Code",
+    "Tia Portal",
     "Twincat 3",
-    "TwinCat HMI",
-    "TwinCat PLC",
-    "TwinCat NC",
-    "TwinCat CNC"
+    "NodeJS",
+    "Astro.Build"
   ]
 }

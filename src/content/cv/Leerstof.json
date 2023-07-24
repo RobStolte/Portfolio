@@ -2,7 +2,7 @@
     "opleidingen": [
         {
             "title": "Monteur Mechatronica",
-            "subtitle": "5 daagse rij en veiligheids opleiding voor vorkheftrucks bij Blom opleidingen, Ede. Nederland"
+            "subtitle": "2009 5 daagse rij en veiligheids opleiding voor vorkheftrucks bij Blom opleidingen, Ede. Nederland"
         },
         {
             "title": "Monteur Mechatronica",
@@ -60,6 +60,18 @@
         },
         {
             "course": "Cursus rug gebruik 'BackPerfect'",
+            "link": "#"
+        },
+        {
+            "course": "AZ-303 Azure architect technologies",
+            "link": "#"
+        },
+        {
+            "course": "AZ-900 Azure fundamentals",
+            "link": "#"
+        },
+        {
+            "course": "AZ-104 Azure administrator",
             "link": "#"
         }
     ]
