@@ -1,7 +1,7 @@
 {
     "opleidingen": [
         {
-            "title": "Monteur Mechatronica",
+            "title": "Heftruck rijbewijs",
             "company": "Blom opleidingen",
             "from": "2009",
             "until": "",
@@ -15,30 +15,6 @@
             "until": "2008",
             "text": "Opleiding monteur mechatronica",
             "location": "Terborg, Nederland"
-        },
-        {
-            "title": "Assemblage monteur stage, doorgegaan als vakantiekracht",
-            "company": "MPS Meat Processing Systems",
-            "from": "2008",
-            "until": "",
-            "text": "Stage, later doorgewerkt als vakantiekracht.",
-            "location": "Lichtenvoorde, Nederland"
-        },
-        {
-            "title": "Stage Assemblage monteur",
-            "company": "Staalkat eiersorteermachines",
-            "from": "2007",
-            "until": "",
-            "text": "Stage als assemblage monteur",
-            "location": "Aalten, Nederland"
-        },
-        {
-            "title": "Stage door het hele bedrijf",
-            "company": "Redox Waterzuivering en Milieu",
-            "from": "2007",
-            "until": "",
-            "text": "Stage door het hele bedrijf",
-            "location": "Winterswijk, Nederland"
         },
         {
             "title": "Electrotechniek",
