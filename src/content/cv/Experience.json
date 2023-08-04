@@ -2,58 +2,89 @@
     "werkervaring": [
         {
             "title": "Allround",
-            "subtitle": "Van 2021 tot heden bij BRM Lasers B.V., Winterswijk, Nederland",
-            "text": "ICT en Data beheer en ontwikkeling intern, Ad-hoc bijstaand als monteur, support."
+            "company": "BRM Lasers B.V.",
+            "from": "2021",
+            "until": "heden",
+            "text": "ICT en Data beheer en ontwikkeling intern, Ad-hoc bijstaand als monteur, support.",
+            "location": "Winterswijk, Nederland"
         },
         {
             "title": "Development manager",
-            "subtitle": "Van 2018 tot 2021 bij BRM Lasers B.V., Winterswijk, Nederland",
-            "text": "Doorontwikkelen en uiteindelijk ontwikkelen van nieuwe lasersnij en graveermachines en upgrades aan bestaande machines. Aansturen van een team van 2 Universeel inzetbare krachten."
+            "company": "BRM Lasers B.V.",
+            "from": "2018",
+            "until": "2021",
+            "text": "Doorontwikkelen en uiteindelijk ontwikkelen van nieuwe lasersnij en graveermachines en upgrades aan bestaande machines. Aansturen van een team van 2 Universeel inzetbare krachten.",
+            "location": "Winterswijk, Nederland"
         },
         {
             "title": "Support & Development manager",
-            "subtitle": "Van 2017 tot 2019 bij BRM Lasers B.V., Winterswijk, Nederland",
-            "text": "Remote support leveren en aansturen servicemonteurs, ontwikkelen van nieuwe upgrades aan bestaande machines. Aansturen van 1 supportkracht."
+            "company": "BRM Lasers B.V.",
+            "from": "2017",
+            "until": "2019",
+            "text": "Remote support leveren en aansturen servicemonteurs, ontwikkelen van nieuwe upgrades aan bestaande machines. Aansturen van 1 supportkracht.",
+            "location": "Winterswijk, Nederland"
         },
         {
             "title": "Servicemonteur",
-            "subtitle": "Van 2015 tot 2018 bij BRM Lasers B.V., Winterswijk, Nederland",
-            "text": "Na behalen van rijbewijs Servicemonteren van lasersnij en graveermachines in binnen en buitenland."
+            "company": "BRM Lasers B.V.",
+            "from": "2015",
+            "until": "2018",
+            "text": "Na behalen van rijbewijs Servicemonteren van lasersnij en graveermachines in binnen en buitenland.",
+            "location": "Winterswijk, Nederland"
         },
         {
             "title": "Afbouwmonteur",
-            "subtitle": "Van 2014 tot 2015 bij BRM Lasers B.V., Winterswijk, Nederland",
-            "text": "Monteur voor eindassemblage van lasersnij en graveermachines."
+            "company": "BRM Lasers B.V.",
+            "from": "2014",
+            "until": "2015",
+            "text": "Monteur voor eindassemblage van lasersnij en graveermachines.",
+            "location": "Winterswijk, Nederland"
         },
         {
             "title": "CNC Machine operator",
-            "subtitle": "Van 2013 tot 2014 bij Elan dak en gevel, Lichtenvoorde, Nederland",
-            "text": "CNC Machineoperator voor CNC kantbank, CNC primapower ponsmachine en CNC schaar voor ad-hoc opdrachten."
+            "company": "Elan dak en gevel",
+            "from": "2013",
+            "until": "2014",
+            "text": "CNC Machineoperator voor CNC kantbank, CNC primapower ponsmachine en CNC schaar voor ad-hoc opdrachten.",
+            "location": "Lichtenvoorde, Nederland"
         },
         {
             "title": "CNC Machine operator",
-            "subtitle": "In 2013 bij Exerion Precision Technology, Ulft, Nederland",
-            "text": "Proefweek 3 ploegendienst als CNC Machine operator voor machinehal. Afgehaakt i.v.m. niet in bezit van auto en fietsen was te ver."
+            "company": "Exerion Precision Technology",
+            "from": "2013",
+            "until": "2013",
+            "text": "Proefweek 3 ploegendienst als CNC Machine operator voor machinehal. Afgehaakt i.v.m. niet in bezit van auto en fietsen was te ver.",
+            "location": "Ulft, Nederland"
         },
         {
             "title": "CNC Machine operator",
-            "subtitle": "van 2013 tot 2014 bij Pillen Metaalbewerking, Lichtenvoorde, Nederland",
-            "text": "CNC Machine operator voor 2 Strippit 1250s vliegwiel ponsmachines in 2 ploegendienst. Ook aangevuld op lasafdeling."
+            "company": "Pillen Metaalbewerking",
+            "from": "2013",
+            "until": "2014",
+            "text": "CNC Machine operator voor 2 Strippit 1250s vliegwiel ponsmachines in 2 ploegendienst. Ook aangevuld op lasafdeling.",
+            "location": "Lichtenvoorde, Nederland"
         },
         {
             "title": "CNC Machine operator",
-            "subtitle": "van 2012 tot 2013 bij Nedap, Groenlo, Nederland",
-            "text": "CNC Machine operator voor 2 Trumpf ponsmachines in 2 ploegendienst."
+            "company": "Nedap",
+            "from": "2012",
+            "until": "2013",
+            "text": "CNC Machine operator voor 2 Trumpf ponsmachines in 2 ploegendienst.",
+            "location": "Groenlo, Nederland"
         },
         {
             "title": "CNC Machine operator",
-            "subtitle": "Van 2008 tot 2012 bij Contour Covering Technology, Winterswijk, Nederland",
-            "text": "CNC Machine operator voor Trumpf en Cincinatti lasers en ponsmachines in 2 ploegendienst."
+            "company": "Contour Covering Technology",
+            "from": "2008",
+            "until": "2012",
+            "text": "CNC Machine operator voor Trumpf en Cincinatti lasers en ponsmachines in 2 ploegendienst.",
+            "location": "Winterswijk, Nederland"
         }
     ],
     "Erkenningen": [
         {
-            "erkenning": "Vakkanjers Monteur Mechatronica 2de plaats nederlands kampioenschap 2008",
+            "erkenning": "Vakkanjers Monteur Mechatronica 2de plaats nederlands kampioenschap",
+            "date": "2008",
             "link": "#"
         }
     ]

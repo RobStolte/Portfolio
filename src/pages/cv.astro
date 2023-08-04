@@ -26,9 +26,12 @@ import skills from "../content/cv/Skills.json";
 
     {experience.werkervaring.map((werkervaring) => (
       <TimeLineElement
-        title={werkervaring.title}
-        subtitle={werkervaring.subtitle}
-      >{werkervaring.description}</TimeLineElement>))
+          title     = {werkervaring.title}
+          company   = {werkervaring.company}
+          from      = {werkervaring.from}
+          until     = {werkervaring.until}
+          location  = {werkervaring.location}
+      >{werkervaring.text}</TimeLineElement>))
     }
   </div>
 
@@ -39,10 +42,13 @@ import skills from "../content/cv/Skills.json";
   <div class="time-line-container grid gap-4 mb-10">
     {leerstof.opleidingen.map((opleidingen) => (
       <TimeLineElement
-        title={opleidingen.title}
-        subtitle={opleidingen.subtitle}
-      >{opleidingen.description}</TimeLineElement>))
-    }
+          title     = {opleidingen.title}
+          company   = {opleidingen.company}
+          from      = {opleidingen.from}
+          until     = {opleidingen.until}
+          location  = {opleidingen.location}
+          text      = {opleidingen.text}
+      />))}
   </div>
 
 
@@ -65,7 +71,7 @@ import skills from "../content/cv/Skills.json";
   <ul class="list-disc mx-6 mb-10 grid gap-2">
     {experience.Erkenningen.map((erkenningen) => (
     <li>
-      <a href={erkenningen.link} target="_blank">{erkenningen.erkenning}</a>
+      <a href={erkenningen.link} target="_blank">{erkenningen.erkenning},{erkenningen.date}</a>
     </li>))
     }
   </ul>
