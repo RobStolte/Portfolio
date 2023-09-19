@@ -21,7 +21,6 @@ const {
 
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(updatedDate).format("ll");
-import { Image } from 'astro:assets'
 ---
 
 <BaseLayout
@@ -31,7 +30,7 @@ import { Image } from 'astro:assets'
 
   <main class="md:flex md:justify-center">
     <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
-          <Image
+          <img
             width   = {750}
             height  = {422}
             src     = {heroImage}
