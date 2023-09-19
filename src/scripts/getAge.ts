@@ -1,4 +1,4 @@
-function getAge(geboortedatum) {
+function getAge(geboortedatum: Date) {
     let today = new Date();
     let birthDate = new Date(geboortedatum);
     let age = today.getFullYear() - birthDate.getFullYear();
