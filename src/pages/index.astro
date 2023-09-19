@@ -1,7 +1,7 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import getAge from "../scripts/getAge"
-import HorizontalCard from "../components/HorizontalCard.astro";
+import HorizontalCard from "@components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
 
 const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -9,7 +9,7 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
 
 const last_projects = projects.slice(0, 3);
 const last_posts = posts.slice(0, 3);
-const geboorteDatum ="1989-12-27";
+const geboorteDatum = new Date(1989, 12, 27);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
@@ -25,7 +25,7 @@ const geboorteDatum ="1989-12-27";
       </text>
     </div>
     <div class="mt-8">
-      <a class="btn" href="mailto:contact@robstolte.nl" target="_blank"> contact!</a>
+      <a class="btn" href="mailto:contact@robstolte.nl" target="_blank"><i class="fas fa-envelope-open" /> contact!</a>
     </div>
   </div>
 
@@ -36,12 +36,12 @@ const geboorteDatum ="1989-12-27";
     last_projects.map((post) => (
       <>
         <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/projects/" + post.slug}
-          target="_self"
-          badge={post.data.badge}
+          title   = {post.data.title}
+          img     = {post.data.heroImage}
+          desc    = {post.data.description}
+          url     = {"/projects/" + post.slug}
+          target  = "_self"
+          badge   = {post.data.badge}
         />
         <div class="divider my-0" />
       </>
@@ -56,12 +56,12 @@ const geboorteDatum ="1989-12-27";
     last_posts.map((post) => (
       <>
         <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + post.slug}
-          target="_self"
-          badge={post.data.badge}
+          title   = {post.data.title}
+          img     = {post.data.heroImage}
+          desc    = {post.data.description}
+          url     = {"/blog/" + post.slug}
+          target  = "_self"
+          badge   = {post.data.badge}
         />
         <div class="divider my-0" />
       </>

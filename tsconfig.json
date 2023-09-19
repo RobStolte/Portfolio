@@ -1,6 +1,16 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "types": ["astro/client"],
+    "verbatimModuleSyntax": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@content/*": ["./src/content/*"],
+      "@scripts/*": ["./src/scripts/*"],
+    },
     "strictNullChecks": true
   }
 }

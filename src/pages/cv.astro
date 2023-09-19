@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import TimeLineElement from "../components/cv/TimeLine.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import TimeLineElement from "@components/cv/TimeLine.astro";
 
-import experience from "../content/cv/Experience.json";
-import leerstof from "../content/cv/Leerstof.json";
-import skills from "../content/cv/Skills.json";
+import experience from "@content/cv/Experience.json";
+import leerstof from "@content/cv/Leerstof.json";
+import skills from "@content/cv/Skills.json";
 
 
 ---
@@ -55,7 +55,6 @@ import skills from "../content/cv/Skills.json";
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Cursussen</div>
   </div>
-
   <ul class="list-disc mx-6 mb-10 grid gap-2">
     {leerstof.cursussen.map((cursussen) => (
     <li>
@@ -67,7 +66,6 @@ import skills from "../content/cv/Skills.json";
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Erkenningen</div>
   </div>
-
   <ul class="list-disc mx-6 mb-10 grid gap-2">
     {experience.Erkenningen.map((erkenningen) => (
     <li>
@@ -76,23 +74,21 @@ import skills from "../content/cv/Skills.json";
     }
   </ul>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Software Skills</div>
+
+  <div>
+    <div class="mb-5">
+      <div class="text-3xl w-full font-bold">Software Skills</div>
+    </div>
+    <ul class="list-disc md:columns-5 columns-2 mx-6">
+      {skills.softwareSkills.map((skill) => (<li>{skill}</li>))}
+    </ul>
+
+
+    <div class="mb-5">
+      <div class="text-3xl w-full font-bold">Hardware Skills</div>
+    </div>
+    <ul class="list-disc md:columns-5 columns-2 mx-6">
+      {skills.hardwareSkills.map((skill) => (<li>{skill}</li>))}
+    </ul>
   </div>
-
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    {skills.softwareSkills.map((skill) => (
-      <li>{skill}</li>
-    ))}
-  </ul>
-
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Hardware Skills</div>
-  </div>
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    {skills.hardwareSkills.map((skill) => (
-      <li>{skill}</li>
-    ))}
-  </ul>
 </BaseLayout>
