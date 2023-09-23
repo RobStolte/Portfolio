@@ -2,6 +2,8 @@
   "name": "portfolio",
   "description": "My portfolio website built with Astro",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0"},
   "version": "2.5.1",
   "private": true,
   "scripts": {
