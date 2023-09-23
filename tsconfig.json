@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "allowJs": true,
     "types": ["astro/client"],
     "verbatimModuleSyntax": true,
     "baseUrl": ".",
@@ -10,6 +11,7 @@
       "@pages/*": ["./src/pages/*"],
       "@content/*": ["./src/content/*"],
       "@scripts/*": ["./src/scripts/*"],
+      "@assets/*": ["./src/assets/*"],
     },
     "strictNullChecks": true
   }
