@@ -1,8 +1,9 @@
 ---
-title: "Corso 2023"
-description: "De eerste week met de nieuwe Sony Xperia 1 V is voorbij, en ik ben er erg tevreden mee. De telefoon is snel, heeft een goede camera en een mooi scherm."
-pubDate: "Aug 25 2023"
-heroImage: "/blog/bloemencorso2023/20230825_012937.JPG"
+title: Corso 2023
+description: De eerste week met de nieuwe Sony Xperia 1 V is voorbij, en ik ben er erg tevreden mee. De telefoon is snel, heeft een goede camera en een mooi scherm.
+pubDate: 2023-08-23T06:00:00.000Z
+heroImage: /blog/bloemencorso2023/20230825_012937.JPG
+slug: corso-2023
 ---
 
 Sinds de vakantie 2023 ben ik begonnen bij de corsoclub Jofmannekes & Jofwiefkes, gezien het late instappen heb ik niet veel kunnen doen aan de wagen. Maar ik heb wel een aantal foto's kunnen maken van de wagen en de optocht.

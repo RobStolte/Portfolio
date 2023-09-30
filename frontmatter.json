@@ -1,0 +1,127 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.content.publicFolder": "public",
+  "frontMatter.data.files": [
+    {
+      "id": "skills",
+      "title": "Skills",
+      "file": "[[workspace]]/src/content/cv/Skills.json",
+      "fileType": "json",
+      "labelField": "name",
+      "singleEntry": false,
+      "schema": {
+        "title": "Skills",
+        "type": "object",
+        "required": [
+          "name",
+          "level",
+          "category"
+        ],
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "level": {
+            "title": "Level",
+            "type": "string",
+            "enum": [
+              "⭐",
+              "⭐⭐",
+              "⭐⭐⭐",
+              "⭐⭐⭐⭐",
+              "⭐⭐⭐⭐⭐"
+            ]
+          },
+          "category": {
+            "title": "Category",
+            "type": "string",
+            "enum": [
+              "Languages",
+              "Frameworks",
+              "Libraries",
+              "Tools",
+              "Databases",
+              "Platforms",
+              "Other",
+              "hardware"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "blog",
+      "path": "[[workspace]]/src/content/blog",
+      "contentTypes": [
+        "blog"
+      ]
+    },
+    {
+      "title": "projects",
+      "path": "[[workspace]]/src/content/projects",
+      "contentTypes": [
+        "projects"
+      ]
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "default",
+      "pageBundle": false,
+      "previewPath": "'blog'",
+      "filePrefix": null,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "single": true
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "title": "Publishing date",
+          "name": "pubDate",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true
+        },
+        {
+          "title": "Last modified date",
+          "name": "lastmod",
+          "type": "datetime",
+          "isModifiedDate": true
+        },
+        {
+          "title": "Content preview",
+          "name": "heroImage",
+          "type": "image",
+          "isPreviewImage": true
+        },
+        {
+          "title": "Is in draft",
+          "name": "draft",
+          "type": "draft"
+        },
+        {
+          "title": "Tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "Categories",
+          "name": "categories",
+          "type": "categories"
+        }
+      ]
+    }
+  ]
+}

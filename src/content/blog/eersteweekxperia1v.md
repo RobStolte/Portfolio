@@ -1,8 +1,9 @@
 ---
-title: "Eerste week met sony Xperia 1 V"
-description: "De eerste week met de nieuwe Sony Xperia 1 V is voorbij, en ik ben er erg tevreden mee. De telefoon is snel, heeft een goede camera en een mooi scherm."
-pubDate: "Jul 18 2023"
-heroImage: "/blog/EersteWeekXperia1V/BekendelleMolen.webp"
+title: Eerste week met sony Xperia 1 V
+description: De eerste week met de nieuwe Sony Xperia 1 V is voorbij, en ik ben er erg tevreden mee. De telefoon is snel, heeft een goede camera en een mooi scherm.
+pubDate: 2023-07-18T17:25:00.000Z
+heroImage: /blog/EersteWeekXperia1V/BekendelleMolen.webp
+slug: eerste-week-met-sony-xperia-1
 ---
 
 Na een weekje te lopen met de nieuwe telefoon merk je dat het first and foremost wel gewoon een telefoon blijft. Hij is erg goed met de camera maar de limitatie van de lens en max 12 megapixel merk je echt in de grote scherm kwaliteiten van de foto's. Video's zijn wel erg kwaliteitvol.
