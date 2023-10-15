@@ -2,11 +2,11 @@
   "Ervaring": {
     "werkervaring": [
         {
-            "title": "Allround",
+            "title": "Dev, ICT, Data",
             "company": "BRM Lasers B.V.",
             "from": "2021",
             "until": "heden",
-            "text": "ICT en Data beheer en ontwikkeling intern, Ad-hoc bijstaand als monteur, support.",
+            "text": "Allround inzetbaar met focus op ICT en machineontwikkeling, assisterend bij marketing en sales voor zowel data analythics als ict infrastructuur. Volwaardig beheerschap voor de interne ict, en co-eignenaarsschap voor de ontwikkeling van de lasermachines met focus op regelgeving, laser veiligheid, en aansturing. Op aanvraag ook inzetbaar als servicemonteur of remote support voor alle productlijnen.",
             "location": "Winterswijk, Nederland"
         },
         {
@@ -143,39 +143,39 @@
     ],
     "cursussen": [
         {
+            "course": "BHV 'Gecertificeerd Bedrijfshulpverlener' bij NedCert",
+            "link": "https://nedcert.nl/"
+        },
+        {
             "course": "Fundamentals op Plastics and Polymers",
-            "link": "#"
+            "link": "https://www.udemy.com/certificate/UC-bff45083-03a8-4fe8-96a1-6f74005689c3/"
         },
         {
             "course": "Windows server 2019 administration",
-            "link": "#"
+            "link": "https://www.udemy.com/certificate/UC-f856a54a-a439-471c-95ae-3bea037e8c40/"
         },
         {
             "course": "Git & GitHub - the practical guide",
-            "link": "#"
+            "link": "https://www.udemy.com/certificate/UC-b8d9331d-64b2-46c6-ac68-0c994025cbc7/"
         },
         {
             "course": "Clean code",
-            "link": "#"
+            "link": "https://www.udemy.com/certificate/UC-7e9595e4-eb0c-4f80-8d01-b5efa35766e5/"
         },
         {
-            "course": "Windows server 2019 administration",
-            "link": "#"
+            "course": "Laser safety officier industrie bij Dutch Optical",
+            "link": "https://dutchoptical.eu/index.php"
         },
         {
-            "course": "Laser safety officier",
-            "link": "#"
-        },
-        {
-            "course": "Technisch tekening lezen",
-            "link": "#"
+            "course": "Technisch tekening lezen cursus bedrijfsbreed bij Contour C.T. geleverd iva AT Techniekopleidingen",
+            "link": "https://www.atopleidingen.nl/"
         },
         {
             "course": "Media wijsheid",
             "link": "#"
         },
         {
-            "course": "Cursus rug gebruik 'BackPerfect'",
+            "course": "Cursus rug gebruik 'BackPerfect' bedrijfsbreed bij Contour C.T.",
             "link": "#"
         },
         {
