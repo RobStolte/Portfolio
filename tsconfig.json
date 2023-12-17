@@ -2,7 +2,7 @@
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "allowJs": true,
-    "types": ["astro/client"],
+    "types": ["astro/client", "vite/client","jest"],
     "verbatimModuleSyntax": true,
     "baseUrl": ".",
     "paths": {
