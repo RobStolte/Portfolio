@@ -2,18 +2,22 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
-
 import sentry from "@sentry/astro";
 import spotlightjs from "@spotlightjs/astro";
+
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://robstolte.nl',
-  integrations: [
-    mdx(),
+  integrations: [mdx(),
     sitemap(),
-    tailwind(),
-   //sentry(),
-   //spotlightjs()
-  ]
+    tailwind()
+  //sentry(),
+  //spotlightjs()
+  , partytown({
+    config: {
+
+    }})
+]
 });
