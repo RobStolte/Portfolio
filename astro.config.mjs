@@ -35,12 +35,12 @@ export default defineConfig({
       },
       // storyblok-js-client options
       components: {
-        home: 'pages/home',
-        page: 'storyblok/Page',
-        grid: 'storyblok/Grid',
-        feature: 'storyblok/Feature',
-        project: 'storyblok/Project',
-        blogpost: 'storyblok/BlogPost',
+        //home: 'pages/home',
+        //page: 'storyblok/Page',
+        //grid: 'storyblok/Grid',
+        //feature: 'storyblok/Feature',
+        //project: 'storyblok/Project',
+        //blogpost: 'storyblok/BlogPost',
       },
       componentsDir: 'src',
       enableFallbackComponent: true,
