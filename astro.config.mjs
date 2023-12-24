@@ -9,6 +9,8 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
 
+import partytown from "@astrojs/partytown";
+
 // https://astro.build/config
 export default defineConfig({
   prefetch: true,
