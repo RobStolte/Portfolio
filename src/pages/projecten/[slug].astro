@@ -4,15 +4,12 @@ import { getCollection } from 'astro:content';
 import PostLayout from '@layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
-    const postEntries = await getCollection('projects');
+    const postEntries = await getCollection('projecten');
     return postEntries.map(entry => ( {
         params: { slug: entry.slug }, props: { entry },
     } ));
 }
 
-interface Props {
-    entry: CollectionEntry<"projects">;
-}
 
 const { entry } = Astro.props;
 const post : projectsSchema = entry.data;

@@ -1,3 +1,7 @@
+---
+import {CONTACT_METHODS} from "src/config";
+const { menu = CONTACT_METHODS } = Astro.props
+---
 <div
   class='block sticky pointer-events-none bottom-10 bg-base-200 justify-center h-12 [mask-image:linear-gradient(transparent,#000000)]'
 >
@@ -6,50 +10,16 @@
 <div
   class='social-icons px-4 pb-5 pt-1 flex self-center justify-center sticky bottom-0 bg-base-200'
 >
-  <a
-    class='mx-3'
-    href='mailto:contact@robstolte.nl'
-    aria-label='Stuur me een mailtje!'
-    title='Stuur me een mailtje!'
-  >
-    <i class='fas fa-envelope-open'></i>
-  </a>
-  <a
-    href='https://paypal.me/RobStolte?country.x=NL&locale.x=nl_NL'
-    target='_blank'
-    class='mx-3'
-    aria-label='Koop me een kopje koffie'
-    title='Koop me een kopje koffie'
-    ><i class='fas fa-mug-hot'></i>
-  </a>
-
-  <a
-    href='https://github.com/RobStolte'
-    target='_blank'
-    class='mx-3'
-    aria-label='Github'
-    title='Github'
-    ><i class='fab fa-github'></i>
-  </a>
-
-  <a
-    href='https://twitter.com/pomp0m'
-    target='_blank'
-    class='mx-3'
-    aria-label='Twitter'
-    title='Twitter'
-    ><i class='fab fa-twitter'></i>
-  </a>
-
-  <a
-    href='https://www.linkedin.com/in/rob-stolte/'
-    target='_blank'
-    class='mx-3'
-    aria-label='Linkedin'
-    title='Linkedin'
-    ><i class='fab fa-linkedin-in'></i>
-  </a>
-
+  {menu.map(item => (
+    <a
+      href={item.url}
+      target='_blank'
+      class='mx-3'
+      aria-label={item.ariaLabel}
+      title={item.titel}
+      ><i class={item.icon}/>
+    </a>
+  ))}
   <a
     href='/rss.xml'
     target='_blank'

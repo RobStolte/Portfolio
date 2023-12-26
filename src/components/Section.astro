@@ -1,0 +1,22 @@
+---
+// Import your components at the top of the file
+import HorizontalCard from './HorizontalCard.astro';
+const { title, posts } = Astro.props;
+
+---
+  <section>
+    <h2 class='text-3xl w-full font-bold mb-2'>{title}</h2>
+    {
+      posts.map((post) => (
+          <HorizontalCard
+            title={post.data.title}
+            img={post.data.heroImage}
+            desc={post.data.description}
+            url={`/${post.collection}/${post.slug}`}
+            target='_self'
+            badge={post.data.badge}
+          />
+        </>
+      ))
+    }
+  </section>

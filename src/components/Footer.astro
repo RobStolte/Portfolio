@@ -1,13 +1,15 @@
 ---
+import { PERSOONLIJKE_INFO } from "src/config";
 const today = new Date();
+
 ---
 
 <footer class="footer footer-center block mb-5 pt-10">
   <div class="pb-2 footer-line">
-    <p><i class="fas fa-copyright" title="Copyright"></i>.   {today.getFullYear()} Rob Stolte</p>
+    <p><i class="fas fa-copyright" title="Copyright"></i>.   {today.getFullYear()} {PERSOONLIJKE_INFO.Voornaam}  {PERSOONLIJKE_INFO.Achternaam}</p>
 </footer>
 <style>
   .footer-line{
-    height: 12px !important;
+    height: 12px;
   }
 </style>

@@ -62,10 +62,10 @@
       ]
     },
     {
-      "title": "projects",
-      "path": "[[workspace]]/src/content/projects",
+      "title": "projecten",
+      "path": "[[workspace]]/src/content/projecten",
       "contentTypes": [
-        "projects"
+        "projecten"
       ]
     }
   ],
