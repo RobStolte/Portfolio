@@ -3,78 +3,47 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import TimeLineElement from "@components/cv/TimeLine.astro";
 
 import skills from "src/data/Skills.json";
-
+const timelineArray = [
+  { name: 'werkervaring', data: skills.werkervaring },
+  { name: 'opleidingen', data: skills.opleidingen },
+  { name: 'Erkenningen', data: skills.Erkenningen },
+  { name: 'cursussen', data: skills.cursussen }
+];
+const skillsArray = [
+  { name: 'Software-skills', data: skills.softwareSkills },
+  { name: 'Hardware-skills', data: skills.hardwareSkills }
+];
 
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
 <h1 class="text-3xl w-full font-bold">Curriculum vitae</h1>
 <br class="mb-10 text-justify"/>
-
-<section class="time-line-container mb-10" id="Ervaringen">
-  <h2 class="text-3xl w-full font-bold mb-5">Ervaring</h2>
-  {skills.Ervaring.werkervaring.map((werkervaring) => (
-    <TimeLineElement
-        title     = {werkervaring.title}
-        company   = {werkervaring.company}
-        from      = {werkervaring.from}
-        until     = {werkervaring.until}
-        location  = {werkervaring.location}
-        text      = {werkervaring.text}
-      />))}
-</section>
-
-<section class="time-line-container mb-10" id="Opleidingen">
-  <h2 class="text-3xl w-full font-bold mb-5">Opleidingen</h2>
-  {skills.Leerstof.opleidingen.map((opleidingen) => (
-    <TimeLineElement
-        title     = {opleidingen.title}
-        company   = {opleidingen.company}
-        from      = {opleidingen.from}
-        until     = {opleidingen.until}
-        location  = {opleidingen.location}
-        text      = {opleidingen.text}
-    />))}
-</section>
-
-<section class="time-line-container mb-10" id="Erkenningen">
-  <h2 class="text-3xl w-full font-bold mb-5">Erkenningen</h2>
-  {skills.Ervaring.Erkenningen.map((Erkenningen) => (
-    <TimeLineElement
-        title     = {Erkenningen.title}
-        from      = {Erkenningen.from}
-        link      = {Erkenningen.link}
-        text      = {Erkenningen.text}
-        location  = {Erkenningen.location}
-    />))}
-</section>
-
-<section class="time-line-container mb-10" id="Opleidingen">
-  <h2 class="text-3xl w-full font-bold mb-5">cursussen</h2>
-  {skills.Leerstof.cursussen.map((cursussen) => (
-    <TimeLineElement
-        title     = {cursussen.title}
-        company   = {cursussen.company}
-        from      = {cursussen.from}
-        until     = {cursussen.until}
-        location  = {cursussen.location}
-        text      = {cursussen.text}
-    />))}
-</section>
-
-
-
-<section class="mb-10" id="Software-skills">
-  <h2 class="text-3xl w-full font-bold mb-5">Software Skills</h2>
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    {skills.softwareSkills.map((skill) => (<li>{skill}</li>))}
-  </ul>
+{timelineArray.map((timeline) => (
+  <section class="time-line-container mb-10" id={timeline.name}>
+    <h2 class="text-3xl w-full font-bold mb-5">{timeline.name}</h2>
+    {timeline.data.map((timelineElement: { title: string; company: string; from: string; until: string; location: string; text: string; link: string; }) => (
+      <TimeLineElement
+        title     = {timelineElement.title}
+        company   = {timelineElement.company}
+        from      = {timelineElement.from}
+        until     = {timelineElement.until}
+        location  = {timelineElement.location}
+        text      = {timelineElement.text}
+        link      = {timelineElement.link}
+      />
+    ))}
   </section>
+))}
 
-<section class="mb-10" id="Hardware-skills">
-  <h2 class="text-3xl w-full font-bold mb-5">Hardware Skills</h2>
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    {skills.hardwareSkills.map((skill) => (<li>{skill}</li>))}
-  </ul>
-</section>
+{
+  skillsArray.map((skill) => (
+    <section class="mb-10" id={skill.name}>
+      <h2 class="text-3xl w-full font-bold mb-5">{skill.name}</h2>
+      <ul class="list-disc md:columns-5 columns-2 mx-6">
+        {skill.data.map((skill) => (<li>{skill}</li>))}
+      </ul>
+    </section>
+  ))
+}
 </BaseLayout>

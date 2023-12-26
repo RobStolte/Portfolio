@@ -1,5 +1,4 @@
 {
-  "Ervaring": {
     "werkervaring": [
         {
             "title": "Dev, ICT, Data",
@@ -119,9 +118,7 @@
             "link": "https://vakkanjers.nl/informatie/about-vakkanjers",
             "location": "Utrecht, Nederland"
         }
-    ]
-},
- "Leerstof": {
+    ],
     "opleidingen": [
         {
             "title": "Heftruck rijbewijs",
@@ -306,8 +303,7 @@
             "from": "",
             "text": ""
         }
-    ]
-},
+    ],
     "hardwareSkills": [
     "Computer hardware",
     "server hardware",
