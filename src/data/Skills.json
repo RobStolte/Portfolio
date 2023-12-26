@@ -29,8 +29,8 @@
             "title": "Servicemonteur",
             "company": "BRM Lasers B.V.",
             "from": "2015",
-            "until": "2018",
-            "text": "Na behalen van rijbewijs Servicemonteren van lasersnij en graveermachines in binnen en buitenland.",
+            "until": "2017",
+            "text": "Na behalen van rijbewijs service op locatie verlenen aan lasersnij en graveermachines, internationaal en nationaal",
             "location": "Winterswijk, Nederland"
         },
         {
@@ -54,7 +54,7 @@
             "company": "Exerion Precision Technology",
             "from": "2013",
             "until": "2013",
-            "text": "Proefweek 3 ploegendienst als CNC Machine operator voor machinehal. Afgehaakt i.v.m. niet in bezit van auto en fietsen was te ver.",
+            "text": "Proefweek 3 ploegendienst als CNC Machine operator voor machinehal. Afgehaakt i.v.m. niet in bezit van auto, fietsen tussen Ulft en Winterswijk was niet te doen.",
             "location": "Ulft, Nederland"
         },
         {
@@ -78,14 +78,20 @@
             "company": "Contour Covering Technology",
             "from": "2008",
             "until": "2012",
-            "text": "CNC Machine operator voor Trumpf en Cincinatti lasers en ponsmachines in 2 ploegendienst.",
+            "text": "CNC Machine operator voor Trumpf en Cincinatti lasers en ponsmachines in 2 ploegendienst. Na een periode van 3 jaar een korte termijn er uit geweest en opnieuw met een jaarcontrac aangenomen.",
             "location": "Winterswijk, Nederland"
         },
         {
-            "title": "Assemblage monteur stage, doorgegaan als vakantiekracht",
+            "title": "Stage bij Technische dienst",
+            "company": "Contour Covering Technology",
+            "from": "2008",
+            "text": "Stage als Technische dienst en later als CNC Machine operator, na stage hier blijven werken als vaste kracht",
+            "location": "Winterswijk, Nederland"
+        },
+        {
+            "title": "Stage assemblage monteur, doorgegaan als vakantiekracht",
             "company": "MPS Meat Processing Systems",
             "from": "2008",
-            "until": "",
             "text": "Stage, later doorgewerkt als vakantiekracht.",
             "location": "Lichtenvoorde, Nederland"
         },
@@ -93,7 +99,6 @@
             "title": "Stage Assemblage monteur",
             "company": "Staalkat eiersorteermachines",
             "from": "2007",
-            "until": "",
             "text": "Stage als assemblage monteur",
             "location": "Aalten, Nederland"
         },
@@ -101,16 +106,18 @@
             "title": "Stage door het hele bedrijf",
             "company": "Redox Waterzuivering en Milieu",
             "from": "2007",
-            "until": "",
             "text": "Stage door het hele bedrijf",
             "location": "Winterswijk, Nederland"
         }
     ],
     "Erkenningen": [
         {
-            "erkenning": "Vakkanjers Monteur Mechatronica 2de plaats nederlands kampioenschap",
-            "date": "2008",
-            "link": "https://vakkanjers.nl/informatie/about-vakkanjers"
+            "title": "Vakkanjers Monteur Mechatronica 2de plaats nederlands kampioenschap",
+            "company": "Vakkanjers",
+            "from": "2008",
+            "text": "Een week lang in een team van 2 personen scenario's oplossen en uitvoeren in zeer kort tijdsbestek. Een totaal van 10 scenarios welke of 2 of 4 uur waren, soorten scenarios waren: 'Een onbekende machine doormiddel van technische documentatie werkend krijgen van een niet draaiende storing', 'Een sorteer transportband machine assembleren, bedraden, en programmeren incl conforme workflows voor noodstop en process continuatie bij storingen'",
+            "link": "https://vakkanjers.nl/informatie/about-vakkanjers",
+            "location": "Utrecht, Nederland"
         }
     ]
 },
@@ -120,75 +127,184 @@
             "title": "Heftruck rijbewijs",
             "company": "Blom opleidingen",
             "from": "2009",
-            "until": "",
             "text": "5 daagse rij en veiligheids opleiding voor vorkheftrucks.",
             "location": "Ede, Nederland"
         },
         {
-            "title": "Monteur Mechatronica",
-            "company": "Bedrijfstakschool Anton Tijdink, ",
+            "title": "MBO Machinebouw Mechatronica",
+            "company": "Bedrijfstakschool Anton Tijdink",
             "from": "2006",
             "until": "2008",
-            "text": "Opleiding monteur mechatronica",
+            "text": "monteur mechatronica Niveau 2 - Crebo 91080",
             "location": "Terborg, Nederland"
         },
         {
-            "title": "Electrotechniek",
+            "title": "VMBO Elektrotechniek",
             "company": "Christelijk College Schaersvoorde",
             "from": "2004",
             "until": "2006",
-            "text": "Opleiding Electrotechniek",
+            "text": "Basisberoepsgerichte Leerweg Sector Techniek afdeling Elektrotechniek",
             "location": "Aalten, Nederland"
         }
     ],
     "cursussen": [
         {
-            "course": "BHV 'Gecertificeerd Bedrijfshulpverlener' bij NedCert",
-            "link": "https://nedcert.nl/"
+            "title": "V.C.A., Behaald bij",
+            "company": "Bedrijfstakschool Anton Tijdink",
+            "from": "2008",
+            "text": "Niet verlengd"
         },
         {
-            "course": "Fundamentals op Plastics and Polymers",
-            "link": "https://www.udemy.com/certificate/UC-bff45083-03a8-4fe8-96a1-6f74005689c3/"
+            "title": "SQL - The Complete Developer's Guide (MySQL, PostgreSQL)",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
         },
         {
-            "course": "Windows server 2019 administration",
-            "link": "https://www.udemy.com/certificate/UC-f856a54a-a439-471c-95ae-3bea037e8c40/"
+            "title": "Python - The Practical Guide",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
         },
         {
-            "course": "Git & GitHub - the practical guide",
-            "link": "https://www.udemy.com/certificate/UC-b8d9331d-64b2-46c6-ac68-0c994025cbc7/"
+            "title": "Docker & Kubernetes - The Practical Guide",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
         },
         {
-            "course": "Clean code",
-            "link": "https://www.udemy.com/certificate/UC-7e9595e4-eb0c-4f80-8d01-b5efa35766e5/"
+            "title": "MongoDB - The Complete Developer's Guide",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
         },
         {
-            "course": "Laser safety officier industrie bij Dutch Optical",
-            "link": "https://dutchoptical.eu/index.php"
+            "title": "Complete Godot 2D Game Development Course",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
         },
         {
-            "course": "Technisch tekening lezen cursus bedrijfsbreed bij Contour C.T. geleverd iva AT Techniekopleidingen",
-            "link": "https://www.atopleidingen.nl/"
+            "title": "Complete Godot 3D Game Development Course",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
         },
         {
-            "course": "Media wijsheid",
-            "link": "#"
+            "title": "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
         },
         {
-            "course": "Cursus rug gebruik 'BackPerfect' bedrijfsbreed bij Contour C.T.",
-            "link": "#"
+            "title": "Understanding TypeScript",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
         },
         {
-            "course": "AZ-303 Azure architect technologies",
-            "link": "#"
+            "title": "SQL - The Complete Developer's Guide (MySQL, PostgreSQL)",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
         },
         {
-            "course": "AZ-900 Azure fundamentals",
-            "link": "https://www.udemy.com/certificate/UC-a5679253-34bc-47a5-9634-26ff91002f3c/"
+            "title": "Javascript - The Complete Guide 2020 (Beginner + Advanced)",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
         },
         {
-            "course": "AZ-104 Azure administrator",
-            "link": "#"
+            "title": "C# OOP concepts: Apply C# OOP concepts in projects",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
+        },
+        {
+            "title": "Complete C# Programming: Beginner to Advanced",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
+        },
+        {
+            "title": "B.H.V.",
+            "link": "https://nedcert.nl/",
+            "company": "NedCert",
+            "from": "",
+            "text": "Gecertificeerd Bedrijfshulpverlener"
+        },
+        {
+            "title": "Fundamentals op Plastics and Polymers",
+            "link": "https://www.udemy.com/certificate/UC-bff45083-03a8-4fe8-96a1-6f74005689c3/",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
+        },
+        {
+            "title": "Windows server 2019 administration",
+            "link": "https://www.udemy.com/certificate/UC-f856a54a-a439-471c-95ae-3bea037e8c40/",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
+        },
+        {
+            "title": "Git & GitHub - the practical guide",
+            "link": "https://www.udemy.com/certificate/UC-b8d9331d-64b2-46c6-ac68-0c994025cbc7/",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
+        },
+        {
+            "title": "Clean code",
+            "link": "https://www.udemy.com/certificate/UC-7e9595e4-eb0c-4f80-8d01-b5efa35766e5/",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
+        },
+        {
+            "title": "L.S.O.",
+            "link": "https://dutchoptical.eu/index.php",
+            "company": "Dutch Optical",
+            "from": "",
+            "text": "Laser safety officier voor de branch industrie"
+        },
+        {
+            "title": "Technisch tekening lezen cursus bedrijfsbreed",
+            "link": "https://www.atopleidingen.nl/",
+            "company": "Contour C.T.",
+            "from": "",
+            "text": ""
+        },
+        {
+            "title": "Media wijsheid",
+            "company": "",
+            "from": "",
+            "text": ""
+        },
+        {
+            "title": "Cursus rug gebruik 'BackPerfect' bedrijfsbreed",
+            "company": "Contour C.T.",
+            "from": "",
+            "text": ""
+        },
+        {
+            "title": "AZ-303 Azure architect technologies",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
+        },
+        {
+            "title": "AZ-900 Azure fundamentals",
+            "link": "https://www.udemy.com/certificate/UC-a5679253-34bc-47a5-9634-26ff91002f3c/",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
+        },
+        {
+            "title": "AZ-104 Azure administrator",
+            "company": "Udemy online",
+            "from": "",
+            "text": ""
         }
     ]
 },

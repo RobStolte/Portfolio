@@ -1,29 +1,34 @@
 ---
-const {
-title    ,
-company  ,
-from     ,
-until    ,
-location ,
-text
- } = Astro.props;
-
-
-
+const { title, company, from, until, location, text, link } = Astro.props;
+import TimelineTextBlock from './timelineTextBlock.astro';
 ---
 
-<div class="flex">
-  <div class="education__time">
-    <span class="w-4 h-4 bg-primary block rounded-full mt-1"></span>
-    <span class="education__line bg-primary block h-full w-[2px] translate-x-[7px]"></span>
+<style>
+.education__time {
+  position: relative;
+}
+
+.education__time::before {
+  content: attr(data-date);
+  position: absolute;
+  left: 1.2em;
+  top: -1%;
+  white-space: nowrap;
+}
+</style>
+
+<div class='flex'>
+  <div class='education__time mr-10 font-light' data-date={until ? until : from}>
+    <span class='w-4 h-4 bg-primary block rounded-full mt-1'/>
+    <span class='education__line bg-primary block h-full w-[2px] translate-x-[7px]'></span>
   </div>
-  <div class="experience__data bd-grid px-5">
-    <h3 class="font-semibold mb-1">{title}</h3>
-    <span class="font-light text-sm">{from} {until && ` - ${until}`} | </span>
-    <span class="font-light text-sm">{company}</span>
-    <p class="">{text}</p>
-    <p class="my-2 text-justify">
-      <slot />
-    </p>
+  <div class='experience__data bd-grid px-5'>
+    {link ? (
+      <a href={link} target="_blank">
+        <TimelineTextBlock title={title} company={company} location={location} text={text} />
+      </a>
+    ) : (
+    <TimelineTextBlock title={title} company={company} location={location} text={text} />
+    )}
   </div>
 </div>

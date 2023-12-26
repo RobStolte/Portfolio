@@ -1,7 +1,8 @@
 {
   "$schema": "https://frontmatter.codes/frontmatter.schema.json",
   "frontMatter.framework.id": "astro",
-  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.preview.host": "https://localhost:4321",
+  "frontMatter.content": "/src/assets",
   "frontMatter.content.publicFolder": "public",
   "frontMatter.data.files": [
     {
@@ -67,7 +68,7 @@
       "contentTypes": [
         "projecten"
       ]
-    }
+    },
   ],
   "frontMatter.taxonomy.contentTypes": [
     {
@@ -123,5 +124,6 @@
         }
       ]
     }
-  ]
+  ],
+  "frontMatter.website.host": "https://robstolte.nl"
 }
