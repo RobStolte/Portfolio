@@ -1,6 +1,13 @@
 ---
-const { title, company, from, until, location, text, link } = Astro.props;
+const { title, company, startDate, endDate, location, text, link } = Astro.props;
 import TimelineTextBlock from './timelineTextBlock.astro';
+import { dateTranslator } from '@scripts/dateTranslator';
+
+const startDateString = startDate !== undefined ? dateTranslator(startDate) : undefined;
+const endDateString = endDate !== undefined ? dateTranslator(endDate) : undefined;
+const startDateYear = startDateString && startDateString !== 'huidig' ? new Date(startDateString as string).getFullYear() : startDateString;
+const endDateYear = endDateString && endDateString !== 'huidig' ? new Date(endDateString as string).getFullYear() : endDateString;
+
 ---
 
 <style>
@@ -18,7 +25,7 @@ import TimelineTextBlock from './timelineTextBlock.astro';
 </style>
 
 <div class='flex'>
-  <div class='education__time mr-10 font-light' data-date={until ? until : from}>
+  <div class='education__time mr-10 font-light' data-date={endDateYear ? endDateYear: startDateYear}>
     <span class='w-4 h-4 bg-primary block rounded-full mt-1'/>
     <span class='education__line bg-primary block h-full w-[2px] translate-x-[7px]'></span>
   </div>
@@ -28,7 +35,7 @@ import TimelineTextBlock from './timelineTextBlock.astro';
         <TimelineTextBlock title={title} company={company} location={location} text={text} />
       </a>
     ) : (
-    <TimelineTextBlock title={title} company={company} location={location} text={text} />
+      <TimelineTextBlock title={title} company={company} location={location} text={text} />
     )}
   </div>
 </div>

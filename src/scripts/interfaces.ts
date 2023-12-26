@@ -29,3 +29,21 @@ interface storeSchema {
     heroImage           : string,
     heroImageAlt        : string,
 }
+interface timelineElement {
+    category: string;
+    timelineElement: boolean;
+    title: string;
+    description?: string;
+    startDate?: startDate;
+    endDate?: number;
+    image?: string;
+    imageAlt?: string;
+    link?: string;
+}
+interface timelineElementSorted {
+    name: string;
+    data: timelineElement[];
+}
+interface startDate {
+    startDate: number | null;
+  }

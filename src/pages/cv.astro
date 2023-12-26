@@ -3,12 +3,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import TimeLineElement from "@components/cv/TimeLine.astro";
 
 import skills from "src/data/Skills.json";
-const timelineArray = [
-  { name: 'werkervaring', data: skills.werkervaring },
-  { name: 'opleidingen', data: skills.opleidingen },
-  { name: 'Erkenningen', data: skills.Erkenningen },
-  { name: 'cursussen', data: skills.cursussen }
-];
+// Filter the array to only include objects where timelineObject is true
+import { processSkills } from "@scripts/processSkills";
+
+const timelineArray = processSkills(skills.wijsheid);
+
 const skillsArray = [
   { name: 'Software-skills', data: skills.softwareSkills },
   { name: 'Hardware-skills', data: skills.hardwareSkills }
@@ -16,25 +15,27 @@ const skillsArray = [
 
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
-<h1 class="text-3xl w-full font-bold">Curriculum vitae</h1>
-<br class="mb-10 text-justify"/>
-{timelineArray.map((timeline) => (
-  <section class="time-line-container mb-10" id={timeline.name}>
-    <h2 class="text-3xl w-full font-bold mb-5">{timeline.name}</h2>
-    {timeline.data.map((timelineElement: { title: string; company: string; from: string; until: string; location: string; text: string; link: string; }) => (
-      <TimeLineElement
-        title     = {timelineElement.title}
-        company   = {timelineElement.company}
-        from      = {timelineElement.from}
-        until     = {timelineElement.until}
-        location  = {timelineElement.location}
-        text      = {timelineElement.text}
-        link      = {timelineElement.link}
-      />
-    ))}
-  </section>
-))}
+<BaseLayout title="Curriculum vitae" sideBarActiveItemID="cv">
+  <h1 class="text-3xl w-full font-bold">Curriculum vitae</h1>
+  <br class="mb-10 text-justify"/>
+  {timelineArray.map((timeline:timelineElementSorted) => (
+    <section class="time-line-container mb-10" id={timeline.name}>
+      <h2 class="text-3xl w-full font-bold mb-5">{timeline.name}</h2>
+      {timeline.data.sort((a: timelineElement, b: timelineElement) => {
+        return Number(b.startDate) - Number(a.startDate);
+      }).map((timelineElement) => (
+        <TimeLineElement
+          title     = {timelineElement.title}
+          company   = {timelineElement.company}
+          startDate = {timelineElement.startDate}
+          endDate   = {timelineElement.endDate}
+          location  = {timelineElement.location}
+          text      = {timelineElement.text}
+          link      = {timelineElement.link}
+        />
+      ))}
+    </section>
+  ))}
 
 {
   skillsArray.map((skill) => (
