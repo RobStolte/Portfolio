@@ -35,8 +35,9 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'hover',
   },
+  trailingSlash: 'never',
   build: {
-
+    format: 'file',
     inlineStylesheets: 'never'
   },
   integrations: [sentry({

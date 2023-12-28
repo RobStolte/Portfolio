@@ -26,7 +26,6 @@ const editDate = dayjs(updatedDate).format("ll");
           />
       <h1 class="title my-2 text-4xl font-bold">{title}</h1>
       {pubDate && <time>{postDate}</time>}<br />
-      {console.log(badge)}
       {badge &&<BadgeComponent client:idle text={badge} v-if={badge} class="my-1" />}
       {updatedDate && (<div class="text-sm">{" "}Laatst Geupdated: <time>{editDate}</time>{" "}</div>)}
       {tags && tags.map((tag) => <div class="badge badge-outline">{tag}</div>)}
