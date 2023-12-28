@@ -10,21 +10,22 @@ import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
 import partytown from "@astrojs/partytown";
 import vue from "@astrojs/vue";
+import { loadEnv } from "vite";
+const { STORYBLOK_TOKEN, SENTRY_AUTH_TOKEN, SENTRY_DNS_URL } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
-import htmlBeautifier from "astro-html-beautifier";
 
 // https://astro.build/config
 export default defineConfig({
   prefetch: true,
   site: 'https://robstolte.nl',
   integrations: [sentry({
-    dsn: "https://5a29e2ff95364190217e762626d3c36a@o4506437940281344.ingest.sentry.io/4506437943558144",
+    dsn: SENTRY_DNS_URL,
     sourceMapsUploadOptions: {
-      project: "javascript-astro",
-      authToken: process.env.SENTRY_AUTH_TOKEN
+      project: "portfolio",
+      authToken: SENTRY_AUTH_TOKEN,
     }
   }), spotlightjs(), mdx(), sitemap(), tailwind(), storyblok({
-    accessToken: process.env.STORYBLOK_TOKEN,
+    accessToken: STORYBLOK_TOKEN,
     bridge: true,
     apiOptions: {
       region: 'eu'
@@ -41,9 +42,9 @@ export default defineConfig({
     componentsDir: 'src',
     enableFallbackComponent: true,
     useCustomApi: false
-  }), vue(), htmlBeautifier()],
+  }), vue()],
   vite: {
-    plugins: [basicSsl()],
+    plugins: [basicSsl(),],
     server: {
       https: true
     }
