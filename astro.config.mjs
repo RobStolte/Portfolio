@@ -20,8 +20,25 @@ const {
 
 // https://astro.build/config
 export default defineConfig({
-  prefetch: true,
+  root: './',
+  srcDir: './src',
+  publicDir: './public',
+  outDir: './dist',
+  cacheDir: './.cache',
   site: 'https://robstolte.nl',
+
+  server: {
+    port: 1234,
+    host: true
+  },
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
+  build: {
+
+    inlineStylesheets: 'never'
+  },
   integrations: [sentry({
     dsn: SENTRY_DNS_URL,
     sourceMapsUploadOptions: {
