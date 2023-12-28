@@ -11,7 +11,11 @@ import spotlightjs from '@spotlightjs/astro';
 import partytown from "@astrojs/partytown";
 import vue from "@astrojs/vue";
 import { loadEnv } from "vite";
-const { STORYBLOK_TOKEN, SENTRY_AUTH_TOKEN, SENTRY_DNS_URL } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
+const {
+  STORYBLOK_TOKEN,
+  SENTRY_AUTH_TOKEN,
+  SENTRY_DNS_URL
+} = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 
 // https://astro.build/config
@@ -22,7 +26,7 @@ export default defineConfig({
     dsn: SENTRY_DNS_URL,
     sourceMapsUploadOptions: {
       project: "portfolio",
-      authToken: SENTRY_AUTH_TOKEN,
+      authToken: SENTRY_AUTH_TOKEN
     }
   }), spotlightjs(), mdx(), sitemap(), tailwind(), storyblok({
     accessToken: STORYBLOK_TOKEN,
@@ -42,9 +46,9 @@ export default defineConfig({
     componentsDir: 'src',
     enableFallbackComponent: true,
     useCustomApi: false
-  }), vue()],
+  }), vue(), partytown()],
   vite: {
-    plugins: [basicSsl(),],
+    plugins: [basicSsl()],
     server: {
       https: true
     }
