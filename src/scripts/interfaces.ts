@@ -1,19 +1,11 @@
-interface blogSchema {
+interface postSchema {
     title               : string,
     description         : string,
     pubDate             : Date,
-    updatedDate         : string,
+    updatedDate         : Date,
     heroImage           : string,
     badge               : string,
-}
-
-interface projectsSchema {
-    title               : string,
-    description         : string,
-    pubDate             : Date,
-    updatedDate         : string,
-    heroImage           : string,
-    badge               : string,
+    tags                : string[],
 }
 
 interface storeSchema {
@@ -31,13 +23,12 @@ interface storeSchema {
 }
 interface timelineElement {
     category: string;
-    timelineElement: boolean;
+    timeline_element: boolean;
     title: string;
     description?: string;
-    startDate?: startDate;
-    endDate?: number;
+    start_date?: startDate;
+    end_date?: number;
     image?: string;
-    imageAlt?: string;
     link?: string;
 }
 interface timelineElementSorted {

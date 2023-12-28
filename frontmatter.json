@@ -68,7 +68,7 @@
       "contentTypes": [
         "projecten"
       ]
-    },
+    }
   ],
   "frontMatter.taxonomy.contentTypes": [
     {
@@ -78,49 +78,44 @@
       "filePrefix": null,
       "fields": [
         {
-          "title": "Title",
+          "title": "title",
           "name": "title",
-          "type": "string",
-          "single": true
+          "type": "datetime"
         },
         {
-          "title": "Description",
+          "title": "description",
           "name": "description",
           "type": "string"
         },
         {
-          "title": "Publishing date",
+          "title": "pubDate",
           "name": "pubDate",
-          "type": "datetime",
-          "default": "{{now}}",
-          "isPublishDate": true
+          "type": "datetime"
         },
         {
-          "title": "Last modified date",
-          "name": "lastmod",
-          "type": "datetime",
-          "isModifiedDate": true
+          "title": "updatedDate",
+          "name": "updatedDate",
+          "type": "datetime"
         },
         {
-          "title": "Content preview",
+          "title": "badge",
+          "name": "badge",
+          "type": "string"
+        },
+        {
+          "title": "heroImage",
           "name": "heroImage",
-          "type": "image",
-          "isPreviewImage": true
+          "type": "image"
         },
         {
-          "title": "Is in draft",
-          "name": "draft",
-          "type": "draft"
+          "title": "slug",
+          "name": "slug",
+          "type": "datetime"
         },
         {
-          "title": "Tags",
+          "title": "tags",
           "name": "tags",
           "type": "tags"
-        },
-        {
-          "title": "Categories",
-          "name": "categories",
-          "type": "categories"
         }
       ]
     }

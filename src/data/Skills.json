@@ -1,329 +1,473 @@
 {
-    "wijsheid": [
-        {   "timelineElement": true,
+    "skills": [
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "Dev, ICT, Data",
             "company": "BRM Lasers B.V.",
-            "startDate": 20210601,
-            "endDate": null,
+            "start_date": 20210601,
+            "end_date": null,
             "text": "Allround inzetbaar met focus op ICT en machineontwikkeling, assisterend bij marketing en sales voor zowel data analythics als ict infrastructuur. Volwaardig beheerschap voor de interne ict, en co-eignenaarsschap voor de ontwikkeling van de lasermachines met focus op regelgeving, laser veiligheid, en aansturing. Op aanvraag ook inzetbaar als servicemonteur of remote support voor alle productlijnen.",
             "location": "Winterswijk, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "Development manager",
             "company": "BRM Lasers B.V.",
-            "startDate": 20180601,
-            "endDate": 2021,
+            "start_date": 20180601,
+            "end_date": 20210601,
             "text": "Doorontwikkelen en uiteindelijk ontwikkelen van nieuwe lasersnij en graveermachines en upgrades aan bestaande machines. Aansturen van een team van 2 Universeel inzetbare krachten.",
             "location": "Winterswijk, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "Support & Development manager",
             "company": "BRM Lasers B.V.",
-            "startDate": 20170601,
-            "endDate": 2019,
+            "start_date": 20170601,
+            "end_date": 20190601,
             "text": "Remote support leveren en aansturen servicemonteurs, ontwikkelen van nieuwe upgrades aan bestaande machines. Aansturen van 1 supportkracht.",
             "location": "Winterswijk, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "Servicemonteur",
             "company": "BRM Lasers B.V.",
-            "startDate": 20150601,
-            "endDate": 2017,
+            "start_date": 20150601,
+            "end_date": 20170601,
             "text": "Na behalen van rijbewijs service op locatie verlenen aan lasersnij en graveermachines, internationaal en nationaal",
             "location": "Winterswijk, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "Afbouwmonteur",
             "company": "BRM Lasers B.V.",
-            "startDate": 20140601,
-            "endDate": 2015,
+            "start_date": 20140601,
+            "end_date": 20150601,
             "text": "Monteur voor eindassemblage van lasersnij en graveermachines.",
             "location": "Winterswijk, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "CNC Machine operator",
             "company": "Elan dak en gevel",
-            "startDate": 20130601,
-            "endDate": 2014,
+            "start_date": 20130601,
+            "end_date": 20140601,
             "text": "CNC Machineoperator voor CNC kantbank, CNC primapower ponsmachine en CNC schaar voor ad-hoc opdrachten.",
             "location": "Lichtenvoorde, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "CNC Machine operator",
             "company": "Exerion Precision Technology",
-            "startDate": 20130601,
-            "endDate": 2013,
+            "start_date": 20130601,
+            "end_date": 20130601,
             "text": "Proefweek 3 ploegendienst als CNC Machine operator voor machinehal. Afgehaakt i.v.m. niet in bezit van auto, fietsen tussen Ulft en Winterswijk was niet te doen.",
             "location": "Ulft, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "CNC Machine operator",
             "company": "Pillen Metaalbewerking",
-            "startDate": 20130601,
-            "endDate": 2014,
+            "start_date": 20130601,
+            "end_date": 20140601,
             "text": "CNC Machine operator voor 2 Strippit 1250s vliegwiel ponsmachines in 2 ploegendienst. Ook aangevuld op lasafdeling.",
             "location": "Lichtenvoorde, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "CNC Machine operator",
             "company": "Nedap",
-            "startDate": 20120601,
-            "endDate": 2013,
+            "start_date": 20120601,
+            "end_date": 20130601,
             "text": "CNC Machine operator voor 2 Trumpf ponsmachines in 2 ploegendienst.",
             "location": "Groenlo, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "CNC Machine operator",
             "company": "Contour Covering Technology",
-            "startDate": 20080601,
-            "endDate": 2012,
+            "start_date": 20080601,
+            "end_date": 20120601,
             "text": "CNC Machine operator voor Trumpf en Cincinatti lasers en ponsmachines in 2 ploegendienst. Na een periode van 3 jaar een korte termijn er uit geweest en opnieuw met een jaarcontrac aangenomen.",
             "location": "Winterswijk, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "Stage bij Technische dienst",
             "company": "Contour Covering Technology",
-            "startDate": 20080601,
+            "start_date": 20080601,
             "text": "Stage als Technische dienst en later als CNC Machine operator, na stage hier blijven werken als vaste kracht",
             "location": "Winterswijk, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "Stage assemblage monteur, doorgegaan als vakantiekracht",
             "company": "MPS Meat Processing Systems",
-            "startDate": 20080601,
+            "start_date": 20080601,
             "text": "Stage, later doorgewerkt als vakantiekracht.",
             "location": "Lichtenvoorde, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "Stage Assemblage monteur",
             "company": "Staalkat eiersorteermachines",
-            "startDate": 20070601,
+            "start_date": 20070601,
             "text": "Stage als assemblage monteur",
             "location": "Aalten, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "werkervaring",
             "title": "Stage door het hele bedrijf",
             "company": "Redox Waterzuivering en Milieu",
-            "startDate": 20070601,
+            "start_date": 20070601,
             "text": "Stage door het hele bedrijf",
             "location": "Winterswijk, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "Erkenning",
             "title": "Vakkanjers Monteur Mechatronica 2de plaats nederlands kampioenschap",
             "company": "Vakkanjers",
-            "startDate": 20080601,
+            "start_date": 20080601,
             "text": "Een week lang in een team van 2 personen scenario's oplossen en uitvoeren in zeer kort tijdsbestek. Een totaal van 10 scenarios welke of 2 of 4 uur waren, soorten scenarios waren: 'Een onbekende machine doormiddel van technische documentatie werkend krijgen van een niet draaiende storing', 'Een sorteer transportband machine assembleren, bedraden, en programmeren incl conforme workflows voor noodstop en process continuatie bij storingen'",
             "link": "https://vakkanjers.nl/informatie/about-vakkanjers",
             "location": "Utrecht, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "opleiding",
             "title": "Heftruck rijbewijs",
             "company": "Blom opleidingen",
-            "startDate": 20090601,
+            "start_date": 20090601,
             "text": "5 daagse rij en veiligheids opleiding voor vorkheftrucks.",
             "location": "Ede, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "opleiding",
             "title": "MBO Machinebouw Mechatronica",
             "company": "Bedrijfstakschool Anton Tijdink",
-            "startDate": 20060601,
-            "endDate": 2008,
+            "start_date": 20060601,
+            "end_date": 20080601,
             "text": "monteur mechatronica Niveau 2 - Crebo 91080",
             "location": "Terborg, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "opleiding",
             "title": "VMBO Elektrotechniek",
             "company": "Christelijk College Schaersvoorde",
-            "startDate": 20040601,
-            "endDate": 2006,
+            "start_date": 20040601,
+            "end_date": 20060601,
             "text": "Basisberoepsgerichte Leerweg Sector Techniek afdeling Elektrotechniek",
             "location": "Aalten, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "V.C.A., Behaald bij",
             "company": "Bedrijfstakschool Anton Tijdink",
-            "startDate": 20080601,
+            "start_date": 20080601,
             "text": "Niet verlengd"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "SQL - The Complete Developer's Guide (MySQL, PostgreSQL)",
             "company": "Udemy online",
-            "startDate": 20230601
+            "start_date": 20230601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "Docker & Kubernetes - The Practical Guide",
             "company": "Udemy online",
-            "startDate": 20190601
+            "start_date": 20190601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
             "company": "Udemy online",
-            "startDate": 20190601
+            "start_date": 20190601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "Understanding TypeScript",
             "company": "Udemy online",
-            "startDate": 20190601
+            "start_date": 20190601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "SQL - The Complete Developer's Guide (MySQL, PostgreSQL)",
             "company": "Udemy online",
-            "startDate": 20230601
+            "start_date": 20230601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "Javascript - The Complete Guide 2020 (Beginner + Advanced)",
             "company": "Udemy online",
-            "startDate": 20190601
+            "start_date": 20190601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "B.H.V.",
             "link": "https://nedcert.nl/",
             "company": "NedCert",
-            "startDate": 20150601,
+            "start_date": 20150601,
             "text": "Gecertificeerd Bedrijfshulpverlener, elke 2 jaar herhaald"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "Fundamentals op Plastics and Polymers",
             "link": "https://www.udemy.com/certificate/UC-bff45083-03a8-4fe8-96a1-6f74005689c3/",
             "company": "Udemy online",
-            "startDate": 20230601
+            "start_date": 20230601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "Windows server 2019 administration",
             "link": "https://www.udemy.com/certificate/UC-f856a54a-a439-471c-95ae-3bea037e8c40/",
             "company": "Udemy online",
-            "startDate": 20210601
+            "start_date": 20210601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "Git & GitHub - the practical guide",
             "link": "https://www.udemy.com/certificate/UC-b8d9331d-64b2-46c6-ac68-0c994025cbc7/",
             "company": "Udemy online",
-            "startDate": 20230601
+            "start_date": 20230601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "Clean code",
             "link": "https://www.udemy.com/certificate/UC-7e9595e4-eb0c-4f80-8d01-b5efa35766e5/",
             "company": "Udemy online",
-            "startDate": 20230601
+            "start_date": 20230601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "L.S.O.",
             "link": "https://dutchoptical.eu/index.php",
-            "startDate": 20160601,
+            "start_date": 20160601,
             "company": "Dutch Optical",
             "text": "Laser safety officier voor de branch industrie"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "Technisch tekening lezen cursus bedrijfsbreed",
             "link": "https://www.atopleidingen.nl/",
-            "startDate": 20100601,
+            "start_date": 20100601,
             "company": "Contour C.T."
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "Media wijsheid",
             "company": "K.N.V.B. Campus Zeist",
-            "startDate": 20080601,
+            "start_date": 20080601,
             "text": "Een korte mediacursus i.v.m. de vakkanjer wedstrijd",
             "location": "Zeist, Nederland"
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "Cursus rug gebruik 'BackPerfect' bedrijfsbreed",
             "company": "Contour C.T.",
-            "startDate": 20100601
+            "start_date": 20100601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "AZ-303 Azure architect technologies",
             "company": "Udemy online",
-            "startDate": 20220601
+            "start_date": 20220601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "AZ-900 Azure fundamentals",
             "link": "https://www.udemy.com/certificate/UC-a5679253-34bc-47a5-9634-26ff91002f3c/",
             "company": "Udemy online",
-            "startDate": 20220601
+            "start_date": 20220601
         },
-        {   "timelineElement": true,
+        {   "timeline_element": true,
             "category": "cursussen",
             "title": "AZ-104 Azure administrator",
             "company": "Udemy online",
-            "startDate": 20220601
-        }
-    ],
-    "hardwareSkills": [
-    "Computer hardware",
-    "server hardware",
-    "Rijbewijs B,AM",
-    "Servomotoren",
-    "Beckhoff platform",
-    "Siemens platform",
-    "Panelenbouw",
-    "Machinaalbouw",
-    "CNC Kanten",
-    "CNC Ponsnibbelen",
-    "CNC Lasermachines",
-    "Optica lasers"
-    ],
-    "softwareSkills": [
-    "Grafana",
-    "Xen Orchestra",
-    "ProxMox",
-    "VM Ware VSphere",
-    "Windows server",
-    "Azure stack",
-    "(Azure) Active Directory",
-    "Microsoft 365 managment",
-    "Microsoft SQL",
-    "Ridder IQ",
-    "Freshdesk",
-    "Ubuntu server",
-    "Salesforce Admin",
-    "Autodesk Inventor",
-    "Autodesk Fusion",
-    "Figma",
-    "Jira",
-    "Git",
-    "GitHub",
-    "GitLab",
-    "Visual Studio Code",
-    "Tia Portal",
-    "Twincat 3",
-    "NodeJS",
-    "Astro.Build"
+            "start_date": 20220601
+        },
+        {
+            "title": "Computer hardware",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "server hardware",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Rijbewijs B,AM",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Servomotoren",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Beckhoff platform",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Siemens platform",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Panelenbouw",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Machinaalbouw",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "CNC Kanten",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "CNC Ponsnibbelen",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "CNC Lasermachines",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Optica lasers",
+            "category": "hardwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Grafana",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Xen Orchestra",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "ProxMox",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "VM Ware VSphere",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Windows server",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Azure stack",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "(Azure) Active Directory",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Microsoft 365 managment",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Microsoft SQL",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Ridder IQ",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Freshdesk",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Ubuntu server",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title":  "Salesforce Admin",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Autodesk Inventor",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title":"Autodesk Fusion",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Figma",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Jira",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "GitHub",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "GitLab",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Git",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Visual Studio Code",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Tia Portal",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Twincat 3",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "NodeJS",
+            "category": "softwareSkills",
+            "timeline_element": false
+          },
+          {
+            "title": "Astro.Build",
+            "category": "softwareSkills",
+            "timeline_element": false
+          }
   ]
 }

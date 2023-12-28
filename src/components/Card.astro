@@ -1,5 +1,8 @@
 ---
-const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
+import badgeColor from "@scripts/badgeColor";
+import BadgeComponent from "@components/badge.vue"
+const { title, img, desc, url, badge, tags, target = url || "_blank" } = Astro.props;
+
 ---
 
 <div class="md:w-1/3 w-full">
@@ -14,7 +17,7 @@ const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
       <div class="card-body">
         <h2 class="card-title">
           {title}
-          {badge && <div class="badge badge-secondary">{badge}</div>}
+          {badge &&<BadgeComponent client:idle text={badge} v-if={badge} class="my-1" />}
         </h2>
         <p>{desc}</p>
         <div class="card-actions justify-end">

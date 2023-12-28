@@ -6,14 +6,11 @@ import { PERSOONLIJKE_INFO } from 'src/config';
 import Section from '@components/Section.astro';
 
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
-const projecten = (await getCollection('projecten')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-).slice(0, 3);
-const blog = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-).slice(0, 3);
+async function getSortedCollection(name) {
+  return (await getCollection(name)).sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);}
 
-const geboorteDatum = new Date(persoon.Geboortejaar, persoon.GeboorteMaand, persoon.GeboorteDag);
+const projecten = await getSortedCollection('projecten');
+const blog = await getSortedCollection('blog');
 
 ---
 
@@ -28,7 +25,7 @@ const geboorteDatum = new Date(persoon.Geboortejaar, persoon.GeboorteMaand, pers
 
     <text class='text-lg'>
       Van harte welkom op mijn kleine stukje internet. Hier deel ik zo nu en
-      dan wat van mijn passies. Ik ben een {getAge(geboorteDatum)}-jarige
+      dan wat van mijn passies. Ik ben een {getAge(persoon.Geboortejaar, persoon.GeboorteMaand, persoon.GeboorteDag)}-jarige
       techneut die zich graag bezighoudt met allerlei soorten techniek, zowel
       fysiek als digitaal. Mijn focus ligt vooral op lasertechnologie,
       CNC-machines en ICT-infrastructuur.

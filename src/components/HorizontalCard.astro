@@ -1,5 +1,6 @@
 ---
 const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
+import BadgeComponent from "@components/badge.vue";
 ---
 
 <div
@@ -15,9 +16,9 @@ const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
             class="max-w-full md:max-w-[13rem] rounded-lg"
           />
       <div class="grow w-full">
-        <h1 class="text-xl font-bold">
+        <h1 class="text-xl : unknown: unknownfont-bold">
           {title}
-          {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
+          {badge &&<BadgeComponent client:idle text={badge} v-if={badge} class="my-1" />}
         </h1>
         <p class="py-1 text-1xl">{desc}</p>
         <div class="card-actions justify-end">

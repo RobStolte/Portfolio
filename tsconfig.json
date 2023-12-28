@@ -2,17 +2,34 @@
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "allowJs": true,
-    "types": ["astro/client", "vite/client","jest"],
+    "types": [
+      "astro/client",
+      "vite/client",
+      "jest"
+    ],
     "verbatimModuleSyntax": true,
-    "baseUrl": ".",
+    "baseUrl": "R:/_ROB/portfolio",
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@content/*": ["./src/content/*"],
-      "@scripts/*": ["./src/scripts/*"],
-      "@assets/*": ["./src/assets/*"],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@layouts/*": [
+        "./src/layouts/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
+      ],
+      "@content/*": [
+        "./src/content/*"
+      ],
+      "@scripts/*": [
+        "./src/scripts/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ]
     },
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "jsx": "preserve"
   }
 }

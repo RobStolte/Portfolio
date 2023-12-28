@@ -4,15 +4,10 @@ import TimeLineElement from "@components/cv/TimeLine.astro";
 
 import skills from "src/data/Skills.json";
 // Filter the array to only include objects where timelineObject is true
-import { processSkills } from "@scripts/processSkills";
+import processSkills from "@scripts/processSkills";
 
-const timelineArray = processSkills(skills.wijsheid);
-
-const skillsArray = [
-  { name: 'Software-skills', data: skills.softwareSkills },
-  { name: 'Hardware-skills', data: skills.hardwareSkills }
-];
-
+const timelineArray = processSkills(skills.skills,true);
+const skillsArray = processSkills(skills.skills,false);
 ---
 
 <BaseLayout title="Curriculum vitae" sideBarActiveItemID="cv">
@@ -22,13 +17,13 @@ const skillsArray = [
     <section class="time-line-container mb-10" id={timeline.name}>
       <h2 class="text-3xl w-full font-bold mb-5">{timeline.name}</h2>
       {timeline.data.sort((a: timelineElement, b: timelineElement) => {
-        return Number(b.startDate) - Number(a.startDate);
+        return Number(b.start_date) - Number(a.start_date);
       }).map((timelineElement) => (
         <TimeLineElement
           title     = {timelineElement.title}
           company   = {timelineElement.company}
-          startDate = {timelineElement.startDate}
-          endDate   = {timelineElement.endDate}
+          startDate = {timelineElement.start_date}
+          endDate   = {timelineElement.end_date}
           location  = {timelineElement.location}
           text      = {timelineElement.text}
           link      = {timelineElement.link}
@@ -38,11 +33,11 @@ const skillsArray = [
   ))}
 
 {
-  skillsArray.map((skill) => (
-    <section class="mb-10" id={skill.name}>
-      <h2 class="text-3xl w-full font-bold mb-5">{skill.name}</h2>
+  skillsArray.map((skills) => (
+    <section class="mb-10" id={skills.name}>
+      <h2 class="text-3xl w-full font-bold mb-5">{skills.name}</h2>
       <ul class="list-disc md:columns-5 columns-2 mx-6">
-        {skill.data.map((skill) => (<li>{skill}</li>))}
+        {skills.data.map((skill) => (<li>{skill.title}</li>))}
       </ul>
     </section>
   ))

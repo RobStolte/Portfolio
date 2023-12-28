@@ -17,18 +17,24 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^2.0.1",
+    "@astrojs/node": "^7.0.2",
     "@astrojs/partytown": "^2.0.2",
     "@astrojs/rss": "^4.0.1",
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/tailwind": "^5.0.3",
+    "@astrojs/vue": "^4.0.6",
     "@sentry/astro": "^7.90.0",
     "@spotlightjs/astro": "^1.0.8",
     "@storyblok/astro": "^4.0.0",
+    "@supabase/supabase-js": "^2.39.1",
+    "@vitejs/plugin-vue": "^5.0.0",
     "astro": "^4.0.6",
+    "astro-html-beautifier": "^1.0.4",
     "astro-icon": "^0.8.2",
     "daisyui": "^3.1.7",
     "dayjs": "^1.11.9",
-    "sharp": "^0.32.1"
+    "sharp": "^0.32.1",
+    "vue": "^3.3.13"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
