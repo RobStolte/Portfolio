@@ -3,7 +3,7 @@ title: Corso 2023
 description: Sinds de vakantie 2023 ben ik begonnen bij de corsoclub Jofmannekes & Jofwiefkes.
 pubDate: 2023-08-23T06:00:00.000Z
 badge: Corso
-heroImage: ../../assets/blog/bloemen-corso-2023/20230825_012937.JPG
+heroImage: src/assets/blog/bloemen-corso-2023/20230825_012937.JPG
 slug: corso-2023
 ---
 
