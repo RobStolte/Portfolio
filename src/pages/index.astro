@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import getAge from '@scripts/getAge';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import getAge from '../scripts/getAge';
 import { getCollection } from 'astro:content';
-import { PERSOONLIJKE_INFO } from '@src/config';
-import Section from '@components/Section.astro';
+import { PERSOONLIJKE_INFO } from '../config';
+import Section from '../components/Section.astro';
 
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
 async function getSortedCollection(name) {

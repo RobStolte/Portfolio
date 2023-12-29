@@ -1,7 +1,7 @@
 ---
 const { title, company, startDate, endDate, location, text, link } = Astro.props;
 import TimelineTextBlock from './timelineTextBlock.astro';
-import { dateTranslator } from '@scripts/dateTranslator';
+import { dateTranslator } from '../../scripts/dateTranslator';
 
 const startDateString = startDate !== undefined ? dateTranslator(startDate) : undefined;
 const endDateString = endDate !== undefined ? dateTranslator(endDate) : undefined;
