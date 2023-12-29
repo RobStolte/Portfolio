@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import TimeLineElement from "../components/cv/TimeLine.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import TimeLineElement from "@/components/cv/TimeLine.astro";
 
-import skills from "../skills.json";
+import skills from "@/skills.json";
 // Filter the array to only include objects where timelineObject is true
-import processSkills from "../scripts/processSkills.ts";
+import processSkills from "@/scripts/processSkills.ts";
 
 const timelineArray = processSkills(skills.skills,true);
 const skillsArray = processSkills(skills.skills,false);

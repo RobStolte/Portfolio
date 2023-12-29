@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
-import StoreItemLayout from "../../layouts/StoreItemLayout.astro";
+import StoreItemLayout from "@/layouts/StoreItemLayout.astro";
 
 export async function getStaticPaths() {
   const itemEntries = await getCollection("winkel");
