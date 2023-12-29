@@ -1,6 +1,6 @@
 ---
 title: Eerste week met sony Xperia 1 V
-description: De eerste week met de nieuwe Sony Xperia 1 V is voorbij, en ik ben er erg tevreden mee. De telefoon is snel, heeft een goede camera en een mooi scherm.
+description: Eerste week met de Sony Xperia 1 V zit erop. Snel, top camera, prachtig scherm. Echt een aanrader voor iedereen die van kwaliteit houdt!
 pubDate: 2023-07-18T17:25:00.000Z
 heroImage: https://a.storyblok.com/f/253533/4000x3000/27adb77f5a/bekendellemolen.webp
 slug: eerste-week-met-sony-xperia-1

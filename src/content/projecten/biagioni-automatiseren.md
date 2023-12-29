@@ -1,6 +1,6 @@
 ---
 title: Biagioni Automatiseren
-description: Een bedrijf in Winterswijk had een oude Kastenpers staan waar de microcontroller besturing van defect was geraakt.
+description: Er was eens een bedrijf in Winterswijk met een oude Kastenpers. De microcontroller was kapot gegaan. Maar geen zorgen, we hebben het gefixt!
 pubDate: Aug 10 2018
 heroImage: https://a.storyblok.com/f/253533/4032x3024/58e766009f/img_20180724_201920.webp
 slug: biagioni-automatiseren
@@ -8,15 +8,15 @@ categories:
     - Projecten
 ---
 
-## De opdracht
+## Het Probleem
+Bij een bedrijf in Winterswijk stond een oude Kastenpers. Een betrouwbare machine, maar helaas was de microcontroller kapot gegaan. Na een grondige inspectie bleek dat het probleem niet in de hardware of bedrading zat. Alle signalen kwamen goed door tot aan de microcontroller. Het probleem zat 'm in de microcontroller zelf, een Philips 80C552. Deze kon niet met hedendaagse AVR’s geprogrammeerd worden. En zelfs als we een compatibele programmeerder zouden vinden, was er een kans dat de ROM (software) beveiligd was.
 
+Het bedrijf had geen documentatie of contactpersonen voor de machine, waarschijnlijk door de leeftijd van de machine. Daarom werd besloten om de machine te upgraden naar een PLC-aansturing.
+
+## De Aanpak
+Het eerste doel was om de machine zo snel mogelijk weer operationeel te krijgen. Maar we wilden ook een betrouwbare oplossing die rekening hield met mogelijke toekomstige uitbreidingen. Zo kon de machine nog lang meegaan met de nieuwe controller. We hebben het hele project gedocumenteerd in een projectmap. Deze map werd eigendom van het bedrijf, zodat toekomstig onderhoud of upgrades toegankelijk zouden zijn voor alle partijen.
+
+## De Oplossing
+We hebben de elektrakast gestript en opnieuw opgebouwd met een Siemens S7-1200+KTP700 HMI. De PLC en HMI zijn vervolgens in Tia Portal geprogrammeerd. We hebben gekozen voor Ladder, omdat het bedrijf daar al ervaring mee had voor het oplossen van storingen. Vervolgens hebben we deze kast aan de rest van de machine gekoppeld en getest. Na een korte instructie is de machine succesvol in gebruik genomen. De opstelling heeft nog een aantal jaar probleemloos gedraaid, tot de machine werd vervangen door een nieuwe.
 
 ![Biagioni Automatiseren](https://a.storyblok.com/f/253533/4032x3024/7fe77ad7ac/img_20180730_124609.webp)
-
-De Kasten persmachine bij het bedrijf was niet meer operationeel door een probleem in de bijbehorende microcontroller welke de machine aanstuurde. Na inspectie bleek dat het niet in hardware of bedrading zat en dat alle signalen tot aan de microcontroller goed doorkwamen. De Microcontroller was een Philips 80C552 welke niet met hedendaagse AVR’s geprogrammeerd kon worden en als er een compatible programmeerder gevonden/aangeschaft werd was er een mogelijkheid dat de ROM (software) beveiligd was gezien de controller dat ondersteunde.
-
-Omdat de machine op een dusdanige leeftijd was dat er geen documentatie of contactpersonen waren, werd besloten om de machine te upgraden naar een PLC-aansturing. Hierbij zou als eerste gericht worden op het snel weer draaiend maken van de machine en ervoor zorgen dat deze op een zeer betrouwbare manier zou kunnen functioneren. Ook zou rekening gehouden worden met mogelijke uitbreidingen welke makkelijk later ingevoerd konden worden zodat de machine nog lang behouden kon blijven met de nieuwe controller. Het hele project zou worden gedocumenteerd in een projectmap welke eigendom zou worden van het bedrijf zodat vervolgend onderhoud of upgrade bij alle partijen toegankelijk werd.
-
-## De oplossing
-
-De electrakast is gestript en opnieuw opgebouwd met een Siemens S7-1200+KTP700 HMI. De PLC en HMI zijn vervolgens in Tia Portal geprogrammeerd, er is gekozen voor Ladder gezien daar voorgaande kennis van was voor storingzoeken in het bedrijf. Vervolgens is deze kast aan de rest van de machine gepatcht en getest. De machine is vervolgens successvol in gebruik genomen na een korte instructie. De opstelling heeft nog een aantal jaar gedraaid zonder problemen tot de machine vervangen werd door een nieuwe.

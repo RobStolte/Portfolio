@@ -1,3 +1,17 @@
 .time-line-container>div:last-child .education__time>.education__line {
-    display: none;
+  display: none;
+}
+.education__time {
+  position: relative;
+}
+
+.education__time::before {
+  content: attr(data-date);
+  position: absolute;
+  left: 1.2em;
+  top: -1%;
+  white-space: nowrap;
+}
+.footer-line{
+  height: 12px;
 }

@@ -10,20 +10,6 @@ const endDateYear = endDateString && endDateString !== 'huidig' ? new Date(endDa
 
 ---
 
-<style>
-.education__time {
-  position: relative;
-}
-
-.education__time::before {
-  content: attr(data-date);
-  position: absolute;
-  left: 1.2em;
-  top: -1%;
-  white-space: nowrap;
-}
-</style>
-
 <div class='flex'>
   <div class='education__time mr-10 font-light' data-date={endDateYear ? endDateYear: startDateYear}>
     <span class='w-4 h-4 bg-primary block rounded-full mt-1'/>
