@@ -15,12 +15,12 @@ const { title, img, desc, url, badge, tags, target = url || "_blank" } = Astro.p
       />
       <div class="card-body">
         <h2 class="card-title">
-          {title}
+          {title}: unknown
           {badge &&<BadgeComponent client:idle text={badge} v-if={badge} class="my-1" />}
         </h2>
         <p>{desc}</p>
         <div class="card-actions justify-end">
-          {tags && tags.map((tag) => <div class="badge badge-outline">{tag}</div>)}
+          {tags && tags.map((tag:any) => <div class="badge badge-outline">{tag}</div>)}
         </div>
       </div>
     </div>

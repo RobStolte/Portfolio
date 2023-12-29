@@ -6,7 +6,7 @@ import { PERSOONLIJKE_INFO } from '../config.ts';
 import Section from '../components/Section.astro';
 
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
-async function getSortedCollection(name) {
+async function getSortedCollection(name:any) {
   return (await getCollection(name)).sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);}
 
 const projecten = await getSortedCollection('projecten');

@@ -8,13 +8,15 @@ export async function getStaticPaths({ paginate }) {
   items.sort((a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf());
   return paginate(items, { pageSize: 10 });
 }
-const { page } = Astro.props;
+
+
+const { page }: { page: PageProps } = Astro.props;
 ---
 
 <BaseLayout title="winkel" sideBarActiveItemID="winkel">
   <ul>
     {
-      page.data.map((item) => (
+      page.data.map((item: { data: { title: any; heroImage: any; heroImageAlt: any; description: any; pricing: any; oldPricing: any; checkoutUrl: any; badge: any; details: any; tags: any; custom_link: any; custom_link_label: any; }; slug: string; }) => (
         <>
           <HorizontalShopItem
             title             = {item.data.title}

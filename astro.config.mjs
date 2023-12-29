@@ -20,7 +20,7 @@ const {
 
 // https://astro.build/config
 export default defineConfig({
-  root: './',
+  root: '.',
   srcDir: './src',
   publicDir: './public',
   outDir: './dist',
