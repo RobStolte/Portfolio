@@ -7,30 +7,17 @@
       "vite/client",
       "jest"
     ],
+    "plugins": [{"name": "@astrojs/ts-plugin"},],
     "verbatimModuleSyntax": true,
     "baseUrl": "R:/_ROB/portfolio",
     "paths": {
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@layouts/*": [
-        "./src/layouts/*"
-      ],
-      "@pages/*": [
-        "./src/pages/*"
-      ],
-      "@content/*": [
-        "./src/content/*"
-      ],
-      "@scripts/*": [
-        "./src/scripts/*"
-      ],
-      "@assets/*": [
-        "./src/assets/*"
-      ],
-      "@src/*": [
-        "./src/*"
-      ],
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@content/*": ["./src/content/*"],
+      "@scripts/*": ["./src/scripts/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@src/*": ["./src/*"],
     },
     "strictNullChecks": true,
     "jsx": "preserve"
