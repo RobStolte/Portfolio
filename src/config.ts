@@ -7,17 +7,17 @@ export const PERSOONLIJKE_INFO = {
     Email: "contact@robstolte.nl"
 }
 export const SIDE_BAR_MENU = [
-    { id: 'home', icon: 'fas fa-house-user', slug: '' },
-    { id: 'projecten', icon: 'fab fa-product-hunt', slug: 'projecten' },
-    { id: 'blog', icon: 'fab fa-blogger-b', slug: 'blog' },
-        { id: 'cv', icon: 'fas fa-list-check', slug: 'cv' }
+        { id: 'home',       icon: 'fa-solid fa-house',          slug: '' },
+        { id: 'projecten',  icon: 'fa-solid fa-diagram-project',slug: 'projecten' },
+        { id: 'blog',       icon: 'fa-solid fa-newspaper',      slug: 'blog' },
+        { id: 'cv',         icon: 'fa-solid fa-address-card',   slug: 'cv' }
     ];
     export const CONTACT_METHODS = [
-        { id: 'email', icon: 'fas fa-envelope', url: `mailto:${PERSOONLIJKE_INFO.Email}`, ariaLabel:'Email', titel: 'Stuur me een mailtje!' },
-        { id: 'linkedin', icon: 'fab fa-linkedin', url: 'https://www.linkedin.com/in/rob-stolte/', ariaLabel:'LinkedIn', titel: 'Bekijk mijn LinkedIn profiel!' },
-        { id: 'github', icon: 'fab fa-github', url: 'https://github.com/RobStolte', ariaLabel:'GitHub', titel: 'Bekijk mijn GitHub profiel!' },
-        { id: 'twitter', icon: 'fab fa-twitter', url: 'https://twitter.com/pomp0m', ariaLabel:'Twitter', titel: 'Bekijk mijn Twitter profiel!' },
-        { id: 'paypal', icon: 'fab fa-paypal', url: 'https://paypal.me/RobStolte', ariaLabel:'PayPal', titel: 'Doneer via PayPal!' }
+        { id: 'email',      icon: 'fa-solid  fa-envelope', url: `mailto:${PERSOONLIJKE_INFO.Email}`,       ariaLabel:'Email',      titel: 'Stuur me een mailtje!' },
+        { id: 'linkedin',   icon: 'fa-brands fa-linkedin', url: 'https://www.linkedin.com/in/rob-stolte/', ariaLabel:'LinkedIn',   titel: 'Bekijk mijn LinkedIn profiel!' },
+        { id: 'github',     icon: 'fa-brands fa-github',   url: 'https://github.com/RobStolte',            ariaLabel:'GitHub',     titel: 'Bekijk mijn GitHub profiel!' },
+        { id: 'twitter',    icon: 'fa-brands fa-twitter',  url: 'https://twitter.com/pomp0m',              ariaLabel:'Twitter',    titel: 'Bekijk mijn Twitter profiel!' },
+        { id: 'paypal',     icon: 'fa-brands fa-paypal',   url: 'https://paypal.me/RobStolte',             ariaLabel:'PayPal',     titel: 'Doneer via PayPal!' }
     ]
 
 export const SITE_TITLE = `Portfolio | ${PERSOONLIJKE_INFO.Voornaam} ${PERSOONLIJKE_INFO.Achternaam}`;

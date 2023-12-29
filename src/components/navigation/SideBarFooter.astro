@@ -17,7 +17,7 @@ const { menu = CONTACT_METHODS } = Astro.props
       class='mx-3'
       aria-label={item.ariaLabel}
       title={item.titel}
-      ><i class={item.icon}/>
+      ><i class={item.icon + ' size-5'}/>
     </a>
   ))}
   <a
@@ -26,6 +26,6 @@ const { menu = CONTACT_METHODS } = Astro.props
     class='mx-3'
     aria-label='RSS Feed'
     title='RSS Feed'
-    ><i class='fas fa-rss'></i>
+    ><i class='fa-solid fa-rss size-5'></i>
   </a>
 </div>

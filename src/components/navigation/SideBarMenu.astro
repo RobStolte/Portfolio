@@ -10,7 +10,7 @@ const capitalizeFirstLetter = (string: string) => string.charAt(0).toUpperCase()
   {menu.map((item: { id: string; slug: string; icon: string; }) => (
     <li>
       <a class={isActive(item.id) + ' py-3 text-base'} id={item.id} href={'/' + item.slug} data-astro-prefetch="viewport">
-        <i class={item.icon}></i> | {capitalizeFirstLetter(item.id)}</a>
+        <i class={item.icon + ' size-5'} ></i> | {capitalizeFirstLetter(item.id)}</a>
     </li>
   ))}
 </ul>
