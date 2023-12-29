@@ -5,7 +5,14 @@ import { Image } from "astro:assets"
 ---
 
 <div
-  class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
+  class="rounded-2xl
+        bg-base-100
+        hover:bg-base-200
+        hover:shadow-[0px_0px_15px_0px]
+        hover:shadow-[#2b2a2b]
+        transition
+        ease-in-out
+        hover:scale-[105%]"
 >
   <a href={url} target={target} data-astro-prefetch>
     <div class="hero-content flex-col md:flex-row">
@@ -17,7 +24,7 @@ import { Image } from "astro:assets"
             class="max-w-full md:max-w-[13rem] rounded-lg"
           />
       <div class="grow w-full">
-        <h1 class="text-xl : unknown: unknownfont-bold">
+        <h1 class="text-xl font-bold">
           {title}
           {badge &&<BadgeComponent client:idle text={badge} v-if={badge} class="my-1" />}
         </h1>
