@@ -1,5 +1,5 @@
 ---
-import { SIDE_BAR_MENU } from '../../config';
+import { SIDE_BAR_MENU } from '../../config.ts';
 const { sideBarActiveItemID, menu = SIDE_BAR_MENU } = Astro.props;
 const activeClass = 'bg-base-300';
 const isActive = (id: string) => id === sideBarActiveItemID ? activeClass : '';
