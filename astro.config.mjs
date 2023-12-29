@@ -32,8 +32,7 @@ export default defineConfig({
     inlineStylesheets: 'never'
   },
   integrations: [
-  spotlightjs(), mdx(), sitemap(), tailwind(),
-  vue(), partytown(),
+
     sentry({
       dsn: SENTRY_DNS_URL,
       sourceMapsUploadOptions: {
@@ -60,6 +59,8 @@ export default defineConfig({
       enableFallbackComponent: true,
       useCustomApi: false
     }),
+    spotlightjs(), mdx(), sitemap(), tailwind(),
+    vue(), partytown(),
   ],
   vite: {
     plugins: [basicSsl()],
