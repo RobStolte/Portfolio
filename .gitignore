@@ -20,3 +20,5 @@ pnpm-debug.log*
 
 # Astro
 .astro/
+# Sentry Config File
+.env.sentry-build-plugin
