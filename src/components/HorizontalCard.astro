@@ -1,6 +1,7 @@
 ---
 const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
 import BadgeComponent from "@/components/badge.vue";
+import { Image } from "astro:assets"
 ---
 
 <div
@@ -8,7 +9,7 @@ import BadgeComponent from "@/components/badge.vue";
 >
   <a href={url} target={target} data-astro-prefetch>
     <div class="hero-content flex-col md:flex-row">
-          <img
+          <Image
             src={img}
             width={750}
             height={500}
