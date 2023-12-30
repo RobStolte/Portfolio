@@ -1,6 +1,8 @@
 ---
 const { title, img, desc, url, badge, tags, target} = Astro.props;
 import BadgeComponent from "@/components/vue/badge.vue";
+
+const imageHeight = 750;
 import { Image } from "astro:assets"
 ---
 
@@ -16,20 +18,20 @@ import { Image } from "astro:assets"
 >
   <a href={url} target={target} data-astro-prefetch>
     <div class="hero-content flex-col md:flex-row">
-          <Image src={img} width={750} height={500} alt={title}
+          <Image src={`${img}/m/0x${imageHeight}/filters:quality(80):format(webp)`} width={imageHeight} height={500} alt={title}
             class="max-w-full md:max-w-[13rem] rounded-lg"
           />
       <div class="grow w-full">
         <h1 class="text-xl : unknownfont-bold">
           {title}
-          {badge &&<BadgeComponent client:load text={badge} classes="my-1" outline="false" />}
+          {badge &&<BadgeComponent client:idle text={badge} classes="my-1" outline="false" />}
         </h1>
         <p class="py-1 text-1xl">{desc}</p>
         <>
         <div class="card-actions justify-end">
           {
           tags &&
-            tags.map((tag: string) => <BadgeComponent client:load text={tag} classes="my-1" outline="true" />)
+            tags.map((tag: string) => <BadgeComponent client:idle text={tag} classes="my-1" outline="true" />)
           }
         </div>
       </div>

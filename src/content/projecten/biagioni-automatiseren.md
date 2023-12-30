@@ -19,4 +19,4 @@ Het eerste doel was om de machine zo snel mogelijk weer operationeel te krijgen.
 ## De Oplossing
 We hebben de elektrakast gestript en opnieuw opgebouwd met een Siemens S7-1200+KTP700 HMI. De PLC en HMI zijn vervolgens in Tia Portal geprogrammeerd. We hebben gekozen voor Ladder, omdat het bedrijf daar al ervaring mee had voor het oplossen van storingen. Vervolgens hebben we deze kast aan de rest van de machine gekoppeld en getest. Na een korte instructie is de machine succesvol in gebruik genomen. De opstelling heeft nog een aantal jaar probleemloos gedraaid, tot de machine werd vervangen door een nieuwe.
 
-![Biagioni Automatiseren](https://a.storyblok.com/f/253533/4032x3024/7fe77ad7ac/img_20180730_124609.webp)
+![Biagioni Automatiseren](https://a.storyblok.com/f/253533/4032x3024/7fe77ad7ac/img_20180730_124609.webp/m/800x0/filters:quality(80):format(webp))

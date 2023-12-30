@@ -4,9 +4,11 @@ import { Image } from 'astro:assets';
 import { PERSOONLIJKE_INFO } from '@/config.ts';
 import SideBarMenu from './SideBarMenu.astro';
 const { sideBarActiveItemID } = Astro.props;
+const imageHeight = 300;
+const imageWidth = 300;
 ---
 
-<div class='drawer-side z-40'>
+<div class='drawer-side z-40' id="my-drawer">
   <label for='my-drawer' class='drawer-overlay'/>
   <aside
     class='px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col'
@@ -19,9 +21,9 @@ const { sideBarActiveItemID } = Astro.props;
           <div class='w-[8.5rem]'>
             <Image
               class='mask mask-circle'
-              width={300}
-              height={300}
-              src="https://a.storyblok.com/f/253533/2493x3130/ab60745f65/profile.png"
+              width={imageWidth}
+              height={imageHeight}
+              src='https://a.storyblok.com/f/253533/2493x3130/ab60745f65/profile.png/m/300x300/filters:quality(80):format(webp)'
               alt=`Profielfoto van ${PERSOONLIJKE_INFO.Voornaam} ${PERSOONLIJKE_INFO.Achternaam}`
             />
           </div>
