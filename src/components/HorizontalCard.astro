@@ -1,6 +1,6 @@
 ---
-const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
-import BadgeComponent from "@/components/badge.vue";
+const { title, img, desc, url, badge, tags, target} = Astro.props;
+import BadgeComponent from "@/components/vue/badge.vue";
 import { Image } from "astro:assets"
 ---
 
@@ -9,30 +9,27 @@ import { Image } from "astro:assets"
         bg-base-100
         hover:bg-base-200
         hover:shadow-[0px_0px_15px_0px]
-        hover:shadow-[#2b2a2b]
+        hover:shadow-[#0f0e0e]
         transition
         ease-in-out
         hover:scale-[105%]"
 >
   <a href={url} target={target} data-astro-prefetch>
     <div class="hero-content flex-col md:flex-row">
-          <Image
-            src={img}
-            width={750}
-            height={500}
-            alt={title}
+          <Image src={img} width={750} height={500} alt={title}
             class="max-w-full md:max-w-[13rem] rounded-lg"
           />
       <div class="grow w-full">
-        <h1 class="text-xl font-bold">
+        <h1 class="text-xl : unknownfont-bold">
           {title}
-          {badge &&<BadgeComponent client:idle text={badge} v-if={badge} class="my-1" />}
+          {badge &&<BadgeComponent client:load text={badge} classes="my-1" outline="false" />}
         </h1>
         <p class="py-1 text-1xl">{desc}</p>
+        <>
         <div class="card-actions justify-end">
           {
-            tags &&
-              tags.map((tag) => <div class="badge badge-outline">{tag}</div>)
+          tags &&
+            tags.map((tag: string) => <BadgeComponent client:load text={tag} classes="my-1" outline="true" />)
           }
         </div>
       </div>

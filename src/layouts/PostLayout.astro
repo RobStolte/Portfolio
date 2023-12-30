@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import { Image } from "astro:assets"
-import BadgeComponent from "@/components/badge.vue"
+import BadgeComponent from "@/components/vue/badge.vue"
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 
@@ -25,10 +25,10 @@ const editDate = dayjs(updatedDate).format("ll");
             class   = "w-full mb-6"
           />
       <h1 class="title my-2 text-4xl font-bold">{title}</h1>
-      {pubDate && <time>{postDate}</time>}<br />
-      {badge &&<BadgeComponent client:idle text={badge} v-if={badge} class="my-1" />}
-      {updatedDate && (<div class="text-sm">{" "}Laatst Geupdated: <time>{editDate}</time>{" "}</div>)}
-      {tags && tags.map((tag) => <div class="badge badge-outline">{tag}</div>)}
+      {pubDate && <time>{postDate}</time><br />}
+      {badge &&<BadgeComponent client:idle text={badge} v-if={badge} classes="my-2" /><br/>}
+      {updatedDate && (<div class="text-sm">{" "}Laatst Geupdated: <time>{editDate}</time>{" "}</div><br/>)}
+      {tags && tags.map((tag: string) => <BadgeComponent client:load text={tag} classes="my-1 mr-2" outline="true" />) }
       <div class="divider my-2"></div>
       <slot />
     </article>

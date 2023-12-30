@@ -20,6 +20,7 @@
     "@astrojs/mdx": "^2.0.1",
     "@astrojs/node": "^7.0.2",
     "@astrojs/partytown": "^2.0.3",
+    "@astrojs/react": "^3.0.9",
     "@astrojs/rss": "^4.0.1",
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/tailwind": "^5.0.3",
@@ -30,11 +31,15 @@
     "@spotlightjs/astro": "^1.0.8",
     "@storyblok/astro": "^4.0.0",
     "@supabase/supabase-js": "^2.39.1",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-basic-ssl": "^1.0.2",
     "astro": "^4.0.6",
     "astro-icon": "^0.8.2",
     "daisyui": "^3.1.7",
     "dayjs": "^1.11.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sharp": "^0.32.1"
   },
   "devDependencies": {

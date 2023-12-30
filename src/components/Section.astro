@@ -14,6 +14,7 @@ const { title, posts } = Astro.props;
             desc={post.data.description}
             url={`/${post.collection}/${post.slug}`}
             target='_self'
+            tags={post.data.tags}
             badge={post.data.badge}
           />
         </>

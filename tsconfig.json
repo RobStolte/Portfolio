@@ -6,13 +6,20 @@
       "astro/client",
       "vite/client"
     ],
-    "plugins": [{"name": "@astrojs/ts-plugin"},],
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ],
     "verbatimModuleSyntax": true,
-    "baseUrl": ".",
+    "baseUrl": "R:/_ROB/portfolio",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": [
+        "./src/*"
+      ]
     },
     "strictNullChecks": true,
-    "jsx": "preserve"
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }
