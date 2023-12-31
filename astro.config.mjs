@@ -12,7 +12,7 @@ import partytown from "@astrojs/partytown";
 import vue from "@astrojs/vue";
 import { loadEnv } from "vite";
 import react from "@astrojs/react";
-
+import vercel from "@astrojs/vercel/serverless";
 const {
   STORYBLOK_TOKEN,
   SENTRY_AUTH_TOKEN,
@@ -33,8 +33,7 @@ export default defineConfig({
     format: 'file',
     inlineStylesheets: 'never'
   },
-  integrations: [
-    sentry({
+  integrations: [sentry({
     dsn: SENTRY_DNS_URL,
     sourceMapsUploadOptions: {
       project: "portfolio",
@@ -53,16 +52,25 @@ export default defineConfig({
       Feature: 'storyblok/Feature',
       Grid: 'storyblok/Grid',
       Page: 'storyblok/Page',
-      Teaser: 'storyblok/Teaser',
+      Teaser: 'storyblok/Teaser'
     },
     componentsDir: 'src',
     enableFallbackComponent: true,
     useCustomApi: false
-  }), spotlightjs(), mdx(), sitemap(), tailwind(), vue(), react(),partytown()],
+  }), spotlightjs(), mdx(), sitemap(), tailwind(), vue(), react(), partytown()],
   vite: {
     plugins: [basicSsl()],
     server: {
       https: true
     }
-  }
+  },
+  output: "server",
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    speedInsights: {
+      enabled: true,
+    },
+  })
 });
