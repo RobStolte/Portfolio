@@ -4,9 +4,9 @@ import { getCollection } from "astro:content";
 
 export async function GET(context: any) {
   const blog = await getCollection("blog");
-  const projecten = await getCollection("projecten");
+  //const projecten = await getCollection("projecten");
 
-  const combined = [...blog, ...projecten];
+  const combined = [...blog, /*...projecten*/];
 
   const items = combined.map((post) => ({
     title: post.data.title,

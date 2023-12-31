@@ -22,3 +22,5 @@ pnpm-debug.log*
 .astro/
 # Sentry Config File
 .env.sentry-build-plugin
+# vercel
+.vercel
