@@ -23,7 +23,7 @@ const {
 // https://astro.build/config
 export default defineConfig({
   cacheDir: './.cache',
-  site: 'https://robstolte.nl',
+  site: 'https://www.robstolte.nl',
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'hover'
