@@ -61,13 +61,6 @@
       "contentTypes": [
         "blog"
       ]
-    },
-    {
-      "title": "projecten",
-      "path": "[[workspace]]/src/content/projecten",
-      "contentTypes": [
-        "projecten"
-      ]
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
@@ -78,19 +71,22 @@
       "filePrefix": null,
       "fields": [
         {
-          "title": "title",
+          "title": "Title",
           "name": "title",
-          "type": "datetime"
+          "type": "string",
+          "single": true
         },
         {
-          "title": "description",
+          "title": "Description",
           "name": "description",
           "type": "string"
         },
         {
-          "title": "pubDate",
+          "title": "Publishing date",
           "name": "pubDate",
-          "type": "datetime"
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true
         },
         {
           "title": "updatedDate",
@@ -98,22 +94,23 @@
           "type": "datetime"
         },
         {
-          "title": "badge",
+          "title": "Badge",
           "name": "badge",
           "type": "string"
         },
         {
-          "title": "heroImage",
+          "title": "Content preview",
           "name": "heroImage",
-          "type": "image"
+          "type": "image",
+          "isPreviewImage": true
         },
         {
-          "title": "slug",
+          "title": "Slug",
           "name": "slug",
-          "type": "datetime"
+          "type": "string"
         },
         {
-          "title": "tags",
+          "title": "Tags",
           "name": "tags",
           "type": "tags"
         }

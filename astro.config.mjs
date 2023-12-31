@@ -48,17 +48,17 @@ export default defineConfig({
     },
     // storyblok-js-client options
     components: {
-      //home: 'pages/home',
-      //page: 'storyblok/Page',
-      //grid: 'storyblok/Grid',
-      //feature: 'storyblok/Feature',
-      //project: 'storyblok/Project',
-      //blogpost: 'storyblok/BlogPost',
+      BlogPost: 'storyblok/BlogPost',
+      BlogPostList: 'storyblok/BlogPostList',
+      Feature: 'storyblok/Feature',
+      Grid: 'storyblok/Grid',
+      Page: 'storyblok/Page',
+      Teaser: 'storyblok/Teaser',
     },
     componentsDir: 'src',
     enableFallbackComponent: true,
     useCustomApi: false
-  }), spotlightjs(), mdx(), sitemap(), tailwind(), vue(), partytown(), react()],
+  }), spotlightjs(), mdx(), sitemap(), tailwind(), vue(), react(),partytown()],
   vite: {
     plugins: [basicSsl()],
     server: {

@@ -2,7 +2,7 @@
 title: Corso 2023
 description: Hey, sinds de zomervakantie van 2023 ben ik een trotse lid van de corsoclub Jofmannekes & Jofwiefkes. Hierbij een aantal foto's van de wagen en de optocht.
 pubDate: 2023-08-23T06:00:00.000Z
-badge: Corso
+badge: ""
 heroImage: https://a.storyblok.com/f/253533/3000x4000/c1a7d412ec/20230825_012937.JPG
 slug: corso-2023
 tags:

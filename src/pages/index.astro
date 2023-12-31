@@ -4,13 +4,17 @@ import getAge from '@/scripts/getAge';
 import { getCollection } from 'astro:content';
 import { PERSOONLIJKE_INFO } from '@/config.ts';
 import Section from '@/components/Section.astro';
+import { unknown } from 'astro/zod';
 
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
 async function getSortedCollection(name:any) {
   return (await getCollection(name)).sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);}
+type collectionawait = null | unknown[];
+let projecten: collectionawait = null;
+let blog: collectionawait = null;
 
-const projecten = await getSortedCollection('projecten');
-const blog = await getSortedCollection('blog');
+//projecten = await getSortedCollection('projecten');
+blog = await getSortedCollection('blog');
 
 ---
 
@@ -38,6 +42,6 @@ const blog = await getSortedCollection('blog');
       >
     </div>
   </div>
-  <Section title="De laatste projecten"     posts={projecten} />
-  <Section title="Het laaste van het blog"  posts={blog} />
+  {projecten && <Section title="De laatste projecten"     posts={projecten} /> }
+  {blog &&      <Section title="Het laaste van het blog"  posts={blog} /> }
 </BaseLayout>
