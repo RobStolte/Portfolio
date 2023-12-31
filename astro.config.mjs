@@ -64,7 +64,7 @@ export default defineConfig({
       https: true
     }
   },
-  output: "server",
+  output: "static",
   adapter: vercel({
     webAnalytics: {
       enabled: true,
