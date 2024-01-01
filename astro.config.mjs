@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import storyblok from '@storyblok/astro';
 import basicSsl from '@vitejs/plugin-basic-ssl';
-import sentry from '@sentry/astro';
+//import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
 import partytown from "@astrojs/partytown";
 import vue from "@astrojs/vue";
@@ -32,13 +32,15 @@ export default defineConfig({
     format: 'file',
     inlineStylesheets: 'never'
   },
-  integrations: [sentry({
-    dsn: SENTRY_DNS_URL,
-    sourceMapsUploadOptions: {
-      project: "portfolio",
-      authToken: SENTRY_AUTH_TOKEN
-    }
-  }), storyblok({
+  integrations: [
+    //sentry({
+    //dsn: SENTRY_DNS_URL,
+    //sourceMapsUploadOptions: {
+    //  project: "portfolio",
+    //  authToken: SENTRY_AUTH_TOKEN
+    //}
+    //}),
+  storyblok({
     accessToken: STORYBLOK_TOKEN,
     bridge: true,
     apiOptions: {
