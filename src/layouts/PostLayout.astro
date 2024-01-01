@@ -16,6 +16,8 @@ const editDate = dayjs(updatedDate).format("ll");
   <main class="md:flex md:justify-center">
     <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
         <Image
+            loading = "eager"
+            decoding= "sync"
             width   = {750}
             height  = {422}
             src     = {heroImage+"/m/0x1024/filters:format(webp)"}

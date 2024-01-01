@@ -7,6 +7,8 @@ import { Image } from "astro:assets"
    {...storyblokEditable(blok)}
  >
  <Image
+    loading = "eager"
+    decoding= "sync"
     width   = {blok.maxSize}
     height  = {blok.maxSize}
     src     = {blok.imageAsset.filename + `/m/0x${blok.maxSize}/filters:format(webp)`}

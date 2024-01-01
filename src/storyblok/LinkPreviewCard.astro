@@ -1,0 +1,17 @@
+---
+import HorizontalCard from '@/components/HorizontalCard.astro';
+import { storyblokEditable } from '@storyblok/astro'
+ const { blok } = Astro.props
+---
+ <div {...storyblokEditable(blok)} class="container" >
+<HorizontalCard
+title    :
+img      :
+desc     :
+url      :
+badge    :
+tags     :
+target   :
+imageAlt :
+/>
+ </div>
