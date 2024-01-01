@@ -12,7 +12,7 @@ import partytown from "@astrojs/partytown";
 import vue from "@astrojs/vue";
 import { loadEnv } from "vite";
 import react from "@astrojs/react";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 const {
   STORYBLOK_TOKEN,
   SENTRY_AUTH_TOKEN,
@@ -62,7 +62,7 @@ export default defineConfig({
       https: true
     }
   },
-  output: "server",
+  output: "static",
   adapter: vercel({
     webAnalytics: {
       enabled: true,
