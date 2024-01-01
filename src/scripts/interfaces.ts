@@ -30,6 +30,7 @@ interface postSchema {
     pubDate             : Date,
     updatedDate         : Date,
     heroImage           : string,
+    heroImageAlt        : string,
     badge               : string,
     tags                : string[],
 }

@@ -1,20 +1,36 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import getAge from '@/scripts/getAge';
-import { getCollection } from 'astro:content';
+import { useStoryblokApi } from '@storyblok/astro'
 import { PERSOONLIJKE_INFO } from '@/config.ts';
-import Section from '@/components/Section.astro';
-import { unknown } from 'astro/zod';
-
+import Section from '@/components/ListOfCards.astro';
+const storyblokApi = useStoryblokApi()
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
-async function getSortedCollection(name:any) {
-  return (await getCollection(name)).sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);}
-type collectionawait = null | unknown[];
-let projecten: collectionawait = null;
-let blog: collectionawait = null;
 
-//projecten = await getSortedCollection('projecten');
-blog = await getSortedCollection('blog');
+async function  createCollectioLists(collection) {
+  const { data } = await storyblokApi.get('cdn/stories', {
+  version: import.meta.env.DEV ? "draft" : "published",
+  starts_with: `${collection}/`,
+  is_startpage: false
+})
+const pages = data.stories.map((story) => {
+  return {
+    title: story.name,
+    badge: story.content.badge,
+    slug: story.full_slug,
+    description: story.content.description,
+    image: story.content.heroImage,
+    date: story.published_at,
+    tags: story.tag_list,
+  }
+})
+return pages
+}
+let projecten = [];
+let blog = [];
+
+projecten = await createCollectioLists('projecten');
+blog = await createCollectioLists('blog');
 
 ---
 
@@ -42,6 +58,6 @@ blog = await getSortedCollection('blog');
       >
     </div>
   </div>
-  {projecten && <Section title="De laatste projecten"     posts={projecten} /> }
-  {blog &&      <Section title="Het laaste van het blog"  posts={blog} /> }
+  {projecten && <Section listTitle="De laatste projecten"     posts={projecten} start="0" end="3"/> }
+  {blog &&      <Section listTitle="Het laaste van het blog"  posts={blog}      start="0" end="3"/> }
 </BaseLayout>

@@ -5,7 +5,7 @@ import PostLayout from '@/layouts/PostLayout.astro'
 const storyblokApi = useStoryblokApi()
 const { slug } = Astro.params;
 
-const { data } = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
+const { data } = await storyblokApi.get(`cdn/stories/projecten/${slug}`, {
   version: import.meta.env.DEV ? "draft" : "published",
 });
 const story = data.story;

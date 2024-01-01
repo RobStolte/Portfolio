@@ -1,5 +1,5 @@
 ---
-const { title, img, desc, url, badge, tags, target} = Astro.props;
+const { title, img, desc, url, badge, tags, target, imageAlt} = Astro.props;
 import BadgeComponent from "@/components/vue/badge.vue";
 
 const imageWidth = 300;
@@ -8,9 +8,11 @@ import { Image } from "astro:assets"
 
 <div
   class="rounded-2xl
-        bg-base-100
-        hover:bg-base-200
         hover:shadow-[0px_0px_15px_0px]
+        backdrop-blur-lg
+        shadow-lg
+        border
+        border-base-300
         hover:shadow-[#0f0e0e]
         transition
         ease-in-out
@@ -18,7 +20,7 @@ import { Image } from "astro:assets"
 >
   <a href={url} target={target} data-astro-prefetch>
     <div class="hero-content flex-col md:flex-row">
-          <Image src={`${img}/m/0x${imageWidth}/filters:quality(80):format(webp)`} width={imageWidth} height={500} alt={title}
+          <Image src={`${img}/m/0x${imageWidth}/filters:quality(80):format(webp)`} width={imageWidth} height={500} alt={imageAlt || title}
             class="max-w-full md:max-w-[13rem] rounded-lg"
           />
       <div class="grow w-full">

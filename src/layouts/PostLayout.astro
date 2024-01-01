@@ -6,9 +6,7 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 
 export interface Props extends postSchema {}
-
-const { title, description, pubDate, updatedDate, heroImage, badge, tags} =
-  Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, heroImageAlt, badge, tags} = Astro.props;
 dayjs.extend(localizedFormat);
 const postDate = dayjs(pubDate).format("ll");
 const editDate = dayjs(updatedDate).format("ll");
@@ -21,8 +19,8 @@ const editDate = dayjs(updatedDate).format("ll");
             width   = {750}
             height  = {422}
             src     = {heroImage+"/m/0x1024/filters:format(webp)"}
-            alt     = {title || "Hero Image"}
-            class   = "w-full mb-6"
+            alt     = {heroImageAlt || "Hero Image"}
+            class   = "mb-6 rounded-2xl shadow-[#0f0e0e] border border-base-300 shadow-[0px_0px_15px_0px]"
           />
       <h1 class="title my-2 text-4xl font-bold">{title}</h1>
       {pubDate && <time>{postDate}</time><br />}

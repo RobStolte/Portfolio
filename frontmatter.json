@@ -54,15 +54,7 @@
       }
     }
   ],
-  "frontMatter.content.pageFolders": [
-    {
-      "title": "blog",
-      "path": "[[workspace]]/src/content/blog",
-      "contentTypes": [
-        "blog"
-      ]
-    }
-  ],
+  "frontMatter.content.pageFolders": [],
   "frontMatter.taxonomy.contentTypes": [
     {
       "name": "default",

@@ -1,0 +1,51 @@
+---
+import { PERSOONLIJKE_INFO } from "@/config.ts";
+---
+
+<div
+  class="sticky lg:hidden top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content shadow-2xl"
+>
+  <div class="navbar">
+    <div class="navbar-start">
+      <label for="my-drawer" class="btn btn-square btn-ghost">
+        <i class="fas fa-bars"></i>
+      </label>
+    </div>
+    <div class="navbar-center">
+      <a class="btn btn-ghost normal-case text-Xl" href="/">{PERSOONLIJKE_INFO.Voornaam} {PERSOONLIJKE_INFO.Achternaam}</a>
+      /
+      <div id="breadcrumb"></div>
+    </div>
+    <div class="navbar-end"></div>
+  </div>
+</div>
+<script>
+window.addEventListener('load', () => {
+  const breadcrumbContainer = document.getElementById('breadcrumb');
+
+  if (!breadcrumbContainer) {
+    console.error('No element with id "breadcrumb" found');
+    return;
+  }
+
+  const path = window.location.pathname;
+  const pathParts = path.split('/').filter(part => part);
+
+  pathParts.forEach((part, index) => {
+    const breadcrumbDiv = document.createElement('div');
+    breadcrumbDiv.className = 'btn btn-ghost normal-case text-Xl';
+
+    const link = document.createElement('a');
+    link.href = '/' + pathParts.slice(0, index + 1).join('/');
+    link.textContent = part;
+
+    breadcrumbDiv.appendChild(link);
+    breadcrumbContainer.appendChild(breadcrumbDiv);
+
+    if (index < pathParts.length - 1) {
+      const separator = document.createTextNode(' / ');
+      breadcrumbContainer.appendChild(separator);
+    }
+  });
+});
+</script>

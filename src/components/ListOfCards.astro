@@ -1,0 +1,38 @@
+---
+// Import your components at the top of the file
+import HorizontalCard from './HorizontalCard.astro';
+const { listTitle, posts, start, end } = Astro.props;
+
+const sortedPosts = posts.sort((a, b) => {
+  const dateA = new Date(a.published_at);
+  const dateB = new Date(b.published_at);
+
+  if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
+    console.error('Invalid date in posts');
+    return 0;
+  }
+
+  return dateB.getTime() - dateA.getTime();
+}).slice(start, end);
+---
+
+<section>
+  <h2 class='text-3xl w-full font-bold mb-2'>{listTitle}</h2>
+  {
+    sortedPosts.map((post:any) => (
+      <>
+        <HorizontalCard
+          title={post.title}
+          img={post.image.filename}
+          imageAlt={post.image.alt}
+          desc={post.description}
+          url={`/${post.slug}`}
+          target='_self'
+          tags={post.tags}
+          badge={post.badge}
+        />
+        <div class="divider my-0" />
+      </>
+    ))
+  }
+</section>
