@@ -43,6 +43,17 @@ const { title, description, image = 'https://a.storyblok.com/f/253533/2493x3130/
 <script async src='src/scripts/tailwindDarkmode.ts'></script>
 <script async src='https://kit.fontawesome.com/1232a6e12a.js' crossorigin='anonymous'
 ></script>
+<script async >
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+} else {
+    document.documentElement.classList.remove('dark')
+}
+localStorage.theme = 'light'
+localStorage.theme = 'dark'
+localStorage.removeItem('theme')
+</script>
+
 
 <!-- base transition -->
 <ViewTransitions />
