@@ -12,7 +12,7 @@ import partytown from "@astrojs/partytown";
 import vue from "@astrojs/vue";
 import { loadEnv } from "vite";
 import react from "@astrojs/react";
-import vercel from "@astrojs/vercel/static";
+import vercel from "@astrojs/vercel/serverless";
 const {
   STORYBLOK_TOKEN,
   SENTRY_AUTH_TOKEN,
@@ -51,6 +51,7 @@ export default defineConfig({
       Afbeelding: 'storyblok/Afbeelding',
       YoutubeVideo: 'storyblok/YoutubeVideo',
       TextSection: 'storyblok/TextSection',
+      Chapter: 'storyblok/Chapter',
     },
     componentsDir: 'src',
     enableFallbackComponent: true,
@@ -62,7 +63,7 @@ export default defineConfig({
       https: true
     }
   },
-  output: "static",
+  output: "server",
   adapter: vercel({
     webAnalytics: {
       enabled: true,
