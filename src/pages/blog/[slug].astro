@@ -1,6 +1,6 @@
 ---
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
-import { useStoryblokApi } from '@storyblok/astro'
+import { useStoryblokApi, type SbBlokData } from '@storyblok/astro'
 import PostLayout from '@/layouts/PostLayout.astro'
 const storyblokApi = useStoryblokApi()
 const { slug } = Astro.params;
@@ -21,7 +21,7 @@ const story = data.story;
     badge       = {story.content.badge}
     tags        = {story.tag_list}>
     {
-      story.content.blokken?.map((blok) => {
+      story.content.blokken?.map((blok:SbBlokData) => {
         return <StoryblokComponent blok={blok} />
       })
     }

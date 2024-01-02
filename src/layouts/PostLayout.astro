@@ -4,7 +4,16 @@ import { Image } from "astro:assets"
 import BadgeComponent from "@/components/vue/badge.vue"
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
-
+interface postSchema {
+    title               : string,
+    description         : string,
+    pubDate             : Date,
+    updatedDate         : Date,
+    heroImage           : string,
+    heroImageAlt        : string,
+    badge               : string,
+    tags                : string[],
+}
 export interface Props extends postSchema {}
 const { title, description, pubDate, updatedDate, heroImage, heroImageAlt, badge, tags} = Astro.props;
 dayjs.extend(localizedFormat);

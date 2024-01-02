@@ -1,8 +1,20 @@
 ---
 const { title, company, startDate, endDate, location, text, link } = Astro.props;
 import TimelineTextBlock from './timelineTextBlock.astro';
-import { dateTranslator } from '@/scripts/dateTranslator.ts';
+const dateTranslator = (date : number) => {
+    if (date === undefined) {
+        return null;
+    } else if (date === null) {
+        return "huidig"
+    }
+    const dateString = date.toString();
+    const year = dateString.slice(0,4);
+    const month = dateString.slice(4,6);
+    const day = dateString.slice(6,8);
 
+    const newDate = new Date(`${year}-${month}-${day}`).toLocaleDateString('nl-NL');
+    return newDate;
+}
 const startDateString = startDate !== undefined ? dateTranslator(startDate) : undefined;
 const endDateString = endDate !== undefined ? dateTranslator(endDate) : undefined;
 const startDateYear = startDateString && startDateString !== 'huidig' ? new Date(startDateString as string).getFullYear() : startDateString;
@@ -25,3 +37,17 @@ const endDateYear = endDateString && endDateString !== 'huidig' ? new Date(endDa
     )}
   </div>
 </div>
+<style>
+
+.education__time {
+  position: relative;
+}
+.education__time::before {
+  content: attr(data-date);
+  position: absolute;
+  left: 1.2em;
+  top: -1%;
+  white-space: nowrap;
+}
+
+</style>

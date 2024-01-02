@@ -8,18 +8,28 @@ const sortedPosts = posts.sort((a, b) => {
   const dateB = new Date(b.published_at);
 
   if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
-    console.error('Invalid date in posts');
     return 0;
   }
 
   return dateB.getTime() - dateA.getTime();
 }).slice(start, end);
+interface post {
+  title: string;
+  image: {
+    filename: string;
+    alt: string;
+  };
+  description: string;
+  slug: string;
+  tags: string[];
+  badge: string;
+}
 ---
 
 <section>
   <h2 class='text-3xl w-full font-bold mb-2'>{listTitle}</h2>
   {
-    sortedPosts.map((post:any) => (
+    sortedPosts.map((post: post) => (
       <>
         <HorizontalCard
           title={post.title}

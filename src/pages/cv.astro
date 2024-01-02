@@ -4,10 +4,47 @@ import TimeLineElement from "@/components/cv/TimeLine.astro";
 
 import skills from "@/skills.json";
 // Filter the array to only include objects where timelineObject is true
-import processSkills from "@/scripts/processSkills.ts";
+
+const processSkills = (skills: any[], timelineEnabled: boolean) => {
+    // Filter the array to only include objects where timelineElement matches timelineEnabled
+    let timelineElements = skills.filter((skill: timelineElement) => {
+        if (timelineEnabled) {
+            return skill.timeline_element === true;
+        } else {
+            return skill.timeline_element === false || skill.timeline_element === undefined;
+        }
+    });
+
+    // Group the objects by category
+    const array: timelineElementSorted[] = Object.values(timelineElements.reduce((result, item) => {
+        (result[item.category] = result[item.category] || { name: item.category, data: [] });
+
+        result[item.category].data.push(item);
+        return result;
+    }, {}));
+    return array;
+}
+export interface timelineElement {
+    category: string;
+    timeline_element: boolean;
+    title: string;
+    description?: string;
+    start_date?: startDate;
+    end_date?: number;
+    image?: string;
+    link?: string;
+}
+export interface timelineElementSorted {
+    name: string;
+    data: timelineElement[];
+}
+export interface startDate {
+    startDate: number | null;
+}
 
 const timelineArray = processSkills(skills.skills,true);
 const skillsArray = processSkills(skills.skills,false);
+
 ---
 
 <BaseLayout title="Curriculum vitae" sideBarActiveItemID="cv">

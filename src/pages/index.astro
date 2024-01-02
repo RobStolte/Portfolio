@@ -1,19 +1,36 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import getAge from '@/scripts/getAge';
 import { useStoryblokApi } from '@storyblok/astro'
 import { PERSOONLIJKE_INFO } from '@/config.ts';
 import Section from '@/components/ListOfCards.astro';
 const storyblokApi = useStoryblokApi()
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
 
-async function  createCollectioLists(collection) {
+const getAge = (y: number, m: number, d: number) => {
+    const t = new Date(), b = new Date(y, m - 1, d);
+    let a = t.getFullYear() - b.getFullYear();
+    return t.getMonth() - b.getMonth() < 0 || (t.getMonth() - b.getMonth() === 0 && t.getDate() < b.getDate()) ? --a : a;
+  }
+
+async function  createCollectioLists(collection: string) {
   const { data } = await storyblokApi.get('cdn/stories', {
   version: import.meta.env.DEV ? "draft" : "published",
   starts_with: `${collection}/`,
   is_startpage: false
 })
-const pages = data.stories.map((story) => {
+interface story {
+  name: string;
+  content: {
+    badge: string;
+    description: string;
+    heroImage: string;
+  };
+  full_slug: string;
+  published_at: string;
+  tag_list: string;
+}
+
+const pages = data.stories.map((story: story) => {
   return {
     title: story.name,
     badge: story.content.badge,

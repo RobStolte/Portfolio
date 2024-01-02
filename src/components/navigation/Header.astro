@@ -1,5 +1,8 @@
 ---
 import { PERSOONLIJKE_INFO } from "@/config.ts";
+
+const path = Astro.url.pathname;
+const pathParts = path.split('/').filter(part => part);
 ---
 
 <div
@@ -13,39 +16,14 @@ import { PERSOONLIJKE_INFO } from "@/config.ts";
     </div>
     <div class="navbar-center">
       <a class="btn btn-ghost normal-case text-Xl" href="/">{PERSOONLIJKE_INFO.Voornaam} {PERSOONLIJKE_INFO.Achternaam}</a>
-      /
-      <div id="breadcrumb"></div>
+      {pathParts.length > 0 && ' / '}
+      {pathParts.map((part, index) => (
+        <span>
+          <a class="btn btn-ghost normal-case text-Xl" href={'/' + pathParts.slice(0, index + 1).join('/')}>{part.replace(/-/g, ' ')}</a>
+          {index < pathParts.length - 1 && ' / '}
+        </span>
+      ))}
     </div>
     <div class="navbar-end"></div>
   </div>
 </div>
-<script>
-window.addEventListener('load', () => {
-  const breadcrumbContainer = document.getElementById('breadcrumb');
-
-  if (!breadcrumbContainer) {
-    console.error('No element with id "breadcrumb" found');
-    return;
-  }
-
-  const path = window.location.pathname;
-  const pathParts = path.split('/').filter(part => part);
-
-  pathParts.forEach((part, index) => {
-    const breadcrumbDiv = document.createElement('div');
-    breadcrumbDiv.className = 'btn btn-ghost normal-case text-Xl';
-
-    const link = document.createElement('a');
-    link.href = '/' + pathParts.slice(0, index + 1).join('/');
-    link.textContent = part;
-
-    breadcrumbDiv.appendChild(link);
-    breadcrumbContainer.appendChild(breadcrumbDiv);
-
-    if (index < pathParts.length - 1) {
-      const separator = document.createTextNode(' / ');
-      breadcrumbContainer.appendChild(separator);
-    }
-  });
-});
-</script>
