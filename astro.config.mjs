@@ -15,8 +15,8 @@ import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
 const {
   STORYBLOK_TOKEN,
-  SENTRY_AUTH_TOKEN,
-  SENTRY_DNS_URL
+  //SENTRY_AUTH_TOKEN,
+  //SENTRY_DNS_URL
 } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 
