@@ -20,6 +20,6 @@ export const SIDE_BAR_MENU = [
         { id: 'twitter',    icon: 'fa-brands fa-twitter',  url: 'https://twitter.com/pomp0m',              ariaLabel:'Twitter',    titel: 'Bekijk mijn Twitter profiel!' },
         { id: 'paypal',     icon: 'fa-brands fa-paypal',   url: 'https://paypal.me/RobStolte',             ariaLabel:'PayPal',     titel: 'Doneer via PayPal!' }
     ]
-
+export const FAVICON = "https://a.storyblok.com/f/253533/0x0/742086e128/favicon.svg";
 export const SITE_TITLE = `Portfolio | ${PERSOONLIJKE_INFO.Voornaam} ${PERSOONLIJKE_INFO.Achternaam}`;
 export const SITE_DESCRIPTION = `Een portfolio website van ${PERSOONLIJKE_INFO.Voornaam} ${PERSOONLIJKE_INFO.Achternaam}, waar je meer informatie kan vinden over mijn werk en hobby\'s. Ook kan je hier mijn contactgegevens vinden.`;

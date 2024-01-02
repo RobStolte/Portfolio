@@ -1,30 +1,30 @@
 ---
-const { title, img, desc, url, badge, tags, target, imageAlt} = Astro.props;
+const { title, img, desc, url, badge, tags, target, imageAlt, noImageProcessing, unintrusive} = Astro.props;
 import BadgeComponent from "@/components/vue/badge.vue";
 
 const imageWidth = 300;
 import { Image } from "astro:assets"
+const image = noImageProcessing ? `${img}`: `${img}/m/0x${imageWidth}/filters:quality(80):format(webp)`;
 ---
 
 <div
-  class="rounded-2xl
-        hover:shadow-[0px_0px_15px_0px]
+  class={`rounded-2xl
+        ${unintrusive ? '' : 'hover:shadow-[0px_0px_15px_0px] hover:scale-[105%]'}
         backdrop-blur-lg
         shadow-lg
         border
         border-base-300
         hover:shadow-[#0f0e0e]
         transition
-        ease-in-out
-        hover:scale-[105%]"
+        ease-in-out`}
 >
-  <a href={url} target={target} data-astro-prefetch>
-    <div class="hero-content flex-col md:flex-row">
-          <Image src={`${img}/m/0x${imageWidth}/filters:quality(80):format(webp)`} width={imageWidth} height={500} alt={imageAlt || title}
-            class="max-w-full md:max-w-[13rem] rounded-lg"
+  <a href={url} target={target} data-astro-prefetch class="no-underline">
+    <div class={`hero-content flex-col md:flex-row ${unintrusive ? 'p-2' : ''}`}>
+          <Image src={image} width={imageWidth} height={500} alt={imageAlt || title}
+          class={`max-w-full md:max-w-[13rem] rounded-lg ${unintrusive ? 'mt-1 mb-1' : ''}`}
           />
       <div class="grow w-full">
-        <h1 class="text-xl : unknownfont-bold">
+        <h1 class="text-xl : font-bold">
           {title}
           {badge &&<BadgeComponent client:idle text={badge} classes="my-1" outline="false" />}
         </h1>

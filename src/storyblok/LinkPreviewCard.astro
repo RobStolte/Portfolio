@@ -1,17 +1,31 @@
 ---
 import HorizontalCard from '@/components/HorizontalCard.astro';
+import { FAVICON } from '@/config.ts';
 import { storyblokEditable } from '@storyblok/astro'
  const { blok }: any  = Astro.props
+const encodedurl = encodeURIComponent(blok.url)
+const fetchurl = `https://opengraph.io/api/1.1/site/${encodedurl}?app_id=${process.env.OG_API_KEY}`
+
+async function fetchData(fetchurl: string) {
+  try {
+    const response = await fetch(fetchurl);
+    const data = await response.json();
+    return data.hybridGraph
+  } catch (error) { return
+  }
+}
+const socialdata = await fetchData(fetchurl);
 ---
+
  <div {...storyblokEditable(blok)} class="container" >
 <HorizontalCard
-title    :
-img      :
-desc     :
-url      :
-badge    :
-tags     :
-target   :
-imageAlt :
+    title    = { socialdata.title || blok.url}
+    img      = { socialdata.image || FAVICON }
+    desc     = { socialdata.description || ""}
+    url      = { socialdata.url || blok.url }
+    target   = "_blank"
+    imageAlt = { socialdata.image || "Image Alt"}
+    noImageProcessing = {true}
+    unintrusive = {true}
 />
  </div>

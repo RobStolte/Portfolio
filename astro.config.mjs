@@ -44,7 +44,8 @@ export default defineConfig({
       Afbeelding: 'storyblok/Afbeelding',
       YoutubeVideo: 'storyblok/YoutubeVideo',
       TextSection: 'storyblok/TextSection',
-      Chapter: 'storyblok/Chapter'
+      Chapter: 'storyblok/Chapter',
+      linkPreviewCard: 'storyblok/linkPreviewCard',
     },
     componentsDir: 'src',
     enableFallbackComponent: true,
