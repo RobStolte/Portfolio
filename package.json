@@ -28,9 +28,6 @@
     "@astrojs/vercel": "^6.1.1",
     "@astrojs/vue": "^4.0.6",
     "@sentry/astro": "^7.91.0",
-    "@sentry/browser": "^7.91.0",
-    "@sentry/vite-plugin": "^2.10.2",
-    "@spotlightjs/astro": "^1.0.8",
     "@storyblok/astro": "^4.0.0",
     "@supabase/supabase-js": "^2.39.1",
     "@types/react": "^18.2.46",
@@ -39,7 +36,6 @@
     "@vercel/speed-insights": "^1.0.2",
     "@vitejs/plugin-basic-ssl": "^1.0.2",
     "astro": "^4.0.6",
-    "astro-icon": "^0.8.2",
     "daisyui": "^3.1.7",
     "dayjs": "^1.11.9",
     "react": "^18.2.0",
@@ -48,11 +44,8 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
-    "@types/jest": "^29.5.11",
-    "jest": "^29.7.0",
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.12.3",
-    "ts-jest": "^29.1.1",
     "typescript": "^5.3.3"
   }
 }

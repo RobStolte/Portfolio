@@ -6,17 +6,16 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import storyblok from '@storyblok/astro';
 import basicSsl from '@vitejs/plugin-basic-ssl';
-//import sentry from '@sentry/astro';
-import spotlightjs from '@spotlightjs/astro';
 import partytown from "@astrojs/partytown";
 import vue from "@astrojs/vue";
 import { loadEnv } from "vite";
 import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
+import sentry from "@sentry/astro";
 const {
   STORYBLOK_TOKEN,
-  //SENTRY_AUTH_TOKEN,
-  //SENTRY_DNS_URL
+  SENTRY_AUTH_TOKEN,
+  SENTRY_DNS_URL
 } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 
@@ -32,16 +31,7 @@ export default defineConfig({
     format: 'file',
     inlineStylesheets: 'never'
   },
-  integrations: [
-    //sentry({
-    //dsn: SENTRY_DNS_URL,
-    //authToken: SENTRY_AUTH_TOKEN,
-    //sourceMapsUploadOptions: {
-    //  project: "portfolio",
-    //  authToken: SENTRY_AUTH_TOKEN,
-    //}
-    //}),
-    storyblok({
+  integrations: [storyblok({
     accessToken: STORYBLOK_TOKEN,
     bridge: true,
     apiOptions: {
@@ -54,12 +44,21 @@ export default defineConfig({
       Afbeelding: 'storyblok/Afbeelding',
       YoutubeVideo: 'storyblok/YoutubeVideo',
       TextSection: 'storyblok/TextSection',
-      Chapter: 'storyblok/Chapter',
+      Chapter: 'storyblok/Chapter'
     },
     componentsDir: 'src',
     enableFallbackComponent: true,
     useCustomApi: false
-  }), spotlightjs(), mdx(), sitemap(), tailwind(), vue(), react(), partytown()],
+  }), mdx(), sitemap(), tailwind(), vue(), react(),
+  partytown(),
+  sentry({
+    dsn: SENTRY_DNS_URL,
+    sourceMapsUploadOptions: {
+      project: "portfolio",
+      authToken: SENTRY_AUTH_TOKEN,
+    }
+  }),
+  ],
   vite: {
     plugins: [basicSsl()],
     server: {
@@ -69,10 +68,10 @@ export default defineConfig({
   output: "server",
   adapter: vercel({
     webAnalytics: {
-      enabled: true,
+      enabled: true
     },
     speedInsights: {
-      enabled: true,
-    },
+      enabled: true
+    }
   })
 });
