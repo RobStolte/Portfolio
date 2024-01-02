@@ -28,6 +28,7 @@
     "@astrojs/vercel": "^6.1.1",
     "@astrojs/vue": "^4.0.6",
     "@sentry/astro": "^7.91.0",
+    "@sentry/browser": "^7.91.0",
     "@sentry/vite-plugin": "^2.10.2",
     "@spotlightjs/astro": "^1.0.8",
     "@storyblok/astro": "^4.0.0",

@@ -3,12 +3,22 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@/config";
 import { useStoryblokApi } from '@storyblok/astro'
 const storyblokApi = useStoryblokApi()
 
-export async function GET(context: any) {
+interface Story {
+  name: string;
+  published_at: string;
+  content: {
+    description: string;
+  };
+  full_slug: string;
+}
+
+
+export async function GET() {
   const { data } = await storyblokApi.get('cdn/stories', {
     version: import.meta.env.DEV ? "draft" : "published",
   })
 
-  const items = data.stories.map((story) => ({
+  const items = data.stories.map((story: Story) => ({
     title: story.name,
     pubDate: story.published_at,
     description: story.content.description,

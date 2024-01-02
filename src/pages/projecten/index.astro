@@ -4,14 +4,24 @@ import ListofLayout from '@/layouts/ListofLayout.astro'
 const storyblokApi = useStoryblokApi()
 
 const collection = 'projecten';
-
+interface story {
+  name: string;
+  full_slug: string;
+  content: {
+    badge: string;
+    description: string;
+    heroImage: string;
+  };
+  published_at: string;
+  tag_list: string[];
+}
 const { data } = await storyblokApi.get('cdn/stories', {
   version: import.meta.env.DEV ? "draft" : "published",
   starts_with: `${collection}/`,
   is_startpage: false
 })
 
-const pages = data.stories.map((story) => {
+const pages = data.stories.map((story: story) => {
   return {
     badge: story.content.badge,
     title: story.name,

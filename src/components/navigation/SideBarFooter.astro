@@ -1,6 +1,5 @@
 ---
 import {CONTACT_METHODS} from "@/config.ts";
-const { menu = CONTACT_METHODS } = Astro.props
 ---
 <div
   class='block sticky pointer-events-none bottom-10 bg-base-200 justify-center h-12 [mask-image:linear-gradient(transparent,#000000)]'
@@ -10,7 +9,7 @@ const { menu = CONTACT_METHODS } = Astro.props
 <div
   class='social-icons px-4 pb-5 pt-1 flex self-center justify-center sticky bottom-0 bg-base-200'
 >
-  {menu.map(item => (
+  {CONTACT_METHODS.map(item => (
     <a
       href={item.url}
       target='_blank'

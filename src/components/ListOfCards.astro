@@ -2,8 +2,10 @@
 // Import your components at the top of the file
 import HorizontalCard from './HorizontalCard.astro';
 const { listTitle, posts, start, end } = Astro.props;
-
-const sortedPosts = posts.sort((a, b) => {
+interface published_at {
+  published_at: string | number | Date;
+}
+const sortedPosts = posts.sort((a: published_at, b: published_at) => {
   const dateA = new Date(a.published_at);
   const dateB = new Date(b.published_at);
 

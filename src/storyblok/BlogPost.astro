@@ -25,7 +25,7 @@ const { blok }: any  = Astro.props
       {blok.tags && blok.tags.map((tag: string) => <BadgeComponent client:idle text={tag} classes="my-1 mr-2" outline="true" />) }
       <div class="divider my-2"></div>
       {
-        blok.blokken?.map((blok) => {
+        blok.blokken?.map((blok: {}) => {
           return <StoryblokComponent blok={blok} />
         })
       }

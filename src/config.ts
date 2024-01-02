@@ -6,6 +6,7 @@ export const PERSOONLIJKE_INFO = {
     GeboorteDag: 27,
     Email: "contact@robstolte.nl"
 }
+
 export const SIDE_BAR_MENU = [
         { id: 'home',       icon: 'fa-solid fa-house',          slug: '' },
         { id: 'projecten',  icon: 'fa-solid fa-diagram-project',slug: 'projecten' },
