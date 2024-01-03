@@ -1,0 +1,33 @@
+---
+const { name, classname } = Astro.props;
+---
+<hide-class-button>
+    <button class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-xl m-4"
+      data-classname={classname}
+      type="button">{name}</button>
+</hide-class-button>
+<script>
+    class HideClassButton extends HTMLElement {
+        constructor() {
+        super();
+
+        const classname = this.dataset.classname;
+
+        const button = this.querySelector('button');
+            if (button) {
+                button.addEventListener('click', () => {
+                const toggleCategory = (classname) => {
+                    // Select all elements with the category class
+                    const elements = document.querySelectorAll(`.timeline__element__category--${classname}`);
+                    // For each element, toggle the 'hidden' class
+                        elements.forEach(element => {
+                            element.classList.toggle('hidden');
+                        });
+                    }
+                toggleCategory(classname);
+                });
+            }
+        };
+    }
+    customElements.define('hide-class-button', HideClassButton);
+</script>

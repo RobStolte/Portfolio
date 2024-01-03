@@ -1,28 +1,18 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import TimeLineElement from "@/components/cv/TimeLine.astro";
+import HideClassButton from "@/components/cv/HideClassButton.astro";
 
 import skills from "@/skills.json";
 // Filter the array to only include objects where timelineObject is true
 
 const processSkills = (skills: any[], timelineEnabled: boolean) => {
     // Filter the array to only include objects where timelineElement matches timelineEnabled
-    let timelineElements = skills.filter((skill: timelineElement) => {
-        if (timelineEnabled) {
-            return skill.timeline_element === true;
-        } else {
-            return skill.timeline_element === false || skill.timeline_element === undefined;
-        }
+    const timelineElements = skills.filter((skill: timelineElement) => {
+      return timelineEnabled ? skill.timeline_element === true : skill.timeline_element === false || skill.timeline_element === undefined;});
+      timelineElements.sort((a, b) => {return new Date(b.start_date).getTime() - new Date(a.start_date).getTime();
     });
-
-    // Group the objects by category
-    const array: timelineElementSorted[] = Object.values(timelineElements.reduce((result, item) => {
-        (result[item.category] = result[item.category] || { name: item.category, data: [] });
-
-        result[item.category].data.push(item);
-        return result;
-    }, {}));
-    return array;
+    return timelineElements;
 }
 export interface timelineElement {
     category: string;
@@ -41,21 +31,23 @@ export interface timelineElementSorted {
 export interface startDate {
     startDate: number | null;
 }
-
 const timelineArray = processSkills(skills.skills,true);
 const skillsArray = processSkills(skills.skills,false);
-
+//console.log(skillsArray);
+const uniqueCategories = [...new Set(timelineArray.map(item => item.category))];
+console.log(uniqueCategories);
 ---
-
 <BaseLayout title="Curriculum vitae" sideBarActiveItemID="cv">
+
+<!-- Add more buttons for more categories -->
   <h1 class="text-3xl w-full font-bold">Curriculum vitae</h1>
+<!--   {uniqueCategories.map((button) => (
+    <HideClassButton
+        name={button}
+        classname={`timeline__element__category--${button}`
+    }/>))} -->
   <br class="mb-10 text-justify"/>
-  {timelineArray.map((timeline:timelineElementSorted) => (
-    <section class="time-line-container mb-10" id={timeline.name}>
-      <h2 class="text-3xl w-full font-bold mb-5">{timeline.name}</h2>
-      {timeline.data.sort((a: timelineElement, b: timelineElement) => {
-        return Number(b.start_date) - Number(a.start_date);
-      }).map((timelineElement) => (
+      {timelineArray.map((timelineElement) => (
         <TimeLineElement
           title     = {timelineElement.title}
           company   = {timelineElement.company}
@@ -64,19 +56,19 @@ const skillsArray = processSkills(skills.skills,false);
           location  = {timelineElement.location}
           text      = {timelineElement.text}
           link      = {timelineElement.link}
+          category  = {timelineElement.category}
+          class:global= {`timeline__element__category--${timelineElement.category}`}
         />
       ))}
-    </section>
-  ))}
 
-{
-  skillsArray.map((skills) => (
+<!-- {
+  skillsArray.category.map((skills) => (
     <section class="mb-10" id={skills.name}>
       <h2 class="text-3xl w-full font-bold mb-5">{skills.name}</h2>
       <ul class="list-disc md:columns-5 columns-2 mx-6">
-        {skills.data.map((skill) => (<li>{skill.title}</li>))}
+        {skills.map((skill) => (<li>{skill.title}</li>))}
       </ul>
     </section>
   ))
-}
+} -->
 </BaseLayout>

@@ -3,29 +3,35 @@ import HorizontalCard from '@/components/HorizontalCard.astro';
 import { FAVICON } from '@/config.ts';
 import { storyblokEditable } from '@storyblok/astro'
  const { blok }: any  = Astro.props
-const encodedurl = encodeURIComponent(blok.url)
-const fetchurl = `https://opengraph.io/api/1.1/site/${encodedurl}?app_id=${process.env.OG_API_KEY}`
 
-async function fetchData(fetchurl: string) {
-  try {
-    const response = await fetch(fetchurl);
-    const data = await response.json();
-    return data.hybridGraph
-  } catch (error) { return
-  }
+async function openGraphScan(url: string) {
+    const encodedurl = encodeURIComponent(url)
+    const fetchurl = `https://opengraph.io/api/1.1/site/${encodedurl}?app_id=${import.meta.env.OG_API_KEY}`
+    try {
+      const response = await fetch(fetchurl);
+      const data = await response.json();
+      return data.hybridGraph
+    } catch (error) {
+        return {
+            title: "Error",
+            description: "Error",
+            url: "Error",
+            image: FAVICON
+        }
+    }
 }
-const socialdata = await fetchData(fetchurl);
+const socialdata = await openGraphScan(blok.url);
 ---
 
- <div {...storyblokEditable(blok)} class="container" >
-<HorizontalCard
-    title    = { socialdata.title || blok.url}
-    img      = { socialdata.image || FAVICON }
-    desc     = { socialdata.description || ""}
-    url      = { socialdata.url || blok.url }
-    target   = "_blank"
-    imageAlt = { socialdata.image || "Image Alt"}
-    noImageProcessing = {true}
-    unintrusive = {true}
-/>
- </div>
+<div {...storyblokEditable(blok)} class="container" >
+  <HorizontalCard
+      title    = { socialdata.title}
+      img      = { socialdata.image}
+      desc     = { socialdata.description}
+      url      = { socialdata.url}
+      target   = "_blank"
+      imageAlt = { socialdata.title}
+      noImageProcessing = {true}
+      unintrusive = {true}
+  />
+</div>

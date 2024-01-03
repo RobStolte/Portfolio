@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import { ViewTransitions } from 'astro:transitions';
+import { FAVICON } from '@/config';
 
 export interface Props {
   title: string;
@@ -15,10 +16,9 @@ const { title, description, image = 'https://a.storyblok.com/f/253533/2493x3130/
 <meta charset='utf-8' />
 <meta name='viewport'           content='width=device-width,initial-scale=1' />
 <meta name='generator'          content={Astro.generator} />
-<link rel="icon"                href=https://a.storyblok.com/f/253533/0x0/742086e128/favicon.svg sizes="any" />
-<link rel="icon"                href=https://a.storyblok.com/f/253533/0x0/742086e128/favicon.svg type="image/svg+xml" />
-<link rel="apple-touch-icon"    href=https://a.storyblok.com/f/253533/0x0/742086e128/favicon.svg />
-<link rel="manifest"            href="/manifest.webmanifest" />
+<link rel="icon"                href={FAVICON} sizes="any" />
+<link rel="icon"                href={FAVICON} type="image/png" />
+<link rel="apple-touch-icon"    href={FAVICON} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>

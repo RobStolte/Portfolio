@@ -1,53 +1,69 @@
 ---
-const { title, company, startDate, endDate, location, text, link } = Astro.props;
-import TimelineTextBlock from './timelineTextBlock.astro';
-const dateTranslator = (date : number) => {
-    if (date === undefined) {
-        return null;
-    } else if (date === null) {
-        return "huidig"
-    }
-    const dateString = date.toString();
-    const year = dateString.slice(0,4);
-    const month = dateString.slice(4,6);
-    const day = dateString.slice(6,8);
+import TimeLineTextBlok from './TimeLineTextBlok.astro'
+const { title, company, startDate, endDate, location, text, link, category } =
+  Astro.props;
+const dateTranslator = (date: number) => {
+  if (date === undefined) {
+    return null;
+  } else if (date === null) {
+    return 'huidig';
+  }
+  const dateString = date.toString();
+  const year = dateString.slice(0, 4);
+  const month = dateString.slice(4, 6);
+  const day = dateString.slice(6, 8);
 
-    const newDate = new Date(`${year}-${month}-${day}`).toLocaleDateString('nl-NL');
-    return newDate;
-}
-const startDateString = startDate !== undefined ? dateTranslator(startDate) : undefined;
-const endDateString = endDate !== undefined ? dateTranslator(endDate) : undefined;
-const startDateYear = startDateString && startDateString !== 'huidig' ? new Date(startDateString as string).getFullYear() : startDateString;
-const endDateYear = endDateString && endDateString !== 'huidig' ? new Date(endDateString as string).getFullYear() : endDateString;
-
+  const newDate = new Date(`${year}-${month}-${day}`).toLocaleDateString(
+    'nl-NL',
+  );
+  return newDate;
+};
+const startDateString =
+  startDate !== undefined ? dateTranslator(startDate) : undefined;
+const endDateString =
+  endDate !== undefined ? dateTranslator(endDate) : undefined;
+const startDateYear =
+  startDateString && startDateString !== 'huidig'
+    ? new Date(startDateString as string).getFullYear()
+    : startDateString;
+const endDateYear =
+  endDateString && endDateString !== 'huidig'
+    ? new Date(endDateString as string).getFullYear()
+    : endDateString;
 ---
 
 <div class='flex'>
-  <div class='education__time mr-10 font-light' data-date={endDateYear ? endDateYear: startDateYear}>
-    <span class='w-4 h-4 bg-primary block rounded-full mt-1'/>
-    <span class='education__line bg-primary block h-full w-[2px] translate-x-[7px]'></span>
+  <div
+    class='education__time mr-10 font-light'
+    data-date={endDateYear ? endDateYear : startDateYear}
+  >
+    <span class='w-4 h-4 bg-primary block rounded-full mt-1'></span>
+    <span
+      class='education__line bg-primary block h-full w-[2px] translate-x-[7px]'
+    ></span>
   </div>
-  <div class='experience__data bd-grid px-5'>
-    {link ? (
-      <a href={link} target="_blank">
-        <TimelineTextBlock title={title} company={company} location={location} text={text} />
-      </a>
-    ) : (
-      <TimelineTextBlock title={title} company={company} location={location} text={text} />
-    )}
+  <div class='experience__data bd-grid px-5
+  w-full'>
+    {
+      link ? (
+        <a href={link} target='_blank'>
+          <TimeLineTextBlok title={title} company={company} location={location} text={text} category={category} />
+        </a>
+      ) : (
+        <TimeLineTextBlok title={title} company={company} location={location} text={text} category={category} />
+      )
+    }
   </div>
 </div>
 <style>
-
-.education__time {
-  position: relative;
-}
-.education__time::before {
-  content: attr(data-date);
-  position: absolute;
-  left: 1.2em;
-  top: -1%;
-  white-space: nowrap;
-}
-
+  .education__time {
+    position: relative;
+  }
+  .education__time::before {
+    content: attr(data-date);
+    position: absolute;
+    left: 1.2em;
+    top: -1%;
+    white-space: nowrap;
+  }
 </style>
