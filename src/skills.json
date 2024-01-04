@@ -224,13 +224,6 @@
         },
         {   "timeline_element": true,
             "category": "cursussen",
-            "title": "SQL - The Complete Developer's Guide (MySQL, PostgreSQL)",
-            "company": "Udemy online",
-            "end_date": 20230601,
-            "link": "https://www.udemy.com/"
-        },
-        {   "timeline_element": true,
-            "category": "cursussen",
             "title": "Javascript - The Complete Guide 2020 (Beginner + Advanced)",
             "company": "Udemy online",
             "end_date": 20190601,
