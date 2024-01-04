@@ -1,10 +1,10 @@
 ---
-const { title, company, text, location, category } = Astro.props;
 import {stringToHexColor, contrastColor } from '@/scripts/colortools.ts';
+import{ toSentenceCase, CapitalizeFirst } from '@/scripts/stringConverters.ts';
+const { title, company, text, location, category } = Astro.props;
 const categoryBackgroundColor = stringToHexColor(category);
 const categoryTextColor = contrastColor(categoryBackgroundColor);
-const locationBackgroundColor = stringToHexColor(location);
-const locationTextColor = contrastColor(locationBackgroundColor);
+const categoryText = CapitalizeFirst(toSentenceCase(category));
 ---
 
 <figure class="
@@ -36,7 +36,7 @@ const locationTextColor = contrastColor(locationBackgroundColor);
 <p class='mt-3 mb-5 text-justify'>
 </p>
 {category && <div class='absolute bottom-0 left-0 p-2 bg-gray-900
-rounded-2xl text-xs rounded-tl-none rounded-br-none' style={`background-color: ${categoryBackgroundColor}; color: ${categoryTextColor};`}>{category}</div>}
+rounded-2xl text-xs rounded-tl-none rounded-br-none' style={`background-color: ${categoryBackgroundColor}; color: ${categoryTextColor};`}>{categoryText}</div>}
 {location && <div class='absolute bottom-0 right-0 p-2 bg-gray-900
 rounded-2xl text-xs rounded-tr-none rounded-bl-none' >{location}</div>}
 </figure>

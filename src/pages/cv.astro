@@ -2,51 +2,54 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import TimeLineElement from "@/components/cv/TimeLine.astro";
 import HideClassButton from "@/components/cv/HideClassButton.astro";
-
+import { toSentenceCase } from "@/scripts/stringConverters.ts";
 import skills from "@/skills.json";
-// Filter the array to only include objects where timelineObject is true
-
 const processSkills = (skills: any[], timelineEnabled: boolean) => {
-    // Filter the array to only include objects where timelineElement matches timelineEnabled
-    const timelineElements = skills.filter((skill: timelineElement) => {
-      return timelineEnabled ? skill.timeline_element === true : skill.timeline_element === false || skill.timeline_element === undefined;});
-      timelineElements.sort((a, b) => {return new Date(b.start_date).getTime() - new Date(a.start_date).getTime();
+    // Sort the skills array based on the rules provided
+        skills.sort((a, b) => {
+        // If end_date is 'null', put it at the top
+        if (a.end_date === null) return -1;
+        if (b.end_date === null) return 1;
+
+        // If no end_date, put it at the bottom
+        if (!a.end_date) return 1;
+        if (!b.end_date) return -1;
+
+        // Otherwise, sort by end_date
+        return Number(b.end_date) - Number(a.end_date);
     });
-    return timelineElements;
+    return {
+        timelineTrue: skills.filter(skill => skill.timeline_element === true),
+        timelineFalse: skills.filter(skill => skill.timeline_element === false),
+    };
 }
-export interface timelineElement {
-    category: string;
-    timeline_element: boolean;
-    title: string;
-    description?: string;
-    start_date?: startDate;
-    end_date?: number;
-    image?: string;
-    link?: string;
-}
-export interface timelineElementSorted {
-    name: string;
-    data: timelineElement[];
-}
-export interface startDate {
-    startDate: number | null;
-}
-const timelineArray = processSkills(skills.skills,true);
-const skillsArray = processSkills(skills.skills,false);
-//console.log(skillsArray);
+
+const sortedSkills = processSkills(skills.skills,true);
+const timelineArray = sortedSkills.timelineTrue;
 const uniqueCategories = [...new Set(timelineArray.map(item => item.category))];
-console.log(uniqueCategories);
+
+// creating the skills lists
+const skillsArray = sortedSkills.timelineFalse;
+const categories = skillsArray.reduce((acc, skill: {title: string, category: string, timeline_element: boolean}) => {
+  if (!acc[skill.category]) {acc[skill.category] = [];}
+  acc[skill.category].push(skill.title);
+  return acc;
+}, {});
+
+
 ---
 <BaseLayout title="Curriculum vitae" sideBarActiveItemID="cv">
 
 <!-- Add more buttons for more categories -->
   <h1 class="text-3xl w-full font-bold">Curriculum vitae</h1>
-<!--   {uniqueCategories.map((button) => (
+{uniqueCategories.map((button) => (
     <HideClassButton
         name={button}
-        classname={`timeline__element__category--${button}`
-    }/>))} -->
+        classname={`timeline__element__category--${button}`}
+    />
+))}
   <br class="mb-10 text-justify"/>
+  <section class="time-line-container">
       {timelineArray.map((timelineElement) => (
         <TimeLineElement
           title     = {timelineElement.title}
@@ -57,18 +60,20 @@ console.log(uniqueCategories);
           text      = {timelineElement.text}
           link      = {timelineElement.link}
           category  = {timelineElement.category}
-          class:global= {`timeline__element__category--${timelineElement.category}`}
+          classname = {`timeline__element__category--${timelineElement.category}`}
         />
       ))}
-
-<!-- {
-  skillsArray.category.map((skills) => (
-    <section class="mb-10" id={skills.name}>
-      <h2 class="text-3xl w-full font-bold mb-5">{skills.name}</h2>
-      <ul class="list-disc md:columns-5 columns-2 mx-6">
-        {skills.map((skill) => (<li>{skill.title}</li>))}
-      </ul>
-    </section>
-  ))
-} -->
+  </section>
+  {
+    Object.entries(categories).map(([category, titles]) => (
+      <section class="mb-10" id={category}>
+        <h2 class="text-3xl w-full font-bold mb-5">{toSentenceCase(category,true)}</h2>
+        <ul class="list-disc md:columns-5 columns-2 mx-6">
+          {
+            titles.map((title:string) => (<li>{title}</li>))
+          }
+        </ul>
+      </section>
+    ))
+  }
 </BaseLayout>

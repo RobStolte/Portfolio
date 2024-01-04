@@ -1,48 +1,29 @@
 ---
 import TimeLineTextBlok from './TimeLineTextBlok.astro'
-const { title, company, startDate, endDate, location, text, link, category } =
-  Astro.props;
-const dateTranslator = (date: number) => {
-  if (date === undefined) {
-    return null;
-  } else if (date === null) {
+const { title, company, startDate, endDate, location, text, link, category, classname } =
+Astro.props;
+const grabYear = (endDate: number, startDate: number) => {
+  if (endDate === undefined) {
+    return startDate;
+  }
+  if (endDate === null) {
     return 'huidig';
   }
-  const dateString = date.toString();
+  const dateString = endDate.toString();
   const year = dateString.slice(0, 4);
-  const month = dateString.slice(4, 6);
-  const day = dateString.slice(6, 8);
-
-  const newDate = new Date(`${year}-${month}-${day}`).toLocaleDateString(
-    'nl-NL',
-  );
-  return newDate;
+  return year;
 };
-const startDateString =
-  startDate !== undefined ? dateTranslator(startDate) : undefined;
-const endDateString =
-  endDate !== undefined ? dateTranslator(endDate) : undefined;
-const startDateYear =
-  startDateString && startDateString !== 'huidig'
-    ? new Date(startDateString as string).getFullYear()
-    : startDateString;
-const endDateYear =
-  endDateString && endDateString !== 'huidig'
-    ? new Date(endDateString as string).getFullYear()
-    : endDateString;
 ---
 
-<div class='flex'>
+<div class={`flex ${classname} `}>
   <div
-    class='education__time mr-10 font-light'
-    data-date={endDateYear ? endDateYear : startDateYear}
+    class='education__time mr-10 font-light translate-y-[60px]'
+    data-date={grabYear(endDate,startDate)}
   >
-    <span class='w-4 h-4 bg-primary block rounded-full mt-1'></span>
-    <span
-      class='education__line bg-primary block h-full w-[2px] translate-x-[7px]'
-    ></span>
+    <span class='w-4 h-4 bg-primary block rounded-full mt-1 '/>
+    <span class='education__line bg-primary block h-full'/>
   </div>
-  <div class='experience__data bd-grid px-5
+  <div class='experience__data bd-grid px-5 timeline__element_animation
   w-full'>
     {
       link ? (
@@ -65,5 +46,41 @@ const endDateYear =
     left: 1.2em;
     top: -1%;
     white-space: nowrap;
+  }
+
+  .education__line {
+  height: 100%;
+  width: 2px;
+  --tw-translate-x: 7px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  /* animation: timeline_line_Animation both linear;
+  animation-timeline: view();
+  animation-range: cover 20% cover 50%; */
+  }
+
+  .timeline__element_animation {
+    animation: timeline_card_Animation both linear;
+    animation-timeline: view();
+    animation-range: entry 30% cover 40%;
+  }
+
+  @keyframes timeline_line_Animation {
+    0% {
+      height: 0%;
+    }
+    100% {
+      height: 100%;
+    }
+  }
+
+
+
+  @keyframes timeline_card_Animation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 </style>

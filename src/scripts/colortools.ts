@@ -1,4 +1,4 @@
-function stringToHexColor(text) {
+function stringToHexColor(text: string) {
     const str = text;
     if (!str) {
       return '#007ac3';
@@ -14,7 +14,7 @@ function stringToHexColor(text) {
     }
     return color;
   }
-function contrastColor(inputColor) {
+function contrastColor(inputColor : string) {
     const color = (inputColor.charAt(0) === '#') ? inputColor.substring(1, 7) : inputColor;
     const r = parseInt(color.substring(0, 2), 16); // red
     const g = parseInt(color.substring(2, 4), 16); // green
