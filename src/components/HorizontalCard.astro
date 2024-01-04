@@ -26,14 +26,14 @@ const image = noImageProcessing ? `${img}`: `${img}/m/0x${imageWidth}/filters:qu
       <div class="grow w-full">
         <h1 class="text-xl : font-bold">
           {title}
-          {badge &&<BadgeComponent client:idle text={badge} classes="my-1" outline="false" />}
+          {badge &&<BadgeComponent text={badge} classes="my-1" outline="false" />}
         </h1>
         <p class="py-1 text-1xl">{desc}</p>
         <>
         <div class="card-actions justify-end">
           {
           tags &&
-            tags.map((tag: string) => <BadgeComponent client:idle text={tag} classes="my-1" outline="true" />)
+            tags.map((tag: string) => <BadgeComponent text={tag} classes="my-1" outline="true" />)
           }
         </div>
       </div>

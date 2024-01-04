@@ -12,6 +12,7 @@ import { loadEnv } from "vite";
 import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
 import sentry from "@sentry/astro";
+import spotlightjs from "@spotlightjs/astro";
 const {
   STORYBLOK_TOKEN,
   SENTRY_AUTH_TOKEN,
@@ -45,21 +46,18 @@ export default defineConfig({
       YoutubeVideo: 'storyblok/YoutubeVideo',
       TextSection: 'storyblok/TextSection',
       Chapter: 'storyblok/Chapter',
-      LinkPreviewCard: 'storyblok/LinkPreviewCard',
+      LinkPreviewCard: 'storyblok/LinkPreviewCard'
     },
     componentsDir: 'src',
     enableFallbackComponent: true,
     useCustomApi: false
-  }), mdx(), sitemap(), tailwind(), vue(), react(),
-  partytown(),
-  sentry({
+  }), mdx(), sitemap(), tailwind(), vue(), react(), partytown(), sentry({
     dsn: SENTRY_DNS_URL,
     sourceMapsUploadOptions: {
       project: "portfolio",
-      authToken: SENTRY_AUTH_TOKEN,
+      authToken: SENTRY_AUTH_TOKEN
     }
-  }),
-  ],
+  }), spotlightjs()],
   vite: {
     plugins: [basicSsl()],
     server: {
