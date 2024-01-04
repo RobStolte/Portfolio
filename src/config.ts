@@ -9,7 +9,6 @@ export const PERSOONLIJKE_INFO = {
 
 export const SIDE_BAR_MENU = [
         { id: 'home',       icon: 'fa-solid fa-house',          slug: '' },
-        { id: 'projecten',  icon: 'fa-solid fa-diagram-project',slug: 'projecten' },
         { id: 'blog',       icon: 'fa-solid fa-newspaper',      slug: 'blog' },
         { id: 'cv',         icon: 'fa-solid fa-address-card',   slug: 'cv' }
     ];

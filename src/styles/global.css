@@ -14,9 +14,11 @@ h2 {
   font-size: 2rem;
   font-weight:bold
 }
-.time-line-container>div:last-child .education__time>.education__line {
+.time-line-container > div:last-child .education__time > .education__line,
+.time-line-container > div:only-child .education__time > .education__line {
   display: none;
 }
+
 .hidden {
   display: none;
 }

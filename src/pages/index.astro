@@ -43,10 +43,8 @@ const pages = data.stories.map((story: story) => {
 })
 return pages
 }
-let projecten = [];
 let blog = [];
 
-projecten = await createCollectioLists('projecten');
 blog = await createCollectioLists('blog');
 
 ---
@@ -75,6 +73,5 @@ blog = await createCollectioLists('blog');
       >
     </div>
   </div>
-  {projecten && <Section listTitle="De laatste projecten"     posts={projecten} start="0" end="3"/> }
   {blog &&      <Section listTitle="Het laaste van het blog"  posts={blog}      start="0" end="3"/> }
 </BaseLayout>

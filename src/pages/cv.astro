@@ -4,7 +4,7 @@ import TimeLineElement from "@/components/cv/TimeLine.astro";
 import HideClassButton from "@/components/cv/HideClassButton.astro";
 import { toSentenceCase } from "@/scripts/stringConverters.ts";
 import skills from "@/skills.json";
-const processSkills = (skills: any[], timelineEnabled: boolean) => {
+const processSkills = (skills: any[]) => {
     // Sort the skills array based on the rules provided
         skills.sort((a, b) => {
         // If end_date is 'null', put it at the top
@@ -24,7 +24,7 @@ const processSkills = (skills: any[], timelineEnabled: boolean) => {
     };
 }
 
-const sortedSkills = processSkills(skills.skills,true);
+const sortedSkills = processSkills(skills.skills);
 const timelineArray = sortedSkills.timelineTrue;
 const uniqueCategories = [...new Set(timelineArray.map(item => item.category))];
 
@@ -65,15 +65,21 @@ const categories = skillsArray.reduce((acc, skill: {title: string, category: str
       ))}
   </section>
   {
-    Object.entries(categories).map(([category, titles]) => (
+    Object.entries(categories).map(([category, titles]: [string, string[]]) => (
       <section class="mb-10" id={category}>
         <h2 class="text-3xl w-full font-bold mb-5">{toSentenceCase(category,true)}</h2>
         <ul class="list-disc md:columns-5 columns-2 mx-6">
           {
-            titles.map((title:string) => (<li>{title}</li>))
+            titles.map((title: string) => (<li>{title}</li>))
           }
         </ul>
       </section>
     ))
   }
 </BaseLayout>
+<style is:global>
+.time-line-container > div:last-child .education__time > .education__line,
+.time-line-container > div:only-child .education__time > .education__line {
+  display: none;
+}
+</style>
