@@ -4,7 +4,8 @@ export const PERSOONLIJKE_INFO = {
     Geboortejaar: 1989,
     GeboorteMaand: 12,
     GeboorteDag: 27,
-    Email: "contact@robstolte.nl"
+    Email: "contact@robstolte.nl",
+    profielfoto: "https://a.storyblok.com/f/253533/4750x4750/fa15b61404/profiel2023-groot.png"
 }
 
 export const SIDE_BAR_MENU = [
