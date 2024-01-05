@@ -8,7 +8,6 @@ const { data } = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
   version: import.meta.env.DEV ? "draft" : "published",
 });
 const story = data.story;
-console.log(story.content)
 ---
 <PostLayout
     title       = {story.name}

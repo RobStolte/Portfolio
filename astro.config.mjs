@@ -43,7 +43,7 @@ export default defineConfig({
       BlogPost: 'storyblok/BlogPost',
       Grid: 'storyblok/Grid',
       Afbeelding: 'storyblok/Afbeelding',
-      YoutubeVideo: 'storyblok/YoutubeVideo',
+      VideoPlayer: 'storyblok/VideoPlayer',
       TextSection: 'storyblok/TextSection',
       Chapter: 'storyblok/Chapter',
       LinkPreviewCard: 'storyblok/LinkPreviewCard'
