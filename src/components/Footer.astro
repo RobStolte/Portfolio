@@ -1,12 +1,20 @@
 ---
 import { PERSOONLIJKE_INFO } from "@/config.ts";
+import { Image } from "astro:assets";
 const today = new Date();
 
 ---
 
-<footer class="footer footer-center block mb-5 pt-10">
-  <div class="pb-2 footer-line">
+<footer class="footer footer-center ">
+  <div class="footer-line">
+    <Image
+    src     ="https://a.storyblok.com/f/253533/3249x4150/2bc61f68c9/wapen-stolte-groot.png/m/0x100"
+    alt     ="Familiewapen Stolte, origineel maar gescand en uitgeknipt naar transparant"
+    width   ="100"
+    height  ="100"
+  />
     <p style="white-space: nowrap;"><i class="fas fa-copyright size-3.5" title="Copyright"/> | {today.getFullYear()} {PERSOONLIJKE_INFO.Voornaam}  {PERSOONLIJKE_INFO.Achternaam}</p>
+
   </div>
   </footer>
 <style>
