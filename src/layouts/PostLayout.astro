@@ -19,6 +19,8 @@ const { title, description, pubDate, updatedDate, heroImage, heroImageAlt, badge
 dayjs.extend(localizedFormat);
 const postDate = dayjs(pubDate).format("ll");
 const editDate = dayjs(updatedDate).format("ll");
+const imageWidth = 750;
+const imageHeight = 422;
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}>
@@ -27,17 +29,17 @@ const editDate = dayjs(updatedDate).format("ll");
         <Image
             loading = "eager"
             decoding= "sync"
-            width   = {750}
-            height  = {422}
-            src     = {heroImage+"/m/0x1024/filters:format(webp)"}
+            width   = {imageWidth}
+            height  = {imageHeight}
+            src     = {`${heroImage}/m/0x${imageWidth}/filters:format(webp)`}
             alt     = {heroImageAlt || "Hero Image"}
-            class   = "mb-6 rounded-2xl shadow-[#0f0e0e] border border-base-300 shadow-[0px_0px_15px_0px]"
+            class   = "mb-6 rounded-2xl shadow-[#0f0e0e] border border-base-300 shadow-[0px_0px_35px_0px]"
           />
       <h1 class="title my-2 text-4xl font-bold">{title}</h1>
       {pubDate && <time>{postDate}</time><br />}
-      {badge &&<BadgeComponent client:idle text={badge} v-if={badge} classes="my-2" /><br/>}
+      {badge &&<BadgeComponent text={badge} v-if={badge} classes="my-2" /><br/>}
       {updatedDate && (<div class="text-sm">{" "}Laatst Geupdated: <time>{editDate}</time>{" "}</div><br/>)}
-      {tags && tags.map((tag: string) => <BadgeComponent client:idle text={tag} classes="my-1 mr-2" outline="true" />) }
+      {tags && tags.map((tag: string) => <BadgeComponent text={tag} classes="my-1 mr-2" outline="true" />) }
       <div class="divider my-2"></div>
       <slot />
     </article>
