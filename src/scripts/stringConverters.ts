@@ -12,18 +12,15 @@ const toSentenceCase = (str: string, capitalizeFirst: boolean = true) => {
         // camelCase or PascalCase: Insert a space before all capital letters
         result = result.replace(/([A-Z])/g, ' $1');
     }
+    // Trim leading and trailing spaces
+    result = result.trim();
 
+    // Make all other letters lower case
+    result = result.toLowerCase();
     // Capitalize the first letter if capitalizeFirst is true
     if (capitalizeFirst) {
         result = CapitalizeFirst(result)
     }
-
-    // Make all other letters lower case
-    result = result.toLowerCase();
-
-    // Trim leading and trailing spaces
-    result = result.trim();
-
     return result;
 }
 
