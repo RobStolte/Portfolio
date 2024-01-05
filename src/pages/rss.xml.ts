@@ -5,9 +5,12 @@ const storyblokApi = useStoryblokApi()
 
 interface Story {
   name: string;
-  published_at: string;
+  first_published_at: string;
   content: {
     description: string;
+    heroImage: {
+      filename: string
+    }
   };
   full_slug: string;
 }
@@ -20,9 +23,10 @@ export async function GET() {
 
   const items = data.stories.map((story: Story) => ({
     title: story.name,
-    pubDate: story.published_at,
+    pubDate: story.first_published_at,
     description: story.content.description,
     link: story.full_slug,
+    customData: `<image>${story.content.heroImage.filename}</image>`,
   }));
 
   return rss({
