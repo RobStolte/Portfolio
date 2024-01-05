@@ -29,7 +29,7 @@ export async function GET() {
     link: story.full_slug,
     customData: `
     <image>
-      <url>${story.content.heroImage.filename}/m/0x144/filters:format(webp)</url>
+      <url>${story.content.heroImage.filename}/m/0x144/filters:format(png)</url>
       <width>144</width>
       <title>${story.content.heroImage.alt}</title>
       <link>${story.full_slug}</link>
