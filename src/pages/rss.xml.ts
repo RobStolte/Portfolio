@@ -9,7 +9,8 @@ interface Story {
   content: {
     description: string;
     heroImage: {
-      filename: string
+      filename: string,
+      alt: string
     }
   };
   full_slug: string;
@@ -26,7 +27,13 @@ export async function GET() {
     pubDate: story.first_published_at,
     description: story.content.description,
     link: story.full_slug,
-    customData: `<image>${story.content.heroImage.filename}</image>`,
+    customData: `
+    <image>
+      <url>${story.content.heroImage.filename}/m/0x144/filters:format(webp)</url>
+      <width>144</width>
+      <title>${story.content.heroImage.alt}</title>
+      <link>${story.full_slug}</link>
+    </image>`,
   }));
 
   return rss({
