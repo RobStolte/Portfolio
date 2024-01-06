@@ -1,42 +1,74 @@
 ---
-const { title, img, desc, url, badge, tags, target, imageAlt, noImageProcessing, unintrusive} = Astro.props;
-import BadgeComponent from "@/components/vue/badge.vue";
+const {
+  title,
+  img,
+  desc,
+  url,
+  badge,
+  tags,
+  target,
+  imageAlt,
+  noImageProcessing,
+  unintrusive,
+} = Astro.props;
+import BadgeComponent from '@/components/vue/badge.vue';
 
 const imageWidth = 300;
-import { Image } from "astro:assets"
-const image = noImageProcessing ? `${img}`: `${img}/m/0x${imageWidth}/filters:quality(80):format(webp)`;
+import { Image } from 'astro:assets';
+const image = noImageProcessing
+  ? `${img}`
+  : `${img}/m/0x${imageWidth}/filters:quality(80):format(webp)`;
 ---
 
 <div
-  class={`rounded-2xl
-        ${unintrusive ? '' : 'hover:shadow-[0px_0px_15px_0px] hover:scale-[105%]'}
+  class={`
+        m-3
+        rounded-2xl
+        ${unintrusive ? '' : 'hover:shadow-4xl hover:scale-[105%]'}
         backdrop-blur-lg
-        shadow-lg
-        border
-        border-base-300
-        hover:shadow-[#0f0e0e]
+        shadow-xl
         transition
-        ease-in-out`}
+        ease-in-out
+        `}
 >
-  <a href={url} target={target} data-astro-prefetch class="no-underline">
-    <div class={`hero-content flex-col md:flex-row ${unintrusive ? 'p-2' : ''}`}>
-          <Image src={image} width={imageWidth} height={500} alt={imageAlt || title}
-          class={`max-w-full md:max-w-[13rem] rounded-lg ${unintrusive ? 'mt-1 mb-1' : ''}`}
-          />
-      <div class="grow w-full">
-        <h1 class="text-xl : font-bold">
+  <a href={url} target={target} data-astro-prefetch class='no-underline'>
+    <div>
+    <div
+      class={`hero-content p-0 flex-col md:flex-row ${unintrusive ? 'p-2' : ''}`}
+    >
+      <Image
+        src={image}
+        width={imageWidth}
+        height={500}
+        alt={imageAlt || title}
+        class={`
+          max-w-full
+          md:max-w-[13rem]
+          rounded-2xl
+          ${unintrusive ? 'mt-1 mb-1' : 'rounded-br-none rounded-tr-none'}`}
+      />
+      <div class='grow w-full p-5'>
+        <h1 class='text-xl : font-bold'>
           {title}
-          {badge &&<BadgeComponent text={badge} classes="my-1" outline="false" />}
-        </h1>
-        <p class="py-1 text-1xl">{desc}</p>
-        <>
-        <div class="card-actions justify-end">
           {
-          tags &&
-            tags.map((tag: string) => <BadgeComponent text={tag} classes="my-1" outline="true" />)
+            badge && (
+              <BadgeComponent text={badge} classes='my-1' outline='false' />
+            )
           }
-        </div>
+        </h1>
+        <p class='py-1 text-1xl'>{desc}</p>
+        <>
+          <div class='card-actions justify-end'>
+            {
+              tags &&
+                tags.map((tag: string) => (
+                  <BadgeComponent text={tag} classes='my-1' outline='true' />
+                ))
+            }
+          </div>
+        </>
       </div>
     </div>
+  </div>
   </a>
 </div>

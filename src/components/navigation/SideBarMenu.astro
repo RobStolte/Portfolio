@@ -1,7 +1,7 @@
 ---
 import { SIDE_BAR_MENU } from '@/config.ts';
 const { sideBarActiveItemID, menu = SIDE_BAR_MENU } = Astro.props;
-const activeClass = 'bg-base-300';
+const activeClass = 'bg-base-300 opacity-70 text-base-content';
 const isActive = (id: string) => id === sideBarActiveItemID ? activeClass : '';
 const capitalizeFirstLetter = (string: string) => string.charAt(0).toUpperCase() + string.slice(1);
 interface item {

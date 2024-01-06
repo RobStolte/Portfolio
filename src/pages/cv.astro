@@ -41,13 +41,17 @@ const categories = skillsArray.reduce((acc, skill: {title: string, category: str
 <BaseLayout title="Curriculum vitae" sideBarActiveItemID="cv">
 
 <!-- Add more buttons for more categories -->
-  <h1 class="text-3xl w-full font-bold">Curriculum vitae</h1>
-{uniqueCategories.map((button) => (
-    <HideClassButton
-        name={button}
-        classname={`timeline__element__category--${button}`}
-    />
-))}
+  <div class="w-full">
+    <h1 class="w-full text-3xl mb-5 font-bold">Curriculum vitae</h1>
+    <div class="w-full justify-center menu menu-vertical lg:menu-horizontal bg-base-200 rounded-2xl">
+        {uniqueCategories.map((button) => (
+            <HideClassButton
+                name={button}
+                classname={`timeline__element__category--${button}`}
+            />
+        ))}
+    </div>
+  </div>
   <br class="mb-10 text-justify"/>
   <section class="time-line-container">
       {timelineArray.map((timelineElement) => (

@@ -13,12 +13,11 @@ const categoryText = CapitalizeFirst(toSentenceCase(category));
   m-5
   relative
   rounded-2xl
-  hover:shadow-[0px_0px_15px_0px] hover:scale-[105%]
+  hover:shadow-4xl hover:scale-[105%]
   backdrop-blur-lg
   shadow-lg
   border
   border-base-300
-  hover:shadow-[#0f0e0e]
   transition
   ease-in-out"
 >
@@ -35,8 +34,38 @@ const categoryText = CapitalizeFirst(toSentenceCase(category));
 {text ? <p class=''>{text}</p> : null}
 <p class='mt-3 mb-5 text-justify'>
 </p>
-{category && <div class='absolute bottom-0 left-0 p-2 bg-gray-900
-rounded-2xl text-xs rounded-tl-none rounded-br-none' style={`background-color: ${categoryBackgroundColor}; color: ${categoryTextColor};`}>{categoryText}</div>}
-{location && <div class='absolute bottom-0 right-0 p-2 bg-gray-900
-rounded-2xl text-xs rounded-tr-none rounded-bl-none' >{location}</div>}
+{category && <div class='
+  absolute
+  bottom-0
+  left-0
+  pr-6
+  pl-6
+  p-2
+  text-xs
+  rounded-br-none
+  rounded-tl-none
+  rounded-tr-xl
+  rounded-bl-2xl
+  '
+  style={`
+    background-color: ${categoryBackgroundColor};
+    color: ${categoryTextColor};`
+    }>{categoryText}
+</div>}
+{location && <div class='
+  absolute
+  bottom-0
+  right-0
+  pr-6
+  pl-6
+  p-2
+  bg-gray-900
+  text-xs
+  rounded-br-2xl
+  rounded-tr-none
+  rounded-bl-none
+  rounded-tl-xl
+  '
+  >{location}
+</div>}
 </figure>
