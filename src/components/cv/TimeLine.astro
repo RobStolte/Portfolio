@@ -2,23 +2,28 @@
 import TimeLineTextBlok from './TimeLineTextBlok.astro'
 const { title, company, startDate, endDate, location, text, link, category, classname } =
 Astro.props;
-const grabYear = (endDate: number, startDate: number) => {
-  if (endDate === undefined) {
-    return startDate;
-  }
+function displayDate(startDate: Date | null, endDate: Date | null) {
+  const options = { year: 'numeric', month: 'long' };
+
   if (endDate === null) {
+    return startDate ? new Date(startDate).toLocaleDateString('nl-NL', options as Intl.DateTimeFormatOptions) : '';
+  }
+
+  const inTheFuture = new Date();
+  inTheFuture.setFullYear(inTheFuture.getFullYear() + 1);
+
+  if (new Date(endDate) > inTheFuture) {
     return 'huidig';
   }
-  const dateString = endDate.toString();
-  const year = dateString.slice(0, 4);
-  return year;
-};
+
+  return new Date(endDate).toLocaleDateString('nl-NL', options as Intl.DateTimeFormatOptions);
+}
 ---
 
 <div class={`flex ${classname} `}>
   <div
     class='education__time mr-10 font-light translate-y-[60px]'
-    data-date={grabYear(endDate,startDate)}
+    data-date={displayDate(startDate, endDate)}
   >
     <span class='w-4 h-4 bg-primary block rounded-full mt-1 '/>
     <span class='education__line bg-primary block h-full'/>

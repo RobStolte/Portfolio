@@ -3,40 +3,49 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import TimeLineElement from "@/components/cv/TimeLine.astro";
 import HideClassButton from "@/components/cv/HideClassButton.astro";
 import { toSentenceCase } from "@/scripts/stringConverters.ts";
-import skills from "@/skills.json";
-const processSkills = (skills: any[]) => {
-    // Sort the skills array based on the rules provided
-        skills.sort((a, b) => {
-        // If end_date is 'null', put it at the top
-        if (a.end_date === null) return -1;
-        if (b.end_date === null) return 1;
+import { supabase } from "@/scripts/supabase";
 
-        // If no end_date, put it at the bottom
-        if (!a.end_date) return 1;
-        if (!b.end_date) return -1;
+// getting the skills table data from the database
+async function getSkillTables() {
+  const { data, error } = await supabase
+    .from('skills')
+    .select('title, category(name)')
+    .eq('timeline_element', false);
 
-        // Otherwise, sort by end_date
-        return Number(b.end_date) - Number(a.end_date);
-    });
-    return {
-        timelineTrue: skills.filter(skill => skill.timeline_element === true),
-        timelineFalse: skills.filter(skill => skill.timeline_element === false),
-    };
+  if (error) {
+    console.error('Error: ', error);
+    return;
+  }
+
+  const correctSkillsTables = data.reduce((acc, item) => {
+  if (item.category) {
+    const category = item.category.name;
+    if (category && !acc[category]) {
+      acc[category] = [];
+    }
+    if (category) {
+      if (item.title) {
+        acc[category].push(item.title);
+      }
+    }
+  }
+  return acc;
+}, {} as Record<string, string[]>);
+
+  return correctSkillsTables;
 }
 
-const sortedSkills = processSkills(skills.skills);
-const timelineArray = sortedSkills.timelineTrue;
-const uniqueCategories = [...new Set(timelineArray.map(item => item.category))];
+const skillTables = await getSkillTables();
 
-// creating the skills lists
-const skillsArray = sortedSkills.timelineFalse;
-const categories = skillsArray.reduce((acc, skill: {title: string, category: string, timeline_element: boolean}) => {
-  if (!acc[skill.category]) {acc[skill.category] = [];}
-  acc[skill.category].push(skill.title);
-  return acc;
-}, {});
-
-
+// getting the timeline data from the database
+const skillsTimeline = await supabase
+    .from('skills')
+    .select(`title,description,start_date,end_date,url!left(url),company!left(name),category!left(name),location!left(name)`)
+    .eq('timeline_element', true)
+    .order('end_date', { ascending: false });
+console.log(skillsTimeline.data);
+const categoriesSupa = await supabase.from('skills').select('category (id,name)').eq('timeline_element', true);
+const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.category && data.category.name || null))];
 ---
 <BaseLayout title="Curriculum vitae" sideBarActiveItemID="cv">
 
@@ -54,22 +63,22 @@ const categories = skillsArray.reduce((acc, skill: {title: string, category: str
   </div>
   <br class="mb-10 text-justify"/>
   <section class="time-line-container">
-      {timelineArray.map((timelineElement) => (
-        <TimeLineElement
-          title     = {timelineElement.title}
-          company   = {timelineElement.company}
-          startDate = {timelineElement.start_date}
-          endDate   = {timelineElement.end_date}
-          location  = {timelineElement.location}
-          text      = {timelineElement.text}
-          link      = {timelineElement.link}
-          category  = {timelineElement.category}
-          classname = {`timeline__element__category--${timelineElement.category}`}
-        />
-      ))}
+    {skillsTimeline.data && skillsTimeline.data.map((data) => (
+      <TimeLineElement
+        title     = {data.title || null}
+        company   = {data.company && data.company.name || null}
+        startDate = {data.start_date || null}
+        endDate   = {data.end_date || null}
+        location  = {data.location && data.location.name || null}
+        text      = {data.description || null}
+        link      = {data.url && data.url.url || null}
+        category  = {data.category && data.category.name || null}
+        classname = {`timeline__element__category--${data.category && data.category.name || null}`}
+      />
+    ))}
   </section>
   {
-    Object.entries(categories).map(([category, titles]: [string, string[]]) => (
+    Object.entries(skillTables as { [key: string]: string[] }).map(([category, titles]) => (
       <section class="mb-10" id={category}>
         <h2 class="text-3xl w-full font-bold mb-5">{toSentenceCase(category,true)}</h2>
         <ul class="list-disc md:columns-5 columns-2 mx-6">
