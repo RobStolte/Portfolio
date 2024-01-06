@@ -11,20 +11,22 @@ import {CONTACT_METHODS} from "@/config.ts";
 >
   {CONTACT_METHODS.map(item => (
     <a
+      style="font-size: 0;"
       href={item.url}
       target='_blank'
       class='mx-3'
       aria-label={item.ariaLabel}
       title={item.titel}
-      ><i class={item.icon + ' size-5'}/>
+      ><i class={item.icon + ' size-5'}/>{item.ariaLabel}
     </a>
   ))}
   <a
     href='/rss.xml'
+    style="font-size: 0;"
     target='_blank'
     class='mx-3'
     aria-label='RSS Feed'
     title='RSS Feed'
-    ><i class='fa-solid fa-rss size-5'></i>
+    ><i class='fa-solid fa-rss size-5'></i>RSS Feed
   </a>
 </div>
