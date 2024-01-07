@@ -10,14 +10,14 @@ const { image, sideBarActiveItemID, slug } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme="lofi">
+<html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} image={image} />
   </head>
-  <body class="dark">
-    <div class="dark:bg-base-100 drawer lg:drawer-open">
+  <body class="bg-rst__base">
+    <div class=" drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content bg-base-100">
+      <div class="drawer-content">
         <Header title={SITE_TITLE} breadcrumb={slug} />
         <div class="md:flex md:justify-center">
           <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
@@ -30,3 +30,4 @@ const { image, sideBarActiveItemID, slug } = Astro.props;
     </div>
   </body>
 </html>
+<style ></style>

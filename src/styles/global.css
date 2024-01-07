@@ -1,6 +1,27 @@
-:root {
-  font: light 1rem 'Fira Code', sans-serif;
-}
+/*@tailwind base;     */
+/*@tailwind components;     */
+/*@tailwind utilities;     */
+
+/*@layer base {*/
+  :root {
+  font: light 1rem 'Fira Code' sans-serif;
+    /*  ================ Rob Stolte colorpallete ================  */
+/*    --color__primary          : 32 22 59 ;    /* Russian Violet */
+/*    --color__secondary        : 138 243 255;  /* Electric blue */
+/*    --color__tertiary         : 24 169 153;   /* Persian green */
+/*    --color__accent           : 244 248 18;   /* Yellow */
+/*    --color__subtle           : 226 202 202;  /* Pale Dogwood */
+/*    --color__base-light       : 244 244 244;  /* Cultured */
+/*    --color__base-dark        : 29 29 29;     /* Eerie Black */
+/*
+/*
+/*    /*  ================ Fam Stolte color palette ================  */
+/*    --color__stolte-primary  : 166 80 91;    /* Matrix Primary */
+/*    --color__stolte-secondary: 221 197 173;  /* Grain Brown Secondary */
+/*    --color__stolte-tertiary : 25 21 28;     /* Bastille Tertiary */
+/*    --color__stolte-accent   : 218 160 173;  /* Can Can Accent */
+  }
+/*}*/
 p{
   font : normal 1rem sans-serif;
 }

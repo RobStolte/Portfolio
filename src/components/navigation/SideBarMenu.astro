@@ -1,7 +1,7 @@
 ---
 import { SIDE_BAR_MENU } from '@/config.ts';
 const { sideBarActiveItemID, menu = SIDE_BAR_MENU } = Astro.props;
-const activeClass = 'bg-base-300 opacity-70 text-base-content';
+const activeClass = 'bg-rst__accent opacity-70 text-rst__primary';
 const isActive = (id: string) => id === sideBarActiveItemID ? activeClass : '';
 const capitalizeFirstLetter = (string: string) => string.charAt(0).toUpperCase() + string.slice(1);
 interface item {
@@ -15,7 +15,7 @@ interface item {
   {menu.map((item: item) => (
     <li>
       <a class={isActive(item.id) + ' py-3 text-base'} id={item.id} href={'/' + item.slug} data-astro-prefetch>
-        <i class={item.icon + ' size-5'} ></i> | {capitalizeFirstLetter(item.id)}</a>
+        <i class={`${item.icon} size-5`} ></i>{capitalizeFirstLetter(item.id)}</a>
     </li>
   ))}
 </ul>
