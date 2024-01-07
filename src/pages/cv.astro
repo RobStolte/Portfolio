@@ -43,7 +43,6 @@ const skillsTimeline = await supabase
     .select(`title,description,start_date,end_date,url!left(url),company!left(name),category!left(name),location!left(name)`)
     .eq('timeline_element', true)
     .order('end_date', { ascending: false });
-console.log(skillsTimeline.data);
 const categoriesSupa = await supabase.from('skills').select('category (id,name)').eq('timeline_element', true);
 const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.category && data.category.name || null))];
 ---
@@ -52,7 +51,7 @@ const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.categ
 <!-- Add more buttons for more categories -->
   <div class="w-full">
     <h1 class="w-full text-3xl mb-5 font-bold">Curriculum vitae</h1>
-    <div class="w-full justify-center menu menu-vertical lg:menu-horizontal bg-base-200 rounded-2xl">
+    <div class="w-full justify-center">
         {uniqueCategories.map((button) => (
             <HideClassButton
                 name={button}

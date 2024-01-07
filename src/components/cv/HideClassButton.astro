@@ -3,53 +3,41 @@ import {toSentenceCase,CapitalizeFirst } from '@/scripts/stringConverters.ts'
 const { name, classname } = Astro.props;
 const categoryText = CapitalizeFirst(toSentenceCase(name));
 ---
-<hide-class-button>
-    <label class="label cursor-pointer">
-        <span class="label-text mr-2">{categoryText}</span>
-        <input data-classname={classname} type="checkbox" class="toggle toggle-success mr-9" checked />
-      </label>
+<hide-class-button class="button_custom_container toggled_active">
+        <button data-classname={classname} class="button_custom ">{categoryText}</button>
 </hide-class-button>
 <script>
-    class HideClassButton extends HTMLElement {
-        constructor() {
-            super();
-
-            const button = this.querySelector('input');
-            if (button) {
-                const classname = button.dataset.classname;
-
-                button.addEventListener('click', () => {
-                    const toggleCategory = (classname: string | undefined) => {
-                        // Select all elements with the category class
-                        const elements = document.querySelectorAll('.' + classname);
-                        // For each element, toggle the 'hidden' class
-                        elements.forEach(element => {
-                            element.classList.toggle('hidden');
-                        });
-                    }
-                    toggleCategory(classname);
-
-                    // Add an extra class to the button
-                    button.setAttribute('checked', '');
-                    hideLastVisibleLine();
-                });
-            }
-        };
-    }
+class HideClassButton extends HTMLElement {
+    constructor() {
+        super();
+        const button = this.querySelector('button');
+        if (button) {
+            const classname = button.dataset.classname;
+            button.addEventListener('click', () => {
+                const toggleCategory = (classname: string | undefined) => {
+                    const elements = document.querySelectorAll('.' + classname);
+                    elements.forEach(element => {
+                        element.classList.toggle('hidden');
+                    });
+                }
+                toggleCategory(classname);
+                this.classList.toggle('toggled_active');
+                hideLastVisibleLine();
+            });
+        }
+    };
+}
     customElements.define('hide-class-button', HideClassButton);
     function hideLastVisibleLine() {
     // Select all .education__time elements
     const elements = Array.from(document.querySelectorAll('.education__time'));
-
     // Filter out hidden elements
     const visibleElements = elements.filter((element: HTMLElement) => element.offsetParent !== null);
-
     // Iterate over the visible elements
     for (let i = 0; i < visibleElements.length; i++) {
         // Get the current and next visible elements
         const currentElement = visibleElements[i];
         const nextElement = visibleElements[i + 1];
-
         // If the next visible element is not found, hide the line of the current element
         if (!nextElement) {
             const line = currentElement.querySelector('.education__line');
@@ -62,6 +50,126 @@ const categoryText = CapitalizeFirst(toSentenceCase(name));
 
 </script>
 <style>
+    button.button_custom {
+        background-color: rgba(0, 0, 0, 0.05);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        position:relative;
+        border: none;
+        padding: 0.75rem 2rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 1rem;
+        cursor: pointer;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 2rem;
+        z-index: 1;
+        letter-spacing: 0.1rem;
+        overflow: hidden;
+        backdrop-filter: blur(1.1rem);
+        transition: 0.5s;
+    }
+    button.button_custom:hover {
+        letter-spacing: 0.2rem;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    button.button_custom::before{
+        content: '';
+        position:absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+        transform: skewX(45deg) translateX(0);
+        transition: 0.5s
+    }
+    button.button_custom:hover::before{
+        transform: skewX(45deg) translateX(200%)
+    }
+    .button_custom_container{
+        position:relative;
+        overflow:hidden;
+        width: 100%;
+        height: 100%;
+        border-radius: 2rem;
+        transition: 0.5s
+    }
+    .button_custom_container::before{
+        content: '';
+        position:absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -1.1rem;
+        width: 30px;
+        height: 10px;
+        background: rgb(143, 0, 19);
+        box-shadow:
+            0 0 5px rgb(143, 0, 19),
+            0 0 10px rgb(143, 0, 19),
+            0 0 30px rgb(143, 0, 19),
+            0 0 60px rgb(143, 0, 19);
+        border-radius: 2rem;
+        transition: 0.5s;
+        transition-delay: 0.5s;
+    }
+    .button_custom_container.toggled_active::before{
+        bottom: 0;
+        width: 70%;
+        height: 60%;
+        background: rgb(0, 255, 0);
+        box-shadow:
+            0 0 5px rgb(0, 255, 0),
+            0 0 10px rgb(0, 255, 0),
+            0 0 30px rgb(0, 255, 0),
+            0 0 60px rgb(0, 255, 0);
+        border-radius: 00%;
+        transition-delay: 0.5s;
+    }
+    .button_custom_container.toggled_active>button{
+        color: white;
+        transition-delay: 0.5s;
+    }
+    .button_custom_container>button{
+        color: rgb(167, 167, 167);
+        transition-delay: 0.5s;
+    }
+
+    .button_custom_container::after{
+        content: '';
+        position:absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -1rem;
+        width: 30px;
+        height: 10px;
+        background: rgb(143, 0, 19);
+        box-shadow:
+            0 0 5px rgb(143, 0, 19),
+            0 0 10px rgb(143, 0, 19),
+            0 0 30px rgb(143, 0, 19),
+            0 0 60px rgb(143, 0, 19);
+        border-radius: 2rem;
+        transition: 0.5s;
+        transition-delay: 0.5s;
+    }
+    .button_custom_container.toggled_active::after{
+        top: 0;
+        width: 50%;
+        height: 50%;
+        border-radius: 50%;
+        transition-delay: 0.5s;
+        background: rgb(0, 255, 0);
+        box-shadow:
+            0 0 5px rgb(0, 255, 0),
+            0 0 10px rgb(0, 255, 0),
+            0 0 30px rgb(0, 255, 0),
+            0 0 60px rgb(0, 255, 0);
+    }
+
+
     .toggled {
         background-color: #100418;
     }
