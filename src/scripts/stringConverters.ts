@@ -25,7 +25,7 @@ const toSentenceCase = (str: string, capitalizeFirst: boolean = true) => {
 }
 
 const CapitalizeFirst = (str: string) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    return `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
 }
 
 export { toSentenceCase, CapitalizeFirst };

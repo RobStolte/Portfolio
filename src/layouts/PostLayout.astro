@@ -38,7 +38,12 @@ const imageHeight = 422;
       <h1 class="title my-2 text-4xl font-bold text-rst__primary dark:text-rst__secondary">{title}</h1>
       {pubDate && <time>{postDate}</time><br />}
       {badge &&<BadgeComponent text={badge} v-if={badge} classes="my-2" /><br/>}
-      {updatedDate && (<div class="text-sm">{" "}Laatst Geupdated: <time>{editDate}</time>{" "}</div><br/>)}
+      {updatedDate && (
+        <div class="text-sm">
+          Laatst Geupdated: <time>{editDate}</time>
+        </div>
+        <br/>
+      )}
       {tags && tags.map((tag: string) => <BadgeComponent text={tag} classes="my-1 mr-2" outline="true" />) }
       <div class="divider my-2"></div>
       <slot />

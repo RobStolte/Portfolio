@@ -20,12 +20,12 @@ function displayDate(startDate: Date | null, endDate: Date | null) {
 }
 ---
 
-<div class={`flex ${classname} `}>
+<div class={`${classname} flex`}>
   <div
     class='education__time mr-10 font-light translate-y-[60px]'
     data-date={displayDate(startDate, endDate)}
   >
-    <span class='w-4 h-4 bg-primary block rounded-full mt-1 '/>
+    <span class='w-4 h-4 bg-primary block rounded-full mt-1'/>
     <span class='education__line bg-primary block h-full'/>
   </div>
   <div class='experience__data bd-grid px-5 timeline__element_animation
@@ -33,10 +33,10 @@ function displayDate(startDate: Date | null, endDate: Date | null) {
     {
       link ? (
         <a href={link} target='_blank'>
-          <TimeLineTextBlok title={title} company={company} location={location} text={text} category={category} />
+          <TimeLineTextBlok title={title} company={company} location={location} text={text} category={category}/>
         </a>
       ) : (
-        <TimeLineTextBlok title={title} company={company} location={location} text={text} category={category} />
+        <TimeLineTextBlok title={title} company={company} location={location} text={text} category={category}/>
       )
     }
   </div>

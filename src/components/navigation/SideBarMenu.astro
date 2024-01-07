@@ -14,7 +14,7 @@ interface item {
 <ul class='menu grow shrink menu-md overflow-y-auto'>
   {menu.map((item: item) => (
     <li>
-      <a class={isActive(item.id) + ' py-3 text-base'} id={item.id} href={'/' + item.slug} data-astro-prefetch>
+      <a class={`${isActive(item.id)} py-3 text-base`} id={item.id} href={`/${item.slug}`} data-astro-prefetch>
         <i class={`${item.icon} size-5`} ></i>{capitalizeFirstLetter(item.id)}</a>
     </li>
   ))}

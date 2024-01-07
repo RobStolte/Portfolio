@@ -19,7 +19,7 @@ const pathParts = path.split('/').filter(part => part);
       {pathParts.length > 0 && ' / '}
       {pathParts.map((part, index) => (
         <span>
-          <a class="btn btn-ghost normal-case text-Xl" href={'/' + pathParts.slice(0, index + 1).join('/')}>{part.replace(/-/g, ' ')}</a>
+          <a class="btn btn-ghost normal-case text-Xl" href={`/${pathParts.slice(0, index + 1).join('/')}`}>{part.replace(/-/g, ' ')}</a>
           {index < pathParts.length - 1 && ' / '}
         </span>
       ))}
