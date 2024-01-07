@@ -11,7 +11,8 @@ export const PERSOONLIJKE_INFO = {
 export const SIDE_BAR_MENU = [
         { id: 'home',       icon: 'fa-solid fa-house',          slug: '' },
         { id: 'blog',       icon: 'fa-solid fa-newspaper',      slug: 'blog' },
-        { id: 'cv',         icon: 'fa-solid fa-address-card',   slug: 'cv' }
+        { id: 'cv',         icon: 'fa-solid fa-address-card',   slug: 'cv' },
+        { id: 'games',      icon: 'fa-solid fa-gamepad',        slug: 'games' },
     ];
     export const CONTACT_METHODS = [
         { id: 'email',      icon: 'fa-solid  fa-envelope', url: `mailto:${PERSOONLIJKE_INFO.Email}`,       ariaLabel:'Email',      titel: 'Stuur me een mailtje!' },
