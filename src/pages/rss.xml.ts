@@ -25,24 +25,25 @@ export async function GET() {
   })
   const items = data.stories.map((story: Story) => ({
 
-    title: story.name,
-    pubDate: story.first_published_at,
-    description: story.content.description,
-    link: story.full_slug,
-    customData: `
-    <copyright>${today.getFullYear()} ${PERSOONLIJKE_INFO.Voornaam} ${PERSOONLIJKE_INFO.Achternaam} All rights reserved.</copyright>
-    <language>nl-nl</language>
-    <image>
-      <url>${story.content.heroImage.filename}/m/0x144/filters:format(png)</url>
-      <width>144</width>
-      <title>${story.content.heroImage.alt}</title>
-      <link>${story.full_slug}</link>
-    </image>`,
+    title         : story.name,
+    pubDate       : story.first_published_at,
+    description   : story.content.description,
+    link          : story.full_slug,
+    customData    : `
+                    <copyright>${today.getFullYear()} ${PERSOONLIJKE_INFO.Voornaam} ${PERSOONLIJKE_INFO.Achternaam} All rights reserved.</copyright>
+                    <language>nl-nl</language>
+                    <image>
+                      <url>${story.content.heroImage.filename}/m/0x144/filters:format(png)</url>
+                      <width>144</width>
+                      <title>${story.content.heroImage.alt}</title>
+                      <link>${story.full_slug}</link>
+                    </image>
+                  `,
   }));
   return rss({
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    site: import.meta.env.SITE,
-    items: items,
+    title         : SITE_TITLE,
+    description   : SITE_DESCRIPTION,
+    site          : import.meta.env.SITE,
+    items         : items,
   });
 }
