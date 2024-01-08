@@ -1,38 +1,17 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { CapitalizeFirst } from "@/scripts/stringConverters"
-import { loadEnv } from "vite";
-const {
-    STEAM_API_KEY,
-    STEAM_USER_ID
-    // @ts-ignore
-} = loadEnv(process.env.NODE_ENV, process.cwd(), "");
-async function steamAPIGetPlaytimes(url: string) {
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data.response.games.map(game => ({
-            name: game.name,
-            playtime2weeks: game.playtime_2weeks,
-            playtime_forever: game.playtime_forever,
-            image: `https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`,
-        }));
-    } catch (error) {
-        return [];
-    }
-}
-
-const fetchurl = `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_USER_ID}&format=json`
-let response;
-try {
-  response = await steamAPIGetPlaytimes(fetchurl);
-} catch (error) {
-}
+import { type steamGame } from "@/scripts/interfaces";
+import { CapitalizeFirst } from "@/scripts/stringConverters.ts"
+import { steamAPIGetPlaytimes } from "@/scripts/steamPlaytime.ts"
 
 function niceHourTimes(RawTime:number) {
     return Math.floor(RawTime / 60)+':'+Math.round((RawTime % 60)).toString().padStart(2, '0');
 }
-
+let response: steamGame[] = []; // Initialize response with an empty array
+try {
+  response = await steamAPIGetPlaytimes('playTime');
+} catch (error) {
+}
 ---
 <BaseLayout>
     <h1>Gamen</h1>
@@ -46,15 +25,15 @@ function niceHourTimes(RawTime:number) {
 
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {response.map((game) => (
+        {response.map((game: steamGame) => (
             <div class="relative h-20 flex items-center p-4 bg-rst__primary rounded-full dark:bg-slate-200 overflow-hidden shadow-2xl">
-                <img class="absolute left-[0px] w-20 h-20 rounded-full" src={game.image} alt={game.name} />
+                <img class="absolute left-[0px] w-20 h-20 rounded-full" src={game.img_icon_url} alt={game.name} />
                 <div class="ml-20">
                     <div class="text-lg font-bold text-rst__secondary overflow-hidden whitespace-nowrap overflow-ellipsis">
                         {CapitalizeFirst(game.name.toLowerCase())}
                     </div>
                     <div class="text-sm">
-                        Gespeeld: {niceHourTimes(game.playtime_forever)} uur, Laatste 2 weken: {niceHourTimes(game.playtime2weeks)} uur
+                        Gespeeld: {game.playtime_forever !== null ? niceHourTimes(game.playtime_forever) : 'N/A'} uur, Laatste 2 weken: {game.playtime_2weeks !== null ? niceHourTimes(game.playtime_2weeks) : 'N/A'} uur
                     </div>
                 </div>
             </div>

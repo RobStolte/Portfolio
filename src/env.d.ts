@@ -1,11 +1,15 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
-interface ImportMetaEnv {
-    readonly BUILDER_API_PUBLIC_KEY: string;
-  }
+
   interface ImportMetaEnv {
-    readonly SUPABASE_URL: string
-    readonly SUPABASE_ANON_KEY: string
+    readonly STORYBLOK_TOKEN    : string
+    readonly SENTRY_AUTH_TOKEN  : string
+    readonly SENTRY_DNS_URL     : string
+    readonly OG_API_KEY         : string
+    readonly STEAM_API_KEY      : string
+    readonly STEAM_USER_ID      : string
+    readonly SUPABASE_URL       : string
+    readonly SUPABASE_ANON_KEY  : string
   }
 
   interface ImportMeta {
