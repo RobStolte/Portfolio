@@ -32,8 +32,8 @@ try {
                     <div class="text-lg font-bold text-rst__secondary overflow-hidden whitespace-nowrap overflow-ellipsis">
                         {CapitalizeFirst(game.name.toLowerCase())}
                     </div>
-                    <div class="text-sm">
-                        Gespeeld: {game.playtime_forever !== null ? niceHourTimes(game.playtime_forever) : 'N/A'} uur, Laatste 2 weken: {game.playtime_2weeks !== null ? niceHourTimes(game.playtime_2weeks) : 'N/A'} uur
+                    <div class="text-sm text-rst__secondary">
+                        Gespeeld: {game.playtime_forever !== undefined ? niceHourTimes(game.playtime_forever) : 'N/A'} uur, Laatste 2 weken: {game.playtime_2weeks !== undefined ? niceHourTimes(game.playtime_2weeks) : 'N/A'} uur
                     </div>
                 </div>
             </div>
