@@ -8,12 +8,14 @@ const {
   tags,
   target,
   imageAlt,
+  imageWidth,
+  imageHeight,
   noImageProcessing,
   unintrusive,
+  rel,
 } = Astro.props;
 import BadgeComponent from '@/components/vue/badge.vue';
 
-const imageWidth = 300;
 import { Image } from 'astro:assets';
 const image = noImageProcessing
   ? `${img}`
@@ -21,31 +23,19 @@ const image = noImageProcessing
 ---
 
 <div
-  class={`
-        m-3
-        rounded-2xl
-        ${unintrusive ? '' : 'hover:shadow-4xl hover:scale-[105%]'}
-        backdrop-blur-lg
-        shadow-xl
-        transition
-        ease-in-out
-        `}
+  class={`m-3 rounded-2xl backdrop-blur-lg shadow-xl transition ease-in-out ${unintrusive ? '' : 'hover:shadow-4xl hover:scale-[105%]'}`}
 >
-  <a href={url} target={target} data-astro-prefetch class='no-underline'>
+  <a href={url} target={target} rel={rel || ""} data-astro-prefetch class='no-underline'>
     <div>
     <div
       class={`hero-content p-0 flex-col md:flex-row ${unintrusive ? 'p-2' : ''}`}
     >
       <Image
         src={image}
-        width={imageWidth}
-        height={500}
+        width={imageWidth || 500}
+        height={imageHeight || 300}
         alt={imageAlt || title}
-        class={`
-          max-w-full
-          md:max-w-[13rem]
-          rounded-2xl
-          ${unintrusive ? 'mt-1 mb-1' : 'rounded-br-none rounded-tr-none'}`}
+        class={`max-w-full md:max-w-[13rem] rounded-2xl ${unintrusive ? 'mt-1 mb-1' : 'rounded-br-none rounded-tr-none'}`}
       />
       <div class='grow w-full p-5'>
         <h1 class='text-xl font-bold text-rst__primary dark:text-rst__secondary'>

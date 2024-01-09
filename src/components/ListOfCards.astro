@@ -1,5 +1,6 @@
 ---
 // Import your components at the top of the file
+import { getRezAndAspectFromStoryAssetFilename } from '@/scripts/storyBlokUtil';
 import HorizontalCard from './HorizontalCard.astro';
 const { listTitle, posts, start, end } = Astro.props;
 interface published_at {
@@ -17,26 +18,33 @@ const sortedPosts = posts.sort((a: published_at, b: published_at) => {
 }).slice(start, end);
 interface post {
   title: string;
+  badge: string;
+  tags: string[];
   image: {
     filename: string;
     alt: string;
+    height?: number;
+    width?: number;
   };
   description: string;
   slug: string;
-  tags: string[];
-  badge: string;
 }
+const staticImageWidth = 300
 ---
 
 <section>
   <h2 class='text-3xl w-full font-bold mb-2 text-rst__primary dark:text-rst__secondary'>{listTitle}</h2>
-  {
-    sortedPosts.map((post: post) => (
+  { sortedPosts.map((post: post) => {
+      const imageData = getRezAndAspectFromStoryAssetFilename(post.image.filename)
+      const newHeight = imageData.aspectRatio * staticImageWidth;
+    return (
       <>
         <HorizontalCard
           title={post.title}
           img={post.image.filename}
           imageAlt={post.image.alt}
+          imageWidth={staticImageWidth}
+          imageHeight={newHeight}
           desc={post.description}
           url={`/${post.slug}`}
           target='_self'
@@ -44,6 +52,6 @@ interface post {
           badge={post.badge}
         />
       </>
-    ))
-  }
+    );
+  })}
 </section>

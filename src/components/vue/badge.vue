@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {stringToHexColor, contrastColor } from '@/scripts/colortools.ts';
 export default {
   props: {

@@ -1,12 +1,25 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "jsx": "react",
     "allowJs": true,
-    "types": ["astro/client","vite/client", "vitest"],
-    "plugins": [{"name": "@astrojs/ts-plugin"}],
+    "types": [
+      "astro/client",
+      "vite/client",
+      "vitest"
+    ],
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ],
     "verbatimModuleSyntax": true,
-    "baseUrl": ".",
-    "paths": {"@/*": ["./src/*"]},
-    "strictNullChecks": true,
+    "baseUrl": "R:/_ROB/portfolio",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "strictNullChecks": true
   }
 }

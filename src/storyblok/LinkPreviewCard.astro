@@ -12,9 +12,12 @@ const socialdata = await openGraphScan(blok.url);
   <HorizontalCard
       title    = { socialdata.title}
       img      = { socialdata.image}
+      imgWidth = { 250 }
+      imgHeight= { 200 }
       desc     = { socialdata.description}
       url      = { socialdata.url}
       target   = "_blank"
+      rel      = "noopener"
       imageAlt = { socialdata.title}
       noImageProcessing = {true}
       unintrusive = {true}

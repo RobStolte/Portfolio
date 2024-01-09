@@ -46,7 +46,7 @@ return pages
 let blog = [];
 
 blog = await createCollectioLists('blog');
-
+export const prerender = true;
 ---
 
 <BaseLayout sideBarActiveItemID='home'>

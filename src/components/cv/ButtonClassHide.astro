@@ -3,11 +3,11 @@ import {toSentenceCase,CapitalizeFirst } from '@/scripts/stringConverters.ts'
 const { name, classname } = Astro.props;
 const categoryText = CapitalizeFirst(toSentenceCase(name));
 ---
-<hide-class-button class="button_custom_container toggled_active">
+<button-class-hide class="button_custom_container toggled_active">
         <button data-classname={classname} class="button_custom ">{categoryText}</button>
-</hide-class-button>
+</button-class-hide>
 <script>
-class HideClassButton extends HTMLElement {
+class buttonClassHide extends HTMLElement {
     constructor() {
         super();
         const button = this.querySelector('button');
@@ -27,7 +27,7 @@ class HideClassButton extends HTMLElement {
         }
     };
 }
-    customElements.define('hide-class-button', HideClassButton);
+    customElements.define('button-class-hide', buttonClassHide);
     function hideLastVisibleLine() {
     // Select all .education__time elements
     const elements = Array.from(document.querySelectorAll('.education__time'));

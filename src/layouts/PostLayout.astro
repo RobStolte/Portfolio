@@ -4,6 +4,7 @@ import { Image } from "astro:assets"
 import BadgeComponent from "@/components/vue/badge.vue"
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
+import { getRezAndAspectFromStoryAssetFilename } from "@/scripts/storyBlokUtil";
 interface postSchema {
     title               : string,
     description         : string,
@@ -20,7 +21,8 @@ dayjs.extend(localizedFormat);
 const postDate = dayjs(pubDate).format("ll");
 const editDate = dayjs(updatedDate).format("ll");
 const imageWidth = 750;
-const imageHeight = 422;
+const imageData = getRezAndAspectFromStoryAssetFilename(heroImage)
+const newHeight = imageData.aspectRatio * imageWidth;
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}>
@@ -30,7 +32,7 @@ const imageHeight = 422;
             loading = "eager"
             decoding= "sync"
             width   = {imageWidth}
-            height  = {imageHeight}
+            height  = {newHeight}
             src     = {`${heroImage}/m/0x${imageWidth}/filters:format(webp)`}
             alt     = {heroImageAlt || "Hero Image"}
             class   = "mb-6 rounded-2xl border border-base-300 shadow-2xl"

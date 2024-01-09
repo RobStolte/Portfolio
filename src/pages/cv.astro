@@ -1,9 +1,17 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import TimeLineElement from "@/components/cv/TimeLine.astro";
-import HideClassButton from "@/components/cv/HideClassButton.astro";
+import ButtonClassHide from "@/components/cv/ButtonClassHide.astro";
 import { toSentenceCase } from "@/scripts/stringConverters.ts";
 import { supabase } from "@/scripts/supabase";
+
+//import ButtonClassHide from "@/components/react/ButtonClassHide";
+//import ButtonClassHide from "@/components/svelte/ButtonClassHide.svelte";
+//import ButtonClassHide from "@/components/vue/ButtonClassHide.vue";
+
+
+
+
 
 // getting the skills table data from the database
 async function getSkillTables() {
@@ -53,7 +61,7 @@ const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.categ
     <h1 class="w-full text-3xl mb-5 font-bold">Curriculum vitae</h1>
     <div class="w-full justify-center">
         {uniqueCategories.map((button) => (
-            <HideClassButton
+            <ButtonClassHide
                 name={button}
                 classname={`timeline__element__category--${button}`}
             />
