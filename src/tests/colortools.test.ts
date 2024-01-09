@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { stringToHexColor, contrastColor } from '../scripts/colortools.ts';
+import { stringToHexColor, contrastColor } from '@/scripts/colortools.ts';
 
 describe('stringToHexColor', () => {
   it('should return a hex color for a given string', () => {

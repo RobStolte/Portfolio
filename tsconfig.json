@@ -14,7 +14,7 @@
       }
     ],
     "verbatimModuleSyntax": true,
-    "baseUrl": "R:/_ROB/portfolio",
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
