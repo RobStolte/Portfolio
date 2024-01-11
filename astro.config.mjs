@@ -6,21 +6,15 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import storyblok from '@storyblok/astro';
 import basicSsl from '@vitejs/plugin-basic-ssl';
-import partytown from "@astrojs/partytown";
 import vue from "@astrojs/vue";
 import { loadEnv } from "vite";
 import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
-import sentry from "@sentry/astro";
-import spotlightjs from "@spotlightjs/astro";
 import svelte from '@astrojs/svelte';
 import solidJs from "@astrojs/solid-js";
-import alpinejs from "@astrojs/alpinejs";
 import lit from "@astrojs/lit";
 const {
-  STORYBLOK_TOKEN,
-  SENTRY_AUTH_TOKEN,
-  SENTRY_DNS_URL
+  STORYBLOK_TOKEN
 } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 
@@ -59,13 +53,7 @@ export default defineConfig({
     include: ['**/react/*']
   }), solidJs({
     include: ['**/solid/*']
-  }), mdx(), sitemap(), tailwind(), vue(), svelte(), partytown(), sentry({
-    dsn: SENTRY_DNS_URL,
-    sourceMapsUploadOptions: {
-      project: "portfolio",
-      authToken: SENTRY_AUTH_TOKEN
-    }
-  }), spotlightjs(), alpinejs(), lit()],
+  }), mdx(), sitemap(), tailwind(), vue(), svelte(), lit()],
   vite: {
     plugins: [basicSsl()],
     server: {
