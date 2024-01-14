@@ -1,7 +1,9 @@
 ---
 
 import { useStoryblokApi } from '@storyblok/astro'
-import ListofLayout from '@/layouts/ListofLayout.astro'
+import HorizontalCard from "@/components/HorizontalCard.astro";
+import BentoLayoutContentMedium from '@/layouts/BentoLayoutContentMedium.astro';
+import { getRezAndAspectFromStoryAssetFilename } from "@/scripts/storyBlokUtil";
 const storyblokApi = useStoryblokApi()
 
 const collection = 'blog';
@@ -33,5 +35,62 @@ const pages = data.stories.map((story:story) => {
     tags: story.tag_list,
   }
 })
+interface post {
+  title: string;
+  badge: string;
+  tags: string[];
+  image: {
+    filename: string;
+    alt: string;
+    height?: number;
+    width?: number;
+  };
+  description: string;
+  slug: string;
+}
+
+const staticImageWidth = 300
 ---
-<ListofLayout page={pages} collection={collection} />
+<BentoLayoutContentMedium>
+{pages.map((page) => {
+
+  <div class="mb-5">
+    <div class="text-5xl w-full font-bold text-rst__primary dark:text-rst__accent">{collection}</div>
+  </div>
+
+  {
+    page.length === 0 ? (
+      <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
+        <p class="font-bold">Sorry!</p>
+        <p>Er zijn nog geen {collection} gepost</p>
+      </div>
+    ) : (
+    <ul>
+  {page.map((post: post) => {
+      const imageData = getRezAndAspectFromStoryAssetFilename(post.image.filename)
+      const newHeight = imageData.aspectRatio * staticImageWidth;
+
+    return (
+      <>
+        <HorizontalCard
+          title={post.title}
+          badge={post.badge}
+          tags={post.tags}
+          img={post.image.filename}
+          imageAlt={post.image.alt}
+          imageWidth={staticImageWidth}
+          imageHeight={newHeight}
+          desc={post.description}
+          url={post.slug}
+          target="_self"
+          badge={post.badge}
+        />
+      </>
+    );
+  })}
+</ul>
+    )
+  }
+
+})}
+</BentoLayoutContentMedium>

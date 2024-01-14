@@ -8,29 +8,21 @@ const imageHeight = 300;
 const imageWidth = 300;
 ---
 
-<div class='drawer-side z-40' id="my-drawer shadow-4xl ">
-  <label for='my-drawer' class='drawer-overlay'/>
-  <aside
-    class='sticky bg-rst__primary text-rst__accent px-2 pt-2 h-auto min-h-full w-[19rem] flex flex-col'
-    style="background-image:none"
-  >
-    <div class='w-fit mx-auto mt-5 mb-6'>
-      <a href='/' style="font-size: 0;">
-        <div class='avatar transition ease-in-out hover:scale-[102%] block m-auto'>
-          <div class='w-[12rem] rounded-full shadow-2xl'>
-            <Image
-              class='mask mask-circle'
-              width={imageWidth}
-              height={imageHeight}
-              src={`${PERSOONLIJKE_INFO.profielfoto}/m/0x200/filters:quality(80):format(webp)`}
-              alt=`Profielfoto van ${PERSOONLIJKE_INFO.Voornaam} ${PERSOONLIJKE_INFO.Achternaam}`
-            />
-          </div>
-        </div>
-        avatar
-      </a>
+<div class='w-fit mx-auto mt-5 mb-6'>
+  <a href='/' style="font-size: 0;">
+    <div class='avatar transition ease-in-out hover:scale-[102%] block m-auto'>
+      <div class='w-[12rem] rounded-full shadow-2xl'>
+        <Image
+          class='mask mask-circle'
+          width={imageWidth}
+          height={imageHeight}
+          src={`${PERSOONLIJKE_INFO.profielfoto}/m/0x200/filters:quality(80):format(webp)`}
+          alt=`Profielfoto van ${PERSOONLIJKE_INFO.Voornaam} ${PERSOONLIJKE_INFO.Achternaam}`
+        />
+      </div>
     </div>
-    <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
-    <SideBarFooter />
-  </aside>
+    avatar
+  </a>
 </div>
+<SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
+<SideBarFooter />

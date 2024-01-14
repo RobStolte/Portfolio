@@ -1,0 +1,49 @@
+---
+// Import the necessary components
+import BentoBox from '@/components/BentoBox.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const boxes = [
+  {
+    columnWidth: 1,
+    rowHeight: 1,
+    title: "Title",
+  },
+  {
+    columnWidth: 2,
+    rowHeight: 1,
+    title: "Content00",
+  },
+  {
+    columnWidth: 1,
+    rowHeight: 2,
+    title: "Content01",
+  },
+  {
+    columnWidth: 1,
+    rowHeight: 1,
+    title: "Content02",
+  },
+  {
+    columnWidth: 2,
+    rowHeight: 1,
+    title: "Content03",
+  },
+  {
+    columnWidth: 2,
+    rowHeight: 1,
+    title: "Content04",
+  },
+  {
+    columnWidth: 2,
+    rowHeight: 1,
+    title: "Content05",
+  }
+]
+---
+
+<BaseLayout>
+        {boxes.map((box) => (
+          <BentoBox title={box.title} columnWidth={box.columnWidth} rowHeight={box.rowHeight}/>)
+        )}
+</BaseLayout>

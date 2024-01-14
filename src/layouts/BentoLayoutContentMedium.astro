@@ -1,0 +1,29 @@
+---
+// Import the necessary components
+import SideBar from '@/components/navigation/SideBar.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+---
+
+<BaseLayout>
+  <div class=`bento-box` style=`grid-row: span 1;  grid-column: span 1;`>
+    <h1>Title</h1>
+    <p>BentoGrid content goes here</p>
+  </div>
+  <div class=`bento-box` style=`grid-row: span 1;  grid-column: span 3;`>
+    <slot name="header"/>
+  </div>
+  <div class=`bento-box` style=`grid-row: span 3;  grid-column: span 1; align-self: start;`>
+      <SideBar/>
+  </div>
+  <div class=`bento-box BentoBox__Scrollable` style=`grid-row: span 3;  grid-column: span 3;`>
+    <slot name="content"/>
+  </div>
+</BaseLayout>
+<style>
+
+.BentoBox__Scrollable {
+    overflow-y: scroll;
+    height: 80vh;
+  }
+</style>

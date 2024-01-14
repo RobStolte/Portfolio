@@ -1,27 +1,58 @@
-/*@tailwind base;     */
-/*@tailwind components;     */
-/*@tailwind utilities;     */
+:root {
+  /*  ================================================================================  */
+  /*  ==================================== Colors ====================================  */
+  /*  ================================================================================  */
 
-/*@layer base {*/
-  :root {
-  font: light 1rem 'Fira Code' sans-serif;
-    /*  ================ Rob Stolte colorpallete ================  */
-/*    --color__primary          : 32 22 59 ;    /* Russian Violet */
-/*    --color__secondary        : 138 243 255;  /* Electric blue */
-/*    --color__tertiary         : 24 169 153;   /* Persian green */
-/*    --color__accent           : 244 248 18;   /* Yellow */
-/*    --color__subtle           : 226 202 202;  /* Pale Dogwood */
-/*    --color__base-light       : 244 244 244;  /* Cultured */
-/*    --color__base-dark        : 29 29 29;     /* Eerie Black */
-/*
-/*
-/*    /*  ================ Fam Stolte color palette ================  */
-/*    --color__stolte-primary  : 166 80 91;    /* Matrix Primary */
-/*    --color__stolte-secondary: 221 197 173;  /* Grain Brown Secondary */
-/*    --color__stolte-tertiary : 25 21 28;     /* Bastille Tertiary */
-/*    --color__stolte-accent   : 218 160 173;  /* Can Can Accent */
+    --color__primary                : 270 45%  18%; /* Russian Violet */
+    --color__secondary              : 0   11%  84%; /* Electric blue */
+    --color__accent                 : 66  92%  51%; /* Persian green */
+
+  /* ================ Fam Stolte color palette ================ */
+    --color__stolte-primary         : 350 35%  48%; /* Matrix Primary */
+    --color__stolte-secondary       : 30  39%  77%; /* Grain Brown Secondary */
+    --color__stolte-tertiary        : 300 9%   10%; /* Bastille Tertiary */
+    --color__stolte-accent          : 343 44%  74%; /* Can Can Accent */
+
+  /* ================ environment color palette ================ */
+    --color__base                   : 60  0%   96%; /* Yellow */
+    --color__base-dark              : 300 9%   10%; /* Bastille Tertiary */
+    --color__text                   : 0   0%   0%; /* Black */
+    --color__text-light             : 0   0%   100%; /* White */
+    --background__base              : 350 25%  48%; /* White */
+    --background__base-accent       : 30  39%  77%; /* Persian green */
+    --background__base-dark         : 350  0%  15%; /* Black */
+    --background__base-accent-dark  : 30   0%  15%; /* White */
+}
+
+body.dark {
+  /*             ================ darkmode overrrides ================                  */
+    --color__base                   : var(--color__base-dark);   /* Yellow */
+    --color__text                   : var(--color__text-light);  /* Black */
+    --background__base              : var(--background__base-dark);  /* White */
+    --background__base-accent       : var(--background__base-accent-dark);  /* Black */
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    /*             ================ darkmode overrrides ================                  */
+      --color__base                 : var(--color__base-dark);   /* Yellow */
+      --color__text                 : var(--color__text-light);  /* Black */
+      --background__base            : var(--background__base-dark);  /* White */
+      --background__base-accent     : var(--background__base-accent-dark);  /* Black */
   }
-/*}*/
+}
+body {
+  /*             ================ body ================                  */
+  background-color  : hsl(var(--background__base));
+  color             : hsl(var(--color__text));
+  font-family       : 'Roboto', sans-serif;
+  font-size         : 1rem;
+  line-height       : 1.5;
+  margin            : 0;
+  padding           : 0;
+  transition        : background-color 0.2s ease-in-out;
+}
+
+
 p{
   font : normal 1rem sans-serif;
 }
@@ -42,4 +73,31 @@ h2 {
 
 .hidden {
   display: none;
+}
+
+.bento-box {
+  background: hsl(var(--color__base)/60%);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  display: grid;
+  border-radius: 3rem;
+  padding: 3rem;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.bento-box::before {
+  border-radius: 3rem;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0px 0px 100px 10px rgb(29, 29, 29);
+  z-index: -100;
 }
