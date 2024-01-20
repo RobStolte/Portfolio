@@ -15,7 +15,7 @@ const { image, sideBarActiveItemID, slug } = Astro.props;
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} image={image} />
   </head>
-  <body class="bg-rst__base dark:text-rst__secondary">
+  <body class="bg-rst__base dark:text-rst__secondary flex flex-col min-h-screen">
     <div class=" drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
@@ -25,10 +25,9 @@ const { image, sideBarActiveItemID, slug } = Astro.props;
             <slot />
           </main>
         </div>
-        <Footer />
+        <Footer class="mt-auto"/>
       </div>
       <SideBar sideBarActiveItemID={sideBarActiveItemID} transition:persist/>
     </div>
   </body>
 </html>
-<style ></style>

@@ -33,7 +33,7 @@ module.exports = {
 			{
 				light: {
 					...require('daisyui/src/theming/themes')['[data-theme=light]'],
-					'--color__primary'         : '32 22 59',
+					'--color__primary'         : '21 21 43',
 					'--color__secondary'       : '226 202 202',
 					'--color__accent'          : '244 248 18',
 					'--color__base'            : '244 244 244',
@@ -43,8 +43,8 @@ module.exports = {
 				},
 				dark: {
 					...require('daisyui/src/theming/themes')['[data-theme=dark]'],
-					'--color__primary'         : '32 22 59',
-					'--color__secondary'       : '226 202 202',
+					'--color__primary'         : '21 21 43',
+					'--color__secondary'       : '180 200 200',
 					'--color__accent'          : '244 248 18',
 					'--color__base'            : '29 29 29',
 					'--color__stolte-primary'  : '166 80 91',
