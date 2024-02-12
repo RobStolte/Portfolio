@@ -30,7 +30,7 @@
     "@astrojs/vue": "^4.0.8",
     "@storyblok/astro": "^4.0.0",
     "@supabase/supabase-js": "^2.39.2",
-    "@types/react": "^18.2.47",
+    "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.18",
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.2",
