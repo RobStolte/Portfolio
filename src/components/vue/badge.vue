@@ -38,4 +38,4 @@ export default {
     },
   },
 };
-</script>
+</script>nw/starry-star/src/scripts/colortoolsnw/starry-star/src/scripts/colortools

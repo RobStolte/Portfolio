@@ -1,0 +1,105 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import TimeLineElement from "@/components/cv/TimeLine.astro";
+import ButtonClassHide from "@/components/cv/ButtonClassHide.astro";
+import { toSentenceCase } from "@/scripts/stringConverters.ts";
+import { supabase } from "@/scripts/supabase";
+
+//import ButtonClassHide from "@/components/react/ButtonClassHide";
+//import ButtonClassHide from "@/components/svelte/ButtonClassHide.svelte";
+//import ButtonClassHide from "@/components/vue/ButtonClassHide.vue";
+
+
+
+
+
+// getting the skills table data from the database
+async function getSkillTables() {
+  const { data, error } = await supabase
+    .from('skills')
+    .select('title, category(name)')
+    .eq('timeline_element', false);
+
+  if (error) {
+    console.error('Error: ', error);
+    return;
+  }
+
+  const correctSkillsTables = data.reduce((acc, item) => {
+  if (item.category) {
+    const category = item.category.name;
+    if (category && !acc[category]) {
+      acc[category] = [];
+    }
+    if (category) {
+      if (item.title) {
+        acc[category].push(item.title);
+      }
+    }
+  }
+  return acc;
+}, {} as Record<string, string[]>);
+
+  return correctSkillsTables;
+}
+
+const skillTables = await getSkillTables();
+
+// getting the timeline data from the database
+const skillsTimeline = await supabase
+    .from('skills')
+    .select(`title,description,start_date,end_date,url!left(url),company!left(name),category!left(name),location!left(name)`)
+    .eq('timeline_element', true)
+    .order('end_date', { ascending: false });
+const categoriesSupa = await supabase.from('skills').select('category (id,name)').eq('timeline_element', true);
+const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.category && data.category.name || null))];
+---
+<BaseLayout title="Curriculum vitae" sideBarActiveItemID="cv">
+
+<!-- Add more buttons for more categories -->
+  <div class="w-full">
+    <h1 class="w-full text-3xl mb-5 font-bold">Curriculum vitae</h1>
+    <div class="w-full justify-center">
+        {uniqueCategories.map((button) => (
+            <ButtonClassHide
+                name={button}
+                classname={`timeline__element__category--${button}`}
+            />
+        ))}
+    </div>
+  </div>
+  <br class="mb-10 text-justify"/>
+  <section class="time-line-container">
+    {skillsTimeline.data && skillsTimeline.data.map((data) => (
+      <TimeLineElement
+        title     = {data.title || null}
+        company   = {data.company && data.company.name || null}
+        startDate = {data.start_date || null}
+        endDate   = {data.end_date || null}
+        location  = {data.location && data.location.name || null}
+        text      = {data.description || null}
+        link      = {data.url && data.url.url || null}
+        category  = {data.category && data.category.name || null}
+        classname = {`timeline__element__category--${data.category && data.category.name || null}`}
+      />
+    ))}
+  </section>
+  {
+    Object.entries(skillTables as { [key: string]: string[] }).map(([category, titles]) => (
+      <section class="mb-10" id={category}>
+        <h2 class="text-3xl w-full font-bold mb-5">{toSentenceCase(category,true)}</h2>
+        <ul class="list-disc md:columns-5 columns-2 mx-6">
+          {
+            titles.map((title: string) => (<li>{title}</li>))
+          }
+        </ul>
+      </section>
+    ))
+  }
+</BaseLayout>
+<style is:global>
+.time-line-container > div:last-child .education__time > .education__line,
+.time-line-container > div:only-child .education__time > .education__line {
+  display: none;
+}
+</style>

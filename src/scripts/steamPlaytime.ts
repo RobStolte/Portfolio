@@ -1,5 +1,5 @@
 
-import type { steamGame } from "@/scripts/interfaces";
+import type { steamGame } from "nw/starry-star/src/scripts/interfaces";
 const STEAM_USER_ID = import.meta.env.STEAM_USER_ID;
 const STEAM_API_KEY = import.meta.env.STEAM_API_KEY;
 

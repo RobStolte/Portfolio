@@ -1,7 +1,7 @@
 import rss from "@astrojs/rss";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@/config";
+import { SITE_TITLE, SITE_DESCRIPTION } from "nw/starry-star/src/config";
 import { useStoryblokApi } from '@storyblok/astro'
-import { PERSOONLIJKE_INFO } from "@/config.ts";
+import { PERSOONLIJKE_INFO } from "nw/starry-star/src/config";
 const today = new Date();
 const storyblokApi = useStoryblokApi()
 

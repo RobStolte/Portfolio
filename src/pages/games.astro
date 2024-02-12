@@ -1,5 +1,4 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import { type steamGame } from "@/scripts/interfaces";
 import { CapitalizeFirst } from "@/scripts/stringConverters.ts"
 import { steamAPIGetPlaytimes } from "@/scripts/steamPlaytime.ts"
@@ -14,7 +13,7 @@ try {
 }
 
 ---
-<BaseLayout>
+<main>
     <h1>Gamen</h1>
     <sub class="mb-5 underline">pagina is work in progres maar toch voor de share live gegooid.</sub>
     <p class="mb-5">Een van mijn hobbies is gamen, de preferentie's gaan het meeste uit naar spellen welke niet competitie/match gebaseerd zijn maar een progressie op lange termijn hebben.
@@ -25,12 +24,12 @@ try {
     <p class="mb-10">Om toch deze site een beetje aan te vullen en mijzelf een reden te geven om iets technisch te bouwen is deze pagina een scrape systeem welke de api's scraped van gamediensten die ik gebruik, daarmee is er een redelijk accuraat inzicht op wat en hoeveel ik speel en is er een reden om deze site technischer te maken dan hij eigenlijk hoeft te zijn.</pclass="mb-5">
 
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
         {response.map((game: steamGame) => (
-            <div class="relative h-20 flex items-center p-4 bg-rst__primary rounded-full dark:bg-slate-200 overflow-hidden shadow-2xl">
+            <div class="relative flex items-center h-20 p-4 overflow-hidden rounded-full shadow-2xl bg-rst__primary dark:bg-slate-200">
                 <img class="absolute left-[0px] w-20 h-20 rounded-full" src={game.img_icon_url} alt={game.name} />
                 <div class="ml-20">
-                    <div class="text-lg font-bold text-rst__secondary overflow-hidden whitespace-nowrap overflow-ellipsis">
+                    <div class="overflow-hidden text-lg font-bold text-rst__secondary whitespace-nowrap overflow-ellipsis">
                         {CapitalizeFirst(game.name.toLowerCase())}
                     </div>
                     <div class="text-sm text-rst__secondary">
@@ -41,4 +40,4 @@ try {
         ))}
     </div>
 
-</BaseLayout>
+</main>

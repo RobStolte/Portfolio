@@ -1,5 +1,4 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import TimeLineElement from "@/components/cv/TimeLine.astro";
 import ButtonClassHide from "@/components/cv/ButtonClassHide.astro";
 import { toSentenceCase } from "@/scripts/stringConverters.ts";
@@ -54,12 +53,12 @@ const skillsTimeline = await supabase
 const categoriesSupa = await supabase.from('skills').select('category (id,name)').eq('timeline_element', true);
 const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.category && data.category.name || null))];
 ---
-<BaseLayout title="Curriculum vitae" sideBarActiveItemID="cv">
+<main title="Curriculum vitae" >
 
 <!-- Add more buttons for more categories -->
   <div class="w-full">
-    <h1 class="w-full text-3xl mb-5 font-bold">Curriculum vitae</h1>
-    <div class="w-full justify-center">
+    <h1 class="w-full mb-5 text-3xl font-bold">Curriculum vitae</h1>
+    <div class="justify-center w-full">
         {uniqueCategories.map((button) => (
             <ButtonClassHide
                 name={button}
@@ -87,8 +86,8 @@ const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.categ
   {
     Object.entries(skillTables as { [key: string]: string[] }).map(([category, titles]) => (
       <section class="mb-10" id={category}>
-        <h2 class="text-3xl w-full font-bold mb-5">{toSentenceCase(category,true)}</h2>
-        <ul class="list-disc md:columns-5 columns-2 mx-6">
+        <h2 class="w-full mb-5 text-3xl font-bold">{toSentenceCase(category,true)}</h2>
+        <ul class="mx-6 list-disc md:columns-5 columns-2">
           {
             titles.map((title: string) => (<li>{title}</li>))
           }
@@ -96,7 +95,7 @@ const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.categ
       </section>
     ))
   }
-</BaseLayout>
+</main>
 <style is:global>
 .time-line-container > div:last-child .education__time > .education__line,
 .time-line-container > div:only-child .education__time > .education__line {

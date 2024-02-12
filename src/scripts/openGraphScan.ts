@@ -1,5 +1,5 @@
 
-import { FAVICON } from '@/config.ts';
+import { FAVICON } from 'nw/starry-star/src/config';
 async function openGraphScan(url: string) {
   const encodedurl = encodeURIComponent(url)
   const fetchurl = `https://opengraph.io/api/1.1/site/${encodedurl}?app_id=${import.meta.env.OG_API_KEY}`
