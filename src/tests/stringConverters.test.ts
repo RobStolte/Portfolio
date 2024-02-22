@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { toSentenceCase, CapitalizeFirst } from 'nw/starry-star/src/scripts/stringConverters';
+import { toSentenceCase, CapitalizeFirst } from '@/scripts/stringConverters';
 
 describe('toSentenceCase', () => {
   it('should convert snake_case to sentence case', () => {

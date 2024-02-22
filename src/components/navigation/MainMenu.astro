@@ -1,0 +1,50 @@
+---
+import { SIDE_BAR_MENU } from '@/config.ts';
+import BaseButton from "@/components/UserInteraction/BaseButton";
+const { sideBarActiveItemID, menu = SIDE_BAR_MENU } = Astro.props;
+const activeClass = 'bg-rst__accent opacity-70 text-rst__primary';
+const isActive = (id: string) => id === sideBarActiveItemID ? activeClass : '';
+const capitalizeFirstLetter = (string: string) => string.charAt(0).toUpperCase() + string.slice(1);
+interface item {
+  id: string;
+  slug: string;
+  icon: string;
+}
+---
+<nav class:list="nav__button_bar_persistent" >
+    {menu.map((item: item) => (
+        <BaseButton
+        href={`/${item.slug}`}
+        target={"_self"}
+        title={item.id}
+        id={item.id}
+        ActiveTab={!isActive(item.id)}
+        
+        >
+            <!-- data-astro-prefetch -->
+            <i class={`${item.icon}`} ></i>
+        </BaseButton>
+    ))}
+</nav>
+<style>
+    .nav__button_bar_persistent {
+        position: absolute;
+        bottom: 5rem;
+        left: 5rem;
+        right: 5rem;
+        align-self: flex-end;
+    }
+    .nav__button_bar_persistent {
+        width               : 100%;
+        display             : flex;
+        flex-wrap           : wrap;
+        justify-content     : space-between;
+    }
+    @media (min-width: 768px) {
+        .nav__button_bar_persistent {
+            border-radius    : 1rem;
+            padding          : 0.75rem;
+            box-shadow       : var(--shadowstyle__base);
+        }
+    }
+</style>

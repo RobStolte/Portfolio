@@ -1,24 +1,27 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import MainCard from "@/components/MainCard.astro";
-import MediumPost from "@/components/MediumPost";
-import MainContainer from "@/components/MainContainer.astro";
-import ContainerScroll from "@/components/ContainerScroll.astro";
-import TextSlide from "@/components/TextSlide.astro";
+import {Image} from "astro:assets";
+import {PERSOONLIJKE_INFO} from "@/config";
+const today = new Date();
 ---
 
 <Layout title="Welcome to Astro Neumorphism template">
-	<MainCard />
-
-	<div class="block overflow-auto lg:hidden 2xl:block no-scrollbar">
-		<ContainerScroll>
-			<MediumPost client:visible />
-		</ContainerScroll>
-	</div>
-
-	<div class="hidden lg:flex 2xl:hidden">
-		<MainContainer>
-			<TextSlide />
-		</MainContainer>
-	</div>
+	<section>
+		<Image
+			src     ="https://a.storyblok.com/f/253533/3249x4150/2bc61f68c9/wapen-stolte-groot.png/m/0x100"
+			alt     ="Familiewapen Stolte, origineel maar gescand en uitgeknipt naar transparant"
+			width   ="100"
+			height  ="100"
+		/>
+		<h1>
+			Portfolio | Rob Stolte
+		</h1>
+		<h2>test </h2>
+	</section>
+	<section>
+		<p>test</p>
+	</section>
+	<section>
+		<p>test</p>
+	</section>
 </Layout>

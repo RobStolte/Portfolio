@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { stringToHexColor, contrastColor } from 'nw/starry-star/src/scripts/colortools';
+import { stringToHexColor, contrastColor } from '@/scripts/colortools';
 
 describe('stringToHexColor', () => {
   it('should return a hex color for a given string', () => {

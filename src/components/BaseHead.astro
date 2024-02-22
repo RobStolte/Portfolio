@@ -1,8 +1,8 @@
 ---
 //import '@/styles/global.css';
 import { ViewTransitions } from 'astro:transitions';
-import { FAVICON } from '@/config';
-
+import { FAVICON } from '../config';
+import '@/styles/global.css';
 export interface Props {
   title: string;
   description: string;
@@ -39,38 +39,9 @@ const { title, description, image = 'https://a.storyblok.com/f/253533/2493x3130/
 <meta property='twitter:description' content={description} />
 <meta property='twitter:image'  content={new URL(image, url)} />
 
-
 <!-- scripts -->
-<script async src='https://kit.fontawesome.com/1232a6e12a.js' crossorigin='anonymous'
-></script>
+<!-- <script async src='https://kit.fontawesome.com/1232a6e12a.js' crossorigin='anonymous'></script> -->
 
-<script async>
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark')
-} else {
-    document.documentElement.classList.remove('dark')
-}
-localStorage.theme = 'light'
-localStorage.theme = 'dark'
-localStorage.removeItem('theme')
-const toggleTheme = () => {
-    document.documentElement.classList.toggle("dark");
-    localStorage.theme = document.documentElement.classList.contains("dark")
-        ? "dark"
-        : "light";
-};
-window.toggleTheme = toggleTheme;
-if (localStorage.theme === "dark") {
-    document.documentElement.classList.add("dark");
-} else {
-    document.documentElement.classList.remove("dark");
-}
-</script>
-
-<!-- fonts -->
-<!--  <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-<!--  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-<!--  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
 
 <!-- base transition -->
 <ViewTransitions />

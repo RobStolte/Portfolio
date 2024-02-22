@@ -1,9 +1,9 @@
 ---
 
 import { useStoryblokApi } from '@storyblok/astro'
-import HorizontalCard from "@/components/HorizontalCard.astro";
-import BentoLayoutContentMedium from '@/layouts/BentoLayoutContentMedium.astro';
+import HorizontalCard from "@/components/Old/HorizontalCard.astro";
 import { getRezAndAspectFromStoryAssetFilename } from "@/scripts/storyBlokUtil";
+import Layout from "@/layouts/Layout.astro";
 const storyblokApi = useStoryblokApi()
 
 const collection = 'blog';
@@ -51,7 +51,7 @@ interface post {
 
 const staticImageWidth = 300
 ---
-<BentoLayoutContentMedium>
+<Layout>
 {pages.map((page) => {
 
   <div class="mb-5">
@@ -93,4 +93,4 @@ const staticImageWidth = 300
   }
 
 })}
-</BentoLayoutContentMedium>nw/starry-star/src/scripts/storyBlokUtilnw/starry-star/src/scripts/storyBlokUtil
+</Layout>

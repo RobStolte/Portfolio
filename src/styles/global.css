@@ -1,60 +1,101 @@
+@import url('reset.css');
+@font-face { font-family: 'FiraCode  Mono'; src: url('FiraMono.ttf')        format('ttf'); }
+@font-face { font-family: 'ShareTech Mono'; src: url('ShareTechMono.ttf')   format('ttf'); }
+
 :root {
   /*  ================================================================================  */
-  /*  ==================================== Colors ====================================  */
+  /*  =================================== variables ===================================  */
   /*  ================================================================================  */
 
-    --color__primary                : 270 45%  18%; /* Russian Violet */
-    --color__secondary              : 0   11%  84%; /* Electric blue */
-    --color__accent                 : 66  92%  51%; /* Persian green */
+    --color__primary                : 270  45%  18%; /* Russian Violet */
+    --color__secondary              : 0    11%  84%; /* Electric blue */
+    --color__accent                 : 66   92%  51%; /* Persian green */
 
   /* ================ Fam Stolte color palette ================ */
-    --color__stolte-primary         : 350 35%  48%; /* Matrix Primary */
-    --color__stolte-secondary       : 30  39%  77%; /* Grain Brown Secondary */
-    --color__stolte-tertiary        : 300 9%   10%; /* Bastille Tertiary */
-    --color__stolte-accent          : 343 44%  74%; /* Can Can Accent */
+    --color__stolte-primary         : 350  35%  48%; /* Matrix Primary */
+    --color__stolte-secondary       : 30   39%  77%; /* Grain Brown Secondary */
+    --color__stolte-tertiary        : 300   9%  10%; /* Bastille Tertiary */
+    --color__stolte-accent          : 343  44%  74%; /* Can Can Accent */
 
   /* ================ environment color palette ================ */
-    --color__base                   : 60  0%   96%; /* Yellow */
-    --color__base-dark              : 300 9%   10%; /* Bastille Tertiary */
-    --color__text                   : 0   0%   0%; /* Black */
-    --color__text-light             : 0   0%   100%; /* White */
-    --background__base              : 350 25%  48%; /* White */
-    --background__base-accent       : 30  39%  77%; /* Persian green */
-    --background__base-dark         : 350  0%  15%; /* Black */
-    --background__base-accent-dark  : 30   0%  15%; /* White */
+    --color__base                   : 60    0%  96%; /* Yellow */
+    --color__base-dark              : 300   9%  10%; /* Bastille Tertiary */
+    --color__text                   : 0     0%  0%; /* Black */
+    --color__text-light             : 0     0% 100%; /* White */
+    
+    --background__h                 : 350;
+    --background__s                 : 0%;
+    --background__l                 : 80%;
+    --background__l_dark            : 15%;
+    
+    --background__base              : var(--background__h) var(--background__s) var(--background__l); /* White */
+    --background__base-dark         : var(--background__h) var(--background__s) var(--background__l_dark); /* Black */
+    --background__base-accent       : 30   39%  77%; /* Persian green */
+    --background__base-accent-dark  : 30    0%  15%; /* White */
+    
+    /*             ================ Font styles ================                  */
+    
+    --font__accent                  : 'ShareTech Mono';
+    --font__base                    : 'FiraCode  Mono';
+    /*             ================ shadow styles ================                  */
+
+    --shadow__fade_01               :  28px   28px  60px;
+    --shadow__fade_02               : -28px  -28px  60px;
+
+    --shadow__color_01              : var(--background__h) var(--background__s)  calc( -5% + var(--background__l));
+    --shadow__color_02              : var(--background__h) var(--background__s)  calc(  5% + var(--background__l));
+
+    --shadow__color_01-dark         : var(--background__h) var(--background__s)  calc( -5% + var(--background__l_dark));
+    --shadow__color_02-dark         : var(--background__h) var(--background__s)  calc(  5% + var(--background__l_dark));
 }
 
-body.dark {
-  /*             ================ darkmode overrrides ================                  */
-    --color__base                   : var(--color__base-dark);   /* Yellow */
-    --color__text                   : var(--color__text-light);  /* Black */
-    --background__base              : var(--background__base-dark);  /* White */
-    --background__base-accent       : var(--background__base-accent-dark);  /* Black */
-}
+
+/*  ================================================================================  */
+/*  =================================== Dark mode ===================================  */
+/*  ================================================================================  */
 @media (prefers-color-scheme: dark) {
-  body {
-    /*             ================ darkmode overrrides ================                  */
-      --color__base                 : var(--color__base-dark);   /* Yellow */
-      --color__text                 : var(--color__text-light);  /* Black */
-      --background__base            : var(--background__base-dark);  /* White */
-      --background__base-accent     : var(--background__base-accent-dark);  /* Black */
-  }
+    body {
+        --color__base                   : var(--color__base-dark);   /* Yellow */
+        --color__text                   : var(--color__text-light);  /* Black */
+        --background__base              : var(--background__base-dark);  /* White */
+        --background__base-accent       : var(--background__base-accent-dark);  /* Black */
+    
+        --shadow__color_01              : var(--shadow__color_01-dark);
+        --shadow__color_02              : var(--shadow__color_02-dark);
+    }
 }
+
+/*  ================================================================================  */
+/*  ==================================== Styling ====================================  */
+/*  ================================================================================  */
+/**/
 body {
-  /*             ================ body ================                  */
-  background-color  : hsl(var(--background__base));
-  color             : hsl(var(--color__text));
-  font-family       : 'Roboto', sans-serif;
-  font-size         : 1rem;
-  line-height       : 1.5;
-  margin            : 0;
-  padding           : 0;
-  transition        : background-color 0.2s ease-in-out;
+    --shadowstyle__base             : var(--shadow__fade_01) hsl(var(--shadow__color_01))
+                                    , var(--shadow__fade_02) hsl(var(--shadow__color_02));
+    box-sizing                      : border-box;
+    position                        : relative;
+    display                         : flex;
+    flex-direction                  : column;
+    align-items                     : center;
+    justify-content                 : center;
+    min-height                      : 100vh;
+    background                      : hsl(var(--background__base));
+    font-family                     : var(--font__base), serif;
+    color                           : hsl(var(--color__text));
+    border-radius                   : 50px;
+
+
+    
+    
 }
-
-
-p{
-  font : normal 1rem sans-serif;
+h1,h2,h3,h4,h5,h6,caption,header {
+    font-weight  :bold;
+    font-family  : var(--font__accent), monospace;
+}
+@media (min-width: 1024px) { /* Responsive breakpoint for 'lg' */
+    body {
+        overflow: hidden;
+    }
 }
 
 h1 {
@@ -64,40 +105,4 @@ h1 {
 
 h2 {
   font-size: 2rem;
-  font-weight:bold
-}
-.time-line-container > div:last-child .education__time > .education__line,
-.time-line-container > div:only-child .education__time > .education__line {
-  display: none;
-}
-
-.hidden {
-  display: none;
-}
-
-.bento-box {
-  background: hsl(var(--color__base)/60%);
-  backdrop-filter: blur(50px);
-  -webkit-backdrop-filter: blur(50px);
-  display: grid;
-  border-radius: 3rem;
-  padding: 3rem;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  z-index: 10;
-}
-
-.bento-box::before {
-  border-radius: 3rem;
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  box-shadow: 0px 0px 100px 10px rgb(29, 29, 29);
-  z-index: -100;
 }

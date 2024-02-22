@@ -1,7 +1,7 @@
 ---
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 import { useStoryblokApi, type SbBlokData } from '@storyblok/astro'
-import BentoLayoutContentMedium from '@/layouts/BentoLayoutContentMedium.astro';
+import Layout from "@/layouts/Layout.astro";
 const storyblokApi = useStoryblokApi()
 const { slug } = Astro.params;
 const { data } = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
@@ -9,7 +9,7 @@ const { data } = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
 });
 const story = data.story;
 ---
-<BentoLayoutContentMedium
+<Layout
     title       = {story.name}
     description = {story.content.description}
     pubDate     = {story.first_published_at}
@@ -28,4 +28,4 @@ const story = data.story;
       })
     }
     </main>
-</BentoLayoutContentMedium>
+</Layout>

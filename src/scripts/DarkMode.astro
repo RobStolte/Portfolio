@@ -1,0 +1,13 @@
+<script>
+    const DARK_THEME_CLASS_NAME = 'dark';
+
+    function adjustThemeAccordingToUserPreference() {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add(DARK_THEME_CLASS_NAME);
+        } else {
+            document.documentElement.classList.remove(DARK_THEME_CLASS_NAME);
+        }
+    }
+
+    adjustThemeAccordingToUserPreference();
+</script>

@@ -1,0 +1,36 @@
+.astro__button_base {
+    display: inline-flex;
+    align-items: center;
+    background: #e3edf7;
+    margin-right: 1rem;
+    padding: 0.8rem;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+    -6px -6px 10px -1px rgba(255,255,255,0.7);
+    transition: transform 0.5s;
+    cursor: pointer;
+
+    &.astro__button_activeTab, &:hover {
+        box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+        inset -4px -4px 6px -1px rgba(255,255,255,0.7),
+        -0.5px -0.5px 0px rgba(255,255,255,1),
+        0.5px 0.5px 0px rgba(0,0,0,0.15),
+        0px 12px 10px -10px rgba(0,0,0,0.05);
+    }
+
+    svg {
+        transition: transform 0.5s;
+        fill: #31456a;
+        
+        &:hover {
+            transform: scale(0.9);
+        }
+    }
+    
+    &.astro__button_square {
+        border-radius: 10px;
+    }
+    
+    &.astro__button_round {
+        border-radius: 50%;
+    }
+}

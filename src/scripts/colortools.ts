@@ -1,4 +1,11 @@
-const stringToHexColor = (text: string) => {
+
+/**
+ * Converts a given string to a corresponding hexadecimal color.
+ *
+ * @param {string} text - The string to be converted.
+ * @return {string} - The hexadecimal color.
+ */
+function stringToHexColor (text: string): string {
   const str = text;
   if (!str) {
     return '#007ac3';
@@ -14,7 +21,16 @@ const stringToHexColor = (text: string) => {
   }
   return color;
 }
-const contrastColor = (inputColor : string) => {
+
+
+/**
+ * Calculates the contrast color based on the provided input color.
+ *
+ * @param {string} inputColor - The input color to calculate the contrast color for. It can be either in hexadecimal format (#RRGGBB) or a color name.
+ *
+ * @returns {string} The contrast color. It will be either 'black' or 'white'.
+ */
+function contrastColor (inputColor : string): string {
     const color = (inputColor.charAt(0) === '#') ? inputColor.substring(1, 7) : inputColor;
     const r = parseInt(color.substring(0, 2), 16); // red
     const g = parseInt(color.substring(2, 4), 16); // green
