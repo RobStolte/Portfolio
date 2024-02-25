@@ -1,3 +1,4 @@
+import * as icons from '@/Assets/icons/index'
 export const PERSOONLIJKE_INFO = {
     Voornaam: "Rob",
     Achternaam: "Stolte",
@@ -9,17 +10,17 @@ export const PERSOONLIJKE_INFO = {
 }
 
 export const SIDE_BAR_MENU = [
-        { id: 'home',       icon: 'fa-solid fa-house',          slug: '' },
-        { id: 'blog',       icon: 'fa-solid fa-newspaper',      slug: 'blog' },
-        { id: 'cv',         icon: 'fa-solid fa-address-card',   slug: 'cv' },
-        { id: 'games',      icon: 'fa-solid fa-gamepad',        slug: 'games' },
+        { id: 'home',  slug: '',        icon: 'IconHome'   },
+        { id: 'blog',  slug: 'blog',    icon: 'IconBlog'   },
+        { id: 'cv',    slug: 'cv',      icon: 'IconCVList' },
+        { id: 'games', slug: 'games',   icon: 'IconSteam'  },
     ];
     export const CONTACT_METHODS = [
-        { id: 'email',      icon: 'fa-solid  fa-envelope', url: `mailto:${PERSOONLIJKE_INFO.Email}`,       ariaLabel:'Email',      titel: 'Stuur me een mailtje!' },
-        { id: 'linkedin',   icon: 'fa-brands fa-linkedin', url: 'https://www.linkedin.com/in/rob-stolte/', ariaLabel:'LinkedIn',   titel: 'Bekijk mijn LinkedIn profiel!' },
-        { id: 'github',     icon: 'fa-brands fa-github',   url: 'https://github.com/RobStolte',            ariaLabel:'GitHub',     titel: 'Bekijk mijn GitHub profiel!' },
-        { id: 'twitter',    icon: 'fa-brands fa-twitter',  url: 'https://twitter.com/pomp0m',              ariaLabel:'Twitter',    titel: 'Bekijk mijn Twitter profiel!' },
-        { id: 'paypal',     icon: 'fa-brands fa-paypal',   url: 'https://paypal.me/RobStolte',             ariaLabel:'PayPal',     titel: 'Doneer via PayPal!' }
+        { id: 'email',    url: `mailto:${PERSOONLIJKE_INFO.Email}`,       ariaLabel:'Email',      titel: 'Stuur me een mailtje!',         icon: 'IconEmail'     },
+        { id: 'linkedin', url: 'https://www.linkedin.com/in/rob-stolte/', ariaLabel:'LinkedIn',   titel: 'Bekijk mijn LinkedIn profiel!', icon: 'IconLinkedin'  },
+        { id: 'github',   url: 'https://github.com/RobStolte',            ariaLabel:'GitHub',     titel: 'Bekijk mijn GitHub profiel!',   icon: 'IconGithub'    },
+        { id: 'twitter',  url: 'https://twitter.com/pomp0m',              ariaLabel:'Twitter',    titel: 'Bekijk mijn Twitter profiel!',  icon: 'IconTwitter'   },
+        { id: 'paypal',   url: 'https://paypal.me/RobStolte',             ariaLabel:'PayPal',     titel: 'Doneer via PayPal!',            icon: 'IconPaypal'    }
     ]
 export const FAVICON = "https://a.storyblok.com/f/253533/128x130/2e98d96a6e/familiewapen-stolte-128.png";
 export const SITE_TITLE = `Portfolio | ${PERSOONLIJKE_INFO.Voornaam} ${PERSOONLIJKE_INFO.Achternaam}`;

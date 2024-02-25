@@ -1,52 +1,42 @@
 @import url('reset.css');
-@font-face { font-family: 'FiraCode  Mono'; src: url('FiraMono.ttf')        format('ttf'); }
-@font-face { font-family: 'ShareTech Mono'; src: url('ShareTechMono.ttf')   format('ttf'); }
+@font-face { font-family: 'Fira Mono'; /*noinspection CssUnknownTarget*/ src: url('FiraMono.ttf')      format('ttf'); }
+@font-face { font-family: 'ShareTech Mono'; /*noinspection CssUnknownTarget*/ src: url('ShareTechMono.ttf') format('ttf'); }
 
 :root {
   /*  ================================================================================  */
   /*  =================================== variables ===================================  */
   /*  ================================================================================  */
 
-    --color__primary                : 270  45%  18%; /* Russian Violet */
-    --color__secondary              : 0    11%  84%; /* Electric blue */
-    --color__accent                 : 66   92%  51%; /* Persian green */
-
   /* ================ Fam Stolte color palette ================ */
+    
     --color__stolte-primary         : 350  35%  48%; /* Matrix Primary */
     --color__stolte-secondary       : 30   39%  77%; /* Grain Brown Secondary */
     --color__stolte-tertiary        : 300   9%  10%; /* Bastille Tertiary */
     --color__stolte-accent          : 343  44%  74%; /* Can Can Accent */
-
-  /* ================ environment color palette ================ */
-    --color__base                   : 60    0%  96%; /* Yellow */
-    --color__base-dark              : 300   9%  10%; /* Bastille Tertiary */
-    --color__text                   : 0     0%  0%; /* Black */
-    --color__text-light             : 0     0% 100%; /* White */
     
     --background__h                 : 350;
     --background__s                 : 0%;
-    --background__l                 : 80%;
+    --background__l                 : 90%;
     --background__l_dark            : 15%;
     
     --background__base              : var(--background__h) var(--background__s) var(--background__l); /* White */
     --background__base-dark         : var(--background__h) var(--background__s) var(--background__l_dark); /* Black */
-    --background__base-accent       : 30   39%  77%; /* Persian green */
-    --background__base-accent-dark  : 30    0%  15%; /* White */
     
     /*             ================ Font styles ================                  */
-    
+    --color__text                   : 0 0% 0%;
+    --color__text-light             : 0 0% 100%;
     --font__accent                  : 'ShareTech Mono';
-    --font__base                    : 'FiraCode  Mono';
+    --font__base                    : 'Fira Mono';
     /*             ================ shadow styles ================                  */
 
-    --shadow__fade_01               :  28px   28px  60px;
-    --shadow__fade_02               : -28px  -28px  60px;
+    --shadow__fade_01               :  8px   8px  10px;
+    --shadow__fade_02               : -8px  -8px  10px;
 
-    --shadow__color_01              : var(--background__h) var(--background__s)  calc( -5% + var(--background__l));
-    --shadow__color_02              : var(--background__h) var(--background__s)  calc(  5% + var(--background__l));
+    --shadow__color_01              : var(--background__h) var(--background__s)  calc( -10% + var(--background__l));
+    --shadow__color_02              : var(--background__h) var(--background__s)  calc(  10% + var(--background__l));
 
-    --shadow__color_01-dark         : var(--background__h) var(--background__s)  calc( -5% + var(--background__l_dark));
-    --shadow__color_02-dark         : var(--background__h) var(--background__s)  calc(  5% + var(--background__l_dark));
+    --shadow__color_01-dark         : var(--background__h) var(--background__s)  calc( -10% + var(--background__l_dark));
+    --shadow__color_02-dark         : var(--background__h) var(--background__s)  calc(  10% + var(--background__l_dark));
 }
 
 
@@ -62,6 +52,7 @@
     
         --shadow__color_01              : var(--shadow__color_01-dark);
         --shadow__color_02              : var(--shadow__color_02-dark);
+        
     }
 }
 
@@ -72,6 +63,8 @@
 body {
     --shadowstyle__base             : var(--shadow__fade_01) hsl(var(--shadow__color_01))
                                     , var(--shadow__fade_02) hsl(var(--shadow__color_02));
+    --shadowstyle__base-in          : inset var(--shadow__fade_01) hsl(var(--shadow__color_01))
+                                    , inset var(--shadow__fade_02) hsl(var(--shadow__color_02));
     box-sizing                      : border-box;
     position                        : relative;
     display                         : flex;
@@ -80,9 +73,10 @@ body {
     justify-content                 : center;
     min-height                      : 100vh;
     background                      : hsl(var(--background__base));
+    font-size                       : 0.85rem;
+    
     font-family                     : var(--font__base), serif;
     color                           : hsl(var(--color__text));
-    border-radius                   : 50px;
 
 
     
@@ -99,10 +93,22 @@ h1,h2,h3,h4,h5,h6,caption,header {
 }
 
 h1 {
-  font-size: 2.5rem;
-  font-weight:bold
+    font-size: 2.5rem;
+    font-weight:bold;
+    color: var(--color__text);
 }
 
 h2 {
-  font-size: 2rem;
+    font-size: 2rem;
+}
+
+.default__icon_size{
+    height  : 2rem;
+    width   : 2rem;
+    fill    : white;
+}
+
+.main__content_box{
+    overflow-y: auto; /* Enables scrolling */
+    flex-grow: 1; /* Causes the flex item to fill the remaining space */
 }

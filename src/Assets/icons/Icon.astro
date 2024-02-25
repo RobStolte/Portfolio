@@ -1,0 +1,27 @@
+---
+export interface Props extends icons{
+    className: string;
+}
+
+export interface icons{
+    icon: 
+        "IconSteam"|
+        "IconCVList"|
+        "IconPaypal"|
+        "IconEmail"|
+        "IconLinkedin"|
+        "IconSun"|
+        "IconGithub"|
+        "IconTwitter"|
+        "IconInstagram"|
+        "IconUser"|
+        "IconHome"|
+        "IconBlog"|
+        "IconMenu"|
+        "IconAstro"
+}
+
+const { icon,className } = Astro.props as Props;
+const { default: innerHTML } = await import(`./${icon}.svg?raw`);
+---
+    <Fragment set:html={innerHTML}  />

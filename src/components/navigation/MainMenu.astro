@@ -1,50 +1,41 @@
 ---
 import { SIDE_BAR_MENU } from '@/config.ts';
-import BaseButton from "@/components/UserInteraction/BaseButton";
+import BaseButton from "@/components/UserInteraction/BaseButton.astro";
 const { sideBarActiveItemID, menu = SIDE_BAR_MENU } = Astro.props;
-const activeClass = 'bg-rst__accent opacity-70 text-rst__primary';
+const activeClass = 'nav__button_bar_button_active';
 const isActive = (id: string) => id === sideBarActiveItemID ? activeClass : '';
-const capitalizeFirstLetter = (string: string) => string.charAt(0).toUpperCase() + string.slice(1);
 interface item {
-  id: string;
-  slug: string;
-  icon: string;
+    icon: string;
+    id: string;
+    slug: string;
 }
 ---
-<nav class:list="nav__button_bar_persistent" >
+<nav class="nav__button_bar_persistent" transition:persist transition:name="main-navigation" >
     {menu.map((item: item) => (
         <BaseButton
-        href={`/${item.slug}`}
-        target={"_self"}
-        title={item.id}
-        id={item.id}
-        ActiveTab={!isActive(item.id)}
-        
-        >
-            <!-- data-astro-prefetch -->
-            <i class={`${item.icon}`} ></i>
-        </BaseButton>
+                type="link"
+            href={`/${item.slug}`}
+            target={"_self"}
+            title={item.id}
+            id={item.id}
+            ActiveTab={!isActive(item.id)}
+            data-astro-prefetch
+            icon={item.icon}        
+        />
     ))}
 </nav>
-<style>
+<style lang="scss">
     .nav__button_bar_persistent {
-        position: absolute;
-        bottom: 5rem;
-        left: 5rem;
-        right: 5rem;
-        align-self: flex-end;
-    }
-    .nav__button_bar_persistent {
-        width               : 100%;
         display             : flex;
-        flex-wrap           : wrap;
-        justify-content     : space-between;
+        width               : 100%;
+        justify-content     : space-evenly;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 480px) {
         .nav__button_bar_persistent {
+            justify-content   : flex-start;
             border-radius    : 1rem;
-            padding          : 0.75rem;
-            box-shadow       : var(--shadowstyle__base);
+            box-shadow       : var(--shadowstyle__base-in);
         }
     }
+    
 </style>

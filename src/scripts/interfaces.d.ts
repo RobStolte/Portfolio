@@ -26,3 +26,6 @@ export interface steamGame {
     playtime_mac_forever?: number;
     playtime_linux_forever?: number;
 }
+export interface a_target { 
+    target: "_self"|"_blank"|"_parent"|"_top" 
+}

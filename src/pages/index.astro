@@ -1,27 +1,70 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { useStoryblokApi } from '@storyblok/astro'
 import {Image} from "astro:assets";
 import {PERSOONLIJKE_INFO} from "@/config";
+import { IconEmail } from '@/Assets/icons/index'
+const storyblokApi = useStoryblokApi()
+import ListOfCards from "../components/Old/ListOfCards.astro";
+import Icon from "@/Assets/icons/Icon.astro";
+
+const { persoon = PERSOONLIJKE_INFO } = Astro.props
 const today = new Date();
+
+const getAge = (y: number, m: number, d: number) => {
+    const t = new Date(), b = new Date(y, m - 1, d);
+    let a = t.getFullYear() - b.getFullYear();
+    return t.getMonth() - b.getMonth() < 0 || (t.getMonth() - b.getMonth() === 0 && t.getDate() < b.getDate()) ? --a : a;
+}
+async function  createCollectioLists(collection: string) {
+    const { data } = await storyblokApi.get('cdn/stories', {
+        version: import.meta.env.DEV ? "draft" : "published",
+        starts_with: `${collection}/`,
+        is_startpage: false
+    })
+const pages = data.stories.map((story: story) => {
+    return {
+        title: story.name,
+        badge: story.content.badge,
+        slug: story.full_slug,
+        description: story.content.description,
+        image: story.content.heroImage,
+        date: story.published_at,
+        tags: story.tag_list,
+    }
+})
+return pages
+}
+let blog = [];
+
+blog = await createCollectioLists('blog');
 ---
 
-<Layout title="Welcome to Astro Neumorphism template">
-	<section>
-		<Image
-			src     ="https://a.storyblok.com/f/253533/3249x4150/2bc61f68c9/wapen-stolte-groot.png/m/0x100"
-			alt     ="Familiewapen Stolte, origineel maar gescand en uitgeknipt naar transparant"
-			width   ="100"
-			height  ="100"
-		/>
-		<h1>
-			Portfolio | Rob Stolte
-		</h1>
-		<h2>test </h2>
-	</section>
-	<section>
-		<p>test</p>
-	</section>
-	<section>
-		<p>test</p>
-	</section>
+<Layout title="">
+    <div slot="top" >
+        <hgroup>
+            <p >Moiii 👋 Ik ben</p>
+            <h1 >{persoon.Voornaam} {persoon.Achternaam}</h1>
+            <p >Tech enthousiast</p>
+        </hgroup>
+
+        <text>
+            Van harte welkom op mijn kleine stukje internet. Hier deel ik zo nu en
+            dan wat van mijn passies. Ik ben een {getAge(persoon.Geboortejaar, persoon.GeboorteMaand, persoon.GeboorteDag)}-jarige
+            techneut die zich graag bezighoudt met allerlei soorten techniek, zowel
+            fysiek als digitaal. Mijn focus ligt vooral op lasertechnologie,
+            CNC-machines en ICT-infrastructuur.
+        </text>
+
+        <div >
+            <hr/>
+            <a href=`mailto:${persoon.Email}` target='_blank' class="default__icon_size"
+            ><Icon icon="IconEmail" className="default__icon_size"/></a
+            >
+        </div>
+    </div>
+    {blog && <section listTitle="Het laaste van het blog" posts={blog} start="0" end="3"/> }
 </Layout>
+<style>
+	
+</style>

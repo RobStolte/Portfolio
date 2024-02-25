@@ -1,52 +1,55 @@
 <template>
+    <NeumorphSwitch @click="toggleCategory" :class="{'toggled_active': isActive }" />
+    <!-- <button @click="toggleCategory" :class="{'toggled_active': isActive }"> </button> -->
+</template>
 
-    <button @click="toggleCategory" :class="{'toggled_active': isActive }">
-      <!-- Button content here -->
-    </button>
-  </template>
+<script lang="ts">
+    import NeumorphSwitch from "@/components/UserInteraction/NeumorphSwitch.vue";
+    
+    export default {
+        components: {NeumorphSwitch},
+        props: {
+            classname: {
+                type: String,
+                required: true,
+            },
+            name: {
+                type: String,
+                required: true,
+            },
+            isActive: {
+                type: Boolean,
+                default: true,
+            },
+        },
+        methods: {
 
-  <script lang="ts">
-  export default {
-    props: {
-      classname: {
-        type: String,
-        required: true,
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-      isActive: {
-        type: Boolean,
-        default: true,
-      },
-    },
-    methods: {
-      toggleCategory() {
-        const elements = document.querySelectorAll(`.${this.classname}`);
-        elements.forEach(element => {
-          element.classList.toggle('hidden');
-        });
-        this.isActive = !this.isActive;
-        this.hideLastVisibleLine();
-      },
-      hideLastVisibleLine() {
-        const elements = Array.from(document.querySelectorAll('.education__time'));
-        const visibleElements = elements.filter((element: HTMLElement) => element.offsetParent !== null);
-        for (let i = 0; i < visibleElements.length; i++) {
-          const currentElement = visibleElements[i];
-          const nextElement = visibleElements[i + 1];
-          if (!nextElement) {
-            const line = currentElement.querySelector('.education__line');
-            if (line) {
-                (line as HTMLElement).style.display = 'none';
-            }
-          }
-        }
-      },
-    },
-  };
-  </script>
+            toggleCategory() {
+                const elements = document.querySelectorAll(`.${this.classname}`);
+                elements.forEach(element => {
+                    element.classList.toggle('hidden');
+                });
+                this.isActive = !this.isActive;
+                this.hideLastVisibleLine();
+            },
+            hideLastVisibleLine() {
+                const elements = Array.from(document.querySelectorAll('.education__time'));
+                const visibleElements = elements.filter((element: HTMLElement) => element.offsetParent !== null);
+                for (let i = 0; i < visibleElements.length; i++) {
+                    const currentElement = visibleElements[i];
+                    const nextElement = visibleElements[i + 1];
+                    if (!nextElement) {
+                    const line = currentElement.querySelector('.education__line');
+                        if (line) {
+                            (line as HTMLElement).style.display = 'none';
+                        }
+                    }
+                }
+            },
+        },
+    };
+</script>
+<!--
   <style>
   button.button_custom {
       background-color: rgba(0, 0, 0, 0.05);
@@ -181,4 +184,4 @@
     animation: slideaway 200ms;
     display: none;
   }
-</style>
+</style>-->

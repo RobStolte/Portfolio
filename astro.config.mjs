@@ -9,9 +9,7 @@ import vue from "@astrojs/vue";
 import { loadEnv } from "vite";
 import preact from "@astrojs/preact";
 import vercel from "@astrojs/vercel/serverless";
-const {
-  STORYBLOK_TOKEN
-} = loadEnv(process.env.NODE_ENV, process.cwd(), "");
+const { STORYBLOK_TOKEN} = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 
 // https://astro.build/config

@@ -3,9 +3,6 @@
 
   interface ImportMetaEnv {
     readonly STORYBLOK_TOKEN    : string
-    readonly SENTRY_AUTH_TOKEN  : string
-    readonly SENTRY_DNS_URL     : string
-    readonly OG_API_KEY         : string
     readonly STEAM_API_KEY      : string
     readonly STEAM_USER_ID      : string
     readonly SUPABASE_URL       : string

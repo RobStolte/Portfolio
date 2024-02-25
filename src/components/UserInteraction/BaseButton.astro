@@ -1,0 +1,59 @@
+---
+import type {a_target} from "@/scripts/interfaces";
+import Icon from "@/Assets/icons/Icon.astro";
+interface props extends a_target{
+    type: "button"|"link"; 
+    onclick: object;
+    title: string;
+    href: string;
+    square: boolean; 
+    activeTab: boolean; 
+    icon: string;
+}
+const {type, onclick, title, href, target, square, activeTab, icon }: props = Astro.props;
+const tabIsActive =( activeTab ) ? 'astro__button_activeTab' : '';
+const buttonIsSquare =( square ) ? 'astro__button_square' : '';
+---
+{(type === "button") 
+    ?<a href={href} target={target} title={title} 
+        class:list={['astro__button_base',tabIsActive]}
+        ><Icon icon={icon} className={`Astro__button_icon ${buttonIsSquare}`} />
+    </a>
+    :<button onclick={onclick} title={title} 
+        class:list={['astro__button_base',tabIsActive]}
+        ><Icon icon={icon} className={`Astro__button_icon ${buttonIsSquare}`}/>
+    </button>
+}
+<style>
+    .astro__button_base {
+    margin: 1rem;
+    width: 5rem;
+    height: 20px;
+    padding: 1rem;
+    box-shadow:  var(--shadowstyle__base);
+    transition: transform 0.5s;
+    cursor: pointer;
+    }
+    
+    .astro__button_base.astro__button_activeTab,
+    .astro__button_base:hover {
+        box-shadow: var(--shadowstyle__base-in);
+    }
+    
+    .astro__button_base > .Astro__button_icon {
+        transition: transform 0.5s;
+        fill: black;
+    }
+    
+    .Astro__button_icon:hover {
+        transform: scale(0.9);
+    }
+    
+    .astro__button_square {
+        border-radius: 10px;
+    }
+    
+    .astro__button_round {
+        border-radius: 50%;
+    }
+</style>
