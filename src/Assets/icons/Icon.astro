@@ -1,4 +1,5 @@
 ---
+import { parse } from 'node-html-parser';
 export interface Props extends icons{
     className: string;
 }
@@ -20,8 +21,23 @@ export interface icons{
         "IconMenu"|
         "IconAstro"
 }
+export interface Props {
+    icon: string;
+    }
 
-const { icon,className } = Astro.props as Props;
-const { default: innerHTML } = await import(`./${icon}.svg?raw`);
+const { icon, ...attributes } = Astro.props as Props;
+const { default: svg } = await import(`./${icon}.svg?raw`);
+
+function addAttributesToInnerHTMLString(innerHTML: string, attributes: Omit<Props, "icon">) {
+    const attributesString = Object.entries(attributes)
+        .map(([key, value]) => `${key}="${value}"`)
+        .join(' ');
+
+    return innerHTML.replace(/^<svg/, `<svg ${attributesString}`);
+}
+
+const innerHTML = addAttributesToInnerHTMLString(svg, attributes);
+
 ---
-    <Fragment set:html={innerHTML}  />
+
+<Fragment {...attributes} set:html={innerHTML}/>

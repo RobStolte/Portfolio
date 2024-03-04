@@ -1,38 +1,54 @@
 ---
-import type {a_target} from "@/scripts/interfaces";
-import Icon from "@/Assets/icons/Icon.astro";
-interface props extends a_target{
+import type { a_target } from "@/scripts/interfaces";
+import type { icons } from "@/Assets/icons/Icon.astro";
+import Icon from "@/Assets/icons/Icon.astro"
+interface props extends a_target, icons {
     type: "button"|"link"; 
     onclick: object;
     title: string;
     href: string;
     square: boolean; 
     activeTab: boolean; 
-    icon: string;
 }
 const {type, onclick, title, href, target, square, activeTab, icon }: props = Astro.props;
-const tabIsActive =( activeTab ) ? 'astro__button_activeTab' : '';
-const buttonIsSquare =( square ) ? 'astro__button_square' : '';
+const tabIsActive = activeTab ? 'astro__button_activeTab' : '';
+const buttonStyle = square  ? 'astro__button_square' : 'astro__button_round';
+
+const buttonClasses = `astro__button_base ${buttonStyle} ${tabIsActive}`;
+const iconClasses = `Astro__button_icon default__icon_size`;
 ---
-{(type === "button") 
-    ?<a href={href} target={target} title={title} 
-        class:list={['astro__button_base',tabIsActive]}
-        ><Icon icon={icon} className={`Astro__button_icon ${buttonIsSquare}`} />
+{(type === "link") 
+    ?<a href={href} target={target} title={title}
+        class={buttonClasses}
+        ><Icon icon={icon} class={iconClasses} />
     </a>
     :<button onclick={onclick} title={title} 
-        class:list={['astro__button_base',tabIsActive]}
-        ><Icon icon={icon} className={`Astro__button_icon ${buttonIsSquare}`}/>
+        class={buttonClasses}
+        ><Icon icon={icon} class={iconClasses}/>
     </button>
 }
 <style>
     .astro__button_base {
-    margin: 1rem;
-    width: 5rem;
-    height: 20px;
-    padding: 1rem;
-    box-shadow:  var(--shadowstyle__base);
-    transition: transform 0.5s;
-    cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 0;
+        background-color: var(--background__base);
+        box-shadow:  var(--shadowstyle__base);
+        transition: transform 0.5s, box-shadow 0.5s;;
+        cursor: pointer;
+    }
+    .astro__button_icon {
+        width: 0.8rem;
+        height: 0.8rem;
+        overflow: hidden;
+        clip: inherit;
+        color: var(--color__base);
+        background-color: var(--color__base);
+
     }
     
     .astro__button_base.astro__button_activeTab,
@@ -41,8 +57,7 @@ const buttonIsSquare =( square ) ? 'astro__button_square' : '';
     }
     
     .astro__button_base > .Astro__button_icon {
-        transition: transform 0.5s;
-        fill: black;
+
     }
     
     .Astro__button_icon:hover {

@@ -103,12 +103,33 @@ h2 {
 }
 
 .default__icon_size{
-    height  : 2rem;
-    width   : 2rem;
-    fill    : white;
+    height  : 1.5rem;
+    width   : 1.5rem;
+    fill    : var(--color__text);
 }
 
 .main__content_box{
     overflow-y: auto; /* Enables scrolling */
     flex-grow: 1; /* Causes the flex item to fill the remaining space */
+}
+
+/*  ============================  Scrollbar styling  ==============================  */
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #2c2929;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #2c2b2b;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #989898;
 }

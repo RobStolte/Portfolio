@@ -24,6 +24,12 @@ export default defineConfig({
     format: "file",
     inlineStylesheets: "never",
   },
+  vite: {
+    plugins: [basicSsl()],
+    server: {
+      https: true,
+    },
+  },
   integrations: [
     storyblok({
       accessToken: STORYBLOK_TOKEN,
@@ -50,12 +56,6 @@ export default defineConfig({
     sitemap(),
     vue(),
   ],
-  vite: {
-    plugins: [basicSsl()],
-    server: {
-      https: true,
-    },
-  },
   output: "server",
   adapter: vercel({
     webAnalytics: {

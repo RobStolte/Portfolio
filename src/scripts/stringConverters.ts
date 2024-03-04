@@ -1,3 +1,10 @@
+/**
+ * Converts a string to sentence case.
+ *
+ * @param {string} str - The string to convert.
+ * @param {boolean} [capitalizeFirst=true] - Determines whether the first letter should be capitalized or not. Default is true.
+ * @returns {string} - The converted string in sentence case.
+ */
 const toSentenceCase = (str: string, capitalizeFirst: boolean = true) => {
     let result = str;
 
@@ -24,6 +31,12 @@ const toSentenceCase = (str: string, capitalizeFirst: boolean = true) => {
     return result;
 }
 
+/**
+ * Capitalizes the first letter of a given string.
+ *
+ * @param {string} str - The input string to capitalize the first letter.
+ * @returns {string} The capitalized string.
+ */
 const CapitalizeFirst = (str: string) => {
     return `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
 }
