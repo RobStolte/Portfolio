@@ -39,3 +39,21 @@ export default {
   },
 };
 </script>
+
+<style>
+.badge {
+    height: 1.5rem;
+    width: 5rem;
+    border-radius: 1rem;
+    box-shadow      : var(--shadowstyle__base);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.badge-outline {
+    box-shadow      : var(--shadowstyle__base), var(--shadowstyle__base-in);
+    border-width: 10px;
+}
+
+</style>

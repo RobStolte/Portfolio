@@ -48,3 +48,15 @@ export interface steamGame {
 export interface a_target { 
     target: "_self"|"_blank"|"_parent"|"_top" 
 }
+
+export interface story {
+    name: string;
+    full_slug: string;
+    content: {
+        badge: string;
+        description: string;
+        heroImage: string;
+    }
+    published_at: string;
+    tag_list: string[];
+}

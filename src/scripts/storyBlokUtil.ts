@@ -1,3 +1,9 @@
+import { useStoryblokApi } from '@storyblok/astro'
+const storyblokApi = useStoryblokApi();
+import type { story } from "@/scripts/interfaces";
+
+
+
 /**
  * Retrieves the resolution from a given story asset filename.
  * @param {string} filename
@@ -42,22 +48,42 @@ function validateDimensions(dimensions: number[]): boolean {
 /**
  * Retrieves the resolution and aspect ratio from a given story asset filename.
  * @param {string} filename - The filename of the story asset.
- * @return {Object|null} An object containing the original height, original width, and aspect ratio, or null if the filename is not structured correctly.
+ * @return {Object} An object containing the original height, original width, and aspect ratio.
  */
-function getRezAndAspectFromStoryAssetFilename(filename: string): { originalHeight: number, originalWidth: number, aspectRatio: number } | null {
+function getRezAndAspectFromStoryAssetFilename(filename: string): { originalHeight: number, originalWidth: number, aspectRatio: number } {
     const resolution = getResolutionFromFilename(filename);
     if (!resolution) {
-        return null;
+        console.error(`Couldn't get resolution from filename: ${filename}`);
+        return { originalHeight: 0, originalWidth: 0, aspectRatio: 0 };
     }
-
     const dimensions = getDimensions(resolution);
     if (!validateDimensions(dimensions)) {
-        return null;
+        console.error(`Invalid dimensions: ${dimensions}`);
+        return { originalHeight: 0, originalWidth: 0, aspectRatio: 0 };
     }
+    const [originalWidth = 0, originalHeight = 0] = dimensions;
+    const aspectRatio = originalHeight / originalWidth || 0;
 
-    const [originalWidth, originalHeight] = dimensions;
-    const aspectRatio = originalHeight / originalWidth;
     return { originalHeight, originalWidth, aspectRatio };
 }
 
 export { getRezAndAspectFromStoryAssetFilename }
+
+export async function  createCollectionLists(collection: string) {
+    const { data } = await storyblokApi.get('cdn/stories', {
+        version: import.meta.env.DEV ? "draft" : "published",
+        starts_with: `${collection}/`,
+        is_startpage: false
+    })
+    return data.stories.map((story: story) => {
+        return {
+            title: story.name,
+            badge: story.content.badge,
+            slug: story.full_slug,
+            description: story.content.description,
+            image: story.content.heroImage,
+            date: story.published_at,
+            tags: story.tag_list,
+        }
+    })
+}

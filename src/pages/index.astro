@@ -1,40 +1,22 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { useStoryblokApi } from '@storyblok/astro'
 import {Image} from "astro:assets";
 import {PERSOONLIJKE_INFO} from "@/config";
-import { IconEmail } from '@/Assets/icons/index'
-const storyblokApi = useStoryblokApi()
-import ListOfCards from "../components/Old/ListOfCards.astro";
+import ListOfCards from "@/components/Old/ListOfCards.astro";
 import Icon from "@/Assets/icons/Icon.astro";
 import { getAge} from "@/scripts/utils";
+import {getRezAndAspectFromStoryAssetFilename, createCollectionLists} from "@/scripts/storyBlokUtil";
+import HorizontalCard from "../components/Old/HorizontalCard.astro";
+
+import {story} from "@/scripts/interfaces";
 
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
 const today = new Date();
 
-
-async function  createCollectioLists(collection: string) {
-    const { data } = await storyblokApi.get('cdn/stories', {
-            version: import.meta.env.DEV ? "draft" : "published",
-            starts_with: `${collection}/`,
-            is_startpage: false
-    })
-    return data.stories.map((story: story) => {
-        return {
-            title: story.name,
-            badge: story.content.badge,
-            slug: story.full_slug,
-            description: story.content.description,
-            image: story.content.heroImage,
-            date: story.published_at,
-            tags: story.tag_list,
-        }
-    })
-}
-
 let blog = [];
 
-blog = await createCollectioLists('blog');
+blog = await createCollectionLists('blog');
+const staticImageWidth = 150
 ---
 
 <Layout title="">
@@ -60,8 +42,30 @@ blog = await createCollectioLists('blog');
             >
         </div>
     </div>
-    {blog && <section listTitle="Het laaste van het blog" posts={blog} start="0" end="3"/> }
+    <ul class="subcontainer_list">
+        {blog.map((post) => {
+            const imageData = getRezAndAspectFromStoryAssetFilename(post.image.filename)
+            const newHeight = imageData.aspectRatio * staticImageWidth;
+            return (
+                <HorizontalCard
+                    title={post.title}
+                    tags={post.tags}
+                    img={post.image.filename}
+                    imageAlt={post.image.alt}
+                    imageWidth={staticImageWidth}
+                    imageHeight={newHeight}
+                    desc={post.description}
+                    url={post.slug}
+                    target="_self"
+                    badge={post.badge}
+                />
+            );
+        })}
+    </ul>
 </Layout>
+
 <style>
-	
+    .subcontainer_list {
+        padding: 0;
+    }
 </style>

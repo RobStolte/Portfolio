@@ -1,44 +1,96 @@
 ---
+import BadgeComponent from '@/components/vue/badge.vue';
 const {
-  title,
-  img,
-  desc,
-  url,
-  badge,
-  tags,
-  target,
-  imageAlt,
-  imageWidth,
-  imageHeight,
-  noImageProcessing,
-  unintrusive,
-  rel,
+    title,
+    img,
+    desc,
+    url,
+    badge,
+    tags,
+    target,
+    imageAlt,
+    imageWidth,
+    imageHeight,
+    noImageProcessing,
+    unintrusive,
+    rel,
 } = Astro.props;
-import BadgeComponent from '../vue/badge.vue';
 
 import { Image } from 'astro:assets';
 const image = noImageProcessing
-  ? `${img}`
-  : `${img}/m/0x${imageWidth}/filters:quality(80):format(webp)`;
+    ? `${img}`
+    : `${img}/m/0x${imageWidth}/filters:quality(80):format(webp)`;
 ---
-<div class={`m-3 rounded-2xl backdrop-blur-lg shadow-xl transition ease-in-out ${unintrusive ? '' : 'hover:shadow-4xl hover:scale-[105%]'}`}>
-  <a href={url} target={target} rel={rel || ""} data-astro-prefetch class='no-underline'>
-    <div class={`hero-content p-0 flex-col md:flex-row ${unintrusive ? 'p-2' : ''}`} >
-      <Image src={image} width={imageWidth || 500} height={imageHeight || 300} alt={imageAlt || title}
-        class={`max-w-full md:max-w-[13rem] rounded-2xl ${unintrusive ? 'mt-1 mb-1' : 'rounded-br-none rounded-tr-none'}`}/>
-      <div class='grow w-full p-5'>
-        <h1 class='text-xl font-bold text-rst__primary dark:text-rst__secondary'>
-          {title} { badge && (<BadgeComponent text={badge} classes='my-1' outline='false' /> )}
-        </h1>
-        <p class='py-1 text-1xl'>{desc}</p>
-          <div class='card-actions justify-end'>
-            {tags &&
-                tags.map((tag: string) => (
-                  <BadgeComponent text={tag} classes='my-1' outline='true' />
-                ))
-            }
-          </div>
-      </div>
-    </div>
-  </a>
+<div class="tailwind-custom">
+    <a href={url} target={target} rel={rel || ""} data-astro-prefetch>
+        <div class="hero-content">
+            <Image src={image} width={imageWidth || 500} height={imageHeight || 300} alt={imageAlt || title} class="img-style"/>
+            <div class="text__aside">
+                <h1 class='title-text'>
+                    {title} { badge && (<BadgeComponent text={badge} outline='false' /> )}
+                </h1>
+                <p class='description-text'>{desc}</p>
+                <div class='card-actions'>
+                    {tags &&
+                        tags.map((tag: string) => (
+                            <BadgeComponent text={tag} outline='true' />
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </a>
 </div>
+
+<style>
+    .tailwind-custom{
+        margin: 0.5rem;
+        margin-bottom: 2rem;
+        border-radius: 2rem;
+        box-shadow: var(--shadowstyle__base);
+        transition: all 0.3s ease-in-out;
+    }
+    
+    a{
+        text-decoration: none;
+        color: var(--color__text);
+    }
+    
+    .hero-content{
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .img-style{
+        max-width: 100%;
+        border-radius: 1rem;
+    }
+    
+    .title-text{
+        padding-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+    
+    .description-text{
+        padding-top: .25rem;
+        padding-bottom: .25rem;
+        flex-grow: 1;
+    }
+    
+    .card-actions{
+        justify-content: flex-end;
+    }
+
+    .text__aside {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-actions{
+        justify-content: flex-end;
+    }
+</style>
