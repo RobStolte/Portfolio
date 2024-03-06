@@ -2,11 +2,12 @@
 
 import { useStoryblokApi } from '@storyblok/astro'
 import HorizontalCard from "@/components/Old/HorizontalCard.astro";
-import { getRezAndAspectFromStoryAssetFilename } from "@/scripts/storyBlokUtil";
+import {StoryblokAssetManager} from "@/scripts/storyBlokUtil";
 import Layout from "@/layouts/Layout.astro";
 import {story} from "@/scripts/interfaces";
 const storyblokApi = useStoryblokApi()
 
+const sta = new StoryblokAssetManager;
 const collection = 'blog';
 
 const { data } = await storyblokApi.get('cdn/stories', {
@@ -45,7 +46,7 @@ const staticImageWidth = 300
     ) : (
     <ul>
   {page.map((post: story) => {
-      const imageData = getRezAndAspectFromStoryAssetFilename(post.image.filename)
+      const imageData = sta.getRezAndAspectFromStoryAssetFilename(post.image.filename)
       const newHeight = imageData.aspectRatio * staticImageWidth;
 
     return (

@@ -1,7 +1,8 @@
 ---
 // Import your components at the top of the file
-import { getRezAndAspectFromStoryAssetFilename } from '../../scripts/storyBlokUtil';
+import { StoryblokAssetManager } from '@/scripts/storyBlokUtil';
 import HorizontalCard from './HorizontalCard.astro';
+const sta = new StoryblokAssetManager();
 const { listTitle, posts, start, end } = Astro.props;
 interface published_at {
   published_at: string | number | Date;
@@ -35,7 +36,7 @@ const staticImageWidth = 300
 <section>
   <h2 class='text-3xl w-full font-bold mb-2 text-rst__primary dark:text-rst__secondary'>{listTitle}</h2>
   { sortedPosts.map((post: post) => {
-      const imageData = getRezAndAspectFromStoryAssetFilename(post.image.filename)
+      const imageData = sta.getRezAndAspectFromStoryAssetFilename(post.image.filename)
       const newHeight = imageData.aspectRatio * staticImageWidth;
     return (
       <>

@@ -43,7 +43,9 @@ export default {
 <style>
 .badge {
     height: 1.5rem;
-    width: 5rem;
+    width: fit-content;
+    margin: 0.5rem;
+    padding: 0.5rem;
     border-radius: 1rem;
     box-shadow      : var(--shadowstyle__base);
     display: flex;

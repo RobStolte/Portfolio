@@ -2,20 +2,20 @@
 import Layout from "@/layouts/Layout.astro";
 import {Image} from "astro:assets";
 import {PERSOONLIJKE_INFO} from "@/config";
-import ListOfCards from "@/components/Old/ListOfCards.astro";
 import Icon from "@/Assets/icons/Icon.astro";
 import { getAge} from "@/scripts/utils";
-import {getRezAndAspectFromStoryAssetFilename, createCollectionLists} from "@/scripts/storyBlokUtil";
-import HorizontalCard from "../components/Old/HorizontalCard.astro";
+import { StoryblokAssetManager } from "@/scripts/storyBlokUtil";
+import HorizontalCard from "@/components/Old/HorizontalCard.astro";
 
 import {story} from "@/scripts/interfaces";
 
+const sta = new StoryblokAssetManager();
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
 const today = new Date();
 
 let blog = [];
 
-blog = await createCollectionLists('blog');
+blog = await sta.createCollectionLists('blog');
 const staticImageWidth = 150
 ---
 
@@ -44,7 +44,7 @@ const staticImageWidth = 150
     </div>
     <ul class="subcontainer_list">
         {blog.map((post) => {
-            const imageData = getRezAndAspectFromStoryAssetFilename(post.image.filename)
+            const imageData = sta.getRezAndAspectFromStoryAssetFilename(post.image.filename)
             const newHeight = imageData.aspectRatio * staticImageWidth;
             return (
                 <HorizontalCard

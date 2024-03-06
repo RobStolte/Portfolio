@@ -18,11 +18,11 @@ const story = data.story;
     updatedDate = {story.published_at}
     badge       = {story.content.badge}
     tags        = {story.tag_list}>
-    <header slot="header">
+    <header slot="top">
         <h1>{story.name}</h1>
         <p>{story.content.description}</p>
     </header>
-    <main slot="content">{
+    <main>{
       story.content.blokken?.map((blok:SbBlokData) => {
         return <StoryblokComponent blok={blok} />
       })

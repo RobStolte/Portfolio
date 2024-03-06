@@ -1,12 +1,12 @@
 ---
-import { getRezAndAspectFromStoryAssetFilename } from '@/scripts/storyBlokUtil';
+import { StoryblokAssetManager } from '@/scripts/storyBlokUtil';
 import { storyblokEditable } from '@storyblok/astro'
 import { Image } from "astro:assets"
-
+const sta = new StoryblokAssetManager();
 const { blok } = Astro.props
 const imageUrl = blok.isAnimating ? blok.imageAsset.filename : `${blok.imageAsset.filename}/m/0x${blok.maxSize}/filters:format(webp)`;
 
-const imageData = getRezAndAspectFromStoryAssetFilename(blok.imageAsset.filename)
+const imageData = sta.getRezAndAspectFromStoryAssetFilename(blok.imageAsset.filename)
 const newHeight = imageData.aspectRatio * blok.maxSize;
 ---
 <div

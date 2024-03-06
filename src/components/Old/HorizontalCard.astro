@@ -1,5 +1,5 @@
 ---
-import BadgeComponent from '@/components/vue/badge.vue';
+import Badge from '@/components/vue/badge.vue';
 const {
     title,
     img,
@@ -15,25 +15,24 @@ const {
     unintrusive,
     rel,
 } = Astro.props;
-
 import { Image } from 'astro:assets';
 const image = noImageProcessing
     ? `${img}`
     : `${img}/m/0x${imageWidth}/filters:quality(80):format(webp)`;
 ---
-<div class="tailwind-custom">
+<div class="card">
     <a href={url} target={target} rel={rel || ""} data-astro-prefetch>
-        <div class="hero-content">
-            <Image src={image} width={imageWidth || 500} height={imageHeight || 300} alt={imageAlt || title} class="img-style"/>
-            <div class="text__aside">
-                <h1 class='title-text'>
-                    {title} { badge && (<BadgeComponent text={badge} outline='false' /> )}
+        <div class="card__hero-content">
+            <Image src={image} width={imageWidth || 500} height={imageHeight || 300} alt={imageAlt || title} class="img-style-link"/>
+            <div class="card__text-aside">
+                <h1 class='card__title'>
+                    {title} { badge && (<Badge text={badge} outline='false' /> )}
                 </h1>
-                <p class='description-text'>{desc}</p>
-                <div class='card-actions'>
+                <p class='card__description'>{desc}</p>
+                <div class='card__actions'>
                     {tags &&
                         tags.map((tag: string) => (
-                            <BadgeComponent text={tag} outline='true' />
+                                <Badge text={tag} outline='true' />
                         ))
                     }
                 </div>
@@ -41,56 +40,64 @@ const image = noImageProcessing
         </div>
     </a>
 </div>
-
-<style>
-    .tailwind-custom{
-        margin: 0.5rem;
-        margin-bottom: 2rem;
+<style define:vars={{imageWidth, imageHeight}}>
+    .card {
+        margin: 0.5rem 0.5rem 2rem;
         border-radius: 2rem;
         box-shadow: var(--shadowstyle__base);
         transition: all 0.3s ease-in-out;
     }
-    
+
     a{
         text-decoration: none;
         color: var(--color__text);
     }
-    
-    .hero-content{
+    .card__hero-content {
         padding: 0;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
-    
-    .img-style{
+    .img-style-link {
         max-width: 100%;
+        width: 100%;
         border-radius: 1rem;
     }
-    
-    .title-text{
+    @media (min-width: 464px) {
+        .card__hero-content {
+            flex-direction: row;
+        }
+        .img-style-link {
+            width: var(--imageWidth);
+        }
+    }
+    .img-style-link {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+    .card__title{
         padding-bottom: 1rem;
         font-size: 1.2rem;
         font-weight: 700;
     }
-    
-    .description-text{
+
+    .card__description{
         padding-top: .25rem;
         padding-bottom: .25rem;
         flex-grow: 1;
     }
-    
-    .card-actions{
+
+    .card__actions{
         justify-content: flex-end;
     }
-
-    .text__aside {
+    .card__text-aside {
         padding: 1rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
-
-    .card-actions{
+    .card__actions{
         justify-content: flex-end;
     }
 </style>
