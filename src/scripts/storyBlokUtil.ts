@@ -49,8 +49,8 @@ class StoryblokAssetManager {
     
     
     
-    private getAspect() {
-        this.obj.aspectRatio = this.obj.originalHeight / this.obj.originalWidth;
+    public getAspect() {
+        this.obj.aspectRatio = this.obj.originalWidth / this.obj.originalHeight;
     }
     
     public setHeightFromAspect(){
