@@ -10,10 +10,10 @@ interface item {
     slug: string;
 }
 ---
+<!--suppress XmlUnboundNsPrefix -->
 <nav class="nav__button_bar_persistent" transition:persist transition:name="main-navigation" >
     {menu.map((item: item) => (
         <BaseButton
-                type="link"
             href={`/${item.slug}`}
             target={"_self"}
             title={item.id}

@@ -1,25 +1,11 @@
 import rss from "@astrojs/rss";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@/config";
-import { useStoryblokApi } from '@storyblok/astro'
-import { PERSOONLIJKE_INFO } from "@/config";
-/**
- * Represents the current date and time.
- *
- * @type {Date}
- */
+import { SITE_TITLE, SITE_DESCRIPTION, PERSOONLIJKE_INFO } from "@/config.ts";
+import { useStoryblokApi } from '@storyblok/astro';
+
 const today = new Date();
-/**
- * The storyblokApi variable is used to interact with the Storyblok API.
- *
- * @function useStoryblokApi
- * @returns {Object} The Storyblok API object.
- */
+
 const storyblokApi = useStoryblokApi()
 
-/**
- * Represents a story.
- * @interface
- */
 interface Story {
   name: string;
   first_published_at: string;
@@ -34,10 +20,6 @@ interface Story {
 }
 
 
-/**
- * Retrieves data from the storyblok API and returns an RSS feed.
- * @returns {Object} The RSS feed object.
- */
 export async function GET() {
   const { data } = await storyblokApi.get('cdn/stories', {
     version: import.meta.env.DEV ? "draft" : "published",

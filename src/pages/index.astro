@@ -1,24 +1,18 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import {Image} from "astro:assets";
+// noinspection ES6UnusedImports
+import { Image } from 'astro:assets';
 import {PERSOONLIJKE_INFO} from "@/config";
 import Icon from "@/Assets/icons/Icon.astro";
 import { getAge} from "@/scripts/utils";
 import { StoryblokStoryManager } from "@/scripts/storyBlokUtil";
-import HorizontalCard from "@/components/Old/HorizontalCard.astro";
-
-import {story} from "@/scripts/interfaces";
 import {CapitalizeFirst} from "../scripts/stringConverters";
 import ExpandDetailCard from "../components/Cards/ExpandDetailCard.astro";
 
 const ssm = new StoryblokStoryManager();
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
-const today = new Date();
 
-let blog = [];
-
-blog = await ssm.createCollectionLists('blog');
-const staticImageWidth = 150
+const blog = await ssm.createCollectionLists('blog');
 ---
 
 <Layout title="">

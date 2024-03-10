@@ -1,31 +1,14 @@
 ---
-import { parse } from 'node-html-parser';
-export interface Props extends icons{
-    className: string;
+export interface Props{
+    icon: icons
+    [key: string]: any
 }
 
-export interface icons{
-    icon: 
-        "IconSteam"|
-        "IconCVList"|
-        "IconPaypal"|
-        "IconEmail"|
-        "IconLinkedin"|
-        "IconSun"|
-        "IconGithub"|
-        "IconTwitter"|
-        "IconInstagram"|
-        "IconUser"|
-        "IconHome"|
-        "IconBlog"|
-        "IconMenu"|
-        "IconAstro"
-}
-export interface Props {
-    icon: string;
-    }
+export type icons = "IconSteam"| "IconCVList"| "IconPaypal"| "IconEmail"| "IconLinkedin"| "IconSun"| "IconGithub"| "IconTwitter"| "IconInstagram"| "IconUser"| "IconHome"| "IconBlog"| "IconMenu"| "IconAstro";
 
 const { icon, ...attributes } = Astro.props as Props;
+
+// noinspection TypeScriptCheckImport
 const { default: svg } = await import(`./${icon}.svg?raw`);
 
 function addAttributesToInnerHTMLString(innerHTML: string, attributes: Omit<Props, "icon">) {

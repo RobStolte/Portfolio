@@ -1,6 +1,7 @@
 ---
-import {Image} from "astro:assets";
 const {title,description,icon_url,icon_size,className} = Astro.props;
+// noinspection ES6UnusedImports
+import {Image} from "astro:assets";
 ---
 <div class:list={["expanded__detail_card", className]}>
     <Image 

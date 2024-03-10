@@ -1,15 +1,11 @@
 ---
-import {useStoryblokApi} from '@storyblok/astro'
 import HorizontalCard from "@/components/Old/HorizontalCard.astro";
-import {StoryblokStoryManager, StoryblokAssetManager} from "@/scripts/storyBlokUtil";
+import {StoryblokStoryManager} from "@/scripts/storyBlokUtil";
 import Layout from "@/layouts/Layout.astro";
-import {story} from "@/scripts/interfaces";
-const storyblokApi = useStoryblokApi()
 
 const ssm = new StoryblokStoryManager();
-let collection = [];
 
-collection = await ssm.createCollectionLists('blog');
+let collection = await ssm.createCollectionLists('blog');
 
 const staticImageWidth = 300
 ---

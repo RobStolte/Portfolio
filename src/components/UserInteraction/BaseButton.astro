@@ -1,32 +1,17 @@
 ---
-import type { a_target } from "@/scripts/interfaces";
-import type { icons } from "@/Assets/icons/Icon.astro";
-import Icon from "@/Assets/icons/Icon.astro"
-interface props extends a_target, icons {
-    type: "button"|"link"; 
-    onclick: object;
-    title: string;
-    href: string;
-    square: boolean; 
-    activeTab: boolean; 
-}
-const {type, onclick, title, href, target, square, activeTab, icon }: props = Astro.props;
+import Icon from "@/Assets/icons/Icon.astro";
+
+const {title, href, target, square, activeTab, icon } = Astro.props;
 const tabIsActive = activeTab ? 'astro__button_activeTab' : '';
 const buttonStyle = square  ? 'astro__button_square' : 'astro__button_round';
 
 const buttonClasses = `astro__button_base ${buttonStyle} ${tabIsActive}`;
 const iconClasses = `Astro__button_icon default__icon_size`;
 ---
-{(type === "link") 
-    ?<a href={href} target={target} title={title}
+    <a href={href} target={target} title={title}
         class={buttonClasses}
         ><Icon icon={icon} class={iconClasses} />
     </a>
-    :<button onclick={onclick} title={title} 
-        class={buttonClasses}
-        ><Icon icon={icon} class={iconClasses}/>
-    </button>
-}
 <style>
     .astro__button_base {
         display: flex;
@@ -46,8 +31,8 @@ const iconClasses = `Astro__button_icon default__icon_size`;
         height: 0.8rem;
         overflow: hidden;
         clip: inherit;
-        color: var(--color__base);
-        background-color: var(--color__base);
+        color: var(--color__text);
+        background-color: var(--background__base);
 
     }
     

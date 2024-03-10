@@ -1,5 +1,5 @@
 import { useStoryblokApi } from '@storyblok/astro'
-import type { story } from "@/scripts/interfaces";
+import type { story } from "@/scripts/interfaces.ts";
 
 
 //   ========================================================================================

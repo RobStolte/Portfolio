@@ -9,7 +9,7 @@ const { data } = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
 });
 const story = data.story;
 ---
-<Layout>
+<Layout title={story.title}>
     <header slot="top">
         <h3>{story.name}</h3>
         <p>{story.content.description}</p>

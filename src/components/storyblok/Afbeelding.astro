@@ -1,9 +1,9 @@
 ---
 import { StoryblokAssetManager } from '@/scripts/storyBlokUtil';
 import { storyblokEditable } from '@storyblok/astro'
-import type {imageblok} from '@/scripts/interfaces'
+// noinspection ES6UnusedImports
 import { Image } from "astro:assets"
-const { blok }:imageblok = Astro.props
+const { blok } = Astro.props
 
 const image = new StoryblokAssetManager(blok.imageAsset.filename);
 const maxSize = (blok.maxSize > 475) ? 475 : blok.maxSize; 

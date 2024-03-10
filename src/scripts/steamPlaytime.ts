@@ -1,4 +1,4 @@
-import type { steamGame } from "@/scripts/interfaces";
+import type { steamGame } from "@/scripts/interfaces.ts";
 
 class SteamAPI {
     private STEAM_USER_ID: string | undefined;
