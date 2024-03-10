@@ -45,12 +45,11 @@ const categoriesSupa = await supabase.from('skills').select('category (id,name)'
 const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.category && data.category.name || null))];
 ---
 <Layout title="Curriculum vitae">
-    <div slot="top" class="w-full">
-        <div class="justify-center w-full">
+    <div class="block full-width" slot="top">
+        <div class="timeline-buttons-container full-width">
             {uniqueCategories.map((button) => (
-                    
-                    <ButtonClassHide 
-                            name={button} 
+                    <ButtonClassHide
+                            name={button}
                             classname={`timeline__element__category--${button}`}
                     />
             ))}
@@ -58,32 +57,70 @@ const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.categ
     </div>
     <section class="time-line-container">
         {skillsTimeline.data && skillsTimeline.data.map((data) => (
-                <TimeLineElement 
-                        title     = {data.title || null} 
-                        company   = {data.company && data.company.name || null} 
-                        startDate = {data.start_date || null} 
-                        endDate   = {data.end_date || null} 
-                        location  = {data.location && data.location.name || null} 
-                        text      = {data.description || null} 
-                        link      = {data.url && data.url.url || null} 
-                        category  = {data.category && data.category.name || null} 
+                <TimeLineElement
+                        title     = {data.title || null}
+                        company   = {data.company && data.company.name || null}
+                        startDate = {data.start_date || null}
+                        endDate   = {data.end_date || null}
+                        location  = {data.location && data.location.name || null}
+                        text      = {data.description || null}
+                        link      = {data.url && data.url.url || null}
+                        category  = {data.category && data.category.name || null}
                         classname = {`timeline__element__category--${data.category && data.category.name || null}`}
                 />
         ))}
     </section>
     {
         Object.entries(skillTables as { [key: string]: string[] }).map(([category, titles]) => (
-                <section class="mb-10" id={category}>
-                    <h2 class="w-full mb-5 text-3xl font-bold">{toSentenceCase(category,true)}</h2>
-                    <ul class="mx-6 list-disc md:columns-5 columns-2">
+                <section class="cv-section">
+                    <h2 class="section-title">{toSentenceCase(category,true)}</h2>
+                    <ul>
                         {
-                            titles.map((title: string) => (<li>{title}</li>))
+                            titles.map((title: string) => (<li class="list-item">{title}</li>))
                         }
                     </ul>
                 </section>
         ))
     }
 </Layout>
+<style>
+    .block {
+        display: block;
+    }
+
+    .full-width {
+        width: 100%;
+    }
+
+    .timeline-buttons-container {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .cv-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+        width: 100%;
+        margin-bottom: 1.25rem;
+        font-size: 1.875rem;
+        font-weight: bold;
+    }
+
+    .list {
+        padding-left: 1.5rem;
+        list-style-type: disc;
+    }
+
+    .grid {
+        display: grid;
+        grid-gap: 1rem;
+    }
+
+    
+</style>
+
 <style is:global>
     .time-line-container > div:last-child .education__time > .education__line,
     .time-line-container > div:only-child .education__time > .education__line {

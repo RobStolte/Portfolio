@@ -1,59 +1,60 @@
 ---
-
+import {Image} from "astro:assets";
+const {title,description,icon_url,icon_size,className} = Astro.props;
 ---
-<div class="card">
-    <div class="icon">
-    </div>
+<div class:list={["expanded__detail_card", className]}>
+    <Image 
+            class="icon"
+            src={icon_url}
+            alt={title}
+            width={icon_size}
+            height={icon_size}    
+    />
 
     <div class="content">
-        <h3>Title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur </p>
+        <h3>{title}</h3>
+        <p>{description}</p>
     </div>
 </div>
 <style>
-    .card {
-        width: 190px;
-        height: 120px;
-        background-color: #eee;
+    .expanded__detail_card {
+        width: 15rem;
+        height: 8rem;
+        background-color: var(--background__base);
         text-align: center;
-        border: 10px solid #eee;
+        border: 10px solid var(--background__base);
         border-radius: 20px;
-        box-shadow: inset 5px 5px 10px #bbb, inset -5px -5px 10px #fff;
+        box-shadow: var(--shadowstyle__base-in);
         transition: 0.5s;
     }
 
-    .card:hover {
-        height: 254px;
+    .expanded__detail_card:hover {
+        height: 100%;
     }
 
     .icon {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
         color: red;
         font-size: 30px;
-        background-color: #eee;
         margin: 20px auto;
         padding: 5px;
         border-radius: 50%;
-        box-shadow: 8px 8px 10px #ddd, -8px -8px 10px #fff;
+        box-shadow: var(--shadowstyle__base);
     }
 
     .content {
-        color: #999;
-        background-color: #eee;
+        background-color: var(--background__base);
         padding: 10px;
         margin: 5px 20px;
         border-radius: 8px;
-        box-shadow: 8px 8px 10px #ddd, -8px -8px 10px #fff;
+        box-shadow: var(--shadowstyle__base);
         transform: translateY(-80px) scale(0);
         transition: all 0.5s;
     }
 
-    .card:hover .content {
+    .expanded__detail_card:hover .content {
         transform: translateY(0) scale(1)
     }
 
-    .content h3 {
-        text-shadow: 2px 2px 0px #fff;
-    }
 </style>

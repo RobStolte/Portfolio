@@ -1,26 +1,55 @@
 ---
 import { StoryblokAssetManager } from '@/scripts/storyBlokUtil';
 import { storyblokEditable } from '@storyblok/astro'
+import type {imageblok} from '@/scripts/interfaces'
 import { Image } from "astro:assets"
-const sta = new StoryblokAssetManager();
-const { blok } = Astro.props
-const imageUrl = blok.isAnimating ? blok.imageAsset.filename : `${blok.imageAsset.filename}/m/0x${blok.maxSize}/filters:format(webp)`;
+const { blok }:imageblok = Astro.props
 
-const imageData = sta.getRezAndAspectFromStoryAssetFilename(blok.imageAsset.filename)
-const newHeight = imageData.aspectRatio * blok.maxSize;
+const image = new StoryblokAssetManager(blok.imageAsset.filename);
+const maxSize = (blok.maxSize > 475) ? 475 : blok.maxSize; 
+if(blok.isAnimating == false || blok.isAnimating == undefined){
+  image.setNewResolution(0,maxSize)
+  image.setNewFileType('webp')
+  image.setHeightFromAspect()
+}
 ---
 <div
-  {...storyblokEditable(blok)}
-  class="relative"
+    {...storyblokEditable(blok)}
+    class="block"
 >
   <Image
-    loading = "eager"
-    decoding= "sync"
-    width   = {blok.maxSize}
-    height  = {newHeight}
-    src     = {imageUrl}
-    alt     = {blok.imageAsset.alt || "Hero Image"}
-    class   = "rounded-2xl border border-base-300 shadow-2xl"
+      loading = "eager"
+      decoding= "sync"
+      width   = {image.obj.width}
+      height  = {image.obj.height}
+      src     = {image.obj.url}
+      alt     = {blok.imageAsset.alt || image.obj.fileName}
+      class   = "block__image"
   />
-  {blok.subText && <div class="absolute bottom-0 inset-x-0 bg-rst__primary/80 text-center p-2 rounded-b-2xl">{blok.subText}</div>}
+  {blok.subText &&
+      <div class="block__subtext">
+        {blok.subText}
+      </div>}
 </div>
+
+<style>
+  .block {
+    position: relative;
+  }
+  .block__image {
+    border-radius: 3rem;
+    box-shadow: inset 0 25px 50px -12px hsl(var(--shadow__color_01));
+  }
+  .block__subtext {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: hsla(var(--background__base) / 80%); /* You need to replace color: rgba(r,g,b,a) of your rst_primary color with 80% opacity */
+    box-shadow: inset 0 0 30px 3px hsl(var(--background__base));
+    text-align: center;
+    padding: 0.5rem;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: 3rem;
+  }
+</style>

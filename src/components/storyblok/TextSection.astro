@@ -5,5 +5,11 @@ import { storyblokEditable } from '@storyblok/astro'
  <div
    {...storyblokEditable(blok)}
  >
- <p>{blok.textblock}</p>
+ <p class="section__text">{blok.textblock}</p>
  </div>
+<style>
+ .section__text{
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+ }
+</style>

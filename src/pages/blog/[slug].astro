@@ -9,23 +9,23 @@ const { data } = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
 });
 const story = data.story;
 ---
-<Layout
-    title       = {story.name}
-    description = {story.content.description}
-    pubDate     = {story.first_published_at}
-    heroImage   = {story.content.heroImage.filename}
-    heroImageAlt= {story.content.heroImage.alt}
-    updatedDate = {story.published_at}
-    badge       = {story.content.badge}
-    tags        = {story.tag_list}>
+<Layout>
     <header slot="top">
-        <h1>{story.name}</h1>
+        <h3>{story.name}</h3>
         <p>{story.content.description}</p>
     </header>
-    <main>{
+    <main class="section__main">
+        
+        
+        {
       story.content.blokken?.map((blok:SbBlokData) => {
         return <StoryblokComponent blok={blok} />
       })
     }
     </main>
 </Layout>
+<style>
+    .section__main {
+        padding: 2rem;
+    }
+</style>

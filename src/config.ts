@@ -1,12 +1,11 @@
-import * as icons from '@/Assets/icons/index'
 export const PERSOONLIJKE_INFO = {
-    Voornaam: "Rob",
-    Achternaam: "Stolte",
-    Geboortejaar: 1989,
-    GeboorteMaand: 12,
-    GeboorteDag: 27,
-    Email: "contact@robstolte.nl",
-    profielfoto: "https://a.storyblok.com/f/253533/4750x4750/fa15b61404/profiel2023-groot.png"
+    Voornaam        : "Rob",
+    Achternaam      : "Stolte",
+    Geboortejaar    : 1989,
+    GeboorteMaand   : 12,
+    GeboorteDag     : 27,
+    Email           : "contact@robstolte.nl",
+    profielfoto     : "https://a.storyblok.com/f/253533/4750x4750/fa15b61404/profiel2023-groot.png"
 }
 
 export const SIDE_BAR_MENU = [
@@ -15,7 +14,7 @@ export const SIDE_BAR_MENU = [
         { id: 'cv',    slug: 'cv',      icon: 'IconCVList' },
         { id: 'games', slug: 'games',   icon: 'IconSteam'  },
     ];
-    export const CONTACT_METHODS = [
+export const CONTACT_METHODS = [
         { id: 'email',    url: `mailto:${PERSOONLIJKE_INFO.Email}`,       ariaLabel:'Email',      titel: 'Stuur me een mailtje!',         icon: 'IconEmail'     },
         { id: 'linkedin', url: 'https://www.linkedin.com/in/rob-stolte/', ariaLabel:'LinkedIn',   titel: 'Bekijk mijn LinkedIn profiel!', icon: 'IconLinkedin'  },
         { id: 'github',   url: 'https://github.com/RobStolte',            ariaLabel:'GitHub',     titel: 'Bekijk mijn GitHub profiel!',   icon: 'IconGithub'    },

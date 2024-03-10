@@ -8,12 +8,6 @@
   /*  ================================================================================  */
 
   /* ================ Fam Stolte color palette ================ */
-    
-    --color__stolte-primary         : 350  35%  48%; /* Matrix Primary */
-    --color__stolte-secondary       : 30   39%  77%; /* Grain Brown Secondary */
-    --color__stolte-tertiary        : 300   9%  10%; /* Bastille Tertiary */
-    --color__stolte-accent          : 343  44%  74%; /* Can Can Accent */
-    
     --background__h                 : 350;
     --background__s                 : 0%;
     --background__l                 : 90%;
@@ -24,7 +18,7 @@
     
     /*             ================ Font styles ================                  */
     --color__text                   : 0 0% 0%;
-    --color__text-light             : 0 0% 100%;
+    --color__text-light             : 0 0% 75%;
     --font__accent                  : 'ShareTech Mono';
     --font__base                    : 'Fira Mono';
     /*             ================ shadow styles ================                  */
@@ -45,10 +39,8 @@
 /*  ================================================================================  */
 @media (prefers-color-scheme: dark) {
     body {
-        --color__base                   : var(--color__base-dark);   /* Yellow */
         --color__text                   : var(--color__text-light);  /* Black */
         --background__base              : var(--background__base-dark);  /* White */
-        --background__base-accent       : var(--background__base-accent-dark);  /* Black */
     
         --shadow__color_01              : var(--shadow__color_01-dark);
         --shadow__color_02              : var(--shadow__color_02-dark);
@@ -76,6 +68,7 @@ body {
     font-size                       : 0.85rem;
     
     font-family                     : var(--font__base), serif;
+    font-weight                     : 300;
     color                           : hsl(var(--color__text));
 
 
@@ -113,23 +106,25 @@ h2 {
     flex-grow: 1; /* Causes the flex item to fill the remaining space */
 }
 
+a:link, a:visited,a:hover,a:active {
+text-decoration: none;
+}
+
+
 /*  ============================  Scrollbar styling  ==============================  */
 
 ::-webkit-scrollbar {
-    width: 2px;
+    width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #2c2929;
+    background: hsl(var(--background__base));
+    
 }
 
 /* Handle */
-::-webkit-scrollbar-thumb {
-    background: #2c2b2b;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #989898;
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover{
+    box-shadow: var(--shadow__fade_02) hsl(var(--shadow__color_02));
 }

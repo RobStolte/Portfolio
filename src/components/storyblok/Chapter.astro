@@ -4,11 +4,20 @@ import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 const { blok }: any  = Astro.props
 ---
 
-<section {...storyblokEditable(blok)}>
-  <h2 class="text-2xl text-rst__primary dark:text-rst__secondary font-bold">{blok.title}</h2>
+<section {...storyblokEditable(blok)} class="section">
+  <h2 class="section__title">{blok.title}</h2>
     {
       blok.blokken?.map((blok: {}) => {
         return <StoryblokComponent blok={blok} />
       })
     }
 </section>
+<style>
+  .section{
+    margin-top: 2rem;
+  }
+  .section__title {
+    margin-bottom: .2rem;
+    text-align: center;
+  }
+</style>

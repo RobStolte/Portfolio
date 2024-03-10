@@ -36,7 +36,7 @@ const staticImageWidth = 300
 <section>
   <h2 class='text-3xl w-full font-bold mb-2 text-rst__primary dark:text-rst__secondary'>{listTitle}</h2>
   { sortedPosts.map((post: post) => {
-      const imageData = sta.getRezAndAspectFromStoryAssetFilename(post.image.filename)
+      const imageData = sta.getAspect(post.image.filename)
       const newHeight = imageData.aspectRatio * staticImageWidth;
     return (
       <>

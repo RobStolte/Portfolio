@@ -1,75 +1,47 @@
 ---
-
-import { useStoryblokApi } from '@storyblok/astro'
+import {useStoryblokApi} from '@storyblok/astro'
 import HorizontalCard from "@/components/Old/HorizontalCard.astro";
-import {StoryblokAssetManager} from "@/scripts/storyBlokUtil";
+import {StoryblokStoryManager, StoryblokAssetManager} from "@/scripts/storyBlokUtil";
 import Layout from "@/layouts/Layout.astro";
 import {story} from "@/scripts/interfaces";
 const storyblokApi = useStoryblokApi()
 
-const sta = new StoryblokAssetManager;
-const collection = 'blog';
+const ssm = new StoryblokStoryManager();
+let collection = [];
 
-const { data } = await storyblokApi.get('cdn/stories', {
-  version: import.meta.env.DEV ? "draft" : "published",
-  starts_with: `${collection}/`,
-  is_startpage: false
-})
-
-const pages = data.stories.map((story: story) => {
-  return {
-    badge: story.content.badge,
-    title: story.name,
-    slug: story.full_slug,
-    description: story.content.description,
-    image: story.content.heroImage,
-    date: story.published_at,
-    tags: story.tag_list,
-  }
-})
+collection = await ssm.createCollectionLists('blog');
 
 const staticImageWidth = 300
 ---
-<Layout title="Welcome on the portfolio of Rob Stolte">
-{pages.map((page) => {
-
-  <div class="mb-5">
-    <div class="text-5xl w-full font-bold text-rst__primary dark:text-rst__accent">{collection}</div>
-  </div>
-
-  {
-    page.length === 0 ? (
-      <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
-        <p class="font-bold">Sorry!</p>
-        <p>Er zijn nog geen {collection} gepost</p>
-      </div>
+<Layout title="Blog posts">
+    {collection.length === 0 ? (
+        <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
+            <p class="font-bold">Sorry!</p>
+            <p>Er zijn nog geen {collection} gepost</p>
+        </div>
     ) : (
-    <ul>
-  {page.map((post: story) => {
-      const imageData = sta.getRezAndAspectFromStoryAssetFilename(post.image.filename)
-      const newHeight = imageData.aspectRatio * staticImageWidth;
-
-    return (
-      <>
-        <HorizontalCard
-          title={post.title}
-          badge={post.badge}
-          tags={post.tags}
-          img={post.image.filename}
-          imageAlt={post.image.alt}
-          imageWidth={staticImageWidth}
-          imageHeight={newHeight}
-          desc={post.description}
-          url={post.slug}
-          target="_self"
-          badge={post.badge}
-        />
-      </>
-    );
-  })}
-</ul>
-    )
-  }
-
-})}
+        <ul class="subcontainer_list">
+            {collection.map((post) => {
+                return (
+                        <HorizontalCard
+                                title={post.title}
+                                tags={post.tags}
+                                img={post.image.filename}
+                                imageAlt={post.image.filename}
+                                imageWidth={staticImageWidth}
+                                desc={post.description}
+                                url={post.slug}
+                                target="_self"
+                                badge={post.badge}
+                        />
+                );
+            })}
+        </ul>
+        )
+    }
 </Layout>
+<style>
+    .subcontainer_list {
+        padding: 0;
+    }
+</style>

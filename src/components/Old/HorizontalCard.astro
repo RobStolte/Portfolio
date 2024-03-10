@@ -1,29 +1,27 @@
 ---
 import Badge from '@/components/vue/badge.vue';
-const {
-    title,
-    img,
-    desc,
-    url,
-    badge,
-    tags,
-    target,
-    imageAlt,
-    imageWidth,
-    imageHeight,
-    noImageProcessing,
-    unintrusive,
-    rel,
-} = Astro.props;
+import {StoryblokAssetManager} from "@/scripts/storyBlokUtil";
 import { Image } from 'astro:assets';
-const image = noImageProcessing
-    ? `${img}`
-    : `${img}/m/0x${imageWidth}/filters:quality(80):format(webp)`;
+
+const {title, img, desc, url, badge, tags, target, imageAlt, imageWidth, imageHeight, noImageProcessing, rel,
+} = Astro.props;
+
+let image = new StoryblokAssetManager(img);
+if (!noImageProcessing) {
+image.setNewResolution(imageHeight, imageWidth)
+image.setNewFileType('webp')
+}
+image.setHeightFromAspect()
 ---
 <div class="card">
     <a href={url} target={target} rel={rel || ""} data-astro-prefetch>
         <div class="card__hero-content">
-            <Image src={image} width={imageWidth || 500} height={imageHeight || 300} alt={imageAlt || title} class="img-style-link"/>
+            <Image src={image.obj.url} 
+                   width={image.obj.width} 
+                   height={image.obj.height} 
+                   alt={imageAlt || image.obj.fileName} 
+                   class="img-style-link"
+            />
             <div class="card__text-aside">
                 <h1 class='card__title'>
                     {title} { badge && (<Badge text={badge} outline='false' /> )}
