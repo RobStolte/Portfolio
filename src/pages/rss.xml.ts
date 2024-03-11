@@ -1,8 +1,9 @@
 import rss from "@astrojs/rss";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@/config";
-import { useStoryblokApi } from '@storyblok/astro'
-import { PERSOONLIJKE_INFO } from "@/config.ts";
+import { SITE_TITLE, SITE_DESCRIPTION, PERSOONLIJKE_INFO } from "@/config.ts";
+import { useStoryblokApi } from '@storyblok/astro';
+
 const today = new Date();
+
 const storyblokApi = useStoryblokApi()
 
 interface Story {

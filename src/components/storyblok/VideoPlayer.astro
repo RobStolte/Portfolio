@@ -1,0 +1,88 @@
+---
+import { storyblokEditable } from '@storyblok/astro'
+const { blok }: any  = Astro.props
+const maxSize = `${blok.maxSize}px`
+
+interface blok {
+    title: string,
+    VideoService: ['youtube', 'vimeo','twitch', 'facebook', 'streamable', 'odysee'],
+    streamCode: string,
+    maxSize : number
+}
+
+const videoStreamService = {
+    youtube: {
+        embed: (id: string) => `https://www.youtube.com/embed/${id}`
+    },
+    vimeo: {
+        embed: (id: string) => `https://player.vimeo.com/video/${id}`
+    },
+    twitch: {
+        embed: (id: string) => `https://player.twitch.tv/?video=${id}`
+    },
+    facebook: {
+        embed: (id: string) => `https://www.facebook.com/video/embed?video_id=${id}`
+    },
+    streamable: {
+        embed: (id: string) => `https://streamable.com/o/${id}`
+    },
+    odysee: {
+        embed: (id: string) => `https://odysee.com/$/embed/${id}`
+    }
+}
+
+const getVideoService = (service: string, code: string) => {
+    const videoService = videoStreamService[service]
+    const embedUrl = videoService.embed(code)
+    return (embedUrl) ? embedUrl : 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+}
+
+---
+<div {...storyblokEditable(blok)} class="container__video" >
+    <iframe
+            src     = {getVideoService(blok.videoService,blok.streamCode)}
+            title   = {blok.title}
+            allow   = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            class   = "container__video_iframe"
+            allowfullscreen
+    />
+</div>
+<script async
+        is:inline
+        src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@latest/dist/lazyload.min.js">
+    // Set the options globally
+    // to make LazyLoad self-initialize
+    window.lazyLoadOptions = {
+        // Your custom settings go here
+    };
+
+    // Listen to the initialization event
+    // and get the instance of LazyLoad
+    window.addEventListener("LazyLoad::Initialized", function (event) {
+        window.lazyLoadInstance = event.detail.instance;
+    }, false);
+</script>
+
+<style define:vars={maxSize}>
+    .container__video_iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 25px 50px -12px hsl(var(--shadow__color_01));
+        border-radius: 3rem;
+        border: 0;
+    }
+
+    /*noinspection CssUnresolvedCustomProperty*/
+    .container__video {
+        position: relative;
+        width: var(--maxSize);
+        height: 0;
+        padding-bottom: 56.25%;
+        margin-right: auto;
+        margin-left: auto;
+        
+    }
+</style>

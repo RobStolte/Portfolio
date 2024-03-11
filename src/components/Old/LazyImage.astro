@@ -1,0 +1,27 @@
+---
+import { StoryblokAssetManager } from "@/scripts/storyBlokUtil";
+// noinspection ES6UnusedImports
+import { Image } from "astro:assets";
+const {
+    imgURL,
+    imageWidth,
+    imageHeight,
+    imageAlt,
+    classnames,
+    noImageProcessing,
+
+} = Astro.props;
+let image = new StoryblokAssetManager(imgURL);
+
+if (!noImageProcessing) {
+    image.setNewResolution(imageHeight, imageWidth)
+    image.setNewFileType('webp')
+}
+image.setHeightFromAspect()
+---
+<Image
+    src={image.obj.url}
+    width={image.obj.width}
+    height={image.obj.height}
+    alt={imageAlt || image.obj.fileName}
+    class={classnames}/>

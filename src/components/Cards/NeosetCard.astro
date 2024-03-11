@@ -1,0 +1,23 @@
+---
+const {className} = Astro.props;
+---
+
+<div class:list={["neo__set__card", className]}>
+    <div class="neo__set__card_inset">
+    <slot/>
+    </div>
+</div>
+<style>
+    .card {
+        border-radius: 50px;
+        background: var(--background__base);
+        box-shadow: var(--shadowstyle__base),
+                    ;
+    }
+    .neo__set__card_inset {
+        width: 95%;
+        height: 95%;
+        box-shadow: var(--shadowstyle__base-in)
+        
+    }
+</style>

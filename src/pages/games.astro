@@ -1,44 +1,93 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import { type steamGame } from "@/scripts/interfaces";
+// noinspection ES6UnusedImports
+import { Image } from 'astro:assets';
 import { CapitalizeFirst } from "@/scripts/stringConverters.ts"
-import { steamAPIGetPlaytimes } from "@/scripts/steamPlaytime.ts"
+import { SteamAPI } from "@/scripts/steamPlaytime.ts"
+import Layout from "@/layouts/Layout.astro";
+import ExpandDetailCard from "../components/Cards/ExpandDetailCard.astro";
 
 function niceHourTimes(RawTime:number) {
     return Math.floor(RawTime / 60)+':'+Math.round((RawTime % 60)).toString().padStart(2, '0');
 }
 let response: steamGame[] = []; // Initialize response with an empty array
 try {
-  response = await steamAPIGetPlaytimes('playTime');
+    const steamApi = new SteamAPI();
+  response = await steamApi.getPlaytimes('playTime');
 } catch (error) {
 }
 
+
 ---
-<BaseLayout>
-    <h1>Gamen</h1>
-    <sub class="mb-5 underline">pagina is work in progres maar toch voor de share live gegooid.</sub>
-    <p class="mb-5">Een van mijn hobbies is gamen, de preferentie's gaan het meeste uit naar spellen welke niet competitie/match gebaseerd zijn maar een progressie op lange termijn hebben.
-        Dit zijn veelal spellen met een verhaal of sandbox spellen waar het creëren van iets belangrijk is.</p>
-
-    <h2>Steam</h2>
-
-    <p class="mb-10">Om toch deze site een beetje aan te vullen en mijzelf een reden te geven om iets technisch te bouwen is deze pagina een scrape systeem welke de api's scraped van gamediensten die ik gebruik, daarmee is er een redelijk accuraat inzicht op wat en hoeveel ik speel en is er een reden om deze site technischer te maken dan hij eigenlijk hoeft te zijn.</pclass="mb-5">
-
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {response.map((game: steamGame) => (
-            <div class="relative h-20 flex items-center p-4 bg-rst__primary rounded-full dark:bg-slate-200 overflow-hidden shadow-2xl">
-                <img class="absolute left-[0px] w-20 h-20 rounded-full" src={game.img_icon_url} alt={game.name} />
-                <div class="ml-20">
-                    <div class="text-lg font-bold text-rst__secondary overflow-hidden whitespace-nowrap overflow-ellipsis">
-                        {CapitalizeFirst(game.name.toLowerCase())}
-                    </div>
-                    <div class="text-sm text-rst__secondary">
-                        Gespeeld: {game.playtime_forever !== undefined ? niceHourTimes(game.playtime_forever) : 'N/A'} uur, Laatste 2 weken: {game.playtime_2weeks !== undefined ? niceHourTimes(game.playtime_2weeks) : 'N/A'} uur
-                    </div>
-                </div>
-            </div>
+<Layout title="Gamen">
+    <section class="section__introductiontext">
+    <p class="section__introductiontext_description">Gamen is één van mijn passies. niet spellen in de competitie- of matchgebaseerde categorieën, maar eerder op de lange termijn ontwikkeling en vooruitgang. Dit zijn vaak verhalende games of sandbox-games, waarbij de nadruk ligt op creativiteit en het vormgeven van je eigen virtuele wereld.</p>
+    </section>
+    <section class="section__steam_content">
+    <h2 class="section__introductiontext_heading">Steam</h2>
+        <div class="grid__gamecards"></div>
+        {response.map(({img_icon_url, name, playtime_2weeks, playtime_forever}: steamGame) => (
+                <ExpandDetailCard 
+                        class="item"
+                        icon_url={img_icon_url}
+                        icon_size="80"
+                        title={CapitalizeFirst(name.length > 35 ? name.toLowerCase().slice(0, 32) + '...' : name.toLowerCase())}
+                        description={`2 weken: ${playtime_2weeks !== undefined ? niceHourTimes(playtime_2weeks) : 'N/A'} uur, Totaal: ${playtime_forever !== undefined ? niceHourTimes(playtime_forever): 'N/A'} uur`}
+                    >
+                </ExpandDetailCard>
         ))}
-    </div>
+    </section>
+</Layout>
+<style>
+    .section__introductiontext_description {
+        margin: 1rem;
+        
+    }
 
-</BaseLayout>
+    .section__steam_content {
+        margin: 1rem;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        @media (max-width: 575px) {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+    }
+
+    .item {
+        margin: 0 0.5rem 0 0.5rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 5rem;
+        padding: 1rem;
+        overflow: hidden;
+        border-radius: 3rem;
+        box-shadow: var(--shadowstyle__base);
+    }
+
+    .item__img {
+        position: absolute;
+        left: 0;
+        width: 80px;
+        height: 80px;
+        border-radius: 0;
+        box-shadow: var(--shadowstyle__base);
+    }
+
+    .item__text {
+        margin-left: 5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .item__text--title {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .item__text--subtitle {
+        font-size: 0.7rem;
+    }
+</style>

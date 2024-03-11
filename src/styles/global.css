@@ -1,45 +1,133 @@
-/*@tailwind base;     */
-/*@tailwind components;     */
-/*@tailwind utilities;     */
+@import url('reset.css');
+@font-face { font-family: 'Fira Mono'; /*noinspection CssUnknownTarget*/ src: url('FiraMono.ttf')      format('ttf'); }
+@font-face { font-family: 'ShareTech Mono'; /*noinspection CssUnknownTarget*/ src: url('ShareTechMono.ttf') format('ttf'); }
 
-/*@layer base {*/
-  :root {
-  font: light 1rem 'Fira Code' sans-serif;
-    /*  ================ Rob Stolte colorpallete ================  */
-/*    --color__primary          : 32 22 59 ;    /* Russian Violet */
-/*    --color__secondary        : 138 243 255;  /* Electric blue */
-/*    --color__tertiary         : 24 169 153;   /* Persian green */
-/*    --color__accent           : 244 248 18;   /* Yellow */
-/*    --color__subtle           : 226 202 202;  /* Pale Dogwood */
-/*    --color__base-light       : 244 244 244;  /* Cultured */
-/*    --color__base-dark        : 29 29 29;     /* Eerie Black */
-/*
-/*
-/*    /*  ================ Fam Stolte color palette ================  */
-/*    --color__stolte-primary  : 166 80 91;    /* Matrix Primary */
-/*    --color__stolte-secondary: 221 197 173;  /* Grain Brown Secondary */
-/*    --color__stolte-tertiary : 25 21 28;     /* Bastille Tertiary */
-/*    --color__stolte-accent   : 218 160 173;  /* Can Can Accent */
-  }
-/*}*/
-p{
-  font : normal 1rem sans-serif;
+:root {
+  /*  ================================================================================  */
+  /*  =================================== variables ===================================  */
+  /*  ================================================================================  */
+
+  /* ================ Fam Stolte color palette ================ */
+    --background__h                 : 350;
+    --background__s                 : 0%;
+    --background__l                 : 80%;
+    --background__l_dark            : 15%;
+    
+    --background__base              : var(--background__h) var(--background__s) var(--background__l); /* White */
+    --background__base-dark         : var(--background__h) var(--background__s) var(--background__l_dark); /* Black */
+    
+    /*             ================ Font styles ================                  */
+    --color__text                   : 0 0% 15%;
+    --color__text-light             : 0 0% 75%;
+    --font__accent                  : 'ShareTech Mono';
+    --font__base                    : 'Fira Mono';
+    /*             ================ shadow styles ================                  */
+
+    --shadow__fade_01               :  8px   8px  10px;
+    --shadow__fade_02               : -8px  -8px  10px;
+
+    --shadow__color_01              : var(--background__h) var(--background__s)  calc( -20% + var(--background__l));
+    --shadow__color_02              : var(--background__h) var(--background__s)  calc(  4% + var(--background__l));
+
+    --shadow__color_01-dark         : var(--background__h) var(--background__s)  calc( -20% + var(--background__l_dark));
+    --shadow__color_02-dark         : var(--background__h) var(--background__s)  calc(  6% + var(--background__l_dark));
+}
+
+
+/*  ================================================================================  */
+/*  =================================== Dark mode ===================================  */
+/*  ================================================================================  */
+@media (prefers-color-scheme: dark) {
+    body {
+        --color__text                   : var(--color__text-light);  /* Black */
+        --background__base              : var(--background__base-dark);  /* White */
+    
+        --shadow__color_01              : var(--shadow__color_01-dark);
+        --shadow__color_02              : var(--shadow__color_02-dark);
+        
+    }
+}
+
+/*  ================================================================================  */
+/*  ==================================== Styling ====================================  */
+/*  ================================================================================  */
+/**/
+body {
+
+    transition: all 0.5s ease;
+    --shadowstyle__base             : var(--shadow__fade_01) hsl(var(--shadow__color_01))
+                                    , var(--shadow__fade_02) hsl(var(--shadow__color_02));
+    --shadowstyle__base-in          : inset var(--shadow__fade_01) hsl(var(--shadow__color_01))
+                                    , inset var(--shadow__fade_02) hsl(var(--shadow__color_02));
+    box-sizing                      : border-box;
+    position                        : relative;
+    display                         : flex;
+    flex-direction                  : column;
+    align-items                     : center;
+    justify-content                 : center;
+    min-height                      : 100vh;
+    background                      : hsl(var(--background__base));
+    font-size                       : 0.85rem;
+    
+    font-family                     : var(--font__base), serif;
+    font-weight                     : 300;
+    color                           : hsl(var(--color__text));
+
+
+    
+    
+}
+h1,h2,h3,h4,h5,h6,caption,header {
+    font-weight  :bold;
+    font-family  : var(--font__accent), monospace;
+}
+@media (min-width: 1024px) { /* Responsive breakpoint for 'lg' */
+    body {
+        overflow: hidden;
+    }
 }
 
 h1 {
-  font-size: 2.5rem;
-  font-weight:bold
+    font-size: 2.5rem;
+    font-weight:bold;
+    color: var(--color__text);
 }
 
 h2 {
-  font-size: 2rem;
-  font-weight:bold
-}
-.time-line-container > div:last-child .education__time > .education__line,
-.time-line-container > div:only-child .education__time > .education__line {
-  display: none;
+    font-size: 2rem;
 }
 
-.hidden {
-  display: none;
+.default__icon_size{
+    height  : 1.5rem;
+    width   : 1.5rem;
+    fill    : var(--color__text);
+}
+
+.main__content_box{
+    overflow-y: auto; /* Enables scrolling */
+    flex-grow: 1; /* Causes the flex item to fill the remaining space */
+}
+
+a:link, a:visited,a:hover,a:active {
+    color: var(--color__text);
+    text-decoration: none;
+}
+
+
+/*  ============================  Scrollbar styling  ==============================  */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: hsl(var(--background__base));
+    
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover{
+    box-shadow: var(--shadow__fade_02) hsl(var(--shadow__color_02));
 }

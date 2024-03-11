@@ -1,0 +1,102 @@
+---
+import Badge from '@/components/vue/badge.vue';
+import {StoryblokAssetManager} from "@/scripts/storyBlokUtil";
+// noinspection ES6UnusedImports
+import { Image } from 'astro:assets';
+
+const {title, img, desc, url, badge, tags, target, imageAlt, imageWidth, imageHeight, noImageProcessing, rel,
+} = Astro.props;
+
+let image = new StoryblokAssetManager(img);
+if (!noImageProcessing) {
+image.setNewResolution(imageHeight, imageWidth)
+image.setNewFileType('webp')
+}
+image.setHeightFromAspect()
+---
+<div class="card">
+    <a href={url} target={target} rel={rel || ""} data-astro-prefetch>
+        <div class="card__hero-content">
+            <Image src={image.obj.url} 
+                   width={image.obj.width} 
+                   height={image.obj.height} 
+                   alt={imageAlt || image.obj.fileName} 
+                   class="img-style-link"
+            />
+            <div class="card__text-aside">
+                <h1 class='card__title'>
+                    {title} { badge && (<Badge text={badge} outline='false' /> )}
+                </h1>
+                <p class='card__description'>{desc}</p>
+                <div class='card__actions'>
+                    {tags &&
+                        tags.map((tag: string) => (
+                                <Badge text={tag} outline='true' />
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+<style define:vars={{imageWidth, imageHeight}}>
+    .card {
+        margin: 0.5rem 0.5rem 2rem;
+        border-radius: 2rem;
+        box-shadow: var(--shadowstyle__base);
+        transition: all 0.3s ease-in-out;
+    }
+
+    a{
+        text-decoration: none;
+        color: var(--color__text);
+    }
+    .card__hero-content {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .img-style-link {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 1rem;
+    }
+    @media (min-width: 464px) {
+        .card__hero-content {
+            flex-direction: row;
+        }
+        .img-style-link {
+            width: var(--imageWidth);
+        }
+    }
+    .img-style-link {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+    .card__title{
+        padding-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .card__description{
+        padding-top: .25rem;
+        padding-bottom: .25rem;
+        flex-grow: 1;
+    }
+
+    .card__actions{
+        justify-content: flex-end;
+    }
+    .card__text-aside {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .card__actions{
+        justify-content: flex-end;
+    }
+</style>

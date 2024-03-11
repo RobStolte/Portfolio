@@ -1,77 +1,81 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import { useStoryblokApi } from '@storyblok/astro'
-import { PERSOONLIJKE_INFO } from '@/config.ts';
-import Section from '@/components/ListOfCards.astro';
-const storyblokApi = useStoryblokApi()
+import Layout from "@/layouts/Layout.astro";
+// noinspection ES6UnusedImports
+import { Image } from 'astro:assets';
+import {PERSOONLIJKE_INFO} from "@/config";
+import Icon from "@/Assets/icons/Icon.astro";
+import { getAge} from "@/scripts/utils";
+import { StoryblokStoryManager, StoryblokAssetManager } from "@/scripts/storyBlokUtil";
+import {CapitalizeFirst} from "@/scripts/stringConverters";
+import ExpandDetailCard from "@/components/Cards/ExpandDetailCard.astro";
+
+const ssm = new StoryblokStoryManager();
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
+const blog = await ssm.createCollectionLists('blog');
 
-const getAge = (y: number, m: number, d: number) => {
-    const t = new Date(), b = new Date(y, m - 1, d);
-    let a = t.getFullYear() - b.getFullYear();
-    return t.getMonth() - b.getMonth() < 0 || (t.getMonth() - b.getMonth() === 0 && t.getDate() < b.getDate()) ? --a : a;
-  }
-
-async function  createCollectioLists(collection: string) {
-  const { data } = await storyblokApi.get('cdn/stories', {
-  version: import.meta.env.DEV ? "draft" : "published",
-  starts_with: `${collection}/`,
-  is_startpage: false
-})
-interface story {
-  name: string;
-  content: {
-    badge: string;
-    description: string;
-    heroImage: string;
-  };
-  full_slug: string;
-  published_at: string;
-  tag_list: string;
-}
-
-const pages = data.stories.map((story: story) => {
-  return {
-    title: story.name,
-    badge: story.content.badge,
-    slug: story.full_slug,
-    description: story.content.description,
-    image: story.content.heroImage,
-    date: story.published_at,
-    tags: story.tag_list,
-  }
-})
-return pages
-}
-let blog = [];
-
-blog = await createCollectioLists('blog');
 
 ---
 
-<BaseLayout sideBarActiveItemID='home'>
-  <div class='pb-12 mt-5'>
-    <hgroup>
-      <p class='text-xl py-1'>Moii 👋 Ik ben</p>
-      <h1 class='text-5xl font-bold'>{persoon.Voornaam} {persoon.Achternaam}</h1>
-      <p class='text-3xl py-3'>Tech enthousiast</p>
-      <div class='py-2'></div>
-    </hgroup>
+<Layout title="">
+    <div slot="top" >
+        <hgroup>
+            <p >Moiii 👋 Ik ben</p>
+            <h1 >{persoon.Voornaam} {persoon.Achternaam}</h1>
+            <p >Tech enthousiast</p>
+        </hgroup>
 
-    <text class='text-lg'>
-      Van harte welkom op mijn kleine stukje internet. Hier deel ik zo nu en
-      dan wat van mijn passies. Ik ben een {getAge(persoon.Geboortejaar, persoon.GeboorteMaand, persoon.GeboorteDag)}-jarige
-      techneut die zich graag bezighoudt met allerlei soorten techniek, zowel
-      fysiek als digitaal. Mijn focus ligt vooral op lasertechnologie,
-      CNC-machines en ICT-infrastructuur.
-    </text>
+        <text>
+            Van harte welkom op mijn kleine stukje internet. Hier deel ik zo nu en
+            dan wat van mijn passies. Ik ben een {getAge(persoon.Geboortejaar, persoon.GeboorteMaand, persoon.GeboorteDag)}-jarige
+            techneut die zich graag bezighoudt met allerlei soorten techniek, zowel
+            fysiek als digitaal. Mijn focus ligt vooral op lasertechnologie,
+            CNC-machines en ICT-infrastructuur.
+        </text>
 
-    <div class='mt-8'>
-      <hr/>
-      <a class='btn' href=`mailto:${persoon.Email}` target='_blank'
-        ><i class='fas fa-envelope-open size-5'></i> contact!</a
-      >
+        <div >
+            <hr/>
+            <a href=`mailto:${persoon.Email}` target='_blank' class="default__icon_size"
+            ><Icon icon="IconEmail" class="default__icon_size"/></a
+            >
+        </div>
     </div>
-  </div>
-  {blog && <Section listTitle="Het laaste van het blog" posts={blog} start="0" end="3"/> }
-</BaseLayout>
+    <ul class="subcontainer_list">
+        {blog.map((post) => {
+            const image = new StoryblokAssetManager(post.image.filename);
+            
+            image.setNewResolution(0,80);
+            image.setHeightFromAspect();
+            image.setNewFileType('webp');
+            return (
+                    
+                    <a class="linkable-blogcards" href={post.slug} target="_self">                    
+                    <ExpandDetailCard
+                            class="item"
+                            icon_url={image.obj.url}
+                            icon_size="80"
+                            title={CapitalizeFirst(post.title.length > 35 ? post.title.toLowerCase().slice(0, 32) + '...' : post.title.toLowerCase())}
+                            description={post.description}
+                    >
+                    </ExpandDetailCard>
+                    </a>
+            );
+        })}
+    </ul>
+</Layout>
+
+<style>
+    a.linkable-blogcards:link, a.linkable-blogcards:visited,a.linkable-blogcards:hover,a.linkable-blogcards:active {
+        color: var(--color__text);
+        text-decoration: none;
+    }
+    .subcontainer_list {
+        padding: 1rem;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        transition: all 0.5s ease;
+        @media (max-width: 575px) {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+    }
+</style>

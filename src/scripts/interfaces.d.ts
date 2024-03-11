@@ -1,3 +1,4 @@
+
 export interface timelineElement {
     category: string;
     timeline_element: boolean;
@@ -8,13 +9,16 @@ export interface timelineElement {
     image?: string;
     link?: string;
 }
+
 export interface timelineElementSorted {
     name: string;
     data: timelineElement[];
 }
+
 export interface startDate {
     startDate: number | null;
 }
+
 
 export interface steamGame {
     appid?: number;
@@ -25,4 +29,38 @@ export interface steamGame {
     playtime_windows_forever?: number;
     playtime_mac_forever?: number;
     playtime_linux_forever?: number;
+}
+
+export interface a_target { 
+    target: "_self"|"_blank"|"_parent"|"_top" 
+}
+
+
+export interface story {
+    name: string;
+    full_slug: string;
+    content: {
+        badge: string;
+        description: string;
+        heroImage: string;
+    }
+    published_at: string;
+    tag_list: string[];
+}
+
+
+
+export interface storyBlokAsset {
+    id :number
+    alt: string
+    name: string
+    focus: string
+    title: string
+    source: string
+    filename: string
+    copyright: string
+    fieldtype :string
+    meta_data: object
+    is_private: string
+    is_external_url: boolean
 }

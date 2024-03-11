@@ -2,70 +2,78 @@
 import {stringToHexColor, contrastColor } from '@/scripts/colortools.ts';
 import{ toSentenceCase, CapitalizeFirst } from '@/scripts/stringConverters.ts';
 const { title, company, text, location, category } = Astro.props;
+
 const categoryBackgroundColor = stringToHexColor(category);
 const categoryTextColor = contrastColor(categoryBackgroundColor);
 const categoryText = CapitalizeFirst(toSentenceCase(category));
 ---
-
-<figure class="
-  w-full
-  p-5
-  m-5
-  relative
-  rounded-2xl
-  hover:shadow-4xl hover:scale-[105%]
-  backdrop-blur-lg
-  shadow-lg
-  border
-  border-base-300
-  transition
-  ease-in-out"
->
-{company ? (
-  <>
-    <h3 class='font-semibold underline'>{company}</h3>
-    <div class='font-light'>{title}</div>
-  </>
-) : (
-  <>
-    <h3 class='font-semibold underline'>{title}</h3>
-  </>
-)}
-{text ? <p class=''>{text}</p> : null}
-<p class='mt-3 mb-5 text-justify'>
-</p>
-{category && <div class='
-  absolute
-  bottom-0
-  left-0
-  pr-6
-  pl-6
-  p-2
-  text-xs
-  rounded-br-none
-  rounded-tl-none
-  rounded-tr-xl
-  rounded-bl-2xl
-  '
-  style={`
-    background-color: ${categoryBackgroundColor};
-    color: ${categoryTextColor};`
-    }>{categoryText}
-</div>}
-{location && <div class='
-  absolute
-  bottom-0
-  right-0
-  pr-6
-  pl-6
-  p-2
-  bg-gray-900
-  text-xs
-  rounded-br-2xl
-  rounded-tr-none
-  rounded-bl-none
-  rounded-tl-xl
-  '
-  >{location}
-</div>}
+<figure class="card">
+    <div class="card__in_box">
+    {company ? (
+        <h3 class='card__company-title'>{company}</h3>
+        <div class='card__job-title'>{title}</div>
+    ) : (
+        <h3 class='card__job-title'>{title}</h3>
+    )}
+    {text ? <p class='card__text'>{text}</p> : null}
+    <p class='card__text card__text--justified'></p>
+    {category &&
+            <div 
+                class='card__category'>
+                {categoryText}
+            </div>
+    }
+    {location && <div class='card__location'>{location}</div>}
+    </div>
 </figure>
+
+<style define:vars={{ categoryBackgroundColor, categoryTextColor}}>
+    .card__in_box {
+        margin: 0.05rem;
+        padding: 1rem 1rem 0 1rem;
+        border-radius: 0.5rem;
+        box-shadow: var(--shadowstyle__base-in)
+    }
+    .card {
+        color: hsl(var(--color__text));
+        padding: 1rem 1rem 0.5rem 1rem;
+        margin: 1rem 0 2rem 0.5rem;
+        position: relative;
+        border-radius: 1rem;
+        box-shadow: var(--shadowstyle__base);
+        transition: all 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: var(--shadowstyle__base);
+    }
+    .card__company-title,
+    .card__job-title {
+        font-size: 1rem;
+    }
+    .card__company-title {
+        font-weight: 600;
+    }
+    .card__job-title {
+        font-weight: 300;
+    }
+    .card__text {
+        font-size: 0.8rem;
+        font-weight: 100;
+        margin-top: 0.5rem;
+        margin-bottom: 1.25rem;
+    }
+    .card__category,
+    .card__location {
+        position: absolute;
+        bottom: 0;
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+    .card__category {
+        left: 0;
+    }
+    .card__location {
+        right: 0;
+    }
+</style>

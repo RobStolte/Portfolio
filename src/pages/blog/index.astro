@@ -1,37 +1,43 @@
 ---
+import HorizontalCard from "@/components/Old/HorizontalCard.astro";
+import {StoryblokStoryManager} from "@/scripts/storyBlokUtil";
+import Layout from "@/layouts/Layout.astro";
+import {CapitalizeFirst} from "../../scripts/stringConverters";
 
-import { useStoryblokApi } from '@storyblok/astro'
-import ListofLayout from '@/layouts/ListofLayout.astro'
-const storyblokApi = useStoryblokApi()
+const ssm = new StoryblokStoryManager();
 
-const collection = 'blog';
-interface story {
-  name: string;
-  full_slug: string;
-  content: {
-    badge: string;
-    description: string;
-    heroImage: string;
-  }
-  published_at: string;
-  tag_list: string[];
-}
-const { data } = await storyblokApi.get('cdn/stories', {
-  version: import.meta.env.DEV ? "draft" : "published",
-  starts_with: `${collection}/`,
-  is_startpage: false
-})
+let collection = await ssm.createCollectionLists('blog');
 
-const pages = data.stories.map((story:story) => {
-  return {
-    badge: story.content.badge,
-    title: story.name,
-    slug: story.full_slug,
-    description: story.content.description,
-    image: story.content.heroImage,
-    date: story.published_at,
-    tags: story.tag_list,
-  }
-})
+const staticImageWidth = 200
 ---
-<ListofLayout page={pages} collection={collection} />
+
+<Layout title="Blog posts">
+    {collection.length === 0 ? (
+        <div class="">
+            <p class="">Sorry!</p>
+            <p>Er zijn nog geen {collection} gepost</p>
+        </div>
+    ) : (
+        <ul class="subcontainer_list">
+            {collection.map((post) => {
+                return (
+                        <HorizontalCard
+                                title={post.title}
+                                img={post.image.filename}
+                                imageAlt={post.image.filename}
+                                imageWidth={staticImageWidth}
+                                desc={CapitalizeFirst(post.description.length > 100 ? post.description.toLowerCase().slice(0, 103) + '...' : post.description.toLowerCase())}
+                                url={post.slug}
+                                target="_self"
+                        />
+                );
+            })}
+        </ul>
+        )
+    }
+</Layout>
+<style>
+    .subcontainer_list {
+        padding: 0;
+    }
+</style>

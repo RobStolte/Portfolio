@@ -1,0 +1,59 @@
+---
+import Icon from "@/Assets/icons/Icon.astro";
+
+const {title, href, target, square, activeTab, icon } = Astro.props;
+const tabIsActive = activeTab ? 'astro__button_activeTab' : '';
+const buttonStyle = square  ? 'astro__button_square' : 'astro__button_round';
+
+const buttonClasses = `astro__button_base ${buttonStyle} ${tabIsActive}`;
+const iconClasses = `Astro__button_icon default__icon_size`;
+---
+    <a href={href} target={target} title={title}
+        class={buttonClasses}
+        ><Icon icon={icon} class={iconClasses} />
+    </a>
+<style>
+    .astro__button_base {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 0;
+        background-color: var(--background__base);
+        box-shadow:  var(--shadowstyle__base);
+        transition: transform 0.5s, box-shadow 0.5s;;
+        cursor: pointer;
+    }
+    .astro__button_icon {
+        width: 0.8rem;
+        height: 0.8rem;
+        overflow: hidden;
+        clip: inherit;
+        color: var(--color__text);
+        background-color: var(--background__base);
+
+    }
+    
+    .astro__button_base.astro__button_activeTab,
+    .astro__button_base:hover {
+        box-shadow: var(--shadowstyle__base-in);
+    }
+    
+    .astro__button_base > .Astro__button_icon {
+
+    }
+    
+    .Astro__button_icon:hover {
+        transform: scale(0.9);
+    }
+    
+    .astro__button_square {
+        border-radius: 10px;
+    }
+    
+    .astro__button_round {
+        border-radius: 50%;
+    }
+</style>
