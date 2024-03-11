@@ -10,14 +10,14 @@
   /* ================ Fam Stolte color palette ================ */
     --background__h                 : 350;
     --background__s                 : 0%;
-    --background__l                 : 90%;
+    --background__l                 : 80%;
     --background__l_dark            : 15%;
     
     --background__base              : var(--background__h) var(--background__s) var(--background__l); /* White */
     --background__base-dark         : var(--background__h) var(--background__s) var(--background__l_dark); /* Black */
     
     /*             ================ Font styles ================                  */
-    --color__text                   : 0 0% 0%;
+    --color__text                   : 0 0% 15%;
     --color__text-light             : 0 0% 75%;
     --font__accent                  : 'ShareTech Mono';
     --font__base                    : 'Fira Mono';
@@ -26,11 +26,11 @@
     --shadow__fade_01               :  8px   8px  10px;
     --shadow__fade_02               : -8px  -8px  10px;
 
-    --shadow__color_01              : var(--background__h) var(--background__s)  calc( -10% + var(--background__l));
-    --shadow__color_02              : var(--background__h) var(--background__s)  calc(  10% + var(--background__l));
+    --shadow__color_01              : var(--background__h) var(--background__s)  calc( -20% + var(--background__l));
+    --shadow__color_02              : var(--background__h) var(--background__s)  calc(  4% + var(--background__l));
 
-    --shadow__color_01-dark         : var(--background__h) var(--background__s)  calc( -10% + var(--background__l_dark));
-    --shadow__color_02-dark         : var(--background__h) var(--background__s)  calc(  10% + var(--background__l_dark));
+    --shadow__color_01-dark         : var(--background__h) var(--background__s)  calc( -20% + var(--background__l_dark));
+    --shadow__color_02-dark         : var(--background__h) var(--background__s)  calc(  6% + var(--background__l_dark));
 }
 
 
@@ -53,6 +53,8 @@
 /*  ================================================================================  */
 /**/
 body {
+
+    transition: all 0.5s ease;
     --shadowstyle__base             : var(--shadow__fade_01) hsl(var(--shadow__color_01))
                                     , var(--shadow__fade_02) hsl(var(--shadow__color_02));
     --shadowstyle__base-in          : inset var(--shadow__fade_01) hsl(var(--shadow__color_01))
@@ -107,7 +109,8 @@ h2 {
 }
 
 a:link, a:visited,a:hover,a:active {
-text-decoration: none;
+    color: var(--color__text);
+    text-decoration: none;
 }
 
 

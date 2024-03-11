@@ -33,10 +33,10 @@ const headImage = "https://a.storyblok.com/f/253533/3249x4150/2bc61f68c9/wapen-s
 			/>
 				<h1>{title}</h1>
 				<slot name="top"/>
-				<InsetCard className="main__content_box">
+				<InsetCard className="main__content_box" transition:persist>
 					<slot/>
 				</InsetCard>
-			<MainMenu/>
+			<MainMenu transition:persist/>
 		</div>
 		<p class="subNote__website">©️ | {today.getFullYear()} {PERSOONLIJKE_INFO.Voornaam} {PERSOONLIJKE_INFO.Achternaam}</p>
 	</body>

@@ -45,16 +45,19 @@ const categoriesSupa = await supabase.from('skills').select('category (id,name)'
 const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.category && data.category.name || null))];
 ---
 <Layout title="Curriculum vitae">
+<!--    TODO filterknoppen werkzaam maken. 
     <div class="block full-width" slot="top">
         <div class="timeline-buttons-container full-width">
             {uniqueCategories.map((button) => (
                     <ButtonClassHide
+                            client:load
                             name={button}
-                            classname={`timeline__element__category--${button}`}
+                            className={`timeline__element__category&#45;&#45;${button}`}
+                            isActive={true}
                     />
             ))}
         </div>
-    </div>
+    </div>-->
     <section class="time-line-container">
         {skillsTimeline.data && skillsTimeline.data.map((data) => (
                 <TimeLineElement
@@ -84,6 +87,9 @@ const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.categ
     }
 </Layout>
 <style>
+    .time-line-container{
+        
+    }
     .block {
         display: block;
     }
@@ -94,6 +100,7 @@ const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.categ
 
     .timeline-buttons-container {
         justify-content: center;
+        margin: 1rem;
         width: 100%;
     }
 

@@ -9,7 +9,7 @@
     export default {
         components: {NeumorphSwitch},
         props: {
-            classname: {
+            className: {
                 type: String,
                 required: true,
             },
@@ -49,6 +49,11 @@
         },
     };
 </script>
+<style>
+.toggled_active{
+    margin: 1rem;
+}
+</style>
 <!--
   <style>
   button.button_custom {

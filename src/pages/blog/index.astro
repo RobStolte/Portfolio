@@ -2,17 +2,19 @@
 import HorizontalCard from "@/components/Old/HorizontalCard.astro";
 import {StoryblokStoryManager} from "@/scripts/storyBlokUtil";
 import Layout from "@/layouts/Layout.astro";
+import {CapitalizeFirst} from "../../scripts/stringConverters";
 
 const ssm = new StoryblokStoryManager();
 
 let collection = await ssm.createCollectionLists('blog');
 
-const staticImageWidth = 300
+const staticImageWidth = 200
 ---
+
 <Layout title="Blog posts">
     {collection.length === 0 ? (
-        <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
-            <p class="font-bold">Sorry!</p>
+        <div class="">
+            <p class="">Sorry!</p>
             <p>Er zijn nog geen {collection} gepost</p>
         </div>
     ) : (
@@ -21,14 +23,12 @@ const staticImageWidth = 300
                 return (
                         <HorizontalCard
                                 title={post.title}
-                                tags={post.tags}
                                 img={post.image.filename}
                                 imageAlt={post.image.filename}
                                 imageWidth={staticImageWidth}
-                                desc={post.description}
+                                desc={CapitalizeFirst(post.description.length > 100 ? post.description.toLowerCase().slice(0, 103) + '...' : post.description.toLowerCase())}
                                 url={post.slug}
                                 target="_self"
-                                badge={post.badge}
                         />
                 );
             })}

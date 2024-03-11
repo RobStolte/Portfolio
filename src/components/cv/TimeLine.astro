@@ -15,13 +15,11 @@ function displayDate(startDate: Date | null, endDate: Date | null) {
     return new Date(endDate).toLocaleDateString('nl-NL', options as Intl.DateTimeFormatOptions);
 }
 ---
-<div class={`${classname}__flex flex`}>
+<div class={`${classname} flex`}>
     <div
             class='education__time education__time--mr10 font-light education__time--translate'
             data-date={displayDate(startDate, endDate)}
     >
-        <span class='education__time--primary education__time--block education__time--rounded mt-1'/>
-        <span class='education__line education__line--primary education__line--block'/>
     </div>
     <div class='experience__data bd-grid experience__data--px5 experience__data--wfull timeline__element_animation'>
         {
@@ -42,47 +40,27 @@ function displayDate(startDate: Date | null, endDate: Date | null) {
         display: flex;
     }
 
-    .education__time {
-        position: relative;
-        font-size: 0.875rem;
-    }
-
-    .education__time--mr10 {
-        margin-right: 2.5rem;
-    }
 
     .education__time--translate {
         transform: translateY(60px);
     }
 
+    .education__time {
+        position: relative;
+        font-size: 1rem;
+        width: 0;
+    }
+
     .education__time::before {
         content: attr(data-date);
-        rotate: -90deg;
         position: absolute;
-        left: 0;
-        top: 0;
+        left: 4rem;
+        top: -3rem;
         white-space: nowrap;
     }
 
     .education__time--primary {
         background-color: #6366f1;
-    }
-
-    .education__time--block {
-        display: block;
-    }
-
-    .education__time--rounded {
-        border-radius: 9999px;
-    }
-
-    .education__line--primary {
-        background-color: #6366f1;
-        width: 3px;
-    }
-
-    .education__line--block {
-        display: block;
     }
 
     .experience__data--px5 {
