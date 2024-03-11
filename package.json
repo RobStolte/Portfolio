@@ -30,7 +30,7 @@
     "@vercel/speed-insights": "^1.0.2",
     "@vitejs/plugin-basic-ssl": "^1.0.2",
     "@webcomponents/template-shadowroot": "^0.2.1",
-    "astro": "^4.4.15",
+    "astro": "^4.5.1",
     "dayjs": "^1.11.9",
     "preact": "^10.19.4",
     "sharp": "^0.33.1",
