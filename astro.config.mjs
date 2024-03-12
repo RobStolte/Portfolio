@@ -9,7 +9,13 @@ import vue from "@astrojs/vue";
 import { loadEnv } from "vite";
 import preact from "@astrojs/preact";
 import vercel from "@astrojs/vercel/serverless";
-const { STORYBLOK_TOKEN} = loadEnv(process.env.NODE_ENV, process.cwd(), "");
+import sentry from "@sentry/astro";
+import spotlightjs from "@spotlightjs/astro";
+const {
+  STORYBLOK_TOKEN,
+  SENTRY_DNS_URL,
+  SENTRY_AUTH_TOKEN
+} = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 
 // https://astro.build/config
@@ -18,51 +24,51 @@ export default defineConfig({
   site: "https://www.robstolte.nl",
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: "hover",
+    defaultStrategy: "hover"
   },
   build: {
     format: "file",
-    inlineStylesheets: "never",
+    inlineStylesheets: "never"
   },
   vite: {
     plugins: [basicSsl()],
     server: {
-      https: true,
-    },
+      https: true
+    }
   },
-  integrations: [
-    storyblok({
-      accessToken: STORYBLOK_TOKEN,
-      bridge: true,
-      apiOptions: {
-        region: "eu",
-      },
-      // storyblok-js-client options
-      components: {
-        BlogPost: "BlogPost",
-        Grid: "Grid",
-        Afbeelding: "Afbeelding",
-        VideoPlayer: "VideoPlayer",
-        TextSection: "TextSection",
-        Chapter: "Chapter",
-        LinkPreviewCard: "LinkPreviewCard",
-      },
-      componentsDir: "src/components/storyblok",
-      enableFallbackComponent: true,
-      useCustomApi: false,
-    }),
-    preact(),
-    mdx(),
-    sitemap(),
-    vue(),
-  ],
+  integrations: [storyblok({
+    accessToken: STORYBLOK_TOKEN,
+    bridge: true,
+    apiOptions: {
+      region: "eu"
+    },
+    // storyblok-js-client options
+    components: {
+      BlogPost: "BlogPost",
+      Grid: "Grid",
+      Afbeelding: "Afbeelding",
+      VideoPlayer: "VideoPlayer",
+      TextSection: "TextSection",
+      Chapter: "Chapter",
+      LinkPreviewCard: "LinkPreviewCard"
+    },
+    componentsDir: "src/components/storyblok",
+    enableFallbackComponent: true,
+    useCustomApi: false
+  }), preact(), mdx(), sitemap(), vue(), sentry({
+    dsn: SENTRY_DNS_URL,
+    sourceMapsUploadOptions: {
+      project: "portfolio",
+      authToken: SENTRY_AUTH_TOKEN
+    }
+  }), spotlightjs()],
   output: "server",
   adapter: vercel({
     webAnalytics: {
-      enabled: true,
+      enabled: true
     },
     speedInsights: {
-      enabled: true,
-    },
-  }),
+      enabled: true
+    }
+  })
 });
