@@ -70,5 +70,43 @@ export default defineConfig({
     speedInsights: {
       enabled: true
     }
-  })
+  }),
+  
+  
+  // troll the scrapers
+  redirects: {
+    '/wp-admin': {
+      status: 302,
+          destination: 'https://youtu.be/rvrZJ5C_Nwg?si=PbC6j4EwTA4RgLpu&t=142',
+    },
+    '/wp-admin/admin-ajax.php': {
+      status: 302,
+      destination: 'https://youtu.be/RSfKXQM57lk?si=yqXAJDhh4PZjFp2-',
+    },
+    '/env': {
+      status: 302,
+      destination: 'https://youtu.be/dQw4w9WgXcQ?si=_TNnBnvJE1BIuM95',
+    },
+    '/env*': {
+      status: 302,
+      destination: 'https://youtu.be/dQw4w9WgXcQ?si=_TNnBnvJE1BIuM95',
+    },
+    '/admin': {
+      status: 302,
+      destination: 'https://youtu.be/asjQNZn7vng?si=_MhwXtMKokQH7KA1',
+    },
+    '/admin*': {
+      status: 302,
+      destination: 'https://youtu.be/asjQNZn7vng?si=_MhwXtMKokQH7KA1',
+    },
+    '/laravel': {
+      status: 302,
+      destination: 'https://youtu.be/OUHVRWdVQCI?si=3UPGaaOd2UjrYOlk',
+    },
+    '*/.env': {
+      status: 302,
+      destination: 'https://youtu.be/asjQNZn7vng?si=_MhwXtMKokQH7KA1',
+    },
+  }
+  
 });
