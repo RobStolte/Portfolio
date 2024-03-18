@@ -45,7 +45,7 @@
     "postcss-inline-svg": "^6.0.0",
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.12.3",
-    "sass": "^1.71.0",
+    "sass": "^1.72.0",
     "typescript": "^5.3.3",
     "vitest": "^1.2.1"
   }
