@@ -7,15 +7,33 @@ import Icon from "@/Assets/icons/Icon.astro";
 import { getAge} from "@/scripts/utils";
 import { StoryblokStoryManager, StoryblokAssetManager } from "@/scripts/storyBlokUtil";
 import {CapitalizeFirst} from "@/scripts/stringConverters";
-import ExpandDetailCard from "@/components/Cards/ExpandDetailCard.astro";
+import ExpandDetailCard from "@/components/Cards/ExpandedDetailCard.vue";
+import ListOfEDCards from "@/components/Cards/ListOfEDCards.vue";
 
 const ssm = new StoryblokStoryManager();
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
 const blog = await ssm.createCollectionLists('blog');
 
+let overviewList = []
+for (const post of blog) {
+const image = new StoryblokAssetManager(post.image.filename);
+image.setNewResolution(0,80);
+image.setHeightFromAspect();
+image.setNewFileType('webp');
+    overviewList.push({
+        
+        title: CapitalizeFirst(post.title.length > 35 ? post.title.toLowerCase().slice(0, 32) + '...' : post.title.toLowerCase()),
+        description: post.description,
+        icon_url: image.obj.url, 
+        icon_size: 80,
+        className: "item"
+        
+    })
+    
+}
+
 
 ---
-
 <Layout title="">
     <div slot="top" >
         <hgroup>
@@ -40,26 +58,10 @@ const blog = await ssm.createCollectionLists('blog');
         </div>
     </div>
     <ul class="subcontainer_list">
-        {blog.map((post) => {
-            const image = new StoryblokAssetManager(post.image.filename);
-            
-            image.setNewResolution(0,80);
-            image.setHeightFromAspect();
-            image.setNewFileType('webp');
-            return (
-                    
-                    <a class="linkable-blogcards" href={post.slug} target="_self">                    
-                    <ExpandDetailCard
-                            class="item"
-                            icon_url={image.obj.url}
-                            icon_size="80"
-                            title={CapitalizeFirst(post.title.length > 35 ? post.title.toLowerCase().slice(0, 32) + '...' : post.title.toLowerCase())}
-                            description={post.description}
-                    >
-                    </ExpandDetailCard>
-                    </a>
-            );
-        })}
+        <ListOfEDCards 
+                client:idle
+                cards={blog}
+        />
     </ul>
 </Layout>
 

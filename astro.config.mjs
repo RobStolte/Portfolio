@@ -89,7 +89,7 @@ export default defineConfig({
     },
     '/env*': {
       status: 302,
-      destination: 'https://youtu.be/dQw4w9WgXcQ?si=_TNnBnvJE1BIuM95',
+      destination: 'https://youtu.be/Ruei-c4xn5o?si=2NrhC7KxB_1LeySr',
     },
     '/admin': {
       status: 302,
@@ -103,7 +103,7 @@ export default defineConfig({
       status: 302,
       destination: 'https://youtu.be/OUHVRWdVQCI?si=3UPGaaOd2UjrYOlk',
     },
-    '*/.env': {
+    '/.env': {
       status: 302,
       destination: 'https://youtu.be/asjQNZn7vng?si=_MhwXtMKokQH7KA1',
     },

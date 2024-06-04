@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 import { CapitalizeFirst } from "@/scripts/stringConverters.ts"
 import { SteamAPI } from "@/scripts/steamPlaytime.ts"
 import Layout from "@/layouts/Layout.astro";
-import ExpandDetailCard from "../components/Cards/ExpandDetailCard.astro";
+import ListOfEDCards from "@/components/Cards/ListOfEDCards.vue";
 
 function niceHourTimes(RawTime:number) {
     return Math.floor(RawTime / 60)+':'+Math.round((RawTime % 60)).toString().padStart(2, '0');
@@ -17,6 +17,24 @@ try {
 } catch (error) {
 }
 
+response.sort((a, b) => {
+    if (b.playtime_2weeks !== undefined && a.playtime_2weeks !== undefined) {
+        return b.playtime_2weeks - a.playtime_2weeks;
+    }
+    return 0;
+});
+response = response.slice(0, 6);
+
+let listOfCards = [];
+for (const card of response){
+    listOfCards.push({
+        title: card.name.length > 35 ? card.name.toLowerCase().slice(0, 32) + '...' : card.name.toLowerCase(),
+        description: `2 weken: ${niceHourTimes(card.playtime_2weeks)} uur, Totaal: ${niceHourTimes(card.playtime_forever)} uur`,
+        icon_url: card.img_icon_url,
+        icon_size: 50,
+        className: "item"
+    })
+}
 
 ---
 <Layout title="Gamen">
@@ -26,16 +44,10 @@ try {
     <section class="section__steam_content">
     <h2 class="section__introductiontext_heading">Steam</h2>
         <div class="grid__gamecards"></div>
-        {response.map(({img_icon_url, name, playtime_2weeks, playtime_forever}: steamGame) => (
-                <ExpandDetailCard 
-                        class="item"
-                        icon_url={img_icon_url}
-                        icon_size="80"
-                        title={CapitalizeFirst(name.length > 35 ? name.toLowerCase().slice(0, 32) + '...' : name.toLowerCase())}
-                        description={`2 weken: ${playtime_2weeks !== undefined ? niceHourTimes(playtime_2weeks) : 'N/A'} uur, Totaal: ${playtime_forever !== undefined ? niceHourTimes(playtime_forever): 'N/A'} uur`}
-                    >
-                </ExpandDetailCard>
-        ))}
+        <ListOfEDCards
+                client:load        
+                cards={listOfCards} 
+        />
     </section>
 </Layout>
 <style>
