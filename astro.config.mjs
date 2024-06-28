@@ -101,7 +101,7 @@ export default defineConfig({
     },
     '/laravel': {
       status: 302,
-      destination: 'https://youtu.be/OUHVRWdVQCI?si=3UPGaaOd2UjrYOlk',
+      destination: 'https://www.youtube.com/watch?v=9n-EZQvlonM',
     },
     '/.env': {
       status: 302,

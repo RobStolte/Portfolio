@@ -1,11 +1,10 @@
 ---
 import { type steamGame } from "@/scripts/interfaces";
-// noinspection ES6UnusedImports
+// noinspection ES6UnusedImports,TypeScriptCheckImport
 import { Image } from 'astro:assets';
-import { CapitalizeFirst } from "@/scripts/stringConverters.ts"
 import { SteamAPI } from "@/scripts/steamPlaytime.ts"
 import Layout from "@/layouts/Layout.astro";
-import ListOfEDCards from "@/components/Cards/ListOfEDCards.vue";
+import ExpandedDetailCard from "../components/Cards/ExpandDetailCard.astro";
 
 function niceHourTimes(RawTime:number) {
     return Math.floor(RawTime / 60)+':'+Math.round((RawTime % 60)).toString().padStart(2, '0');
@@ -36,6 +35,7 @@ for (const card of response){
     })
 }
 
+
 ---
 <Layout title="Gamen">
     <section class="section__introductiontext">
@@ -44,10 +44,15 @@ for (const card of response){
     <section class="section__steam_content">
     <h2 class="section__introductiontext_heading">Steam</h2>
         <div class="grid__gamecards"></div>
-        <ListOfEDCards
-                client:load        
-                cards={listOfCards} 
-        />
+        {listOfCards.map(card => (
+                <ExpandedDetailCard
+                        title={card.title}
+                        description={card.description}
+                        icon_url={card.icon_url}
+                        icon_size={card.icon_size}
+                        className={card.className}
+                />
+        ))}
     </section>
 </Layout>
 <style>

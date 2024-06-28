@@ -1,14 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-// noinspection ES6UnusedImports
+// noinspection ES6UnusedImports,TypeScriptCheckImport
 import { Image } from 'astro:assets';
 import {PERSOONLIJKE_INFO} from "@/config";
 import Icon from "@/Assets/icons/Icon.astro";
 import { getAge} from "@/scripts/utils";
 import { StoryblokStoryManager, StoryblokAssetManager } from "@/scripts/storyBlokUtil";
 import {CapitalizeFirst} from "@/scripts/stringConverters";
-import ExpandDetailCard from "@/components/Cards/ExpandedDetailCard.vue";
-import ListOfEDCards from "@/components/Cards/ListOfEDCards.vue";
+import ExpandedDetailCard from "@/components/Cards/ExpandDetailCard.astro";
 
 const ssm = new StoryblokStoryManager();
 const { persoon = PERSOONLIJKE_INFO } = Astro.props
@@ -16,21 +15,21 @@ const blog = await ssm.createCollectionLists('blog');
 
 let overviewList = []
 for (const post of blog) {
+    const iconSize = 80;
 const image = new StoryblokAssetManager(post.image.filename);
-image.setNewResolution(0,80);
+image.setNewResolution(0,iconSize);
 image.setHeightFromAspect();
-image.setNewFileType('webp');
     overviewList.push({
         
         title: CapitalizeFirst(post.title.length > 35 ? post.title.toLowerCase().slice(0, 32) + '...' : post.title.toLowerCase()),
         description: post.description,
         icon_url: image.obj.url, 
-        icon_size: 80,
+        icon_size: iconSize,
         className: "item"
         
     })
-    
 }
+
 
 
 ---
@@ -58,19 +57,25 @@ image.setNewFileType('webp');
         </div>
     </div>
     <ul class="subcontainer_list">
-        <ListOfEDCards 
-                client:idle
-                cards={blog}
-        />
+        {overviewList.map(card => (
+                <ExpandedDetailCard 
+                title={card.title}
+                description={card.description}
+                icon_url={card.icon_url}
+                icon_size={card.icon_size}
+                className={card.className}
+                />
+        ))}   
+        <!--<ListOfEDCards cards={blog}/>-->
     </ul>
 </Layout>
 
 <style>
-    a.linkable-blogcards:link, a.linkable-blogcards:visited,a.linkable-blogcards:hover,a.linkable-blogcards:active {
+    a.linkable-blog-cards:link, a.linkable-blog-cards:visited,a.linkable-blog-cards:hover,a.linkable-blog-cards:active {
         color: var(--color__text);
         text-decoration: none;
     }
-    .subcontainer_list {
+    .sub-container_list {
         padding: 1rem;
         display: grid;
         gap: 2rem;
