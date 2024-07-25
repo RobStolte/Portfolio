@@ -4,10 +4,11 @@ import ButtonClassHide  from "@/components/cv/ButtonClassHide.vue";
 import {toSentenceCase} from "@/scripts/stringConverters.ts";
 import {supabase}       from "@/scripts/supabase.ts";
 import Layout           from "@/layouts/Layout.astro";
+import type {Database} from '@/scripts/types.ts'
 
 // getting the skills table data from the database
 async function getSkillTables() {
-    const {data, error} = await supabase
+    const {data, error} = await supabase<Database>
         .from('skills')
         .select('title, category(name)')
         .eq('timeline_element', false);
@@ -15,7 +16,10 @@ async function getSkillTables() {
         console.error('Error: ', error || new Error("No data from the database, it must be in pause mode."));
         return null;
     }
-    return data.reduce((acc, item) => {
+    return data.reduce((
+        acc, 
+        item) => {
+        // noinspection TypeScriptUnresolvedReference
         if (item.category) {
             const category = item.category.name;
             if (category && !acc[category]) {
@@ -34,12 +38,12 @@ async function getSkillTables() {
 const skillTables = await getSkillTables();
 
 // getting the timeline data from the database
-const skillsTimeline = await supabase
+const skillsTimeline = await supabase<Database>
     .from('skills')
     .select(`title,description,start_date,end_date,url!left(url),company!left(name),category!left(name),location!left(name)`)
     .eq('timeline_element', true)
     .order('end_date', {ascending: false});
-const categoriesSupa = await supabase.from('skills').select('category (id,name)').eq('timeline_element', true);
+const categoriesSupa = await supabase<Database>.from('skills').select('category (id,name)').eq('timeline_element', true);
 const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.category && data.category.name || null))];
 
 
