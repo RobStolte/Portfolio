@@ -2,51 +2,53 @@
 //import '@/styles/global.css';
 
 // noinspection ES6UnusedImports
-import { ViewTransitions } from 'astro:transitions';
-import { FAVICON } from '../config';
+import {ViewTransitions} from 'astro:transitions';
+import {FAVICON}         from '../config';
 import '@/styles/global.css';
 export interface Props {
-  title: string;
-  description: string;
-  image?: string;
+    title: string;
+    description: string;
+    image?: string;
 }
 const url = Astro.url
-const { title, description, image = 'https://a.storyblok.com/f/253533/2493x3130/ab60745f65/profile.png' } = Astro.props;
+const {title, description, image = 'https://a.storyblok.com/f/253533/2493x3130/ab60745f65/profile.png'} = Astro.props;
 ---
 
 <!-- Global Metadata -->
-<meta charset='utf-8' />
-<meta name='viewport'           content='width=device-width,initial-scale=1' />
-<meta name='generator'          content={Astro.generator} />
-<link rel="icon"                href={FAVICON} sizes="any" />
-<link rel="icon"                href={FAVICON} type="image/png" />
-<link rel="apple-touch-icon"    href={FAVICON} />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="generator" content={Astro.generator}/>
+<link rel="icon" href={FAVICON} sizes="any"/>
+<link rel="icon" href={FAVICON} type="image/png"/>
+<link rel="apple-touch-icon" href={FAVICON}/>
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
-<meta name='title'              content={title} />
-<meta name='description'        content={description} />
+<meta name="title" content={title}/>
+<meta name="description" content={description}/>
 
 <!-- Open Graph / Facebook -->
-<meta property='og:type'        content='website' />
-<meta property='og:url'         content={url} />
-<meta property='og:title'       content={title} />
-<meta property='og:description' content={description} />
-<meta property='og:image'       content={new URL(image, url)} />
+<meta property="og:type" content="website"/>
+<meta property="og:url" content={url}/>
+<meta property="og:title" content={title}/>
+<meta property="og:description" content={description}/>
+<meta property="og:image" content={new URL(image, url)}/>
 
 <!-- Twitter -->
-<meta property='twitter:card'   content='summary_large_image' />
-<meta property='twitter:url'    content={url} />
-<meta property='twitter:title'  content={title} />
-<meta property='twitter:description' content={description} />
-<meta property='twitter:image'  content={new URL(image, url)} />
+<meta property="twitter:card" content="summary_large_image"/>
+<meta property="twitter:url" content={url}/>
+<meta property="twitter:title" content={title}/>
+<meta property="twitter:description" content={description}/>
+<meta property="twitter:image" content={new URL(image, url)}/>
 
 <!-- scripts -->
-<script async
-        is:inline
-        src='https://kit.fontawesome.com/1232a6e12a.js'
-        crossorigin='anonymous'></script>
+<script
+    async
+    is:inline
+    src="https://kit.fontawesome.com/1232a6e12a.js"
+    crossorigin="anonymous"
+></script>
 
 
 <!-- base transition -->
-<ViewTransitions />
+<ViewTransitions/>

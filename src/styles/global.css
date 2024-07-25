@@ -1,6 +1,5 @@
 @import url('reset.css');
-@font-face { font-family: 'Fira Mono'; /*noinspection CssUnknownTarget*/ src: url('FiraMono.ttf')      format('ttf'); }
-@font-face { font-family: 'ShareTech Mono'; /*noinspection CssUnknownTarget*/ src: url('ShareTechMono.ttf') format('ttf'); }
+@font-face { font-family: 'JetBrains Mono'; /*noinspection CssUnknownTarget*/ src: url('JetBrainsMono.ttf')      format('ttf'); }
 
 :root {
   /*  ================================================================================  */
@@ -19,12 +18,12 @@
     /*             ================ Font styles ================                  */
     --color__text                   : 0 0% 15%;
     --color__text-light             : 0 0% 75%;
-    --font__accent                  : 'ShareTech Mono';
-    --font__base                    : 'Fira Mono';
+    --font__accent                  : 'JetBrains Mono';
+    --font__base                    : 'JetBrains Mono';
     /*             ================ shadow styles ================                  */
 
-    --shadow__fade_01               :  8px   8px  10px;
-    --shadow__fade_02               : -8px  -8px  10px;
+    --shadow__fade_01               :  10px   10px  20px;
+    --shadow__fade_02               : -4px  -4px  10px;
 
     --shadow__color_01              : var(--background__h) var(--background__s)  calc( -20% + var(--background__l));
     --shadow__color_02              : var(--background__h) var(--background__s)  calc(  4% + var(--background__l));
@@ -78,7 +77,8 @@ body {
     
 }
 h1,h2,h3,h4,h5,h6,caption,header {
-    font-weight  :bold;
+    font-weight  :800;
+    font-optical-sizing: auto;
     font-family  : var(--font__accent), monospace;
 }
 @media (min-width: 1024px) { /* Responsive breakpoint for 'lg' */
@@ -100,17 +100,25 @@ h2 {
 .default__icon_size{
     height  : 1.5rem;
     width   : 1.5rem;
-    fill    : var(--color__text);
-}
-
-.main__content_box{
-    overflow-y: auto; /* Enables scrolling */
-    flex-grow: 1; /* Causes the flex item to fill the remaining space */
-}
-
-a:link, a:visited,a:hover,a:active {
     color: var(--color__text);
-    text-decoration: none;
+}
+
+
+.main__content_box {
+    flex-grow: 1;
+    overflow-y: auto;
+    width: 100%; /* this will set width to 100% of the parent minus 2em */
+    margin: 1em; /* this will add a margin to every side of the box */
+}
+
+.main__content_box {
+    flex-grow  : 1; /* Causes the flex item to fill the remaining space */
+    overflow-y : auto; /* Enables scrolling */
+}
+
+a:link, a:visited, a:hover, a:active {
+    color           : var(--color__text);
+    text-decoration : none;
 }
 
 

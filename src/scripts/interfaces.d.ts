@@ -1,4 +1,3 @@
-
 export interface timelineElement {
     category: string;
     timeline_element: boolean;
@@ -10,14 +9,22 @@ export interface timelineElement {
     link?: string;
 }
 
+
+
+
 export interface timelineElementSorted {
     name: string;
     data: timelineElement[];
 }
 
+
+
+
 export interface startDate {
     startDate: number | null;
 }
+
+
 
 
 export interface steamGame {
@@ -31,9 +38,14 @@ export interface steamGame {
     playtime_linux_forever?: number;
 }
 
-export interface a_target { 
-    target: "_self"|"_blank"|"_parent"|"_top" 
+
+
+
+export interface a_target {
+    target: "_self" | "_blank" | "_parent" | "_top"
 }
+
+
 
 
 export interface story {
@@ -50,8 +62,9 @@ export interface story {
 
 
 
+
 export interface storyBlokAsset {
-    id :number
+    id: number
     alt: string
     name: string
     focus: string
@@ -59,7 +72,7 @@ export interface storyBlokAsset {
     source: string
     filename: string
     copyright: string
-    fieldtype :string
+    fieldtype: string
     meta_data: object
     is_private: string
     is_external_url: boolean

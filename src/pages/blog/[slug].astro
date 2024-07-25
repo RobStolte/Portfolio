@@ -1,11 +1,11 @@
 ---
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
-import { useStoryblokApi, type SbBlokData } from '@storyblok/astro'
-import Layout from "@/layouts/Layout.astro";
+import {useStoryblokApi, type SbBlokData} from '@storyblok/astro'
+import StoryblokComponent                 from '@storyblok/astro/StoryblokComponent.astro'
+import Layout                             from "@/layouts/Layout.astro";
 const storyblokApi = useStoryblokApi()
-const { slug } = Astro.params;
-const { data } = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
-  version: import.meta.env.DEV ? "draft" : "published",
+const {slug} = Astro.params;
+const {data} = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
+    version: import.meta.env.DEV ? "draft" : "published",
 });
 const story = data.story;
 ---
@@ -15,17 +15,15 @@ const story = data.story;
         <p>{story.content.description}</p>
     </header>
     <main class="section__main">
-        
-        
         {
-      story.content.blokken?.map((blok:SbBlokData) => {
-        return <StoryblokComponent blok={blok} />
-      })
-    }
+            story.content.blokken.map((blok: SbBlokData) => {
+                return <StoryblokComponent blok={blok}/>
+            })
+        }
     </main>
 </Layout>
 <style>
     .section__main {
-        padding: 2rem;
+        padding : 2rem;
     }
 </style>

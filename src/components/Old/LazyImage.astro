@@ -1,7 +1,7 @@
 ---
-import { StoryblokAssetManager } from "@/scripts/storyBlokUtil";
+import {StoryblokAssetManager} from "@/scripts/storyBlokUtil";
 // noinspection ES6UnusedImports
-import { Image } from "astro:assets";
+import {Image}                 from "astro:assets";
 const {
     imgURL,
     imageWidth,
@@ -24,4 +24,5 @@ image.setHeightFromAspect()
     width={image.obj.width}
     height={image.obj.height}
     alt={imageAlt || image.obj.fileName}
-    class={classnames}/>
+    class={classnames}
+/>

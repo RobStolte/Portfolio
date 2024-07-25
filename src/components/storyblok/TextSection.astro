@@ -1,15 +1,15 @@
 ---
-import { storyblokEditable } from '@storyblok/astro'
- const { blok }: any  = Astro.props
+import {storyblokEditable} from '@storyblok/astro'
+const {blok}: any = Astro.props
 ---
- <div
-   {...storyblokEditable(blok)}
- >
- <p class="section__text">{blok.textblock}</p>
- </div>
+<div
+    {...storyblokEditable(blok)}
+>
+    <p class="section__text">{blok.textblock}</p>
+</div>
 <style>
- .section__text{
-  margin-bottom: 1rem;
-  margin-top: 1rem;
- }
+    .section__text {
+        margin-bottom : 1rem;
+        margin-top    : 1rem;
+    }
 </style>

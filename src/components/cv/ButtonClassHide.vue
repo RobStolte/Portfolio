@@ -1,57 +1,57 @@
 <template>
-    <NeumorphSwitch @click="toggleCategory" :class="{'toggled_active': isActive }" />
+    <NeumorphSwitch :class="{'toggled_active': isActive }" @click="toggleCategory"/>
     <!-- <button @click="toggleCategory" :class="{'toggled_active': isActive }"> </button> -->
 </template>
 
 <script lang="ts">
-    import NeumorphSwitch from "@/components/UserInteraction/NeumorphSwitch.vue";
-    
-    export default {
-        components: {NeumorphSwitch},
-        props: {
-            className: {
-                type: String,
-                required: true,
-            },
-            name: {
-                type: String,
-                required: true,
-            },
-            isActive: {
-                type: Boolean,
-                default: true,
-            },
-        },
-        methods: {
+import NeumorphSwitch from "@/components/UserInteraction/NeumorphSwitch.vue";
 
-            toggleCategory() {
-                const elements = document.querySelectorAll(`.${this.classname}`);
-                elements.forEach(element => {
-                    element.classList.toggle('hidden');
-                });
-                this.isActive = !this.isActive;
-                this.hideLastVisibleLine();
-            },
-            hideLastVisibleLine() {
-                const elements = Array.from(document.querySelectorAll('.education__time'));
-                const visibleElements = elements.filter((element: HTMLElement) => element.offsetParent !== null);
-                for (let i = 0; i < visibleElements.length; i++) {
-                    const currentElement = visibleElements[i];
-                    const nextElement = visibleElements[i + 1];
-                    if (!nextElement) {
+export default {
+    components: {NeumorphSwitch},
+    props: {
+        className: {
+            type: String,
+            required: true,
+        },
+        name: {
+            type: String,
+            required: true,
+        },
+        isActive: {
+            type: Boolean,
+            default: true,
+        },
+    },
+    methods: {
+
+        toggleCategory() {
+            const elements = document.querySelectorAll(`.${this.classname}`);
+            elements.forEach(element => {
+                element.classList.toggle('hidden');
+            });
+            this.isActive = !this.isActive;
+            this.hideLastVisibleLine();
+        },
+        hideLastVisibleLine() {
+            const elements = Array.from(document.querySelectorAll('.education__time'));
+            const visibleElements = elements.filter((element: HTMLElement) => element.offsetParent !== null);
+            for (let i = 0; i < visibleElements.length; i++) {
+                const currentElement = visibleElements[i];
+                const nextElement = visibleElements[i + 1];
+                if (!nextElement) {
                     const line = currentElement.querySelector('.education__line');
-                        if (line) {
-                            (line as HTMLElement).style.display = 'none';
-                        }
+                    if (line) {
+                        (line as HTMLElement).style.display = 'none';
                     }
                 }
-            },
+            }
         },
-    };
+    },
+};
 </script>
 <style>
-.toggled_active{
-    margin: 1rem;
+.toggled_active {
+    margin : 1rem;
 }
 </style>
 <!--

@@ -14,18 +14,18 @@ import IconCVList from "./IconCVList.svg"
 import IconSteam from "./IconSteam.svg"
 
 export {
-  IconSteam,
-  IconCVList,
-  IconPaypal,
-  IconEmail,
-  IconLinkedin,
-  IconSun,
-  IconGithub,
-  IconTwitter,
-  IconInstagram,
-  IconUser,
-  IconHome,
-  IconBlog,
-  IconMenu,
-  IconAstro
+    IconSteam,
+    IconCVList,
+    IconPaypal,
+    IconEmail,
+    IconLinkedin,
+    IconSun,
+    IconGithub,
+    IconTwitter,
+    IconInstagram,
+    IconUser,
+    IconHome,
+    IconBlog,
+    IconMenu,
+    IconAstro
 }

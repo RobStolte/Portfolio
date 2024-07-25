@@ -1,22 +1,20 @@
 ---
-import TimeLineElement from "@/components/cv/TimeLine.astro";
-import ButtonClassHide from "@/components/cv/ButtonClassHide.vue";
-import { toSentenceCase } from "@/scripts/stringConverters.ts";
-import { supabase } from "@/scripts/supabase.ts";
-import Layout from "@/layouts/Layout.astro";
+import TimeLineElement  from "@/components/cv/TimeLine.astro";
+import ButtonClassHide  from "@/components/cv/ButtonClassHide.vue";
+import {toSentenceCase} from "@/scripts/stringConverters.ts";
+import {supabase}       from "@/scripts/supabase.ts";
+import Layout           from "@/layouts/Layout.astro";
 
 // getting the skills table data from the database
 async function getSkillTables() {
-    const { data, error } = await supabase
+    const {data, error} = await supabase
         .from('skills')
         .select('title, category(name)')
         .eq('timeline_element', false);
-    
-    if (error) {
-        console.error('Error: ', error);
-        return;
+    if (error || !data) {
+        console.error('Error: ', error || new Error("No data from the database, it must be in pause mode."));
+        return null;
     }
-    
     return data.reduce((acc, item) => {
         if (item.category) {
             const category = item.category.name;
@@ -40,97 +38,114 @@ const skillsTimeline = await supabase
     .from('skills')
     .select(`title,description,start_date,end_date,url!left(url),company!left(name),category!left(name),location!left(name)`)
     .eq('timeline_element', true)
-    .order('end_date', { ascending: false });
+    .order('end_date', {ascending: false});
 const categoriesSupa = await supabase.from('skills').select('category (id,name)').eq('timeline_element', true);
 const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.category && data.category.name || null))];
+
+
+
+const isLoading = (skillTables === null);
 ---
+
 <Layout title="Curriculum vitae">
-<!--    TODO filterknoppen werkzaam maken. 
-    <div class="block full-width" slot="top">
-        <div class="timeline-buttons-container full-width">
-            {uniqueCategories.map((button) => (
-                    <ButtonClassHide
-                            client:load
-                            name={button}
-                            className={`timeline__element__category&#45;&#45;${button}`}
-                            isActive={true}
-                    />
-            ))}
-        </div>
-    </div>-->
+    <!--    TODO filterknoppen werkzaam maken. 
+        <div class="block full-width" slot="top">
+            <div class="timeline-buttons-container full-width">
+                {uniqueCategories.map((button) => (
+                        <ButtonClassHide
+                                client:load
+                                name={button}
+                                className={`timeline__element__category&#45;&#45;${button}`}
+                                isActive={true}
+                        />
+                ))}
+            </div>
+        </div>-->
+    {isLoading ?
+     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+         Database has gone in pause mode because of not enough visitors. I'm not paying for the db (yet).
+     </div>
+               :
     <section class="time-line-container">
         {skillsTimeline.data && skillsTimeline.data.map((data) => (
-                <TimeLineElement
-                        title     = {data.title || null}
-                        company   = {data.company && data.company.name || null}
-                        startDate = {data.start_date || null}
-                        endDate   = {data.end_date || null}
-                        location  = {data.location && data.location.name || null}
-                        text      = {data.description || null}
-                        link      = {data.url && data.url.url || null}
-                        category  = {data.category && data.category.name || null}
-                        classname = {`timeline__element__category--${data.category && data.category.name || null}`}
-                />
+            <TimeLineElement
+                title={data.title || null}
+                company={data.company && data.company.name || null}
+                startDate={data.start_date || null}
+                endDate={data.end_date || null}
+                location={data.location && data.location.name || null}
+                text={data.description || null}
+                link={data.url && data.url.url || null}
+                category={data.category && data.category.name || null}
+                classname={`timeline__element__category--${data.category && data.category.name || null}`}
+            />
         ))}
-    </section>
+    </section>}
     {
+        isLoading ?
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+                    
+                </div> :
         Object.entries(skillTables as { [key: string]: string[] }).map(([category, titles]) => (
-                <section class="cv-section">
-                    <h2 class="section-title">{toSentenceCase(category,true)}</h2>
-                    <ul>
-                        {
-                            titles.map((title: string) => (<li class="list-item">{title}</li>))
-                        }
-                    </ul>
-                </section>
+            <section class="cv-section">
+                <h2 class="section-title">{toSentenceCase(category, true)}</h2>
+                <ul>
+                    {
+                        titles.map((title: string) => (
+                            <li class="list-item">{title}</li>))
+                    }
+                </ul>
+            </section>
         ))
+    }
     }
 </Layout>
 <style>
-    .time-line-container{
-        
+    .time-line-container {
+
     }
+
     .block {
-        display: block;
+        display : block;
     }
 
     .full-width {
-        width: 100%;
+        width : 100%;
     }
 
     .timeline-buttons-container {
-        justify-content: center;
-        margin: 1rem;
-        width: 100%;
+        justify-content : center;
+        margin          : 1rem;
+        width           : 100%;
     }
 
     .cv-section {
-        margin-bottom: 2.5rem;
+        margin-bottom : 2.5rem;
     }
 
     .section-title {
-        width: 100%;
-        margin-bottom: 1.25rem;
-        font-size: 1.875rem;
-        font-weight: bold;
+        width         : 100%;
+        margin-bottom : 1.25rem;
+        font-size     : 1.875rem;
+        font-weight   : bold;
     }
 
     .list {
-        padding-left: 1.5rem;
-        list-style-type: disc;
+        padding-left    : 1.5rem;
+        list-style-type : disc;
     }
 
     .grid {
-        display: grid;
-        grid-gap: 1rem;
+        display  : grid;
+        grid-gap : 1rem;
     }
 
-    
+
 </style>
 
 <style is:global>
     .time-line-container > div:last-child .education__time > .education__line,
     .time-line-container > div:only-child .education__time > .education__line {
-        display: none;
+        display : none;
     }
 </style>
