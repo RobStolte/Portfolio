@@ -18,48 +18,60 @@ import {Image} from "astro:assets";
 </div>
 <style>
     .expanded__detail_card {
+        position: relative; /* add this line */
+        z-index: 2; /* add this line */
         width            : 15rem;
         background-color : var(--background__base);
         border           : 10px solid var(--background__base);
         border-radius    : 1rem;
         transition       : 0.5s;
         grid-row         : span 2; /*Will make this item 2 rows tall */
+        overflow         : hidden;
     }
 
-    .expanded__detail_card:hover {
-        box-shadow : var(--shadowstyle__base-in);
-    }
 
-    .icon {
+
+    .icon {     
+        position: relative; /* add this line */
+        z-index: 1; /* add this line */
         width         : 5rem;
         height        : 5rem;
-        margin        : 1rem auto;
-        padding       : 0.3rem;
+        margin        : 1.5rem auto 1.5rem auto;
+        padding       : 0.5rem;
         border-radius : 50%;
-        box-shadow    : var(--shadowstyle__base);
+        transition: visibility 0.5s, opacity 0.5s linear, box-shadow 0.5s ease-out;
+        //box-shadow    : var(--shadowstyle__base);
     }
 
     .content {
+        position: relative; /* add this line */
+        z-index: 1; /* add this line */
         display: flex;
         flex-direction: column;
         justify-content: center;
         background-color: var(--background__base);
         padding: 1rem;
-        margin: 0.5rem 1rem 0.2rem 1rem;
+        margin: 0.5rem 1rem 1rem 1rem;
         border-radius: 1rem;
-        box-shadow: var(--shadowstyle__base);
         overflow: hidden;
         max-height: 1000px;
         opacity: 0;
         visibility: hidden;
         transition: visibility 0.5s, opacity 0.5s linear, box-shadow 0.5s ease-out;
-        position: sticky;
+        
         top: 0;
     }
-
+    
+    
+    .expanded__detail_card:hover {
+        box-shadow : var(--shadowstyle__base-in);
+    }
     .expanded__detail_card:hover .content {
         opacity: 1;
         visibility: visible;
+        //box-shadow: var(--shadowstyle__base); /* Update with your active shadow style */
+    }
+    .expanded__detail_card:hover .icon {
         box-shadow: var(--shadowstyle__base); /* Update with your active shadow style */
     }
 </style>

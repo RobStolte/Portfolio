@@ -4,8 +4,8 @@ import type {steamGame} from "@/scripts/interfaces.ts";
 
 
 class SteamAPI {
-    private STEAM_USER_ID: string | undefined;
-    private STEAM_API_KEY: string | undefined;
+    private readonly STEAM_USER_ID: string | undefined;
+    private readonly STEAM_API_KEY: string | undefined;
 
 
     constructor() {

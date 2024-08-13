@@ -23,7 +23,7 @@
     /*             ================ shadow styles ================                  */
 
     --shadow__fade_01               :  10px   10px  20px;
-    --shadow__fade_02               : -4px  -4px  10px;
+    --shadow__fade_02               : -10px  -10px  10px;
 
     --shadow__color_01              : var(--background__h) var(--background__s)  calc( -20% + var(--background__l));
     --shadow__color_02              : var(--background__h) var(--background__s)  calc(  4% + var(--background__l));
