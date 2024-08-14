@@ -10,6 +10,38 @@ export interface timelineElement {
 }
 
 
+export interface SupabaseSkill {
+    title: string;
+    description?: string;
+    start_date?: string;
+    end_date?: string;
+    url?: {
+        url: string;
+    };
+    company?: {
+        name: string;
+    };
+    category?: {
+        name: string;
+    };
+    location?: {
+        name: string;
+    };
+}
+
+export interface Skill {
+    title: string;
+    category: { name: string }[];
+}
+
+
+export interface post {
+    title: string;
+    image : storyBlokAsset;
+    description: string;
+    slug: string;
+}
+
 
 
 export interface timelineElementSorted {

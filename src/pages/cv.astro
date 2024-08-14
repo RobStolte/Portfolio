@@ -3,30 +3,38 @@ import TimeLineElement  from "@/components/cv/TimeLine.astro";
 import {toSentenceCase} from "@/scripts/stringConverters.ts";
 import {supabase}       from "@/scripts/supabase.ts";
 import Layout           from "@/layouts/Layout.astro";
+import type {SupabaseSkill} from "@/scripts/interfaces.d.ts";
+
+// Define the type for the API response
+interface SkillTableData {
+    title: string;
+    category: { name: string }[];
+}
+
+interface TimelineData {
+    data: SupabaseSkill[];
+    error: any;
+}
 
 // getting the skills table data from the database
-async function getSkillTables() {
-    const {data, error} = await supabase<Database>
+async function getSkillTables(): Promise<Record<string, string[]> | null> {
+    const { data, error } = await supabase
         .from('skills')
         .select('title, category(name)')
-        .eq('timeline_element', false);
+        .eq('timeline_element', false) as { data: SkillTableData[], error: any };
+
     if (error || !data) {
         console.error('Error: ', error || new Error("No data from the database, it must be in pause mode."));
         return null;
     }
-    return data.reduce((
-        acc, 
-        item) => {
-        // noinspection TypeScriptUnresolvedReference
+    return data.reduce((acc, item) => {
         if (item.category) {
-            const category = item.category.name;
+            const category = item.category[0]?.name;  // Adjusted for array
             if (category && !acc[category]) {
                 acc[category] = [];
             }
-            if (category) {
-                if (item.title) {
-                    acc[category].push(item.title);
-                }
+            if (category && item.title) {
+                acc[category].push(item.title);
             }
         }
         return acc;
@@ -36,45 +44,40 @@ async function getSkillTables() {
 const skillTables = await getSkillTables();
 
 // getting the timeline data from the database
-const skillsTimeline = await supabase<Database>
+const skillTimelineResponse = await supabase
     .from('skills')
     .select(`title,description,start_date,end_date,url!left(url),company!left(name),category!left(name),location!left(name)`)
     .eq('timeline_element', true)
-    .order('end_date', {ascending: false});
-const categoriesSupa = await supabase<Database>.from('skills').select('category (id,name)').eq('timeline_element', true);
-const uniqueCategories = [...new Set(categoriesSupa.data?.map(data => data.category && data.category.name || null))];
+    .order('end_date', {ascending: false}) as TimelineData;
 
-
-
-const isLoading = (skillTables === null);
+const isLoading = (skillTables === null) || (skillTimelineResponse.error !== null);
 ---
-
 <Layout title="Curriculum vitae">
     {isLoading ?
      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
          Database has gone in pause mode because of not enough visitors. I'm not paying for the db (yet).
      </div>
                :
-    <section class="time-line-container">
-        {skillsTimeline.data && skillsTimeline.data.map((data) => (
-            <TimeLineElement
-                title={data.title || null}
-                company={data.company && data.company.name || null}
-                startDate={data.start_date || null}
-                endDate={data.end_date || null}
-                location={data.location && data.location.name || null}
-                text={data.description || null}
-                link={data.url && data.url.url || null}
-                category={data.category && data.category.name || null}
-                classname={`timeline__element__category--${data.category && data.category.name || null}`}
-            />
-        ))}
-    </section>}
+     <section class="time-line-container">
+         {skillTimelineResponse.data && skillTimelineResponse.data.map((data) => (
+             <TimeLineElement
+                 title={data.title || null}
+                 company={data.company?.name || null}
+                 startDate={data.start_date || null}
+                 endDate={data.end_date || null}
+                 location={data.location?.name || null}
+                 text={data.description || null}
+                 link={data.url?.url || null}
+                 category={data.category?.name || null}
+                 classname={`timeline__element__category--${data.category?.name || null}`}
+             ></TimeLineElement>
+         ))}
+     </section>}
     {
         isLoading ?
-                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
-                    
-                </div> :
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+
+        </div> :
         Object.entries(skillTables as { [key: string]: string[] }).map(([category, titles]) => (
             <section class="cv-section">
                 <h2 class="section-title">{toSentenceCase(category, true)}</h2>

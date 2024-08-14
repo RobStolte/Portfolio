@@ -50,13 +50,6 @@ class StoryblokAssetManager {
     }
 
 
-    public setWidthFromAspect() {
-        const height = this.obj.height;
-        const aspectRatio = this.obj.aspectRatio;
-        this.obj.height = height / aspectRatio;
-    }
-
-
     public setNewResolution(height: number, width: number) {
         height = height ?? 0;
         width = width ?? 0;

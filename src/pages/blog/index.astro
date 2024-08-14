@@ -3,6 +3,7 @@ import HorizontalCard          from "@/components/Old/HorizontalCard.astro";
 import {StoryblokStoryManager} from "@/scripts/storyBlokUtil";
 import Layout                  from "@/layouts/Layout.astro";
 import {CapitalizeFirst}       from "@/scripts/stringConverters";
+import type {post}            from "@/scripts/interfaces.ts";
 
 const ssm = new StoryblokStoryManager();
 
@@ -19,7 +20,7 @@ const staticImageWidth = 200
         </div>
     ) : (
          <ul class="subcontainer_list">
-             {collection.map((post) => {
+             {collection.map((post: post) => {
                  return (
                      <HorizontalCard
                          title={post.title}
