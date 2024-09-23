@@ -1,49 +1,53 @@
-@import url('reset.css');
-@font-face { font-family: 'JetBrains Mono'; /*noinspection CssUnknownTarget*/ src: url('JetBrainsMono.ttf')      format('ttf'); }
+@import url("reset.css");
+
+@font-face {
+    font-family : "JetBrains Mono"; /*noinspection CssUnknownTarget*/
+    src         : url("JetBrainsMono.ttf") format("ttf");
+}
 
 :root {
-  /*  ================================================================================  */
-  /*  =================================== variables ===================================  */
-  /*  ================================================================================  */
+    /*  ================================================================================  */
+    /*  =================================== variables ===================================  */
+    /*  ================================================================================  */
 
-  /* ================ Fam Stolte color palette ================ */
-    --background__h                 : 350;
-    --background__s                 : 0%;
-    --background__l                 : 80%;
-    --background__l_dark            : 15%;
-    
-    --background__base              : var(--background__h) var(--background__s) var(--background__l); /* White */
-    --background__base-dark         : var(--background__h) var(--background__s) var(--background__l_dark); /* Black */
-    
+    /* ================ Fam Stolte color palette ================ */
+    --background__base      : var(--background__h) var(--background__s) var(--background__l); /* White */
+    --background__h         : 350;
+    --background__l         : 80%;
+    --background__l_dark    : 15%;
+
+    --background__s         : 0%;
+    --color__text           : 0 0% 15%;
+
     /*             ================ Font styles ================                  */
-    --color__text                   : 0 0% 15%;
-    --color__text-light             : 0 0% 75%;
-    --font__accent                  : 'JetBrains Mono';
-    --font__base                    : 'JetBrains Mono';
+    --font__accent          : "JetBrains Mono";
+    --font__base            : "JetBrains Mono";
+    --shadow__color_01      : var(--background__h) var(--background__s) calc(-20% + var(--background__l));
+    --shadow__color_02      : var(--background__h) var(--background__s) calc(4% + var(--background__l));
     /*             ================ shadow styles ================                  */
 
-    --shadow__fade_01               :  10px   10px  20px;
-    --shadow__fade_02               : -10px  -10px  10px;
+    --shadow__fade_01       : 10px 10px 20px;
+    --shadow__fade_02       : -10px -10px 10px;
 
-    --shadow__color_01              : var(--background__h) var(--background__s)  calc( -20% + var(--background__l));
-    --shadow__color_02              : var(--background__h) var(--background__s)  calc(  4% + var(--background__l));
+    --background__base-dark : var(--background__h) var(--background__s) var(--background__l_dark); /* Black */
+    --shadow__color_01-dark : var(--background__h) var(--background__s) calc(-20% + var(--background__l_dark));
 
-    --shadow__color_01-dark         : var(--background__h) var(--background__s)  calc( -20% + var(--background__l_dark));
-    --shadow__color_02-dark         : var(--background__h) var(--background__s)  calc(  6% + var(--background__l_dark));
+    --shadow__color_02-dark : var(--background__h) var(--background__s) calc(6% + var(--background__l_dark));
+    --color__text-light     : 0 0% 75%;
 }
 
 
 /*  ================================================================================  */
 /*  =================================== Dark mode ===================================  */
 /*  ================================================================================  */
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme : dark) {
     body {
-        --color__text                   : var(--color__text-light);  /* Black */
-        --background__base              : var(--background__base-dark);  /* White */
-    
-        --shadow__color_01              : var(--shadow__color_01-dark);
-        --shadow__color_02              : var(--shadow__color_02-dark);
-        
+        --background__base : var(--background__base-dark); /* White */
+        --color__text      : var(--color__text-light); /* Black */
+
+        --shadow__color_01 : var(--shadow__color_01-dark);
+        --shadow__color_02 : var(--shadow__color_02-dark);
+
     }
 }
 
@@ -53,62 +57,61 @@
 /**/
 body {
 
-    transition: all 0.5s ease;
-    --shadowstyle__base             : var(--shadow__fade_01) hsl(var(--shadow__color_01))
-                                    , var(--shadow__fade_02) hsl(var(--shadow__color_02));
-    --shadowstyle__base-in          : inset var(--shadow__fade_01) hsl(var(--shadow__color_01))
-                                    , inset var(--shadow__fade_02) hsl(var(--shadow__color_02));
-    box-sizing                      : border-box;
-    position                        : relative;
-    display                         : flex;
-    flex-direction                  : column;
-    align-items                     : center;
-    justify-content                 : center;
-    min-height                      : 100vh;
-    background                      : hsl(var(--background__base));
-    font-size                       : 0.85rem;
-    
-    font-family                     : var(--font__base), serif;
-    font-weight                     : 300;
-    color                           : hsl(var(--color__text));
+    --shadowstyle__base    : var(--shadow__fade_01) hsl(var(--shadow__color_01)), var(--shadow__fade_02) hsl(var(--shadow__color_02));
+    align-items            : center;
+    background             : hsl(var(--background__base));
+    box-sizing             : border-box;
+    color                  : hsl(var(--color__text));
+    display                : flex;
+    flex-direction         : column;
+    font-family            : var(--font__base), serif;
+    font-size              : 0.85rem;
+    font-weight            : 300;
+    --shadowstyle__base-in : inset var(--shadow__fade_01) hsl(var(--shadow__color_01)), inset var(--shadow__fade_02) hsl(var(--shadow__color_02));
+    justify-content        : center;
+
+    min-height             : 100vh;
+    position               : relative;
+    transition             : all 0.5s ease;
 
 
-    
-    
 }
-h1,h2,h3,h4,h5,h6,caption,header {
-    font-weight  :800;
-    font-optical-sizing: auto;
-    font-family  : var(--font__accent), monospace;
+
+h1, h2, h3, h4, h5, h6, caption, header {
+    font-family         : var(--font__accent), monospace;
+    font-optical-sizing : auto;
+    font-weight         : 800;
 }
-@media (min-width: 1024px) { /* Responsive breakpoint for 'lg' */
+
+@media (min-width : 1024px) {
+    /* Responsive breakpoint for 'lg' */
     body {
-        overflow: hidden;
+        overflow : hidden;
     }
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-weight:bold;
-    color: var(--color__text);
+    color       : var(--color__text);
+    font-size   : 2.5rem;
+    font-weight : bold;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size : 2rem;
 }
 
-.default__icon_size{
-    height  : 1.5rem;
-    width   : 1.5rem;
-    color: var(--color__text);
+.default__icon_size {
+    color  : var(--color__text);
+    height : 1.5rem;
+    width  : 1.5rem;
 }
 
 
 .main__content_box {
-    flex-grow: 1;
-    overflow-y: auto;
-    width: 100%; /* this will set width to 100% of the parent minus 2em */
-    margin: 1em; /* this will add a margin to every side of the box */
+    flex-grow  : 1;
+    margin     : 1em; /* this will add a margin to every side of the box */
+    overflow-y : auto;
+    width      : 100%; /* this will set width to 100% of the parent minus 2em */
 }
 
 .main__content_box {
@@ -125,17 +128,17 @@ a:link, a:visited, a:hover, a:active {
 /*  ============================  Scrollbar styling  ==============================  */
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width : 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: hsl(var(--background__base));
-    
+    background : hsl(var(--background__base));
+
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb,
-::-webkit-scrollbar-thumb:hover{
-    box-shadow: var(--shadow__fade_02) hsl(var(--shadow__color_02));
+::-webkit-scrollbar-thumb:hover {
+    box-shadow : var(--shadow__fade_02) hsl(var(--shadow__color_02));
 }

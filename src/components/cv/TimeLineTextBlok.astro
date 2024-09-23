@@ -5,7 +5,8 @@ const {title, company, text, location, category} = Astro.props;
 
 const categoryBackgroundColor = stringToHexColor(category);
 const categoryTextColor = contrastColor(categoryBackgroundColor);
-const categoryText = CapitalizeFirst(toSentenceCase(category));
+const categoryText = category;
+//const categoryText = CapitalizeFirst(toSentenceCase(category));
 ---
 <figure class="card">
     <div class="card__in_box">
@@ -18,12 +19,14 @@ const categoryText = CapitalizeFirst(toSentenceCase(category));
         {text ? <p class="card__text">{text}</p> : null}
         <p class="card__text card__text--justified"></p>
         {category &&
-         <div class="card__category" set:html={
+         <div
+             class="card__category" set:html={
              categoryText.split('').map((letter, index) =>
                                             `<span style="animation: fade-in 0.8s ${0.1 * index + 0.1}s forwards cubic-bezier(0.11, 0, 0.5, 0);">
           ${letter}
          </span>`
-             ).join('')}></div>
+             ).join('')}
+         ></div>
         }
         {location &&
          <div class="card__location">{location}</div>}
@@ -86,36 +89,41 @@ const categoryText = CapitalizeFirst(toSentenceCase(category));
         bottom        : 0;
         padding-right : 1.5rem;
         padding-left  : 1.5rem;
-        visibility: hidden; /* Hide initially */
+        visibility    : hidden; /* Hide initially */
     }
 
     .card__location {
         right : 0;
     }
+
     .card:hover .card__category {
-        visibility: visible; /* Show on hover */
+        visibility : visible; /* Show on hover */
     }
+
     .card:hover {
-        transform: none;
+        transform : none;
         /* ...rest of your styles... */
     }
+
     .card__category span {
-        animation-duration: 0.8s;
-        animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
-        animation-fill-mode: forwards;
-        opacity: 0;
-        display: inline-block;
+        animation-duration        : 0.8s;
+        animation-timing-function : cubic-bezier(0.11, 0, 0.5, 0);
+        animation-fill-mode       : forwards;
+        opacity                   : 0;
+        display                   : inline-block;
     }
+
     @keyframes fade-in {
         100% {
-            opacity: 1;
-            filter: blur(0);
+            opacity : 1;
+            filter  : blur(0);
         }
     }
+
     .card__category--animated {
-        animation: fade-in 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
-        animation-fill-mode: forwards;
-        display: inline-block;
-        opacity: 0;
+        animation           : fade-in 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        animation-fill-mode : forwards;
+        display             : inline-block;
+        opacity             : 0;
     }
 </style>

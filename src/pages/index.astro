@@ -50,12 +50,12 @@ for (const post of blog) {
         <div>
             <hr/>
             <a
-                href=`mailto:${persoon.Email}` 
-                target="_blank" 
+                href=`mailto:${persoon.Email}`
+                target="_blank"
                 class="default__icon_size"
             >
-                <Icon 
-                    icon="IconEmail" 
+                <Icon
+                    icon="IconEmail"
                     class="default__icon_size"
                 />
             </a
@@ -65,13 +65,13 @@ for (const post of blog) {
     <ul class="subcontainer_list">
         {overviewList.map(card => (
             <a href={card.slug}>
-            <ExpandedDetailCard
-                title={card.title}
-                description={card.description}
-                icon_url={card.icon_url}
-                icon_size={card.icon_size}
-                className={card.className}
-            />
+                <ExpandedDetailCard
+                    title={card.title}
+                    description={card.description}
+                    icon_url={card.icon_url}
+                    icon_size={card.icon_size}
+                    className={card.className}
+                />
             </a>
         ))}
     </ul>

@@ -1,6 +1,6 @@
 function toSentenceCase(str: string, capitalizeFirst: boolean = true) {
     let result = str;
-
+    if (result == null) return result;
     const caseStyle =
         (/_/.test(str)) ? 'snake' :
         (/-/.test(str)) ? 'kebab' :
@@ -28,3 +28,5 @@ function CapitalizeFirst(str: string) {
 }
 
 export {toSentenceCase, CapitalizeFirst};
+
+

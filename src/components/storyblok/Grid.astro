@@ -10,7 +10,8 @@ const {blok} = Astro.props
     >
         {
             blok.columns?.map((blok: {}) => {
-                return <StoryblokComponent blok={blok}/>
+                return
+                    <StoryblokComponent blok={blok}/>
             })
         }
     </div>

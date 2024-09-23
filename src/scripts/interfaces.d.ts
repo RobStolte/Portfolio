@@ -10,6 +10,8 @@ export interface timelineElement {
 }
 
 
+
+
 export interface SupabaseSkill {
     title: string;
     description?: string;
@@ -29,18 +31,24 @@ export interface SupabaseSkill {
     };
 }
 
+
+
+
 export interface Skill {
     title: string;
     category: { name: string }[];
 }
 
 
+
+
 export interface post {
     title: string;
-    image : storyBlokAsset;
+    image: storyBlokAsset;
     description: string;
     slug: string;
 }
+
 
 
 

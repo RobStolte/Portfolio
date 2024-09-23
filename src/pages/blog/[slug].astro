@@ -4,6 +4,7 @@ import StoryblokComponent                 from '@storyblok/astro/StoryblokCompon
 import Layout                             from "@/layouts/Layout.astro";
 const storyblokApi = useStoryblokApi()
 const {slug} = Astro.params;
+import dayjs                              from 'dayjs';
 const {data} = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
     version: import.meta.env.DEV ? "draft" : "published",
 });
@@ -12,12 +13,15 @@ const story = data.story;
 <Layout title={story.title}>
     <header slot="top">
         <h3>{story.name}</h3>
+        <p>{story.published_at ? `Published at: ${dayjs(story.published_at).format('DD-MM-YYYY')}` : ""} {story.updated_at ? `, Updated at: ${dayjs(story.updated_at).format('DD-MM-YYYY')}` : ""}</p>
         <p>{story.content.description}</p>
+
     </header>
     <main class="section__main">
         {
             story.content.blokken.map((blok: SbBlokData) => {
-                return <StoryblokComponent blok={blok}/>
+                return
+                    <StoryblokComponent blok={blok}/>
             })
         }
     </main>

@@ -8,7 +8,8 @@ const {blok}: any = Astro.props
     <h2 class="section__title">{blok.title}</h2>
     {
         blok.blokken?.map((blok: {}) => {
-            return <StoryblokComponent blok={blok}/>
+            return
+                <StoryblokComponent blok={blok}/>
         })
     }
 </section>

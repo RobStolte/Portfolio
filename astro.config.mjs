@@ -1,16 +1,16 @@
 /** @format */
 
-import {defineConfig} from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import storyblok from '@storyblok/astro';
-import basicSsl from '@vitejs/plugin-basic-ssl';
-import vue from "@astrojs/vue";
-import {loadEnv} from "vite";
+import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
+import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel/serverless";
+import vue from "@astrojs/vue";
 import sentry from "@sentry/astro";
 import spotlightjs from "@spotlightjs/astro";
+import storyblok from "@storyblok/astro";
+import basicSsl from "@vitejs/plugin-basic-ssl";
+import {defineConfig} from "astro/config";
+import {loadEnv} from "vite";
 
 const {
           STORYBLOK_TOKEN,
@@ -76,38 +76,38 @@ export default defineConfig({
 
     // troll the scrapers
     redirects: {
-        '/wp-admin'               : {
+        "/wp-admin"               : {
             status     : 302,
-            destination: 'https://youtu.be/rvrZJ5C_Nwg?si=PbC6j4EwTA4RgLpu&t=142',
+            destination: "https://youtu.be/rvrZJ5C_Nwg?si=PbC6j4EwTA4RgLpu&t=142"
         },
-        '/wp-admin/admin-ajax.php': {
+        "/wp-admin/admin-ajax.php": {
             status     : 302,
-            destination: 'https://youtu.be/RSfKXQM57lk?si=yqXAJDhh4PZjFp2-',
+            destination: "https://youtu.be/RSfKXQM57lk?si=yqXAJDhh4PZjFp2-"
         },
-        '/env'                    : {
+        "/env"                    : {
             status     : 302,
-            destination: 'https://youtu.be/dQw4w9WgXcQ?si=_TNnBnvJE1BIuM95',
+            destination: "https://youtu.be/dQw4w9WgXcQ?si=_TNnBnvJE1BIuM95"
         },
-        '/env*'                   : {
+        "/env*"                   : {
             status     : 302,
-            destination: 'https://youtu.be/Ruei-c4xn5o?si=2NrhC7KxB_1LeySr',
+            destination: "https://youtu.be/Ruei-c4xn5o?si=2NrhC7KxB_1LeySr"
         },
-        '/admin'                  : {
+        "/admin"                  : {
             status     : 302,
-            destination: 'https://youtu.be/asjQNZn7vng?si=_MhwXtMKokQH7KA1',
+            destination: "https://youtu.be/asjQNZn7vng?si=_MhwXtMKokQH7KA1"
         },
-        '/admin*'                 : {
+        "/admin*"                 : {
             status     : 302,
-            destination: 'https://youtu.be/asjQNZn7vng?si=_MhwXtMKokQH7KA1',
+            destination: "https://youtu.be/asjQNZn7vng?si=_MhwXtMKokQH7KA1"
         },
-        '/laravel'                : {
+        "/laravel"                : {
             status     : 302,
-            destination: 'https://www.youtube.com/watch?v=9n-EZQvlonM',
+            destination: "https://www.youtube.com/watch?v=9n-EZQvlonM"
         },
-        '/.env'                   : {
+        "/.env"                   : {
             status     : 302,
-            destination: 'https://youtu.be/asjQNZn7vng?si=_MhwXtMKokQH7KA1',
-        },
+            destination: "https://youtu.be/asjQNZn7vng?si=_MhwXtMKokQH7KA1"
+        }
     }
 
 });

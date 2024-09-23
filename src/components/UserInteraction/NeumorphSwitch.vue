@@ -12,9 +12,9 @@ export default {
     data() {
         return {
             value: false
-        }
+        };
     }
-}
+};
 </script>
 
 <style scoped>

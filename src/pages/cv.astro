@@ -1,8 +1,8 @@
 ---
-import TimeLineElement  from "@/components/cv/TimeLine.astro";
-import {toSentenceCase} from "@/scripts/stringConverters.ts";
-import {supabase}       from "@/scripts/supabase.ts";
-import Layout           from "@/layouts/Layout.astro";
+import TimeLineElement      from "@/components/cv/TimeLine.astro";
+import {toSentenceCase}     from "@/scripts/stringConverters.ts";
+import {supabase}           from "@/scripts/supabase.ts";
+import Layout               from "@/layouts/Layout.astro";
 import type {SupabaseSkill} from "@/scripts/interfaces.d.ts";
 
 // Define the type for the API response
@@ -18,7 +18,7 @@ interface TimelineData {
 
 // getting the skills table data from the database
 async function getSkillTables(): Promise<Record<string, string[]> | null> {
-    const { data, error } = await supabase
+    const {data, error} = await supabase
         .from('skills')
         .select('title, category(name)')
         .eq('timeline_element', false) as { data: SkillTableData[], error: any };
@@ -49,7 +49,7 @@ const skillTimelineResponse = await supabase
     .select(`title,description,start_date,end_date,url!left(url),company!left(name),category!left(name),location!left(name)`)
     .eq('timeline_element', true)
     .order('end_date', {ascending: false}) as TimelineData;
-
+console.log(skillTimelineResponse);
 const isLoading = (skillTables === null) || (skillTimelineResponse.error !== null);
 ---
 <Layout title="Curriculum vitae">
