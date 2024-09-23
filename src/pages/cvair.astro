@@ -80,14 +80,14 @@ console.log('Final list of rows:', listOfRows);
          {listOfRows.map((data) => (
              <TimeLineElement
                  title={data.title || null}
-                 company={data.company?.name || null}
+                 company={data.company || null}
                  startDate={data.startDate || null}
                  endDate={data.endDate || null}
-                 location={data.location?.name || null}
+                 location={data.location || null}
                  text={data.description || null}
-                 link={data.url?.url || null}
-                 category={data.category?.name || null}
-                 classname={`timeline__element__category&#45;&#45;${data.category?.name || null}`}
+                 link={data.url || null}
+                 category={data.category || null}
+                 classname={`timeline__element__category&#45;&#45;${data.category || null}`}
              ></TimeLineElement>
          ))}
      </section>}
