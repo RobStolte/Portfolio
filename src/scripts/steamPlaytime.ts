@@ -1,13 +1,18 @@
-import type { steamGame } from "@/scripts/interfaces.ts";
+import type {steamGame} from "@/scripts/interfaces.ts";
+
+
+
 
 class SteamAPI {
-    private STEAM_USER_ID: string | undefined;
-    private STEAM_API_KEY: string | undefined;
+    private readonly STEAM_USER_ID: string | undefined;
+    private readonly STEAM_API_KEY: string | undefined;
+
 
     constructor() {
         this.STEAM_USER_ID = import.meta.env.STEAM_USER_ID;
         this.STEAM_API_KEY = import.meta.env.STEAM_API_KEY;
     }
+
 
     public async getPlaytimes(request: string) {
         const requestType = request === "playTime" ? 'IPlayerService/GetRecentlyPlayedGames/v0001' : '';
@@ -27,5 +32,8 @@ class SteamAPI {
         }
     }
 }
+
+
+
 
 export {SteamAPI};

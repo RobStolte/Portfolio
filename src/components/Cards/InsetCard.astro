@@ -1,5 +1,5 @@
 ---
-const { className } = Astro.props;
+const {className} = Astro.props;
 ---
 
 <div class:list={["inset__card", className]}>
@@ -8,10 +8,10 @@ const { className } = Astro.props;
 <style>
     .inset__card {
 
-        transition: 0.5s;
-        margin: 0.5rem auto 1rem;
-        padding: 1rem;
-        border-radius: 2rem;
-        box-shadow: var(--shadowstyle__base-in);
+        transition    : 0.5s;
+        margin        : 0.5rem auto 1rem;
+        padding       : 1rem;
+        border-radius : 2rem;
+        box-shadow    : var(--shadowstyle__base-in);
     }
 </style>

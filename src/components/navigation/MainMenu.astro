@@ -1,7 +1,7 @@
 ---
-import { SIDE_BAR_MENU } from '@/config.ts';
-import BaseButton from "@/components/UserInteraction/BaseButton.astro";
-const { sideBarActiveItemID, menu = SIDE_BAR_MENU } = Astro.props;
+import {SIDE_BAR_MENU} from '@/config.ts';
+import BaseButton      from "@/components/UserInteraction/BaseButton.astro";
+const {sideBarActiveItemID, menu = SIDE_BAR_MENU} = Astro.props;
 const activeClass = 'nav__button_bar_button_active';
 const isActive = (id: string) => id === sideBarActiveItemID ? activeClass : '';
 interface item {
@@ -11,7 +11,7 @@ interface item {
 }
 ---
 <!--suppress XmlUnboundNsPrefix -->
-<nav class="nav__button_bar_persistent" transition:persist transition:name="main-navigation" >
+<nav class="nav__button_bar_persistent" transition:persist transition:name="main-navigation">
     {menu.map((item: item) => (
         <BaseButton
             href={`/${item.slug}`}
@@ -20,22 +20,23 @@ interface item {
             id={item.id}
             ActiveTab={!isActive(item.id)}
             data-astro-prefetch
-            icon={item.icon}        
+            icon={item.icon}
         />
     ))}
 </nav>
 <style lang="scss">
     .nav__button_bar_persistent {
-        display             : flex;
-        width               : 100%;
-        justify-content     : space-evenly;
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
     }
+
     @media (min-width: 480px) {
         .nav__button_bar_persistent {
-            justify-content   : flex-start;
-            border-radius    : 1rem;
-            box-shadow       : var(--shadowstyle__base-in);
+            justify-content: flex-start;
+            border-radius: 1rem;
+            box-shadow: var(--shadowstyle__base-in);
         }
     }
-    
+
 </style>

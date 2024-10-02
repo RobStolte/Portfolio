@@ -1,8 +1,9 @@
 ---
-import HorizontalCard from "@/components/Old/HorizontalCard.astro";
+import HorizontalCard          from "@/components/Old/HorizontalCard.astro";
 import {StoryblokStoryManager} from "@/scripts/storyBlokUtil";
-import Layout from "@/layouts/Layout.astro";
-import {CapitalizeFirst} from "@/scripts/stringConverters";
+import Layout                  from "@/layouts/Layout.astro";
+import {CapitalizeFirst}       from "@/scripts/stringConverters";
+import type {post}             from "@/scripts/interfaces.ts";
 
 const ssm = new StoryblokStoryManager();
 
@@ -18,26 +19,26 @@ const staticImageWidth = 200
             <p>Er zijn nog geen {collection} gepost</p>
         </div>
     ) : (
-        <ul class="subcontainer_list">
-            {collection.map((post) => {
-                return (
-                        <HorizontalCard
-                                title={post.title}
-                                img={post.image.filename}
-                                imageAlt={post.image.filename}
-                                imageWidth={staticImageWidth}
-                                desc={CapitalizeFirst(post.description.length > 100 ? post.description.toLowerCase().slice(0, 103) + '...' : post.description.toLowerCase())}
-                                url={post.slug}
-                                target="_self"
-                        />
-                );
-            })}
-        </ul>
-        )
+         <ul class="subcontainer_list">
+             {collection.map((post: post) => {
+                 return (
+                     <HorizontalCard
+                         title={post.title}
+                         img={post.image.filename}
+                         imageAlt={post.image.filename}
+                         imageWidth={staticImageWidth}
+                         desc={CapitalizeFirst(post.description.length > 100 ? post.description.toLowerCase().slice(0, 103) + '...' : post.description.toLowerCase())}
+                         url={post.slug}
+                         target="_self"
+                     />
+                 );
+             })}
+         </ul>
+     )
     }
 </Layout>
 <style>
     .sub-container_list {
-        padding: 0;
+        padding : 0;
     }
 </style>

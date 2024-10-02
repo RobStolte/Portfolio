@@ -1,18 +1,16 @@
 ---
-import { type steamGame } from "@/scripts/interfaces";
-// noinspection ES6UnusedImports,TypeScriptCheckImport
-import { Image } from 'astro:assets';
-import { SteamAPI } from "@/scripts/steamPlaytime.ts"
-import Layout from "@/layouts/Layout.astro";
+import {type steamGame}   from "@/scripts/interfaces";
+import {SteamAPI}         from "@/scripts/steamPlaytime.ts"
+import Layout             from "@/layouts/Layout.astro";
 import ExpandedDetailCard from "../components/Cards/ExpandDetailCard.astro";
 
-function niceHourTimes(RawTime:number) {
-    return Math.floor(RawTime / 60)+':'+Math.round((RawTime % 60)).toString().padStart(2, '0');
+function niceHourTimes(RawTime: number) {
+    return Math.floor(RawTime / 60) + ':' + Math.round((RawTime % 60)).toString().padStart(2, '0');
 }
 let response: steamGame[] = []; // Initialize response with an empty array
 try {
     const steamApi = new SteamAPI();
-  response = await steamApi.getPlaytimes('playTime');
+    response = await steamApi.getPlaytimes('playTime');
 } catch (error) {
 }
 
@@ -25,86 +23,87 @@ response.sort((a, b) => {
 response = response.slice(0, 6);
 
 let listOfCards = [];
-for (const card of response){
+for (const card of response) {
     listOfCards.push({
-        title: card.name.length > 35 ? card.name.toLowerCase().slice(0, 32) + '...' : card.name.toLowerCase(),
-        description: `2 weken: ${niceHourTimes(card.playtime_2weeks)} uur, Totaal: ${niceHourTimes(card.playtime_forever)} uur`,
-        icon_url: card.img_icon_url,
-        icon_size: 50,
-        className: "item"
-    })
+                         title: card.name.length > 35 ? card.name.toLowerCase().slice(0, 32) + '...' : card.name.toLowerCase(),
+                         description: `2 weken: ${niceHourTimes(card.playtime_2weeks)} uur, Totaal: ${niceHourTimes(card.playtime_forever)} uur`,
+                         icon_url: card.img_icon_url,
+                         icon_size: 50,
+                         className: "item"
+                     })
 }
-
-
 ---
 <Layout title="Gamen">
     <section class="section__introductiontext">
-    <p class="section__introductiontext_description">Gamen is één van mijn passies. niet spellen in de competitie- of matchgebaseerde categorieën, maar eerder op de lange termijn ontwikkeling en vooruitgang. Dit zijn vaak verhalende games of sandbox-games, waarbij de nadruk ligt op creativiteit en het vormgeven van je eigen virtuele wereld.</p>
+        <p class="section__introductiontext_description">Gamen is één van mijn passies. niet spellen in de competitie-
+            of matchgebaseerde categorieën, maar eerder op de lange termijn ontwikkeling en vooruitgang. Dit zijn vaak
+            verhalende games of sandbox-games, waarbij de nadruk ligt op creativiteit en het vormgeven van je eigen
+            virtuele wereld.</p>
     </section>
     <section class="section__steam_content">
-    <h2 class="section__introductiontext_heading">Steam</h2>
+        <h2 class="section__introductiontext_heading">Steam</h2>
         <div class="grid__gamecards"></div>
         {listOfCards.map(card => (
-                <ExpandedDetailCard
-                        title={card.title}
-                        description={card.description}
-                        icon_url={card.icon_url}
-                        icon_size={card.icon_size}
-                        className={card.className}
-                />
+            <ExpandedDetailCard
+                title={card.title}
+                description={card.description}
+                icon_url={card.icon_url}
+                icon_size={card.icon_size}
+                className={card.className}
+            />
         ))}
     </section>
 </Layout>
 <style>
     .section__introductiontext_description {
-        margin: 1rem;
-        
+        margin : 1rem;
+
     }
 
     .section__steam_content {
-        margin: 1rem;
-        display: grid;
-        gap: 2rem;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        @media (max-width: 575px) {
-                grid-template-columns: repeat(1, minmax(0, 1fr));
+        margin                : 1rem;
+        display               : grid;
+        gap                   : 2rem;
+        grid-template-columns : repeat(2, minmax(0, 1fr));
+        @media (max-width : 575px) {
+            grid-template-columns : repeat(1, minmax(0, 1fr));
         }
     }
 
     .item {
-        margin: 0 0.5rem 0 0.5rem;
-        position: relative;
-        display: flex;
-        align-items: center;
-        height: 5rem;
-        padding: 1rem;
-        overflow: hidden;
-        border-radius: 3rem;
-        box-shadow: var(--shadowstyle__base);
+        margin        : 0 0.5rem 0 0.5rem;
+        position      : relative;
+        display       : flex;
+        align-items   : center;
+        height        : 5rem;
+        padding       : 1rem;
+        overflow      : hidden;
+        border-radius : 3rem;
+        box-shadow    : var(--shadowstyle__base);
     }
 
     .item__img {
-        position: absolute;
-        left: 0;
-        width: 80px;
-        height: 80px;
-        border-radius: 0;
-        box-shadow: var(--shadowstyle__base);
+        position      : absolute;
+        left          : 0;
+        width         : 80px;
+        height        : 80px;
+        border-radius : 0;
+        box-shadow    : var(--shadowstyle__base);
     }
 
     .item__text {
-        margin-left: 5rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        margin-left   : 5rem;
+        white-space   : nowrap;
+        overflow      : hidden;
+        text-overflow : ellipsis;
     }
 
     .item__text--title {
-        font-size: 1rem;
-        font-weight: bold;
+        font-size   : 1rem;
+        font-weight : bold;
     }
 
     .item__text--subtitle {
-        font-size: 0.7rem;
+        font-size : 0.7rem;
     }
 </style>

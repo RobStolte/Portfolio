@@ -1,79 +1,129 @@
 ---
-import {stringToHexColor, contrastColor } from '@/scripts/colortools.ts';
-import{ toSentenceCase, CapitalizeFirst } from '@/scripts/stringConverters.ts';
-const { title, company, text, location, category } = Astro.props;
+import {stringToHexColor, contrastColor} from '@/scripts/colortools.ts';
+import {toSentenceCase, CapitalizeFirst} from '@/scripts/stringConverters.ts';
+const {title, company, text, location, category} = Astro.props;
 
 const categoryBackgroundColor = stringToHexColor(category);
 const categoryTextColor = contrastColor(categoryBackgroundColor);
-const categoryText = CapitalizeFirst(toSentenceCase(category));
+const categoryText = category;
+//const categoryText = CapitalizeFirst(toSentenceCase(category));
 ---
 <figure class="card">
     <div class="card__in_box">
-    {company ? (
-        <h3 class='card__company-title'>{company}</h3>
-        <div class='card__job-title'>{title}</div>
-    ) : (
-        <h3 class='card__job-title'>{title}</h3>
-    )}
-    {text ? <p class='card__text'>{text}</p> : null}
-    <p class='card__text card__text--justified'></p>
-    {category &&
-            <div 
-                class='card__category'>
-                {categoryText}
-            </div>
-    }
-    {location && <div class='card__location'>{location}</div>}
+        {company ? (
+            <h3 class="card__company-title">{company}</h3>
+            <div class="card__job-title">{title}</div>
+        ) : (
+             <h3 class="card__job-title">{title}</h3>
+         )}
+        {text ? <p class="card__text">{text}</p> : null}
+        <p class="card__text card__text--justified"></p>
+        {category &&
+         <div
+             class="card__category" set:html={
+             categoryText.split('').map((letter, index) =>
+                                            `<span style="animation: fade-in 0.8s ${0.1 * index + 0.1}s forwards cubic-bezier(0.11, 0, 0.5, 0);">
+          ${letter}
+         </span>`
+             ).join('')}
+         ></div>
+        }
+        {location &&
+         <div class="card__location">{location}</div>}
     </div>
 </figure>
 
-<style define:vars={{ categoryBackgroundColor, categoryTextColor}}>
+<style define:vars={{categoryBackgroundColor, categoryTextColor}}>
     .card__in_box {
-        margin: 0.05rem;
-        padding: 1rem 1rem 0 1rem;
-        border-radius: 0.5rem;
-        box-shadow: var(--shadowstyle__base-in)
+        margin        : 0.05rem;
+        padding       : 1rem 1rem 0 1rem;
+        border-radius : 0.5rem;
+        box-shadow    : var(--shadowstyle__base-in)
     }
+
     .card {
-        color: hsl(var(--color__text));
-        padding: 1rem 1rem 0.5rem 1rem;
-        margin: 1rem 0 2rem 0.5rem;
-        position: relative;
-        border-radius: 1rem;
-        box-shadow: var(--shadowstyle__base);
-        transition: all 0.3s ease-in-out;
+        color         : hsl(var(--color__text));
+        padding       : 1rem 1rem 0.5rem 1rem;
+        margin        : 1rem 0 2rem 0.5rem;
+        position      : relative;
+        border-radius : 1rem;
+        box-shadow    : var(--shadowstyle__base);
+        transition    : all 0.3s ease-in-out;
     }
+
     .card:hover {
-        transform: scale(1.05);
-        box-shadow: var(--shadowstyle__base);
+        transform  : scale(1.05);
+        box-shadow : var(--shadowstyle__base);
     }
+
     .card__company-title,
     .card__job-title {
-        font-size: 1rem;
+        font-size : 1rem;
     }
+
     .card__company-title {
-        font-weight: 600;
+        font-weight : 600;
     }
+
     .card__job-title {
-        font-weight: 300;
+        font-weight : 300;
     }
+
     .card__text {
-        font-size: 0.8rem;
-        font-weight: 100;
-        margin-top: 0.5rem;
-        margin-bottom: 1.25rem;
+        font-size     : 0.8rem;
+        font-weight   : 100;
+        margin-top    : 0.5rem;
+        margin-bottom : 1.25rem;
     }
+
     .card__category,
     .card__location {
-        position: absolute;
-        bottom: 0;
-        padding-right: 1.5rem;
-        padding-left: 1.5rem;
+        position      : absolute;
+        bottom        : 0;
+        padding-right : 1.5rem;
+        padding-left  : 1.5rem;
     }
+
     .card__category {
-        left: 0;
+        position      : absolute;
+        bottom        : 0;
+        padding-right : 1.5rem;
+        padding-left  : 1.5rem;
+        visibility    : hidden; /* Hide initially */
     }
+
     .card__location {
-        right: 0;
+        right : 0;
+    }
+
+    .card:hover .card__category {
+        visibility : visible; /* Show on hover */
+    }
+
+    .card:hover {
+        transform : none;
+        /* ...rest of your styles... */
+    }
+
+    .card__category span {
+        animation-duration        : 0.8s;
+        animation-timing-function : cubic-bezier(0.11, 0, 0.5, 0);
+        animation-fill-mode       : forwards;
+        opacity                   : 0;
+        display                   : inline-block;
+    }
+
+    @keyframes fade-in {
+        100% {
+            opacity : 1;
+            filter  : blur(0);
+        }
+    }
+
+    .card__category--animated {
+        animation           : fade-in 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        animation-fill-mode : forwards;
+        display             : inline-block;
+        opacity             : 0;
     }
 </style>

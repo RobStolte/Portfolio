@@ -2,31 +2,31 @@
 import {CONTACT_METHODS} from "@/config.ts";
 ---
 <div
-  class='block sticky pointer-events-none bottom-10 justify-center h-12'
+    class="block sticky pointer-events-none bottom-10 justify-center h-12"
 >
 </div>
 
 <div
-  class='social-icons px-4 pb-5 pt-1 flex self-center justify-center sticky bottom-0'
+    class="social-icons px-4 pb-5 pt-1 flex self-center justify-center sticky bottom-0"
 >
-  {CONTACT_METHODS.map(item => (
+    {CONTACT_METHODS.map(item => (
+        <a
+            style="font-size: 0;"
+            href={item.url}
+            target="_blank"
+            class="mx-3"
+            aria-label={item.ariaLabel}
+            title={item.titel}
+        ><i class={`${item.icon} size-5`}/>{item.ariaLabel}
+        </a>
+    ))}
     <a
-      style="font-size: 0;"
-      href={item.url}
-      target='_blank'
-      class='mx-3'
-      aria-label={item.ariaLabel}
-      title={item.titel}
-      ><i class={`${item.icon} size-5`}/>{item.ariaLabel}
+        href="/rss.xml"
+        style="font-size: 0;"
+        target="_blank"
+        class="mx-3"
+        aria-label="RSS Feed"
+        title="RSS Feed"
+    ><i class="fa-solid fa-rss size-5"></i>RSS Feed
     </a>
-  ))}
-  <a
-    href='/rss.xml'
-    style="font-size: 0;"
-    target='_blank'
-    class='mx-3'
-    aria-label='RSS Feed'
-    title='RSS Feed'
-    ><i class='fa-solid fa-rss size-5'></i>RSS Feed
-  </a>
 </div>

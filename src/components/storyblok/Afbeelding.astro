@@ -1,16 +1,15 @@
 ---
-import { StoryblokAssetManager } from '@/scripts/storyBlokUtil';
-import { storyblokEditable } from '@storyblok/astro'
-// noinspection ES6UnusedImports
-import { Image } from "astro:assets"
-const { blok } = Astro.props
+import {StoryblokAssetManager} from '@/scripts/storyBlokUtil';
+import {storyblokEditable}     from '@storyblok/astro'
+// noinspection ES6UnusedImports,TypeScriptCheckImport
+import {Image}                 from "astro:assets"
+const {blok} = Astro.props
 
 const image = new StoryblokAssetManager(blok.imageAsset.filename);
-const maxSize = (blok.maxSize > 475) ? 475 : blok.maxSize; 
-if(blok.isAnimating == false || blok.isAnimating == undefined){
-  image.setNewResolution(0,maxSize)
-  image.setNewFileType('webp')
-  
+const maxSize = (blok.maxSize > 475) ? 475 : blok.maxSize;
+if (blok.isAnimating == false || blok.isAnimating == undefined) {
+    image.setNewResolution(0, maxSize)
+    image.setNewFileType('webp')
 }
 image.getAspect()
 image.setHeightFromAspect()
@@ -19,42 +18,44 @@ image.setHeightFromAspect()
     {...storyblokEditable(blok)}
     class="block"
 >
-  <Image
-      loading = "eager"
-      decoding= "sync"
-      width   = {image.obj.width}
-      height  = {image.obj.height}
-      src     = {image.obj.url}
-      alt     = {blok.imageAsset.alt || image.obj.fileName}
-      class   = "block__image"
-  />
-  {blok.subText &&
-      <div class="block__subtext">
-        {blok.subText}
-      </div>}
+    <Image
+        loading="eager"
+        decoding="sync"
+        width={image.obj.width}
+        height={image.obj.height}
+        src={image.obj.url}
+        alt={blok.imageAsset.alt || image.obj.fileName}
+        class="block__image"
+    />
+    {blok.subText &&
+     <div class="block__subtext">
+         {blok.subText}
+     </div>}
 </div>
 
 <style>
-  .block {
-    position: relative;
-  }
-  .block__image {
-    border-radius: 3rem;
-    border: 10px;
-    border-color: var(--background__base);
-    box-shadow: var(--shadowstyle__base);
-    margin-bottom: 2rem;
-  }
-  .block__subtext {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: hsla(var(--background__base) / 80%); /* You need to replace color: rgba(r,g,b,a) of your rst_primary color with 80% opacity */
-    box-shadow: inset 0 0 30px 3px hsl(var(--background__base));
-    text-align: center;
-    padding: 0.5rem;
-    border-bottom-right-radius: 3rem;
-    border-bottom-left-radius: 3rem;
-  }
+    .block {
+        position : relative;
+    }
+
+    .block__image {
+        border-radius : 3rem;
+        border        : 10px;
+        border-color  : var(--background__base);
+        box-shadow    : var(--shadowstyle__base);
+        margin-bottom : 2rem;
+    }
+
+    .block__subtext {
+        position                   : absolute;
+        bottom                     : 0;
+        left                       : 0;
+        right                      : 0;
+        background-color           : hsla(var(--background__base) / 80%); /* You need to replace color: rgba(r,g,b,a) of your rst_primary color with 80% opacity */
+        box-shadow                 : inset 0 0 30px 3px hsl(var(--background__base));
+        text-align                 : center;
+        padding                    : 0.5rem;
+        border-bottom-right-radius : 3rem;
+        border-bottom-left-radius  : 3rem;
+    }
 </style>

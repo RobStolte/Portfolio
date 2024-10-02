@@ -11,7 +11,12 @@
     // Enable stricter transpilation for better output.
     "isolatedModules": true,
     "allowImportingTsExtensions": true,
-    "types": ["astro/client", "preact", "vite/client", "vitest"],
+    "types": [
+      "astro/client",
+      "preact",
+      "vite/client",
+      "vitest"
+    ],
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
@@ -22,7 +27,9 @@
     "jsxImportSource": "preact",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     }
   }
 }

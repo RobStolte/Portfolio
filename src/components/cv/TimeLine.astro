@@ -17,58 +17,62 @@ function displayDate(startDate: Date | null, endDate: Date | null) {
 ---
 <div class={`${classname} flex`}>
     <div
-            class='education__time education__time--mr10 font-light education__time--translate'
-            data-date={displayDate(startDate, endDate)}
+        class="education__time education__time--mr10 font-light education__time--translate"
+        data-date={displayDate(startDate, endDate)}
     >
     </div>
-    <div class='experience__data bd-grid experience__data--px5 experience__data--wfull timeline__element_animation'>
+    <div class="experience__data bd-grid experience__data--px5 experience__data--wfull timeline__element_animation">
         {
             link ? (
-                    <a href={link} target='_blank'>
-                        <TimeLineTextBlok title={title} company={company} location={location} text={text}
-                                          category={category}/>
-                    </a>
+                <a href={link} target="_blank">
+                    <TimeLineTextBlok
+                        title={title} company={company} location={location} text={text}
+                        category={category}
+                    />
+                </a>
             ) : (
-                    <TimeLineTextBlok title={title} company={company} location={location} text={text}
-                                      category={category}/>
+                <TimeLineTextBlok
+                    title={title} company={company} location={location} text={text}
+                    category={category}
+                />
             )
         }
     </div>
 </div>
 <style>
     .flex {
-        display: flex;
+        display : flex;
     }
 
 
     .education__time--translate {
-        transform: translateY(60px);
+        transform : translateY(60px);
     }
 
     .education__time {
-        position: relative;
-        font-size: 1rem;
-        width: 0;
+        position  : relative;
+        font-size : 1rem;
+        width     : 0;
     }
 
     .education__time::before {
-        content: attr(data-date);
-        position: absolute;
-        left: 4rem;
-        top: -3rem;
-        white-space: nowrap;
+        content     : attr(data-date);
+        position    : absolute;
+        left        : 4rem;
+        top         : -3rem;
+        white-space : nowrap;
     }
 
     .education__time--primary {
-        background-color: #6366f1;
+        background-color : #6366f1;
     }
 
     .experience__data--px5 {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+        padding-left  : 1.25rem;
+        padding-right : 1.25rem;
     }
 
     .experience__data--wfull {
-        width: 100%;
+        width : 100%;
     }
 </style>
