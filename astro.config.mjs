@@ -63,7 +63,11 @@ export default defineConfig({
     }
   }), spotlightjs()],
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   // troll the scrapers
   redirects: {
     "/wp-admin": {
