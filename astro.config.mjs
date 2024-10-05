@@ -10,7 +10,7 @@ import storyblok from "@storyblok/astro";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import { defineConfig } from "astro/config";
 import { loadEnv } from "vite";
-import node from "@astrojs/node";
+import vercel from "@astrojs/vercel/serverless";
 const {
   STORYBLOK_TOKEN,
   SENTRY_DNS_URL,
@@ -63,9 +63,7 @@ export default defineConfig({
     }
   }), spotlightjs()],
   output: "server",
-  adapter: node({
-    mode: "standalone"
-  }),
+  adapter: vercel(),
   // troll the scrapers
   redirects: {
     "/wp-admin": {
