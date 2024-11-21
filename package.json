@@ -25,7 +25,7 @@
     "@astrojs/vercel": "^7.8.1",
     "@astrojs/vue": "^4.5.1",
     "@sentry/astro": "^7.109.0",
-    "@spotlightjs/astro": "^1.0.16",
+    "@spotlightjs/astro": "^2.1.9",
     "@storyblok/astro": "^4.0.3",
     "@supabase/supabase-js": "^2.41.1",
     "@vitejs/plugin-basic-ssl": "^1.0.2",
