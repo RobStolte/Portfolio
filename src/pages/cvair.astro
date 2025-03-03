@@ -2,96 +2,11 @@
 import TimeLineElement from "@/components/cv/TimeLine.astro";
 import { toSentenceCase } from "@/scripts/stringConverters.ts";
 import Layout from "@/layouts/Layout.astro";
-import Airtable from "airtable";
-
-const cvBase = 'appIAz4WBLXpqK2Ds';
-const airtablePAT = import.meta.env.AIRTABLE_PAT;
-const airtableEndPoint = import.meta.env.AIRTABLE_ENDPOINT_URL;
-
-Airtable.configure({
-                       apiKey: airtablePAT,
-                       endpointUrl: airtableEndPoint,
-                   });
-
-let base = Airtable.base(cvBase);
-
-const startDate = 'fldDAz0Hdxjc7mSot';
-const endDate = 'fldHvtsso2W0fjZiK';
-const duration = 'fld9tAwkDe5EzbTnK';
-const company = 'fldtFagMGpnnjVtrd';
-const title = 'fldWTP8cj5cUEJfZ8';
-const description = 'fldcF4MEQoGvj7Nr9';
-const location = 'fldrLWWz2gDcWjVWX';
-const category = 'fldBrIWC8eXmram0s';
-const url = 'fldKZ3uKzQ4ANoEhW';
-
-let listOfRows = [];
-
-async function fetchAirtableData() {
-    return new Promise((resolve, reject) => {
-        base('tblvlwCNd2UYCB4Al').select({
-                                             view: "Skills",
-                                             fields: [startDate, endDate, duration, company, title, description, location, category, url],
-                                         }).eachPage(function page(records, fetchNextPage) {
-            // This function (`page`) will get called for each page of records.
-
-            records.forEach(function(record) {
-                let row = {
-                    startDate: record.get('Start date'),
-                    endDate: record.get('End date'),
-                    duration: record.get('Duration'),
-                    company: (record.get('Name (from Company name)') && record.get('Name (from Company name)')[0]) || '',
-                    title: record.get('Title'),
-                    description: record.get('Description'),
-                    location: (record.get('Name (from Location)') && record.get('Name (from Location)')[0]) || '',
-                    category: (record.get('Name (from Category)') && record.get('Name (from Category)')[0]) || '',
-                    url: (record.get('url') && record.get('url')[0]) || '',
-                };
-                listOfRows.push(row);
-            });
-
-            // To fetch the next page of records, call `fetchNextPage`.
-            // If there are more records, `page` will get called again.
-            // If there are no more records, `done` will get called.
-            fetchNextPage();
-
-        }, function done(err) {
-            if (err) {
-                console.error(err);
-                reject(err);
-            } else {
-                // Resolve the promise with the final list of rows
-                resolve(listOfRows);
-            }
-        });
-
-    });
-}
-
-// Fetch data and log it
-await fetchAirtableData();
-console.log('Final list of rows:', listOfRows);
 
 ---
 
 <Layout title="Curriculum vitae">
 <iframe src="https://poly.cam/capture/a16592e4-fb9b-405d-b6cd-c6a78ca3d450/embed" title="Polycam capture viewer" style="height:100%;width:100%;max-height:720px;max-width:1280px;min-height:280px;min-width:280px" frameborder="0"></iframe>
-    {
-     <section class="time-line-container">
-         {listOfRows.map((data) => (
-             <TimeLineElement
-                 title={data.title || null}
-                 company={data.company || null}
-                 startDate={data.startDate || null}
-                 endDate={data.endDate || null}
-                 location={data.location || null}
-                 text={data.description || null}
-                 link={data.url || null}
-                 category={data.category || null}
-                 classname={`timeline__element__category&#45;&#45;${data.category || null}`}
-             ></TimeLineElement>
-         ))}
-     </section>}
 </Layout>
 <style>
     .time-line-container {
